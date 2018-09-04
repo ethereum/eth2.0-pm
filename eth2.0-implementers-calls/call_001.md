@@ -176,8 +176,7 @@
       and assign them eth
     * This approach is totally fine
 * Danny
-    * Idea would be to have registration contract, broadcast data via receipts,
-      have open for some amount of time, then run script
+    * Idea would be to have registration contract in which validators can burn ETH and set their params (pubkey, withdrawal addr, etc), contract broadcasts this data via receipts, have open for some amount of time, then run script
     * would have start and end date for initial registration (or rather block height)
     * This is a tentatively reasonable approach
     * in terms of development, just consider the genesis to have an initial
