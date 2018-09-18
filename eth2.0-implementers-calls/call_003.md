@@ -298,12 +298,12 @@
 
 
 # Tentative Decisions
-1. p2p serialization format
+* p2p serialization format
   * decided [ssz](https://github.com/ethereum/beacon_chain/tree/master/ssz)
   * need formal spec and shared tests
-2. p2p network protocol
+* p2p network protocol
   * 90/95% sure on gossipsub
-3. p2p discovery protocol
+* p2p discovery protocol
   * too early 
   * need more research
 
