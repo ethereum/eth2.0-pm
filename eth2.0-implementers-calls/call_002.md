@@ -95,8 +95,8 @@
     * ASIC was biggest source of uncertainty but looking good
       * exotic processes other than silicon do not look feasible because
         complexity of ASIC will draw too much power
-          * gallium arsenide
-          * silicium germanium
+          * gallium-arsenide
+          * silicon-germanium
       * ASIC looks feasible on CMOS silicon
 * P2P serialization formats (Paul)
   * [benched several serialization formats](https://github.com/sigp/serialization_sandbox)
@@ -172,7 +172,7 @@
   * Justin
     * If you have one vote with a bad signature, it will pollute the entire
       aggregate signature. So doesn't really make sense to have a single
-      signature wrog
+      signature wrong
   * Danny
     * Yes, but the entire attestation could fail the signature
     * The block producer should have known that, not included it, and not
@@ -226,7 +226,7 @@
   * Feed this output into the VDF
   * Some block producer finds output of VDF with a proof and includes it on chain
   * difficulty is adjusted depending on if before or after target_delay
-  * target delay is a function of A_max (the theoretical advantage an attacker
+  * target delay is a function of A_max (the assumed advantage an attacker
     can have)
   * This is incentivized by watermarking the proof with the validators public
     key so it can be rewarded and not stolen
