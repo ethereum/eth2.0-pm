@@ -187,18 +187,18 @@
     * Discussion ensued regarding the matter. And further thought is needed. 
 
 # Links shared during meeting
-•	https://github.com/ethereum/eth2.0-tests
-•	https://ethresear.ch/t/beacon-chain-casper-ffg-rpj-mini-spec/2760/17
-•	https://ethresear.ch/t/minimal-vdf-randomness-beacon/3566
-•	https://beta.observablehq.com/@cdetrio/shasper-viz-0-4 
-•	https://medium.com/rocket-pool/rocket-pool-beta-v1-postmortem-1809391d91b9 
-•	https://github.com/libp2p/go-libp2p-daemon
-•	https://github.com/libp2p/go-libp2p-daemon/pull/9
-•	https://github.com/ethereum/beacon_chain/issues/103
-•	https://github.com/ethereum/beacon_chain/issues/115
-•	https://github.com/ethereum/EIPs/blob/master/EIPS/eip-706.md
-•	https://github.com/mkg20001/libp2p-dissector
-•	https://media.consensys.net/releasing-wireshark-dissectors-for-ethereum-%C3%B0%CE%BEvp2p-protocols-215c9656dd9c
+* https://github.com/ethereum/eth2.0-tests
+* https://ethresear.ch/t/beacon-chain-casper-ffg-rpj-mini-spec/2760/17
+* https://ethresear.ch/t/minimal-vdf-randomness-beacon/3566
+* https://beta.observablehq.com/@cdetrio/shasper-viz-0-4 
+* https://medium.com/rocket-pool/rocket-pool-beta-v1-postmortem-1809391d91b9 
+* https://github.com/libp2p/go-libp2p-daemon
+* https://github.com/libp2p/go-libp2p-daemon/pull/9
+* https://github.com/ethereum/beacon_chain/issues/103
+* https://github.com/ethereum/beacon_chain/issues/115
+* https://github.com/ethereum/EIPs/blob/master/EIPS/eip-706.md
+* https://github.com/mkg20001/libp2p-dissector
+* https://media.consensys.net/releasing-wireshark-dissectors-for-ethereum-%C3%B0%CE%BEvp2p-protocols-215c9656dd9c
 
 
 # Attendees
