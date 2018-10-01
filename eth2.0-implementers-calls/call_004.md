@@ -30,7 +30,7 @@
     * Proposed attestation check during block verification
     * Implemented attestation service for the beacon note 
       * Used to aggregate attestation and then save the aggregated attestation to the local DB. 
-* Pegasus (Nicolas)  _4:00-5:10_
+* PegaSys (Nicolas)  _4:00-5:10_
   * Team is setup. Beginning work on beacon chain implementation
   * Simulation of Casper IMD
   * Began work on libp2p
@@ -120,7 +120,7 @@
      * No simulations present – more of a visualization. 
 
 # libp2p
-* Libp2p daemon (Raul from Prysmatic Labs)  _39:25-58:15_
+* Libp2p daemon (Raul from Protocol Labs)  _39:25-58:15_
   * Work on daemon has begun, but still in its protophases
   * Libp2p is a modular networking stack for building p2p assistance and has enhancing features, such as discovery, DHT, protocol transports, etc.
   * Implementations available in Go, Javascript, and Rust
@@ -216,7 +216,7 @@
 * Paul Hauner (Lighthouse/Sigma Prime)
 * Chih-Cheng Liang (EF/Research)
 * Adrian Manning (Lighthouse/Sigma Prime)
-* Nicolas Liochon (Pegasys)
+* Nicolas Liochon (PegaSys)
 * Mamy Ratsimbazafy (Status/Nimbus)
 * Casey Detrio (eWASM/EthereumJS)
 * Jacek Sieka (Status/Nimbus)
