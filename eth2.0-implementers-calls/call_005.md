@@ -62,14 +62,14 @@
     * Using the last finalized slot, the last justified slot, and current block slot as weighting factors in the scoring rule
     * In the meantime, while they wait for settling on the immediate message ghost, or LMD
       * Discussion ensued with Prismatic and Vitalik, and further thought on the matter is needed
-      * Implementation of latest message in the clock disparity folder of the research repo (LINK)
+      * [Implementation of latest message](https://github.com/ethereum/research/tree/master/clock_disparity) in the clock disparity folder of the research repo
         * Talked about how it was surprisingly more simple than immediate message ghost in certain ways
   * Going to be starting work on simple serialize (SSZ) very soon
 
 * Nimbus (Mamy)  _9:43-13:48_
   * Implemented the sparse merkle trees (SMT) and benchmarks should be coming in the next couple of weeks
     * Was done by someone outside of Status, through the use of bounties 
-    * Sample implementation done by Vitalik for how to optimize them by basically layering hex patricia trees on top of them, so you get the same level of database efficiency. (LINK)
+    * [Sample implementation](https://github.com/ethereum/research/tree/master/trie_research/bintrie2) done by Vitalik for how to optimize them by basically layering hex patricia trees on top of them, so you get the same level of database efficiency.
   * Concerned about the fact that libp2p requires UNIX domain sockets. Which means that it only works on the latest Windows 10, and won’t work on Windows 8, for example. 
     * Will discuss with the libp2p team 
   * Hardened the simple serialize implementation with regards to alignment and made a proposition about padding
@@ -85,7 +85,7 @@
       * Ben Edington: [What's New in Eth2.0](https://docs.google.com/document/d/1yDoXocazwE0LRDTQbm2yGz_3MkIL0f32xQVRt1nTKig/edit)
  * Vitalik  _14:50–16:10_
     * On the spec side, something that may be worth dedicating more time to specifically is the possibility of replacing the hash algorithm with some kind of merkle hashing
-     * Made an issue on this: (LINK) issue#54
+     * Made an issue on this: [issue#54](https://github.com/ethereum/eth2.0-specs/issues/54)
        * Idea is that instead of hashing everything, you hash the object in a merkle tree, and the merkle tree hashing is done along the lines of the object syntax tree itself, as that makes things simpler in many ways
        * As part of that: Justin brought up that we would probably merge the crystallized state and the active state
  * Justin  _16:20–23:55_
@@ -187,6 +187,13 @@
 * https://github.com/ethereum/eth2.0-pm/issues/8#issuecomment-424849447
 * https://docs.google.com/document/d/1yDoXocazwE0LRDTQbm2yGz_3MkIL0f32xQVRt1nTKig/edit
 * https://github.com/ethereum/eth2.0-pm/issues/11
+* https://github.com/ethereum/research/tree/master/clock_disparity
+* https://github.com/status-im/nim-eth-trie/blob/master/eth_trie/sparse_binary.nim
+* https://ethresear.ch/t/optimizing-sparse-merkle-trees/3751
+* https://github.com/ethereum/eth2.0-specs/pull/39
+* https://github.com/ethereum/research/tree/master/trie_research/bintrie2
+* https://github.com/ethereum/eth2.0-specs/issues/54
+* https://github.com/libp2p/specs/pulls
 
 # Attendees
 * Lane Rettig (eWASM)
