@@ -31,37 +31,30 @@
     * Checked zcash tests, but they are using rng
     * Saw some differences from Chia as well [(Link)](https://github.com/ethereum/eth2.0-specs/issues/184)
       * Mamy suggested that if they could have an Alice, Bob and Eve key test, like what is done in the ETH2.0 repo [(Link)](https://github.com/ethereum/eth-keys/blob/master/tests/backends/conftest.py#L35-L66) and, after, add them as a sanity check to the YAML test file
-      * In the appendix in the bls spec, they expressed the fact that some kind of sanity check would be nice. Danny responded saying he will reach out to coordinate around bls tests.   
-      
+      * In the appendix in the bls spec, they expressed the fact that some kind of sanity check would be nice. Danny responded saying he will reach out to coordinate around bls tests.        
 * Lighthouse (Paul Hauner)  [_14:05-14:30_](https://youtu.be/Zl-yusB8oqY?t=845)
   * Have been in the process of expanding the team, which has been quite successful
-  * More updates to come next meeting. 
-   
+  * More updates to come next meeting.    
 * Parity (Fredrik Harrysson)  [_14:32-14:40_](https://youtu.be/Zl-yusB8oqY?t=872)
-  * No major update 
-  
+  * No major update   
 * Lodestar (Mikerah) [_14:42-15:30_](https://youtu.be/Zl-yusB8oqY?t=882)
   * Focusing on converting to typescript
-  * Slowly starting a bls signature aggregation library as well
-  
+  * Slowly starting a bls signature aggregation library as well  
 * PyEVM (Hsiao-Wei Wang)  [_15:35-16:36_](https://youtu.be/Zl-yusB8oqY?t=935)
     * Helping to review the spec
     * Working on data structures and helper functions
-    * Have internal consensus on the Trinity test net [(Link)](https://github.com/ethereum/py-evm/issues/1502) and what the components the mvp will contain
-  
+    * Have internal consensus on the Trinity test net [(Link)](https://github.com/ethereum/py-evm/issues/1502) and what the components the mvp will contain 
 * Harmony (Mikhail) [_16:41-20:04_](https://youtu.be/Zl-yusB8oqY?t=1001)
     * Catching up with the spec
     * Integrated milagro and using it for bls verification implementation
       * Relative to Nimbus, it's 1.5 to 2x slower (not sure if we can really judge these numbers at the moment though)
-        * Jacek Sieka (Nimbus) also added that they have not really optimized things yet on their side, so even their numbers may not really be ones to benchmark yet.
- 
+        * Jacek Sieka (Nimbus) also added that they have not really optimized things yet on their side, so even their numbers may not really be ones to benchmark yet. 
 * Prysmatic (Raúl Jordan)  [_20:08-22:13_](https://youtu.be/Zl-yusB8oqY?t=1208)
     * Regarding bls, they are using the herumi library, which uses an underlying cryptographic library called mcl (however the dependency for gnp was just removed yesterday. So benchmarks will be done to see if removing gnp will make things any slower)
     * Working on optimizing a Miller loop so that they can have signatures in G2, and public keys in G1
     * Refactoring code base to match having a single beacon state (removed thounsands of line from code base)
     * Have a kubernetes configuration in place for a test net. Have a DHT discovery working with a relay node that helps traffic inbound connections to nodes in the cluster. And they also have a boot node for the beacon node.
-    * Focusing on aligning with the spec
-    
+    * Focusing on aligning with the spec   
 * Pegasys (Joseph Delong)  [_22:15-23:54_](https://youtu.be/Zl-yusB8oqY?t=1208)
     * Brought in three new team members
     * Started an implementation of ssz, but put on hold as they further align with the spec
@@ -130,7 +123,7 @@
   * Danny alluded to airing on the side of simplicity with regards to the base protocol, unless we have a very compelling solution native to the protocol
 * Raul added [_1:01:25_](https://youtu.be/Zl-yusB8oqY?t=3546) - with respect to syncing and the role of validators. Perhaps the beacon node could be in charge of syncing the shard, and the hand off that data off to the validators.
   * Team at Prysmatic has been discussing this, and they don't understand why this sidecar approach is really that effective - and why can't validators be in charge on syncing side chains?
-    * Danny responded, saying that the general distinction in the software is that we have a client piece of software that can run and process the entire blockchain, beacon chain, and shard chains. And the validator is a special, user piece of software, that connects and talks to a client piece of software. Once we put in shard sycncing and peer management into the validator piece of software, we now have two node pieces of software (and we make the barrier of entry to create a new validator piece of software being very high)
+    * Danny responded, saying that the general distinction in the software is that we have a client piece of software that can run and process the entire blockchain, beacon chain, and shard chains. And the validator is a special, user piece of software, that connects and talks to a client piece of software. Once we put in shard syncing and peer management into the validator piece of software, we now have two node pieces of software (and we make the barrier of entry to create a new validator piece of software being very high)
     * the distinction of the validator piece of software being so thin (controlling keys, controlling secrets, and signing things) can allow for very diverse set-ups. A validator could talk to ten different nodes, controlling them via commands, ask information about the shards, sign information and broadcast as they please. But putting actual block processing and consensus rules within that piece of software may not be the design decision that gives us the most optimal set of potential set ups. 
     * as long as you keep the validator secure, he can talk to whatever nodes he wants. If he has five nodes he's communicating with - and one of those becomes hacked, or is attacked, there is redundancy there. However, if it is in charge of syncing its own data and connecting to peers, then it becomes a single point of failure. 
     * General consensus in that a node should be general purpose and be able to sync the beacon chain and shard chains
@@ -150,8 +143,8 @@
   * what happens if something like a DAO attack happens, and people would want to split in ETH2.0? How would that work?
   * Danny responded - saying there is a general versioning structure in there to handle splits and forks (contentious or not). What the versioning does, is that it puts signatures into a separate domain, such that people running a previous version of the software are not "colliding" the signatures with the newer version of the software.
     * so, in the case that someone wants to coordinate a permanent fork, they would use that mechanism to essentially run a slightly modified version of the software and to ensure that their signatures are in a different domain
-  * Notes from Starks working group from Prague (Team from Starkware gave the notes to Danny who cleaned them up) [(Link)](https://notes.ethereum.org/b8DsLbLcRmKHlWAXEXt_Rw)
-  * Jacek [_1:17:30_](https://youtu.be/Zl-yusB8oqY?t=4650) asked about unsigned integers. And if you are looking for bugs, one good source to find them is through unsigned arithmetic
+* Notes from Starks working group from Prague (Team from Starkware gave the notes to Danny who cleaned them up) [(Link)](https://notes.ethereum.org/b8DsLbLcRmKHlWAXEXt_Rw)
+* Jacek [_1:17:30_](https://youtu.be/Zl-yusB8oqY?t=4650) asked about unsigned integers. And if you are looking for bugs, one good source to find them is through unsigned arithmetic
     * further discussion ensued from Jacek, adding that perhaps some of the data in the beacon spec is redundant, with the biggest point being the shard committees (derived from a different field in the state). As far as he is concerned, perhaps it would be more simple if it wasn't in the state, but rather that it was such that the beginning of processing - client implementers could cache if they wish to
       * Discussion ensued, particularly around the fact that removing it from the state means you lose the ability to serve it, and to serve portions of it (say, to light clients), means you put the requirement of doing the shuffling and maintaining the shuffling at all times on every client/node that is in the network 
       * Mikhail chimed in, saying he had been thinking about other parts of the state that perhaps could not be in the state - such as recent block hashes
@@ -175,11 +168,12 @@
 * https://notes.ethereum.org/b8DsLbLcRmKHlWAXEXt_Rw
 * https://github.com/ethereum/eth2.0-specs/pull/160
 * https://github.com/ethereum/eth2.0-specs/issues/129
- # Attendees
+
+# Attendees
 * Akhila
 * Ankit
-* cburgdorf
-* Zahary
+* Christoph Burgdorf (py-evm)
+* Zahary (Status/Nimbus
 * Leo (BSC)
 * Nicolas Gailly (Pegasys)
 * Mikhail Kalinin (Harmony)
