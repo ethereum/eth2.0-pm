@@ -1,5 +1,5 @@
 # Ethereum 2.0 Implementers Call 9 Notes
-### Meeting Date/Time: Thursday 2010/1/3 at [14:00 GMT](https://savvytime.com/converter/gmt-to-germany-berlin-united-kingdom-london-ny-new-york-city-ca-san-francisco-china-shanghai-japan-tokyo-australia-sydney/dec-13-2018/2pm)
+### Meeting Date/Time: Thursday 2010/1/3 at [14:00 GMT](https://savvytime.com/converter/gmt-to-germany-berlin-united-kingdom-london-ny-new-york-city-ca-san-francisco-china-shanghai-japan-tokyo-australia-sydney/jan-3-2019/2pm)
 ### Meeting Duration: 1.5 hours
 ### [GitHub Agenda Page](https://github.com/ethereum/eth2.0-pm/issues/21)
 ### [Audio/Video of the meeting](https://www.youtube.com/watch?v=6trA-5rjZUQ)
@@ -18,6 +18,7 @@
   * Finished up fixed size number library (few tweaks left to fix in test cases)
     * going to be importing uints and ints into the beacon chain end of this week/early next week
     * allowing to be close to spec as they can, especially with types
+    * [_(Link)_](https://github.com/ChainSafeSystems/fixed-sized-numbers-ts/)
   * Outside of ChainSafe, have got some outside contributors who are pretty active as well. Which is cool
   * Have been working on bls a bit more as well
 * Nimbus - Mamy [_(9:03)_](https://youtu.be/6trA-5rjZUQ?t=543)
@@ -31,7 +32,7 @@
   * Syncing with the specs, next week: tree hashing + documentation
 * Pegasys - Joseph Delong [_(12:19)_](https://youtu.be/6trA-5rjZUQ?t=680)
   * Open-sourced Artemis and started getting some contributors
-  * Opened up a Gitter channel to bridge communication
+  * Opened up a Gitter channel to bridge communication: [_(Link)_](https://gitter.im/PegaSysEng/artemis)
   * Completed vrc interface for Artemis
   * Starting work on jRPC and bls verification and hash tree root
      * opened a minor PR that was closed and merged (#351) that was a minor modification to the validator relay contract
@@ -46,12 +47,13 @@
 * Harmony - n/a [_(16:02)_](https://youtu.be/6trA-5rjZUQ?t=962)
   * Excused due to holidays
 * Parity - Fredrik Harrysson [_(16:22)_](https://youtu.be/6trA-5rjZUQ?t=982)
+  * Working through the holidays making progress on beacon chain implementation in Substrate
   * Participation in the proposal to switch serialisation to Little-Endian [(Link)](https://github.com/ethereum/eth2.0-specs/pull/139)
 # 2. Research Updates  
 * Justin Drake [_(18:05)_](https://youtu.be/6trA-5rjZUQ?t=1083)
     * Still finding bugs and fixing them. Which is nice
     * Trying to simplify the spec where possible
-       * simplification of the validator status code logic (used to have somewhat complicated state machine w/ various validator status codes and they were all sorts of edge cases when you would do transitions. That's mostly gone now, and has been replaced with timestamps in the validator records. Still have some "status flags" but there are only two.
+       * simplification of the validator status code logic -- used to have somewhat complicated state machine w/ various validator status codes and they were all sorts of edge cases when you would do transitions. That's mostly gone now, and has been replaced with timestamps in the validator records. Still have some "status flags" but there are only two.
        * looking to move towards this idea of locally computable shuffling. What we have now with the [Fischer-Yates logic](https://en.wikipedia.org/wiki/Fisher%E2%80%93Yates_shuffle) is that in calculating the shuffling of a specific validator or specific committee it scales linearly with the size of the validator pool. We want this to scale better. Once we have this locally computable shuffling, it means we can be light client friendly w/o all sorts of light client specific infrastructure. 
            * this means that we can also simplify the beacon state. (specifically "shard-committees-at-slots" data structure and "persistent-committee-reassignments") This was infrastructure for light clients. But now that we have more information about the validators w/ these timestamps and looking to have this locally computable shuffling, we can remove those.
        * looking to potentially remove the validator registry delta chain, and rely on the double-batched merkle log accumulator that was added recently ([_Link_](https://ethresear.ch/t/double-batched-merkle-log-accumulator/571) to JD's original ethresearch post from January '18)
@@ -59,7 +61,7 @@
        * trying to push for cleanups of the spec as well. But will take some time, and expecting to have a nice and clean spec by the end of January
     * Question was asked regarding phase0 and phase 1. Seeing things, such as placeholders, being added to phase1. From a spec implementation point of view, this likely complicates things. And if we are going to do phase1 sometime after phase0 we would have learned many lessons and want further changes. So, as a general approach, wouldn't it be better to focus on upgradeability and making sure upgradeability of the protocol is solidm and leave the phase1 stuff out?
        * further discussion ensued to address this, specifically with stubbing the data structures in terms of messages that are passed around and gossiped, as well as the structure of the beacon state. The idea there is that once we do the upgrade, we don't have to fiddle with that and add special cases. Also, beyond these placeholders, we are also trying to avoid any logic other than for phase0.
-       * Danny added that there's a balance between trying to figure out what the future holds and trying to reduce the amount of spaghetti code that will be in these clients. You don't really get the chance to get rid of logic and get rid of old code as you upgrade a blockchain. So it's a bit different than creating most systems. So if we know somethings going to be there, perhaps it should be embedded in the data structure. But maybe we can also make a more informed decision in February.
+       * Danny added that there's a balance between trying to figure out what the future holds and trying to reduce the amount of spaghetti code that will be in these clients. You don't really get the chance to get rid of logic and get rid of old code as you upgrade a blockchain. So it's a bit different than creating most systems. So if we know something is going to be there, perhaps it should be embedded in the data structure. But maybe we can also make a more informed decision in February.
        * There was further talk that if, before we launch the phase0 beacon chain, we have what looks like beginnings of a robust phase1 spec - then perhaps we should put the data structures in there along with the components of the data structures in there. But if it seems like a major unknown, then perhaps we should just pull it out. 
 * PegaSys - Ben Edgington [_(26:09)_](https://youtu.be/6trA-5rjZUQ?t=1569)
     * Main focus in on the Stanford Blockchain Conference where they are presenting a paper on bls signature aggregation
@@ -102,7 +104,7 @@
 * Joseph Delong asked about issue #386 [(Link)](https://github.com/ethereum/eth2.0-specs/issues/386) and why are validator balances no longer part of ValidatorRecord?
     * [PR#317](https://github.com/ethereum/eth2.0-specs/pull/317) was the update that made the changes to that
     * Moving the validator balance into the beacon state is for hashing optimization, no? Is that language specific to python?
-      * Discussion ensued, and Danny added that 1.) yes, moving the validator balance into the beacon state _is_ for hashing optimization. And 2.) no, it is not language specific to python. We used to have two states (active and crystallized). The active state was small and had to get re-hashed frequently. The crystallized state was very large and had to get re-hashed every epoch. We had the separation because we were using a flat hash and had no ability to cache the components of the state that had _not_ changed. When we moved to the ssz tree hash, we now have isolated the various components (array, objects) from each other, into this hash tree. _So_, when we update just the balance of one validator, in order to re-hash the data structure, most of the components of the tree remain stable and we have to a relatively low number of hashes in order to update. This was generally perceived as good and fine when we were using blake as the hash. However, when we switched to keccak256, we decided that most of the validator record is _not_ updated frequently. But the _balances_ every epoch are being updated via the rewards and penalites. So, by moving the balances out, we've isolated the large component of what needs to be re-hashed into a smaller data structure. And so we're able to benefit from caching the hashes of the validator records a lot more, and isolate the amount of hashing that has to be done. All in an effort to reduce the increase in hash time when we moved from blake to keccak256.
+      * Discussion ensued, and Danny added that 1.) yes, moving the validator balance into the beacon state _is_ for hashing optimization. And 2.) no, it is not language specific to python. We used to have two states (active and crystallized). The active state was small and had to get re-hashed frequently. The crystallized state was very large and had to get re-hashed every epoch. We had the separation because we were using a flat hash and had no ability to cache the components of the state that had _not_ changed. When we moved to the ssz tree hash, we now have isolated the various components (array, objects) from each other, into this hash tree. _So_, when we update just the balance of one validator, in order to re-hash the data structure, most of the components of the tree remain stable and we have to a relatively low number of hashes in order to update. This was generally perceived as good and fine when we were using blake as the hash. However, when we switched to keccak256, we had a performance loss on hash computation time. Most of the validator record is _not_ updated frequently, but most of the validator _balances_ are being updated every epoch via the rewards and penalites. So, by moving the balances out, we've isolated the large component of what needs to be re-hashed into a smaller data structure. And so we're able to benefit from caching the hashes of the validator records a lot more, and isolate the amount of hashing that has to be done. All in an effort to reduce the increase in hash time when we moved from blake to keccak256.
       * This is also covered in Ben's issue of What's New in ETH2.0 
 * Ben was curious about expected behavior of beacon chain block proposers?
     * As an exercise, Ben discussed how he went through how block proposers are supposed to deal with deposit receipts from the main chain.
@@ -111,9 +113,9 @@
        * issue to be opened up for that
 * Question was asked about the validator client architecture:
     * Question was that, in the spec, we have to validate that block-state-root is equal to the tree hash of the state. So, does that mean as a validator client, you would actually have to conmpute the state transition on the client side - and then attach it to the block? And then you issue the block to the beacon node?
-       * Danny chimed in saying - no, that relation, the node is calculating that state root and providing it to the validator. The _providing_ essentially is a block proposal to sign. Similar to a PoW miner, the node provides a proposal that the PoW miner supposed to try and hash. So the heavy lifting should happen in the node. The main information that needs to pass along to the validator is enough information that the validator can decide if this is a _safe_ or a _dangerous_ message to sign. Strategies for the validator to assess the validity of the information, that is more of a trust relationship. And the validator should be asking multiple nodes perhaps. But, essentially, the signing entity should be doing much of the heavy lifting. You wouldn't want to be passing the entire state to the validator. But instead, passing more of the block proposals to sign.
+       * Danny chimed in saying - no, that relation, the node is calculating that state root and providing it to the validator. The _providing_ essentially is a block proposal to sign. Similar to a PoW miner, the node provides a proposal that the PoW miner supposed to try and hash. So the heavy lifting should happen in the node. The main information that needs to pass along to the validator is enough information that the validator can decide if this is a _safe_ or a _dangerous_ message to sign. Strategies for the validator to assess the validity of the information, that is more of a trust relationship. And the validator should be asking multiple nodes perhaps. But, essentially, the signing entity should not be doing much of the heavy lifting. You wouldn't want to be passing the entire state to the validator. But instead, passing more of the block proposals to sign.
 *  Justin Drake discussed that he doesn't think a decision has been finalized on the endian-ness of ssz. Encouraged others to comment on the open pull request. 
-    * Also commented on the honest behavior to add more clarity -- basically, step0 is just apply the validator rules on the various blocks that you've received and then you've got this block tree. So you have various forks. Then you apply the fork choice rule, so you get a single canonical blockchain. And now you're duty as an honest proposer is to build on top of the tip of this canonical chain. There's basically only two things needed to do from the point of view of deposit roots. 1.) You need to cast a vote for a deposit root from the Ethereum1.0 deposit contract. And the rule there is that we want to vote the latest one which is contained in the block, which has height 0 mod some power of 2. So, for example, every 1024 blocks on the Ethereum1.0 chain you're going to have a corresponding deposit root for whatever you consider the canonical Etherum1.0 chain. And then you just vote for that. And as soon as you have the required fresh hold of validators who have voted for that specific root (right now it is called it's called "process-depotist-root", but it will soon be called "latest-deposit-root") _So_, right now you have this latest deposit root, and the second thing you need to do, 2.) Is to include deposit receipts from Ethereum1.0 into Ethereum2.0. You need to include them _in order_, you need to include up to 16 of them (specified in the "max-deposit-constant"), and you need to include them up to the latest deposit root that has been voted upon.
+    * Also commented on the honest behavior to add more clarity -- basically, step0 is just apply the validator rules on the various blocks that you've received and then you've got this block tree. So you have various forks. Then you apply the fork choice rule, so you get a single canonical blockchain. And now you're duty as an honest proposer is to build on top of the tip of this canonical chain. There's basically only two things needed to do from the point of view of deposit roots. 1.) You need to cast a vote for a deposit root from the Ethereum1.0 deposit contract. And the rule there is that we want to vote the latest one which is contained in the block, which has height 0 mod some power of 2. So, for example, every 1024 blocks on the Ethereum1.0 chain you're going to have a corresponding deposit root for whatever you consider the canonical Etherum1.0 chain. And then you just vote for that. And as soon as you have the required threshold of validators who have voted for that specific root (right now it is called it's called `processed_deposit_root`, but it will soon be called `latest_deposit_root`) _So_, right now you have this latest deposit root, and the second thing you need to do, 2.) Is to include deposit receipts from Ethereum1.0 into Ethereum2.0. You need to include them _in order_, you need to include up to 16 of them (specified in the `MAX_DEPOSITS` constant), and you need to include them up to the latest deposit root that has been voted upon.
     * Danny chimed in, adding that we are currently missing a validity condition on the ordering of those deposits. (will be added in the spec)
     * Complexities are there -- so worth spelling out in a document (especially as some knowledge is floating around, but not specifically stated anywhere. For example, the timing of when we're expected to do things w/ respect to a slot. We're expected to attest the head of a slot half-way through the slot, and not at the beginning.) There's going to be an increasing number of requirements for a validator as we move through phase1 and phase2 as well.    
 # 4. Open Discussion/Closing Remarks
@@ -129,7 +131,7 @@
 
 # Attendees
 * johns 
-* Tomasz S
+* Tomasz S (Pegasys)
 * Akhila Raju (Pegasys)
 * Greg Markou (ChainSafe)
 * Felix Lange (IXDS)
@@ -143,7 +145,7 @@
 * Terence (Prysmatic)
 * Leo (BSC)
 * Nicolas Gailly (Pegasys)
-* Stanislaw Drozd (Althea)
+* Stanislaw Drozd
 * Nishant Das (Prysmatic)
 * Joseph Delong (ConsenSys)
 * Danny Ryan (EF/Research)
