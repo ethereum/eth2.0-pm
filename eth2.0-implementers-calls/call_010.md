@@ -23,11 +23,11 @@
   * Research team looking into how they can do hashing to G2 in Milagro
 * Parity - Wei Tang [_(13:20)_](https://youtu.be/KZ9fms_PrQU?t=800)
   * LMD Ghost fork choice: [(Link)](https://github.com/paritytech/shasper/blob/609b8cd326c64d6735ad10d06671f13ebcba1f5a/consensus/src/block_import.rs#L146) (to be optimized)
-  * mic troubles 
+  * Refactoring substrate to be able to invoke fork choice per slot
 * Nimbus - Mamy [_(15:17)_](https://youtu.be/KZ9fms_PrQU?t=917)
   * Keeping in sync with latest changes
   * Focus on Documentation, CI and reproducible builds
-  * BLS - scheme 4, copied Harmony approach, still ensure of spec compat
+  * BLS - scheme 4, copied Harmony approach, still unsure of spec compatability
      * Python test vectors this week
   * Fork choice rule implemented
   * Libp2p-daemon: wrapper is done (for unix)
@@ -51,7 +51,7 @@
   * Spending time architecting and working on supplementary repos, like ssz and bls
   * Will update to latest specs only once every 2 week, as changes are very frequent 
 * Py-EVM - Hsiao-Wei [_(23:22)_](https://youtu.be/KZ9fms_PrQU?t=1402)
-  * https://github.com/ethereum/trinity/tree/master/eth2
+  * Moved beacon chain out of py-evm repo and into Trinity for time being for ease of development https://github.com/ethereum/trinity/tree/master/eth2
   * tree hashing and py ssz refactoring done
   * Discussing test formats, proposed by Jannik, later after client updates
 * Prysmatic - Raúl [_(24:21)_](https://youtu.be/KZ9fms_PrQU?t=1461)
