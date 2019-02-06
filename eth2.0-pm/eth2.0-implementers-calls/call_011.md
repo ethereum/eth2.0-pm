@@ -1,6 +1,6 @@
 # Ethereum 2.0 Implementers Call 11 Notes
 
-### Meeting Date/Time: Thursday 2019/1/31 at [14:00 GMT](https://savvytime.com/converter/gmt-to-germany-berlin-united-kingdom-london-ny-new-york-city-ca-san-francisco-china-shanghai-japan-tokyo-australia-sydney/jan-17-2019/2pm)
+### Meeting Date/Time: Thursday 2019/1/31 at [14:00 GMT](https://savvytime.com/converter/gmt-to-germany-berlin-united-kingdom-london-ny-new-york-city-ca-san-francisco-china-shanghai-japan-tokyo-australia-sydney/jan-31-2019/2pm)
 ### Meeting Duration: 1.5 hours
 ### [GitHub Agenda Page](https://github.com/ethereum/eth2.0-pm/issues/27)
 ### [Audio/Video of the meeting](https://www.youtube.com/watch?v=wS3sOB_hfgk)
@@ -96,7 +96,7 @@
 
 # 2. Research Updates  
 * Vitalik [_(26:39)_](https://youtu.be/wS3sOB_hfgk?t=1599) 
-    * Now that phase0 is entering a mode of small changes in bug fixes, it's important to keep the momentum and have everything for phase1 ready by the time clients are ready to develop that.
+    * Now that phase0 is entering a mode of small changes and bug fixes, it's important to keep the momentum and have everything for phase1 ready by the time clients are ready to develop that.
     * Main spec level issue remains to be bls signatures. So we don't necessarily need to worry about mechanisms for how seeds get updated and so forth, but we still need to have some kind of proof-of-custody game. Two components to that challenge.
         * One is figuring out what is the actual hash that goes into the proof-of-custody. Currently,in the crosslink, we're calling it a 'shard_block_hash' but that could be a suboptimal thing to put in for that field. Some alternative proposals were presented in [Issue #529](https://github.com/ethereum/eth2.0-specs/issues/529) for basically having a merkle tree of all the data containing block headers and block bodies. Some of the advantages there would be having fraud proof conditions to verify correctness of an entire chain of blocks in a cross-link so the clients don't need to worry about the shard chains if they don't need to. And just stick to the beacon chain. 
         * Second challenge is actually figuring out the proof-of-custody game. Latest update on that, which is currently in phase1, has the weakness that "if the data _is_ available", then you calculate the proof-of-custody and then you calculate out the bit that someone should have made, and if it turns out that that bit is wrong - then you need to do something, like 16 rounds of asking for a merkle branch before determining if they _actually_ did something wrong. WHich means you would need to extend someone's withdrawal by 16 rounds, of whatever the blockchain messaging delay is.
@@ -135,7 +135,7 @@
     * https://www.iacr.org/archive/fse2007/45930457/45930457.pdf
 # 4. Any followup to [@ledgerwatch](https://github.com/ledgerwatch) comments from last meeting [Link](https://github.com/ethereum/eth2.0-pm/issues/23#issuecomment-453925393)
 * To note: Alexey couldn't make the meeting
-* Question was open regarding if we upped the threshold for the chain start or not. Alexey's concern was that you could have a majority takeover attack happen with 500k ether. But if we up it from 500k to 2million before the chain starts, then that mitigates it without requiring any particular major changes. And if we can't get 2million people to sign up, then we can just change the terms of what we're building anyway.
+* Question was open regarding if we upped the threshold for the chain start or not. Alexey's concern was that you could have a majority takeover attack happen with 500k ether. But if we up it from 500k to 2million before the chain starts, then that mitigates it without requiring any particular major changes. And if we can't get 2million eth to sign up (62,500 validators), then we can just change the terms of what we're building anyway.
     * Discussion to be continued over time
 # 5. General spec discussions
 * As stated in the beginning of the call, the first version of Phase0 of the specification was released. It is generally feature complete, with a few notes still open with the point-wise shuffling, standardization of the bls, and some other minor things. But it is approaching its final form with respect to features and stability. Going to do one release per week through February as we continue to find bugs and clean up the delivery. And then plan on slowing down the release cycle in March. 
