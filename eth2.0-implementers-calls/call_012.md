@@ -1,6 +1,6 @@
 # Ethereum 2.0 Implementers Call 12 Notes
 
-### Meeting Date/Time: Thursday 2019/2/14 at [14:00 GMT](https://savvytime.com/converter/gmt-to-germany-berlin-united-kingdom-london-ny-new-york-city-ca-san-francisco-china-shanghai-japan-tokyo-australia-sydney/jan-31-2019/2pm)
+### Meeting Date/Time: Thursday 2019/2/14 at [14:00 GMT](https://savvytime.com/converter/gmt-to-germany-berlin-united-kingdom-london-ny-new-york-city-ca-san-francisco-china-shanghai-japan-tokyo-australia-sydney/feb-14-2019/2pm)
 ### Meeting Duration: 1.5 hours
 ### [GitHub Agenda Page](https://github.com/ethereum/eth2.0-pm/issues/29)
 ### [Audio/Video of the meeting](https://www.youtube.com/watch?v=p1qHM2B8cGc)
@@ -104,20 +104,20 @@
    * p2p side, python daemon libp2p binding module is ready. Breaking it in with Trinity node
    * researching and supporting common modules (e.g. deposit contract)
  * Diederick [_(19:06)_](https://youtu.be/p1qHM2B8cGc?t=1146)
-   * stopped working on dark client 
+   * stopped working on dart client 
    * continued to work on other projects related to eth2.0 (all in Go)
-    * LMD Ghost simulation
-    * shuffling algorithm 
-    * considering jumping on the upcoming project from Geth (Firefly)
+   * LMD Ghost simulation
+   * shuffling algorithm 
+   * considering jumping on the upcoming project from Geth (Firefly)
     
  
- * **Reminder from Danny:** as spec stabilizes there is no need to follow exactly the spec (e.g no test vectors for “get_current_epoch”)   
+ * **Reminder from Danny:** as spec stabilizes please don't follow all of these helpers exactly. Make design decisions appropriate to your language and codebase. We will not be providing consensus tests for all the granular helpers (e.g no test vectors for “get_current_epoch”).
  
  
 # 3. Research Updates
 * Vitalik - [_(35:16)_](https://youtu.be/p1qHM2B8cGc?t=2116)
   * Been doing some work to get the Phase 1 spec up to a point where there's something viable ready for phase 1 by the end of February
-  * Already merged dev structrue of shard blocks and what gets committed to the shard block roots
+  * Already merged dev structure of shard blocks and what gets committed to the shard block roots
     * commitments are somewhat more complicated, but it's basically putting a bunch of shard blocks into a merkle tree
     * the thing that is still sitting in a PR is, basically everything that has to do with proofs of custody (but not including the proof of custody interactive game)
        * that includes things like the mechanism for how sub-keys work, penalties for revealing them early, the rules for when you have to reveal sub-keys that you used, challenging for data, etc.
@@ -238,7 +238,7 @@
 
 # Attendees
 * Danny Ryan (EF/Research)
-* Péter Szilágyi (Geth)
+* Péter Szilágyi (EF/Geth)
 * Adrian Manning (Lighthouse/Sigma Prime)
 * Afri Schoeden (Parity)
 * Alex Stokes (Lighthouse/Sigma Prime)
@@ -250,14 +250,14 @@
 * Daniel Ellison (ConsenSys)
 * Dean Eigenmann (Yeeth)
 * Diederik Loerakker (Independent)
-* Felix Lange (IXDS)
+* Felix Lange (EF/geth)
 * Fredrick Harrysson (Parity)
 * Greg Markou (ChainSafe)
 * Hsiao-Wei Wang (EF/Research)
 * Jacek Sieka (Status/Nimbus)
 * Jannik Luhn (Brainbot/Research)
 * Jonny Rhea (Pegasys)
-* Kevin Mai-Hsuan (Chia)
+* Kevin Mai-Hsuan (EF/Research)
 * Leo (BSC)
 * Nicolas Liochon (PegaSys)
 * Luke Anderson (Lighthouse/Sigma Prime)
