@@ -16,5 +16,5 @@
  9  | Thu, Jan 3, 2019 14:00 UTC       | [agenda](https://github.com/ethresearch/eth2.0-pm/issues/21) \| [notes](eth2.0-implementers-calls/call_009.md) \| [reddit](https://www.reddit.com/r/ethereum/comments/ac1smo/livestream_eth20_implementers_call_9_201913_2pm/)  | [video](https://www.youtube.com/watch?v=6trA-5rjZUQ) |
  10 | Thu, Jan 17, 2019 14:00 UTC      | [agenda](https://github.com/ethresearch/eth2.0-pm/issues/23) \| [notes](eth2.0-implementers-calls/call_010.md) \| [reddit](https://www.reddit.com/r/ethereum/comments/agtomc/live_eth20_implementers_call_10_20190116_1400_utc/)  | [video](https://www.youtube.com/watch?v=KZ9fms_PrQU) |
  11 | Thu, Jan 31, 2019 14:00 UTC      | [agenda](https://github.com/ethresearch/eth2.0-pm/issues/27) \| [notes](eth2.0-implementers-calls/call_011.md) \| [reddit]()  | [video](https://www.youtube.com/watch?v=wS3sOB_hfgk) |
- 12 | Thu, Jan 14, 2019 14:00 UTC      | [agenda](https://github.com/ethresearch/eth2.0-pm/issues/29) \| [notes](eth2.0-implementers-calls/call_012.md) \| [reddit]()  | [video](https://www.youtube.com/watch?v=p1qHM2B8cGc) |
+ 12 | Thu, Feb 14, 2019 14:00 UTC      | [agenda](https://github.com/ethresearch/eth2.0-pm/issues/29) \| [notes](eth2.0-implementers-calls/call_012.md) \| [reddit]()  | [video](https://www.youtube.com/watch?v=p1qHM2B8cGc) |
 
