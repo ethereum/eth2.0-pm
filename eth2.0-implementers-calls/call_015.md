@@ -10,7 +10,7 @@
 2. Client Updates [_(2:40)_](https://youtu.be/bC4v_a-gcrs?t=160)
 3. Research Updates [_(16:49)_](https://youtu.be/bC4v_a-gcrs?t=1009) 
 4. Network Updates [_(19:10)_](https://youtu.be/bC4v_a-gcrs?t=1150)
-5. SSZ/SOS update from piper [_(24:34)_](https://youtu.be/bC4v_a-gcrs?t=1474)
+5. SSZ/SOS update from Piper [_(24:34)_](https://youtu.be/bC4v_a-gcrs?t=1474)
     * [ethereum/eth2.0-specs#787](https://github.com/ethereum/eth2.0-specs/pull/787)
 6. Testnets progress,roadmap,PM [_(31:26)_](https://youtu.be/bC4v_a-gcrs?t=1886)
 7. Spec discussion [_(51:26)_](https://youtu.be/bC4v_a-gcrs?t=3086)
