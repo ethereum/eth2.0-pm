@@ -174,7 +174,7 @@
 * Anton Nashatyrev (Harmony)
 * Ben Edginton (PegaSys)
 * Blazj Kolad (Pegasys)
-* Carl Beekhuizen (Decentralized staking pools)
+* Carl Beekhuizen (EF/Research)
 * Cem Ozer (PegaSys)
 * Chih-Cheng Liang (EF/Research)
 * Daniel Ellison (ConsenSys)
