@@ -1,6 +1,6 @@
 # Ethereum 2.0 Implementers Call 15 Notes
 
-### Meeting Date/Time: Thursday 2019/2/28 at [14:00 GMT](https://savvytime.com/converter/gmt-to-germany-berlin-united-kingdom-london-ny-new-york-city-ca-san-francisco-china-shanghai-japan-tokyo-australia-sydney/feb-14-2019/2pm)
+### Meeting Date/Time: Thursday 2019/3/28 at [14:00 GMT](https://savvytime.com/converter/gmt-to-germany-berlin-united-kingdom-london-ny-new-york-city-ca-san-francisco-china-shanghai-japan-tokyo-australia-sydney/mar-28-2019/2pm)
 ### Meeting Duration: 1.5 hours
 ### [GitHub Agenda Page](https://github.com/ethereum/eth2.0-pm/issues/35)
 ### [Audio/Video of the meeting](https://www.youtube.com/watch?v=bC4v_a-gcrs)
