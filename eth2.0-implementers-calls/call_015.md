@@ -44,7 +44,7 @@
 * PyEVM/Trinity - Hsiao-Wei Wang [_(6:37)_](https://youtu.be/bC4v_a-gcrs?t=401)
   * Deposit contracts version 0.5.1
   * beacon chain testnet devp2p layer is having progress
-  * Deposit contract repo. will now have releases out simultaneously with the main release, so if the API or anything changes on that end you can more sanely version those together.
+  * Deposit contract repo. Will now have releases out simultaneously with the main release, so if the API or anything changes on that end you can more sanely version those together.
 * Nimbus - Mamy [_(7:38)_](https://youtu.be/bC4v_a-gcrs?t=458)
   * Updated to the latest BLS and test vectors from last week.
   * Implemented 0.5.1 spec
@@ -66,7 +66,7 @@
   * Worked on some consensus layer optimizations
   * Been working up updating the spec to version 0.5.1. This work is almost done
 * Prysmatic - Raul [_(12:18)_](https://youtu.be/bC4v_a-gcrs?t=738)
-  * lost of work regarding testnet
+  * Lots of work regarding testnet
   * monitoring tools
   * can survive restarts
   * people can connect from the outside
@@ -133,7 +133,7 @@
   * Danny: Yes, attempting to figure out a good remote participation strategy. Where these breakouts will have some sort of call-out capability. 
 
 # Links shared during meeting
-* https://www.gist.github.com/jannikluhn/92cbc8bf18e65672a91fc0c1ec322d66
+* https://gist.github.com/jannikluhn/92cbc8bf18e65672a91fc0c1ec322d66
 * https://www.github.com/ethereum/eth2.0-specs/pull/787
 * https://docs.libp2p.io/
 * https://notes.ethereum.org/oGP2JMPpTZC7h0GW3InPLA#
