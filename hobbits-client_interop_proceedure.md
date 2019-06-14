@@ -5,8 +5,8 @@ For the initial client interop, clients will utilize a simplified networking imp
 ## Prereqs
 
 - targeting the frozen spec (v0.8)
-- all clients must pass all reference tests
-- all wire protocol implementations should pass all hobbits protocol tests
+- all clients must pass reference tests
+- all wire protocol implementations should pass hobbits conformance tests
 
 ## Stage One: Coordinated Start
 
@@ -28,8 +28,8 @@ For the initial round:
 
 Repeat (1) & (2) until all clients are talking.
 
->**Round 1:** 2 nodes (one per client) with 16 validators/client
->**Round 2:** 4 nodes (one per client) with 8 validators/client
+>**Round 1:** 2 nodes (one per client) with 16 validators/client  
+>**Round 2:** 4 nodes (one per client) with 8 validators/client  
 >**Round 3:** 8 nodes (one per client) with 4 validators/client
 
 ### Goal
