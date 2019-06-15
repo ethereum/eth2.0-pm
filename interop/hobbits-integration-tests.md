@@ -1,16 +1,20 @@
-# Conformance testing procedure
+# integration testing procedure
 
 ![hit](hit.png)
 
-The relay client contains the canonical hobbits implementation
-
 ### Test 1: Coordinated Start
 
-1. Both clients and the relay are connected as above.  all 3 are started
+1. Both clients are connected as above and started
 2. `Eth2Genesis` will be triggered immediately
 3. Messages between clients are routed through the relay
 4. The relay decodes and ecodes each messages as it pass thru the relay
 5. If the clients are able to justify and finalize, then they pass
 
+### Test 2: Join & Sync
+
+1. Both clients are connected as above and started
+2. Clients run for a couple of epochs
+3. A third client joins the network and asks to sync
+4. If the new client can successfully sync and all 3 continue to finalize the chain, then they pass
 
 
