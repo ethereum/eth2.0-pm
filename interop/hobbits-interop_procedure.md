@@ -6,7 +6,7 @@ For the initial client interop, clients will utilize a simplified networking imp
 
 - targeting the frozen spec (v0.8)
 - all clients must pass reference tests
-- all clients must pass [hobbits integration tests](https://github.com/jrhea/eth2.0-pm/blob/patch-2/interop/hobbits-integration-tests.md)
+- all clients must pass [hobbits integration tests](./hobbits-integration-tests.md)
 
 - all wire protocol implementations must pass [hobbits conformance tests](https://github.com/jrhea/eth2.0-pm/blob/patch-2/interop/hobbits-conformance-tests.md)
 
