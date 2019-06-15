@@ -6,7 +6,7 @@ For the initial client interop, clients will utilize a simplified networking imp
 
 - targeting the frozen spec (v0.8)
 - all clients must pass reference tests
-- all wire protocol implementations should pass hobbits conformance tests
+- all wire protocol implementations should pass [hobbits conformance tests](https://github.com/deltap2p/hobbits/blob/master/test/conformance/README.md)
 
 ## Stage One: Coordinated Start
 
