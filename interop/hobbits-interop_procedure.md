@@ -1,6 +1,6 @@
 # Initial Interop
 
-For the initial client interop, clients will utilize a simplified networking implementation and wire protocol.  For more information please review the hobbits specification [here](https://github.com/deltap2p/hobbits).
+For the initial client interop, clients will utilize a simplified networking implementation and wire protocol. For more information please review the hobbits specification [here](https://github.com/deltap2p/hobbits).
 
 ## Prereqs
 
