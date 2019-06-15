@@ -42,7 +42,7 @@ Clients can declare success at each round after 3 epochs where:
 
 ## Stage Two: Join & Sync
 
-Clients join an existing short-lived testnet and sync.  This stage demonstrates the clients ability to successfully join an existing network.
+Clients join an existing short-lived testnet and sync.  This stage demonstrates the clients' ability to successfully join an existing network.
 
 ### Prereqs
 
