@@ -1,6 +1,6 @@
 # Conformance testing procedure
 
-![hct](hct.png)
+![hct](https://raw.githubusercontent.com/deltap2p/hobbits/master/test/conformance/hct.png)
 
 ### Test 1: Ping/Pong
   1) conformance app sends a ping with a random payload of bytes
