@@ -17,4 +17,3 @@
 3. A third client joins the network and asks to sync
 4. If the new client can successfully sync and all 3 continue to finalize the chain, then they pass
 
-
