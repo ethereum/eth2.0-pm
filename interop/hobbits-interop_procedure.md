@@ -2,7 +2,7 @@
 
 For the initial client interop, clients will utilize a simplified networking implementation and wire protocol. For more information please review the hobbits specification [here](https://github.com/deltap2p/hobbits).
 
-## Prereqs
+### Prereqs
 
 - targeting the frozen spec (v0.8)
 - all clients must pass reference tests
