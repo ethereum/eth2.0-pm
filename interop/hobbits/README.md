@@ -8,7 +8,7 @@ For the initial client interop, clients will utilize a simplified networking imp
 - all clients must pass reference tests
 - all clients must pass [hobbits integration tests](./integration-tests.md)
 
-- all wire protocol implementations must pass [hobbits conformance tests](https://github.com/jrhea/eth2.0-pm/blob/patch-2/interop/hobbits-conformance-tests.md)
+- all wire protocol implementations must pass [hobbits conformance tests](./conformance-tests.md)
 
 ## Stage One: Coordinated Start
 
