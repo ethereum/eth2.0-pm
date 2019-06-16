@@ -17,7 +17,7 @@ Clients simulate a coordinated genesis event and gossip blocks/attestations for 
 ### Prereqs
 
 - Ability to read in the N number of deposits required to trigger the `is_genesis_trigger` function
-- Ability to gossip blocks
+- Ability to gossip blocks and attestations
 - Static peering
 - TCP transport
 
