@@ -25,7 +25,7 @@ Clients simulate a coordinated genesis event and gossip blocks/attestations for 
 
 For the initial round: 
 1. Clients will pair off in teams of two.
-2. `Eth2Genesis` will be triggered on startup
+2. `is_genesis_trigger` will be triggered on startup
 3. Once the clients can finalize the chain, then they pick another client pair to interop with.  
 
 Repeat (1) & (2) until all clients are talking.
