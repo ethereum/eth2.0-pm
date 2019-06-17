@@ -14,6 +14,6 @@
 
 1. Both clients are connected as above and started
 2. Clients run for a couple of epochs
-3. A third client joins the network and asks to sync
+3. A third client (w/o validators) joins the network and asks to sync
 4. If the new client can successfully sync and all 3 continue to finalize the chain, then they pass
 
