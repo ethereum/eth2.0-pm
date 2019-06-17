@@ -7,7 +7,6 @@ For the initial client interop, clients will utilize a simplified networking imp
 - targeting the frozen spec (v0.8)
 - all clients must pass reference tests
 - all clients must pass [hobbits integration tests](./integration-tests.md)
-
 - all wire protocol implementations must pass [hobbits conformance tests](./conformance-tests.md)
 
 ## Stage One: Coordinated Start
@@ -20,6 +19,7 @@ Clients simulate a coordinated genesis event and gossip blocks/attestations for 
 - Ability to gossip blocks and attestations
 - Static peering
 - TCP transport
+- [Minimal Constants](https://github.com/ethereum/eth2.0-specs/tree/master/configs/constant_presets)
 
 ### Procedure
 
@@ -40,6 +40,8 @@ Clients can declare success at each round after 3 epochs where:
 - Epoch 2 is justified
 - Epoch 1 is finalized
 
+Stretch goal is for clients to run ~15 minutes without error and continual finalization.
+
 ## Stage Two: Join & Sync
 
 Clients join an existing short-lived testnet and sync.  This stage demonstrates the clients' ability to successfully join an existing network.
@@ -55,8 +57,11 @@ Clients join an existing short-lived testnet and sync.  This stage demonstrates 
 
 For the initial round: 
 1. Clients will pair off in teams of two  
-2. Both client A & B demonstrate the ability to sync to an existing testnet
-3. Both client A & B are able to finalize the chain
+2. Clients A & B create a testnet
+3. A adds another node to sync from scratch
+4. B adds another node to sync from scratch
+
+> Note: The additional nodes will not have validators
 
 Repeat steps (1) thru (3) until all clients are talking.
 
