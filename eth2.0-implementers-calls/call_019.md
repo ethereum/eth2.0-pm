@@ -7,7 +7,7 @@
 
 ## Suggestions
 
-**Suggestion 19.1**: Replace SHA256 with xxHash
+**Suggestion 19.1**: Replace SHA256 with xxHash during fuzzing
 
 **Suggestion 19.2**: Data visualization of testnet. 
 
@@ -27,19 +27,19 @@ We released [v0.7.0](https://github.com/ethereum/eth2.0-specs/releases/tag/v0.7.
 # 1. Testing Updates
 **Danny**: Our test have become even more inefficient, in the Python, mainly due to the Tree hashing. We are exploring some caching to speed that up. Right now it's not a major blocker. Mainly just makes generating the tests take longer.
 
-There has been work going on Fuzzing of the GHOST specification and getting some machinery in place to Fuzz the Python spec implementation.
+There has been work going on Fuzzing of the Go-specification (ZRNT) and getting some machinery in place to Fuzz the Python spec implementation.
 
 **Protolamba**: There are these two efforts. 
-1. Trying to find new bugs and everything thats been missing in the current spectre. Looking into input bugs. New kind of input has to be checked. To add more condition to the spectre.
-2. Koforts checking helps identify few parts specs and complement us this new tests and we get the free test spec. 
+1. Trying to find new bugs and everything thats been missing in the current spec. Looking into input bugs. New kind of input has to be checked. To add more condition to the spec.
+2. Coverage checking helps identify untested parts specs to complement with new tests before the freeze. 
 
 **Danny**: Fuzzing efforts right now isolates the implementation of this spec that go in Python but we have to expand it to clients. Any other testing update ?
 
-**Justin Drake**:  One thing which might be worth highlighting that we do try to replace SHA256 with xxHash. **xxHash is a non cryptographic hash function**, so we can't use it in production but its **much faster than SHA256**.  What is found with Serenity is that **runs the fuzzing about three times faster** so it might be worth having some sort of a flag in the client implementation to switch over to xxHash so that we could do just 3 times more fuzzing.
+**Justin Drake**:  One thing which might be worth highlighting that we do try to replace SHA256 with xxHash. **xxHash is a non cryptographic hash function**, so we can't use it in production but its **much faster than SHA256** for testing.  What is found with Serenity is that **runs the fuzzing about three times faster** so it might be worth having some sort of a flag in the client implementation to switch over to xxHash so that we could do just 3 times more fuzzing.
 
 **Danny**: Agreed.
 
-**Suggestion 19.1**: Replace SHA256 with xxHash
+**Suggestion 19.1**: Replace SHA256 with xxHash during fuzzing
 
 # 2. Client Updates
 ## Prysmatic
@@ -54,16 +54,16 @@ There has been work going on Fuzzing of the GHOST specification and getting some
 
 **WeiTang**:
 * 0.7 patch implemented yesterday and pass all the test vectors
-* decided to deliver no chaching implementation in ethhash before the spec is frozen. Don't want to redo any work.
-* For next, Shashper, we are looking into network implementation. In short term, we want to reintroduce sub network library and get that to network and communication layer for our clients and lend some testnets.
+* decided to deliver no caching until the spec is frozen. Don't want to redo any work.
+* For next, Shashper, we are looking into network implementation. In short term, we want to reintroduce substrate network library and get that to network and communication layer for our clients and lend some testnets.
 
 ## Artemis 
 
 **Johnny**:
-* We did a lot of profiling in optimizing on state transition stuff. When we first merged in 501, we noticed none of our optimization, caching worked anymore. So we profile that by reimplementing the cashing. 
+* We did a lot of profiling in optimizing on state transition stuff. When we first merged in v0.5.1, we noticed none of our optimization, caching worked anymore. So we profile that by reimplementing the cashing. 
 * We're starting on the next version of the spec. 
-* The good news is also our **short-lived testnets can run pretty much  indefinitely**.
-* We’ve  broken out a validator client implementation. Fall in the line of other clients making them discrete from the Beacon chain. 
+* The good news is also our **short-lived testnets can run pretty much indefinitely**.
+* We’ve  broken out a validator client implementation. Fall in line with other clients by making them discrete from the Beacon chain. 
 * Joseph wrote an article about [Ethereum 2.0 Deposit Merkle Tree Implementation Guide](https://medium.com/@josephdelong/ethereum-2-0-deposit-merkle-tree-13ec8404ca4f?postPublishedType=initial).
 * also working with Harmony and Raul (protocol labs) on [minimal JVM implementation of libp2p](https://github.com/raulk/jvm-libp2p-minimal/)
 * Released a bunch of bounties funded by Joe Lubin for super simple Network implementation so that we can test the consensus layer in multi-client  testnet. 
@@ -80,24 +80,23 @@ There has been work going on Fuzzing of the GHOST specification and getting some
 
 **Ithaca**: Currently I'm using web3
 
-
 ## Lodestar 
 
 **Cayman**:
-* In a branch, we are passing the B06 spec test except for BLS verification. We're still working through that. It's kind of odd because we're passing the BLS spec tests like the ones for BLS  specifically.  It has to do it like which private keys are being used.
+* In a branch, we are passing the v0.6 spec test except for BLS verification. We're still working through that. It's kind of odd because we're passing the BLS spec tests like the ones for BLS  specifically.  It has to do it like which private keys are being used.
 * Also in the past few weeks we integrate GossipSub and implemented the RPC protocol as it exists in the spec right now. So, now have networking layer.
-* Also toying around with pulling up pieces of our code and rewriting them in assembly script which is a language that  looks like ?script  but it compiles to WASM. 
-* We're starting with  l m p ghost just to try something out and get used to the tooling.
+* Also toying around with pulling up pieces of our code and rewriting them in assembly script which is a language that  looks like typescript  but it compiles to WASM. 
+* We're starting with  lmd ghost just to try something out and get used to the tooling.
 * Our next steps - we're working towards like an end-to-end short-lived testnets. 
 * We also need to finish our syncing modules, so that we can sync between the network and the chain.
 
 ## Nimbus
 
 **Mamy**:
-* Regarding the specs, 2 PRs pending for 0.7 compatibility.
-* We've backward sync integrity, so requesting old block up to a point is available.
-* On Networking side, we've libp2p integration in Nimbus. Currently working on releasing libp2p based testnets.
-* On libp2p2 library on pure Nim, we have an issue on mobile because the mobile phone application makes it sleep and it kills the connection. 
+* Regarding the specs, 2 PRs pending for v0.7 compatibility.
+* We've backward sync integrity, so requesting blocks up to a point is available.
+* On Networking side, we've libp2p daemon integration in Nimbus. Currently working on releasing libp2p based testnets.
+* On libp2p library on pure Nim, we have an issue on mobile because the mobile phone application makes it sleep and it kills the connection. 
 * On the Eth1 front, we now have an API to watch the contract, the goal is to use Nimbus for that.
 * Regarding Eth1 security, we are starting fuzzing on the Discovery and fixing bugs for Eth1 implementation.
 * Open question to all the clients - we would like to have data visualization of testnet. Add interop to agenda in September. Some kind of minimal RPC standout to request to clients - block we're on, how many things we've processed. So, that we can have some kind of nice display of what is going on multi client testnet. 
@@ -131,7 +130,7 @@ What Preston is talking about is more like an API to the uses of the application
 **Danny**: I agree.
 
 **Suggestion 19.2** : Data visualization of testnet. 
-**Suggestion 19.3** :Add interop to agenda in September.
+**Suggestion 19.3** :Add data visualization to interop agenda in September.
 **Suggestion 19.4**: Add to spec - the ability to dump.
 
 ## Harmony
@@ -173,8 +172,8 @@ What Preston is talking about is more like an API to the uses of the application
 # 3. Research Updates
 **Danny**: Whats going on in Phase2 front?
 
-**Vitalik**: The main update from on my side is [SSZ](https://github.com/ethereum/eth2.0-specs/issues/1160) stuff. Finally managed to get the SSZ partials finally  implemented in Python.  Realization I got from that is it's just way more complex at present that its used to be. The bulk of the complexity comes from the fact that Merkle proofs legs in the dynamically size of objects like a list instead of a fixed length.  If you remove that property, and come up with a Subway, so that there is an exact and stable one to one correspondence between paths.  If some particular object would always have the exact same sequence of moving Merkle tree to get to it that would probably remove the bulk of the complexities from the SSZ partial implementation. I had some discussion with other people and the proposal that we seem to be converging on is  basically requiring list to have a max length so that you can always have them in the same position.
-It can be thought identical to Vyper like in Vyper you can have a fixed length list that has end value or you could have a dynamic link list. But with dynamical length list you have to specify what the maximum length is. The idea would be the serialization would not change at all except maybe at some point later in the future we might want to add another SSZ serialization Vyper list. For SSZ hashing length of a Merkle Branch would be length of a fixed value. 
+**Vitalik**: The main update from on my side is [SSZ](https://github.com/ethereum/eth2.0-specs/issues/1160) stuff. Finally managed to get the SSZ partials implemented in Python.  Realization I got from that is it's just way more complex at present that its used to be. The bulk of the complexity comes from Merkle proof paths in the dynamically size of objects like a list instead of a fixed length.  If you remove that property so that there is an exact and stable one to one correspondence between paths.  If some particular object would always have the exact same sequence of moving Merkle tree to get to it that would probably remove the bulk of the complexities from the SSZ partial implementation. I had some discussion with other people and the proposal that we seem to be converging on is basically requiring list to have a max length so that you can always have them in the same position.
+It can be thought identical to Vyper like in Vyper you can have a fixed length list that has end value or you could have a dynamic link list. But with dynamic length list you have to specify what the maximum length is. The idea would be the serialization would not change at all except maybe at some point later in the future we might want to add another SSZ serialization Vyper list. For SSZ hashing length of a Merkle Branch would be length of a fixed value. 
 Example: If  your list has a maximum length of 20. Then it get rounded up to 32.  The length of Merkle branch would always be 5. Regardless of what we put the actual length of the list. It doesn't change depending the current / dynamic size of the list. 
 
 **Danny**: This is simplification on tree hashing side and not a major change on serialization.
@@ -206,9 +205,9 @@ There are few requirements for Genesis:
 * Sufficient Eth at stake (2mil ETH)
 * Sufficient production level clients (ideally 3 but could launch with 2 )
 
-If we’re to Beacon a trigger in the deposit contract, when we’re ready to launch; this gives flexibility to update the Genesis trigger. 
+If we’re to bake in a trigger in the deposit contract, when we’re ready to launch; this gives flexibility to update the Genesis trigger. 
 
-I guess **from a timing perspective, we're on track for the phase zero Spectre on June 30th**. That might be a good opportunity at the end of this month to think about new realistic targets.
+I guess **from a timing perspective, we're on track for the phase zero spec freeze on June 30th**. That might be a good opportunity at the end of this month to think about new realistic targets.
 
 Two good things to think about is 
 **1. when we want to launch the deposit contract?** 
@@ -232,19 +231,19 @@ I think that  launching the deposit contract we should at least have some target
 
 **Danny**:  yes so essentially instead of listening for that log,  you're running a function locally and get a new deposit on whether it's time to start 
 
-**Joseph**: OK it's a call rather than an ascend it's going to be a system that would not going require gas for execution.
+**Joseph**: OK it's a call rather than a log it's going to be a system that would not going require gas for execution.
 
 **Danny**: No, I am receiving logs locally and I've local logic on whether to start the genesis. We are going to be more dynamic to make decisions. Hopefully simpler and flexible. 
 
 **Justin**: I mean that was the initial [trigger](https://github.com/ethereum/eth2.0-specs/blob/dev/specs/core/0_beacon-chain.md#genesis-trigger) where we realize that people could make just one Eth deposits the minimum and make a bunch of these and then trigger the Genesis. Someone send 32 Eth at the same address  repeatedly and then they triggered the Genesis. The shared source of truth argument is a little bit of an illusion and the reason is that we need an alternative backup mechanism without presets for source of truth. If we don't reach that , we don’t reach the target. 
 
-**Joseph**: That makes sense but I I do a wonder why then we would calculate the sparse Merkle tree in the contract because essentially that the sparse Merkle trees are useless if we’re not ever meeting to  any Genesis root value. 
+**Joseph**: That makes sense but I do a wonder why then we would calculate the sparse Merkle tree in the contract because essentially that the sparse Merkle trees are useless if we’re not ever meeting to  any Genesis root value. 
 
-**Justin**: It’s  still valuable. The sparse merkle tree for the deposit basically allows for the  accounting of the deposits and making sure that it is properly   reflected on Eth2.
+**Justin**: It’s still valuable. The sparse merkle tree for the deposit basically allows for the  accounting of the deposits and making sure that it is properly reflected on Eth2.
 
 **Danny**: Most people will be handling a tree locally. So its a helper, gives you more flexibility. Say, if you started running this for a year from now as a validator, you might use that mechanism and  actually have a sparse view of the deposits locally. 
 
-**Joseph**: I think it would be great if we could get deposit public.
+**Joseph**: I think it would be great if we could get deposit root public.
 
 **Justin**: I just checked its public.
 
@@ -264,25 +263,25 @@ More about it is  the idea of sending a transaction to any kind of contract.  Si
 * Minor spec changes TBD.
 * We are negotiating an external protocol audit.
 
-**Mike**: From last call we get some feedback on from production readiness to implementation and test environment. We're taking action on  a lot of things that came up. For JVM LibP2P, I think Jannik covered it. Web3 Lab which is also looking to get involved too. so we may get more Firepower on the implementation. But, even without that it seems to be progressing pretty well. On the production readiness of JVM LibP2P, we followed up with Chainsafe folks, who have worked on JS libP2P and know what its flaws and warts work. We are looking at making a grant to fix up things, mostly documentation issues so we now have a full-time writer on working on specifications for LibP2P.  I know that's been a weak spot. Everyone who tries to implement it how can I implement this without a proper specification. We’ve a full time writer and will continue it indefinitely. 
+**Mike**: From last call we get some feedback on from production readiness to implementation and test environment. We're taking action on  a lot of things that came up. For JVM LibP2P, I think Jonny covered it. Web3 Lab which is also looking to get involved too. so we may get more Firepower on the implementation. But, even without that it seems to be progressing pretty well. On the production readiness of JS LibP2P, we followed up with Chainsafe folks, who have worked on JS libP2P and know what its flaws and warts work. We are looking at making a grant to fix up things, mostly documentation issues so we now have a full-time writer on working on specifications for LibP2P.  I know that's been a weak spot. Everyone who tries to implement it how can I implement this without a proper specification. We’ve a full time writer and will continue it indefinitely. 
 There was some benchmarking at the scaling Ethereum event in Toronto . We are working with White block to try to iterate on those tests. Its good initial work we’ve done. 
 
 **Danny**: There is telegram channel where you can ask questions with Mike to be better directed. Any questions?
 
 **Jacek**: Yeah I have one. I was thinking about the transports and there has been lose plan to move on to maybe TLS. Any thoughts on that or progress updates?
 
-**Matt**: Yeah, it is the intention to move on to TLS. The status of TLS varies with implementation. Whether it is complete or not various implementation. We've working TLS1.3 implementation, LibP2P implementation.  I do not believe we have one in JS and other languages, but the point is not all of them have it. So, we are going to be falling back.
+**Mike**: Yeah, it is the intention to move on to TLS. The status of TLS varies with implementation. Whether it is complete or not various implementation. We've working TLS1.3 implementation in go-LibP2P implementation.  I do not believe we have one in JS and other languages, but the point is not all of them have it. So, we are going to be falling back.
 
 **Jacek**: Two aspects to that question : 
 1. Is it finalized how LibP2P over TLS should look like from spec perspective or functionality perspective? For clients, do they have something to implement?
 2. Are there any concerns that would prevent TLS from becoming the de facto transport for where  LibP2P runs implementations have caught up?
 
 
-**Matt**: On your last question, I am not TLS expert but talking to our expert Martin, there's no reason why we would not eventually go 100% TLS once implementation are caught up. We have no theoretical reason not to do that. 
+**Mike**: On your last question, I am not TLS expert but talking to our expert Martin, there's no reason why we would not eventually go 100% TLS once implementation are caught up. We have no theoretical reason not to do that. 
 
 **Jacek**: From a client perspective, on spec, have you decided on what you want? 
 
-**Matt**: I think we're happy with Go implementation and want to turn that into a spec. I can follow up with Martin, who is TLS expert and implemented that. Overall we're satisfied. 
+**Mike**: I think we're happy with Go implementation and want to turn that into a spec. I can follow up with Martin, who is TLS expert and implemented that. Overall we're satisfied. 
 There are a few issues with Rust TLS which Rust main library does not support self designed certificates which we would like to use in some cases. There are some open questions. SO, NO, we are not fully certain but we're extremely close. 
 
 I think, it's not our intention to re-implement TLS on in every language. We're mostly relying on language standard libraries - Go or node1 for JS
@@ -293,20 +292,20 @@ I think, it's not our intention to re-implement TLS on in every language. We're 
 
 **Zak**: If payloads are inherently cryptographically secured from the application layer, whats the point in providing additional encryption on the wire?
 
-**Matt**:  Good point. It's not mandatory and you can use on unencrypted transport. So if you're doing the encryption at the application layer then you could use unencrypted transport.
+**Mike**:  Good point. It's not mandatory and you can use on unencrypted transport. So if you're doing the encryption at the application layer then you could use unencrypted transport.
 
 **Zak**: In which use case would I require or want an encrypted wire in terms of Eth2?
 
-**Matt**: I think this question is out of my expertise so I don't have a good answer for it. I think maybe we could follow up with Raul next week.
+**Mike**: I think this question is out of my expertise so I don't have a good answer for it. I think maybe we could follow up with Raul next week.
 
 **Jacek**: One reason we of then want  to use this because some Networks do packet filtering 
 And anything which they  don't recognize like HTTP and HTTPS traffics, so those might be the reasons. 
 
-**Matt**: The RPC protocol and the Gossip sub don’t have any encryption built in. Adding encryption at the network layer prevents. There is no encryption at the application layer at the moment. 
+**Adrian**: The RPC protocol and the Gossip sub don’t have any encryption built in. Adding encryption at the network layer prevents. There is no encryption at the application layer at the moment. 
 
 **Zak**: Why not just use wire guard - VPN tunnel between two separate points?
 
-**Danny**: I think it make sense to have the capability to support encryption of the way. We don’t encrypt at the application there nor should we necessarily look into encrypting at the application there, so having this an option is a good one. 
+**Danny**: I think it make sense to have the capability to support encryption in the way. We don’t encrypt at the application there nor should we necessarily look into encrypting at the application there, so having this an option is a good one. 
 
 **Zak**: Updates - 
 * We wrapped up our initial P2P gossip subtests.  We had a call with Mike and Raul, a couple days ago. So we're currently in the process of like designing an actual test phase this them, I am drafting something this week. I will post it on GitHub and would like any feedback from the community in designing these tests and ensuring that the topology is correct, based on the consensus of the community.
@@ -320,18 +319,18 @@ And anything which they  don't recognize like HTTP and HTTPS traffics, so those 
 
 **Zak**: I don't think that it's like super important how we do it . At this stage what is important is that we agree and standardize some implementation. However,  it doesn't need to be necessarily for production purposes but at least for these initial R&D and like testing phases that would be a lot easier.
 
-**Justin**: I think import export should serve that.
+**Jacek**: I think import export should serve that.
 
 **Zak**: Whatever that is, we should just define. We should just specify that like write a spec; this is how we should do it. We will implement that in all the clients just that we need to agree on what it is going to look like. 
 
 **Danny**: Agreed.
 
-**Suggestion 19.6**: Standardize implementation in clients by writing specs.
+**Suggestion 19.6**: Standardize keystore import/export for client implementations
 
 
 # 5. Spec discussion
 
-**Danny**: I did want to survey how people are thinking about and searching for attestation slashing.  Jim and I were talking about that and I know that some of you have dug into it. If someone wants to leyland as they see it, might help.
+**Danny**: I did want to survey how people are thinking about and searching for attestation slashing.  Cem and I were talking about that and I know that some of you have dug into it. If someone wants lay of the land as they see it, might help.
 
 **Ithaca**: From clients perspective, that just add complexities. There is no real obligation from a protocol point of view to perform slashing. Its almost outsourced like a third party.
 Difficulties lies in the fact that we can't really write conformance test. 
@@ -342,7 +341,7 @@ Difficulties lies in the fact that we can't really write conformance test.
 
 **Paul**: If we want to try and incentivize clients to implement slashing, one way to do it might be when we release these testnets is to make bunch of open source tools that allow people to very easily create malicious blocks. Add the ability for people to cause chaos. If your clients doesn't support it then we fall of line but that's the way we incentivize people, it's really not protocol level. 
 
-**Danny**: We do want to have testnets in which say 50 % validators go offline and we go through an activity leak and during those times when your block tree becomes relatively large wrt your latest violence and those are the times that you would be more concerned about people going back to two epochs and signing something new and attempting to mess with things. So, we should definetly create this scenarios. 
+**Danny**: We do want to have testnets in which say 50 % validators go offline and we go through an activity leak and during those times when your block tree becomes relatively large wrt your latest finalized and those are the times that you would be more concerned about people going back to two epochs and signing something new and attempting to mess with things. So, we should definetly create this scenarios. 
 
 **Jacek**: I would be interested in hearing thoughts on slashing protection, client stashing data that they don't accidentally cause a slashable condition for their validator. How much extra data do we have to store because we voted for a branch that later became unviable ? SO that clients don't create the slashable condition accidentally because they have forgotten about it.
 
