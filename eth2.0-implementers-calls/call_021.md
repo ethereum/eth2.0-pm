@@ -18,7 +18,7 @@
 		- [3.2.4 Yeeth](#324-yeethhttpsgithubcomyeeth)
 		- [3.2.5 Harmony](#325-harmonyhttpsdocsethhubioethereum-roadmapethereum-20eth20-teamsharmony)
 		- [3.2.6 Lighthouse](#326-lighthousehttpsgithubcomsigplighthouse)
-		- [3.2.7 Prysmatic)](#327-prysmatichttpsgithubcomprysmaticlabs)
+		- [3.2.7 Prysmatic](#327-prysmatichttpsgithubcomprysmaticlabs)
 		- [3.2.8 Lodestar](#328-lodestarhttpsgithubcomchainsafelodestar)
 		- [3.2.9 Parity](#329-parityhttpsgithubcomparitytechparity-ethereum)
 	- [3.3 Research Updates](#33-research-updateshttpsyoutubeyb8o5qjnbct1725)
@@ -90,308 +90,364 @@
 
 ### 3.1 [Testing Updates](https://youtu.be/YB8o_5qjNBc?t=245)
 
+
 #### 3.1.1 [Overflow in Slashing](https://github.com/ethereum/eth2.0-specs/pull/1286)
 
-**Danny Ryan**:
-* Prysmatic Labs, Terence [Tsao], found an issue where the calculation and slashing was, due to the way it was formatted, potentially overflowing in a tester for `uint64`
-* Relatively non-substantive changes (fixes, documentation, and things) in v08x branch [#1286](https://github.com/ethereum/eth2.0-specs/pull/1286). Includes a fix to this which alters the way the computation happens. Non-substantive, but doesn't overflow
-* Seems relatively important so will get out v08x in the next few days (includes other minor things people have found).
+**Timestamp: [4:06](https://youtu.be/YB8o_5qjNBc?t=245)**
+
+**Danny Ryan**: Prysmatic Labs, Terence [Tsao], found an issue where the calculation and slashing was, due to the way it was formatted, potentially overflowing in a tester for `uint64`
+
+Relatively non-substantive changes (fixes, documentation, and things) in v08x branch [#1286](https://github.com/ethereum/eth2.0-specs/pull/1286). Includes a fix to this which alters the way the computation happens. Non-substantive, but doesn't overflow. Seems relatively important so will get out v08x in the next few days (includes other minor things people have found).
 
 #### 3.1.2 [Spec Freeze](https://github.com/ethereum/eth2.0-specs/pull/1242)
 
-**Diederik Loerakker**
-* Spec Freeze is over now, can stop throwing up to the spec and build.
+**Timestamp: [5:12](https://youtu.be/YB8o_5qjNBc?t=309)**
 
-**Danny Ryan**:
-* Even after the Spec Freeze we will be expanding the coverage of the tests as needed.
+**Diederik Loerakker**: Spec Freeze is over now, can stop throwing up to the spec and build.
+
+**Danny Ryan**: Even after the Spec Freeze we will be expanding the coverage of the tests as needed.
 
 #### 3.1.3 [Fuzzing](https://github.com/ethereum/eth2.0-specs/tree/dev/test_libs/pyspec/eth2spec/fuzzing)
 
-**Justin Drake**:
-* Goal: Basic Fuzzing infrastructure for all the clients.
-    * Client implementers don't have to worry too much about being compliant with the State Transition Function.
-    * You can spend most of your time on what makes a client "a client": Networking, Databases, and what-not.
-* We've started with pySpec and the goal executable specs.
-* I think the next target for integration will be Lighthouse. Hopefully, a lot of the infrastructure will be generic for clients.
-* Might come in the next two weeks, hopefully.
+**Timestamp: [6:51](https://youtu.be/YB8o_5qjNBc?t=411)**
 
-**Danny Ryan**:
-* We'll go the experiment round with one and learn some things.
-* Any other testing things before we move on?
 
-**Diederik Loerakker**:
-* We are Fuzzing v0.8.0 and Go excludes post-spec is almost up-to-date now, pySpec already is.
-* It's really up to the hosts, as the first clients, to also be on the same spec version. Ain't gonna start so soon.
+**Justin Drake**: Goal: Basic Fuzzing infrastructure for all the clients.
+  * Client implementers don't have to worry too much about being compliant with the State Transition Function.
+  * You can spend most of your time on what makes a client "a client": Networking, Databases, and what-not.
 
-**Jacek Sieka**:
-* About the Fuzzing, how do you drive it? Like how is the Fuzzing driven, what is the input?
+We've started with pySpec and the goal executable specs. I think the next target for integration will be Lighthouse. Hopefully, a lot of the infrastructure will be generic for clients. Might come in the next two weeks, hopefully.
 
-**Diederik Loerakker**:
-* The problem with Fuzzing is that we have 2 kinds of inputs:
-    1. States
-    2. Blocks
-* The State itself is easily randomized. It contains script traffic contents. It has several validity assumptions.
-* You can have any kind of Block, these are like the attack vector. So you're Fuzzing blocks now and you're extending at seconds corpora echoes of the pre-state.
-* You could say we are mostly focusing on Blocks now.
-* They are looking to make this extension of the State more intelligent so that you could make more progress in a chain test review of more different pre-states being Fuzzed.
+**Danny Ryan**: We'll go the experiment round with one and learn some things.
 
-**Jacek Sieka**:
-* What's the difference between that and the YAML file?
+**Diederik Loerakker**: We are Fuzzing v0.8.0 and Go excludes post-spec is almost up-to-date now, pySpec already is. It's really up to the hosts, as the first clients, to also be on the same spec version. Ain't gonna start so soon.
 
-**Danny Ryan**:
-* YAML files are particularly constructed tests
-* Given a pre-state and given some input that we want to hit certain conditions, certain bounds:
-    * Maybe a normal path
-    * Maybe testing right on the boundary
-    * Testing past the boundary
-* These are particularly constructed tests, something you might write in your own test feed.
-* Whereas these (Fuzzing) are taking pre-states and modifying blocks generally at random, within some sort of bounds, and just applying them to test things that we weren't necessarily thinking about.
-* Does that make sense?
+**Jacek Sieka**: About the Fuzzing, how do you drive it? Like how is the Fuzzing driven, what is the input?
 
-**Paul Hauner**:
-* Yeah, I'm not exactly sure how the Ethereum Foundation one works but I know May's explained how our one works
+**Diederik Loerakker**: The problem with Fuzzing is that we have 2 kinds of inputs:
+  1. States
+  2. Blocks
+
+The State itself is easily randomized. It contains script traffic contents. It has several validity assumptions.
+
+We are looking to make this extension of the State more intelligent so that you could make more progress in a chain test review of more different pre-states being Fuzzed.
+
+**Jacek Sieka**: What's the difference between that and the YAML file?
+
+**Danny Ryan**: YAML files are particularly constructed tests. Given a pre-state and given some input that we want to hit certain conditions, certain bounds:
+  * Maybe a normal path
+  * Maybe testing right on the boundary
+  * Testing past the boundary
+
+These are particularly constructed tests, something you might write in your own test feed. Whereas these (Fuzzing) are taking pre-states and modifying blocks generally at random, within some sort of bounds, and just applying them to test things that we weren't necessarily thinking about.
+
+**Paul Hauner**: Yeah, I'm not exactly sure how the Ethereum Foundation one works but I know May's explained how our one works
   1. You start with a valid block or some valid object that kind of reaches as far into code path as it can
   2. Then the Fuzzer meters all your code
   3. Then it randomizes the fields of the original object you gave it
   4. Then detects if it explores new code paths
-- It smartly tries to expand itself out to cover as much code as it can by deterministically, but somewhat randomly, modifying the object and learning about how that affected the coverage.
 
-**Mamy**:
-* Okay, yeah, because the Fuzzing, that proto outline, seemed like it didn't check the bit patterns of the code path that were exercised by the framework.
+It smartly tries to expand itself out to cover as much code as it can by deterministically, but somewhat randomly, modifying the object and learning about how that affected the coverage.
 
-**Diederik Loerakker**:
-* Yeah, simplifying it a little bit here but, yeah
-* The randomization of the Block is done by let for sure and that checks the coverage and then tries to randomize as best it could. Just the parts that improve coverage.
-* And again, you don't want to first only run pre-states, it's more complicated than that.
+**Mamy**: The Fuzzing, that proto outline, seemed like it didn't check the bit patterns of the code path that were exercised by the framework.
 
-**Justin Drake**:
-* Yeah it'd definitely coverage driven and there's the randomization aspect.
+**Diederik Loerakker**: The randomization of the Block is done by let for sure and that checks the coverage and then tries to randomize as best it could. Just the parts that improve coverage.
 
-**Danny Ryan**:
-* Cool, any other questions on this before we move in?
-* Preston has a question:
-    * "How does the Fuzz harness look: is it libfuzz or is this new tool compatible?"
+And again, you don't want to first only run pre-states, it's more complicated than that.
 
-**Preston**
-* Hey, I think Proto (Diederik Loerakker) just answered that he said that it would be using libfuzz to, basically, you give the signal feedback: did you get farther through the test or was this the worst fuzzing scenario?
-* So that answers the question, thanks.
+**Justin Drake**: Yeah it'd definitely coverage driven and there's the randomization aspect.
 
-**Diederik Loerakker:**
-* Some people here are already libfuzz's libfuzzer
-* We have Peter working on this with lots of experience with it and extending it
-* What I was just saying about these 2 different kinds of states we're working on. We have the Beacon States and the Block
-* We don't want to involve only the block inputs because if you're always Fuzzing the same states, you don't get the same coverage as you could if you're Fuzzing multiple states
-* So this why we're trying to improve on the normal architecture
-* Yet it's somewhat similar to libfuzz service since this is what's being used internally
+**Danny Ryan**: Preston has a question:
+- "How does the Fuzz harness look: is it libfuzz or is this new tool compatible?"
 
-**Justin Drake**:
-* Did he suggest that the current approach was good enough at exploring many different paths and finding bugs.
-* I think the main limit was the speed of PyStack, that you couldn't Fuzz that much, it would be rather slow.
-* Hopefully once we do differential Fuzzing on the Lighthouse, we'll get a bit more confidence.
+**Preston**: Diederik Loerakker said that it would be using libfuzz to, basically, you give the signal feedback: did you get farther through the test or was this the worst fuzzing scenario?
 
-**Diederik Loerakker:**
-* We get a lot of poor performance because of spec and hopefully also with clients.
-* I think with PySpec is that there are these functions that are not pleasant outs they all inefficiently repeat themselves, not precomputing anything
-* Now in the next Go spec updates, I optimize, precompute this, precompute that, so we get half, almost client speed spec.
-* I tried to keep this portable.
+**Diederik Loerakker:**: Some people here are already libfuzz's libfuzzer.
 
-**Danny Ryan**:
-* One of the paths might be to differentially Fuzz against the Go spec and the clients and then if we find issues, to then go back to the Py spec and make sure we agree with what the functionality should be.
-* We'll keep everyone updated about Fuzzing over the coming weeks.
+What I was just saying about these 2 different kinds of states we're working on. We have the Beacon States and the Block. We don't want to involve only the block inputs because if you're always Fuzzing the same states, you don't get the same coverage as you could if you're Fuzzing multiple states. So this why we're trying to improve on the normal architecture
+
+
+**Justin Drake**: Did he suggest that the current approach was good enough at exploring many different paths and finding bugs.
+
+Hopefully once we do differential Fuzzing on the Lighthouse, we'll get a bit more confidence.
+
+**Diederik Loerakker:** We get a lot of poor performance because of spec and hopefully also with clients. I think with PySpec is that there are these functions that are not pleasant outs they all inefficiently repeat themselves, not precomputing anything
+
+
+Now in the next Go spec updates, I optimize, precompute this, precompute that, so we get half, almost client speed spec.
+
+
+**Danny Ryan**: One of the paths might be to differentially Fuzz against the Go spec and the clients and then if we find issues, to then go back to the Py spec and make sure we agree with what the functionality should be.
+
+We'll keep everyone updated about Fuzzing over the coming weeks.
 
 
 ### 3.2 [Client Updates](https://youtu.be/YB8o_5qjNBc?t=830)
 
-
 #### 3.2.1 [Nimbus](https://github.com/status-im/nimbus)
-**Mamy**:
-* We launched our testnet 1, based on libp2p daemon, this morning
-* We need to adapt the script, so that it starts with a single common because libp2p daemon is not built but it's almost done. Pretty soon by the end of the week.
-* We are towards v0.8, all the small changes were integrated and right now a big focus is SSE
-* We also started to align our State Transition function with PySpec in terms of naming
-  * This is also to improve and facilitate testing
-* We had significant parse improvement during the past week, accumulated 20 to 30x speed-up on the State Transition bench. We identified 3 bottlenecks:
+
+**Timestamp: [13:50](https://youtu.be/YB8o_5qjNBc?t=830)**
+
+
+**Mamy**: We launched our testnet 1, based on libp2p daemon, this morning
+
+We are towards v0.8, all the small changes were integrated and right now a big focus is SSE
+
+We also started to align our State Transition function with PySpec in terms of naming.
+
+We had significant parse improvement during the past week, accumulated 20 to 30x speed-up on the State Transition bench. We identified 3 bottlenecks:
   * In `process_crosslinks(...)` & `get_crosslinke_deltas(...)`. So both combined we had the 10x speed improvement
   * `get_crosslink_committee(...)` via caching, we improved by 2x the speed
-* I can put or PR in the chat, so that if people are interested in seeing what we did, they can reproduce. Since we follow the spec-naming it should be very easy to navigate.
+
+
+If people are interested in seeing what we did, they can reproduce. Since we follow the spec-naming it should be very easy to navigate.
   * [Speed up process_crosslinks(...) and get_crosslink_deltas(...) by 10x - 15x in state_sim #314](https://github.com/status-im/nim-beacon-chain/pull/314)
   * [~2x state_sim speedup via additional caching in get_crosslink_committee #316](https://github.com/status-im/nim-beacon-chain/pull/316)
-* We also published metrics library for Prometheus compact metrics:
+
+Published metrics library for Prometheus compact metrics:
   * [Nim metrics client library supporting the Prometheus monitoring toolkit](https://github.com/status-im/nim-metrics)
-* We have a EWASM research library and we are very happy with. We have started a domain specific language in NIM that compiles to EWASM. It's quite competitive in terms of contract size:
+
+
+We have a EWASM research library and we are very happy with. We have started a domain specific language in NIM that compiles to EWASM. It's quite competitive in terms of contract size:
   * [Nimplay is Domain Specific Language for writing smart contracts in Ethereum, using the Nim macro system](https://github.com/status-im/nimplay)
-* Lastly on Ethereum 1, we had some connections issues that were resolved to Parity and Jeff.
+
+On Ethereum 1, we had some connections issues that were resolved to Parity and Jeff.
 
 #### 3.2.2 [Artemis](https://github.com/PegaSysEng/artemis)
-**Jonny Rhea**:
-* We've updated to there especially with the SSE
-* Also been thinking about a tester slashings, computational requirements for the worst scenario
-* We see the need to investigate the network load, you know from the attestations to decide what strategy to use when we're aggregating.
-* That's the stuff we've been thinking about. Pretty much it.
+
+**Timestamp: [17:05](https://youtu.be/YB8o_5qjNBc?t=1025)**
+
+**Jonny Rhea**: We've updated to there especially with the SSE
+
+Also been thinking about a tester slashings, computational requirements for the worst scenario
+
 
 #### 3.2.3 [Trinity](https://github.com/ethereum/trinity)
-**Hsiao-Wei Wang**:
-* Regarding specs Py SSE has been synced to v0.8 and the State Transition update is ongoing. I think it almost there thanks to Alex
-* For the networking side, integrating with the Py library, we found some required issues that we need to fix on the upstream library.
-* Also we are fixing some interoperability requirements and there is an insecure connections stake I'm posting here, I think Keven and maybe Raul will introduce it in the networking section. After the client update.
-* That's the Trinity side, thank you.
+
+**Timestamp: [17:51](https://youtu.be/YB8o_5qjNBc?t=1071)**
+
+**Hsiao-Wei Wang**: Py SSE has been synced to v0.8 and the State Transition update is ongoing. I think it almost there thanks to Alex.
+
+For the networking side, integrating with the Py library, we found some required issues that we need to fix on the upstream library.
+
+We are fixing some interoperability requirements and there is an insecure connections stake.
 
 #### 3.2.4 [Yeeth](https://github.com/yeeth)
-**Dean Eigenmann**:
-* I was doing some stuff with like the inter-op guys last week, I started helping out a bit on Artemis but handed that off again. So now I'm back on updating Yeeth to the latest spec version.
+
+**Timestamp: [19:11](https://youtu.be/YB8o_5qjNBc?t=1151)**
+
+**Dean Eigenmann**: I started helping out a bit on Artemis but handed that off again. So now I'm back on updating Yeeth to the latest spec version.
 
 #### 3.2.5 [Harmony](https://docs.ethhub.io/ethereum-roadmap/ethereum-2.0/eth2.0-teams/harmony/)
-**Mikhail Kalinin**:
-* We've been pretty much working on an update to v0.8 spec, we're almost there, but SSE part is still in progress.
-* We started to work on a slot clock mechanism, which is based on network-adjusted time proposed by Vitalik.
-* We have a PR so far with basic implementation of that protocol. I'm going to take my time on that. Also we have started a small research to investigate into attestation aggregation strategies.
-    * [Add draft spec for plaintext key exchange protocol #186](https://github.com/libp2p/specs/pull/186)
-* The goal is to evaluate an approach that doesn't involve building additional overlays, like handle tree.
-* Working on minimal libp2p or JVMs
-* Worked on multistream implementation recently
-* That's all from our side
+
+**Timestamp: [19:37](https://youtu.be/YB8o_5qjNBc?t=1176)**
+
+**Mikhail Kalinin**: Working on an update to v0.8 spec, we're almost there, but SSE part is still in progress.
+
+We started to work on a slot clock mechanism, which is based on network-adjusted time proposed by Vitalik.
+
+We have a PR so far with basic implementation of that protocol. I'm going to take my time on that. Also we have started a small research to investigate into attestation aggregation strategies.
+  * [Add draft spec for plaintext key exchange protocol #186](https://github.com/libp2p/specs/pull/186)
+
+The goal is to evaluate an approach that doesn't involve building additional overlays, like handle tree.
+
+Working on minimal libp2p or JVMs.
+
+Worked on multistream implementation recently.
+
 
 #### 3.2.6 [Lighthouse](https://github.com/sigp/lighthouse)
-**Adrian Manning**:
-* Updating lighthouse to v0.8
-* Have to re-optimize our tree-hash caching to include for more padding nodes
-* Defining more extensive HTTP APIs which is working to improve dev experience
-* Matt from ConsenSys building out some SSE partials into our codebase
-* Slowly been testing an initial version of discovery v5 in small testnets
-* Working towards standardizing a minimal libp2p for clients that are using libp2p
-* In doing so we've had to update our RPC
-    * In particular there's a discussion for the RPC to be using separate protocol IDs per request
-* There's a PR where we try to standardize the basic libp2p implementation
-    * [Libp2p Standardization Update #1281](https://github.com/ethereum/eth2.0-specs/pull/1281)
-* That's it from us.
+
+**Timestamp: [20:57](https://youtu.be/YB8o_5qjNBc?t=1257)**
+
+**Adrian Manning**: Updating lighthouse to v0.8
+
+
+Have to re-optimize our tree-hash caching to include for more padding nodes.
+
+Defining more extensive HTTP APIs which is working to improve dev experience.
+
+
+Matt from ConsenSys building out some SSE partials into our codebase.
+
+
+Slowly been testing an initial version of discovery v5 in small testnets.
+
+
+Working towards standardizing a minimal libp2p for clients that are using libp2p
+
+
+In doing so we've had to update our RPC. In particular there's a discussion for the RPC to be using separate protocol IDs per request
+
+
+[PR where we try to standardize the basic libp2p implementation](https://github.com/ethereum/eth2.0-specs/pull/1281).
+
+
 
 #### 3.2.7 [Prysmatic](https://github.com/prysmaticlabs)
-**Raul Jordan**
-* Caught up to v0.8, passing all spec tests
-* Issues with Genesis trigger
-* There's a lack of coverage for some spec test
-    * Passed all SSE spec tests
-    * Suprised that SSE failed in some Block sanity tests
-* Reason was because the way Python converts the length mixing-length into bytes did not cover longer types of lengths.
-* There was a list of values that were 512 in length. Encoded in Go gives different mixing length than in Python due to some edge cases, putting var ints.
-* Having coverage for longer based lists can be good in SSE.
-* Getting ready for optimizing Prism, code improvements, beautician testing, improvements to clients
+
+**Timestamp: [22:22](https://youtu.be/YB8o_5qjNBc?t=1342)**
+
+**Raul Jordan**: Caught up to v0.8, passing all spec tests.
+
+Issues with Genesis trigger.
+
+There's a lack of coverage for some spec test. Passed all SSE spec tests. Suprised that SSE failed in some Block sanity tests
+
+Having coverage for longer based lists can be good in SSE.
+
+Getting ready for optimizing Prism, code improvements, beautician testing, improvements to clients
 
 #### 3.2.8 [Lodestar](https://github.com/ChainSafe/lodestar)
-**Greg Markou**:
-* Trying to upgrade to v0.8
-* Began building dev tooling
-* Separating out types exclusively so that in Javascript you can import Ethereum 2 types into a React project down in the future
-    * Will help with providers, like a Web3.js provider.
-* SSE almost up-to-date, ironing out bugs with Proto and Prism
-* should be up-to-date on SimpleSerialize.com so that you guys can test it out online
-* We're working towards ensuring that BLS works properly in-browser as well
-    * Peculiar issues there will keep you updated
-* Getting Herumi so that we can have some diversity in BLS
-* In regards to the client, we comfortable to start doing Block production
-* One we finish our update to v0.8, we'll start doing our testnet so that we can see how that plays out.
-* Then getting that to work in-browser natively
-* One the side: we also have assembly scripts, picking up now that we've frozen again, getting a bunch of native code so that we can execute WASM in some section for speedup of shuffling.
-* See if we can convert SSE into purely assembly script for native WASM, seeing how that increases speed in the browser
-* So getting ready to do dev-tooling, that's kinda where we're at
-* Also, NIM, we're coming after you guys on the ERC20 contract, we'll get ya
+
+**Timestamp: [24:03](https://youtu.be/YB8o_5qjNBc?t=1443)**
+
+**Greg Markou**: Trying to upgrade to v0.8.
+
+Began building dev tooling.
+
+Separating out types exclusively so that in Javascript you can import Ethereum 2 types into a React project down in the future. Will help with providers, like a Web3.js provider.
+
+SSE almost up-to-date, ironing out bugs with Proto and Prism.
+
+Should be up-to-date on [SimpleSerialize.com](https://simpleserialize.com/) for open online testing.
+
+We're working towards ensuring that BLS works properly in-browser as well. Peculiar issues there will keep you updated.
+
+Getting Herumi so that we can have some diversity in BLS.
+
+In regards to the client, we comfortable to start doing Block production.
+
+One we finish our update to v0.8, we'll start doing our testnet so that we can see how that plays out.
+
+Then getting that to work in-browser natively.
+
+Getting ready to do dev-tooling.
+
+Also, NIM, we're coming after you guys on the ERC20 contract, we'll get ya.
 
 #### 3.2.9 [Parity](https://github.com/paritytech/parity-ethereum)
-**Wei Tang**:
-* Finished the markolization library last week, hopefully, want to extend that into a caching library, but a few missing pieces.
-* We're trying to update to v0.8 spec, issue we had was in the SSE which was quite a change
-    * Now a lot more types that require configurable parameters
-    * Wasn't expected because we were using a dynamic config
-* Won't work for us. Will need to change our config structs to static types so we have all the type information at compile-time
-* Large refactoring of the codebase
 
+**Timestamp: [27:54](https://youtu.be/YB8o_5qjNBc?t=1624)**
 
+**Wei Tang**: Finished the markolization library last week, hopefully, want to extend that into a caching library, but a few missing pieces.
+
+We're trying to update to v0.8 spec, issue we had was in the SSE which was quite a change.
+
+Large refactoring of the codebase.
 
 ### 3.3 [Research Updates](https://youtu.be/YB8o_5qjNBc?t=1725)
+
+**Timestamp: [29:08](https://youtu.be/YB8o_5qjNBc)**
+
 #### 3.3.1 [Phase 0](https://docs.ethhub.io/ethereum-roadmap/ethereum-2.0/eth-2.0-phases/)
 
-**Justin Drake**:
-* In parallel to Phase 1 & Phase 2, the research team is doing is more education about Phase 0
-    * Various Education documents, I'm working on one as well
-    * On July 15th 1:00 PM GMT there will be a 2nd Ethereum 2.0 AMA, great opportunity to ask and answer questions related to your implementation work
-* Now that the spec is frozen, if you have questions about the design, feel free to reach out. I'm for example Justin Drake on Telegram.
+**Timestamp: [34:50](https://youtu.be/YB8o_5qjNBc?t=2083)**
+
+**Justin Drake**: In parallel to Phase 1 & Phase 2, the research team is doing is more education about Phase 0.
+
+On July 15th 1:00 PM GMT there will be a 2nd Ethereum 2.0 AMA, great opportunity to ask and answer questions related to your implementation work.
+
+Now that the spec is frozen, if you have questions about the design, feel free to reach out. I'm, for example, Justin Drake on Telegram.
 
 
 #### 3.3.2 [Phase 1](https://docs.ethhub.io/ethereum-roadmap/ethereum-2.0/eth-2.0-phases/)
 
-**Vitalik Buterin**
+**Timestamp: [29:08](https://youtu.be/YB8o_5qjNBc)**
 
-  * On research-side there's a list of To-Do's for Proof-of-Custody and Shard Blocks
-  * Discovered that our approach to light clients that involved Fiat Shimmering and Active Experts didn't particularly make sense
-      * Simpler approach: Sign over the committee's route and allow clients to verify the committee's route directly
-  * Simplifies and reduces the cost of the client protocol.
-  * But still some decision to make around what the committees are for each slot and how those committees change
-  * I'd base some of the trade-offs between the properties of light clients and properties of old clients and different kinds of efficiency and safety properties.
-  * In general:
-      * Phase 0 including in the blocks some of the routes of the persist crosslink committees
-      * Phase 1 including a route of the persistent committees
-  * We get a nice, really efficient, light clients. Worst-case: only slightly less efficient, in terms of bytes-per-second, than Bitcoin block headers. Best-case: Much more efficient.
-  * There's still just parameters to decide.
-  * Figuring out the exact structure of data in crosslinks; the tradeoff between packing the data tightly versus putting the data for each of the Block headers into a consistent position.
-      * Recently I'm leaning towards packing the data tightly, taking the data for each block-header and block, placing them beside each other. It's one of the possible approaches, not the only.
-  * Not too much to do on the Shard Block side
-  * Have a PR which, among other things, it switches from multiple attestations and a proposers signature to just having one signature that includes a proposer in the attestations. That there as an option as well.
-  * Not seeing any unexpected difficulties on the Phase 1 side. It's looking better and better.
+**Vitalik Buterin**: On research-side there's a list of To-Do's for Proof-of-Custody and Shard Blocks
 
-**Justin Drake**:
-* To add on Phase 1, we're likely to have some cryptanalysis done
-* Kovatovich analyze the cryptography that used there.
-* One of the primitives we're using is the Lujon symbol, as a PRF
-* It looks fine and there's various security mechanism we can put in place, but it would still be good to have it audited because it's an assumption that's not used in production right now.
+Discovered that our approach to light clients that involved Fiat Shimmering and Active Experts didn't particularly make sense.
+
+Simpler approach: Sign over the committee's route and allow clients to verify the committee's route directly. Simplifies and reduces the cost of the client protocol.
+
+But still some decision to make around what the committees are for each slot and how those committees change.
+
+I'd base some of the trade-offs between the properties of light clients and properties of old clients and different kinds of efficiency and safety properties. In general:
+  * Phase 0 including in the blocks some of the routes of the persist crosslink committees
+  * Phase 1 including a route of the persistent committees
+
+We get a nice, really efficient, light clients. Worst-case: only slightly less efficient, in terms of bytes-per-second, than Bitcoin block headers. Best-case: Much more efficient. There's still just parameters to decide.
+
+
+Figuring out the exact structure of data in crosslinks; the tradeoff between packing the data tightly versus putting the data for each of the Block headers into a consistent position.
+
+Recently I'm leaning towards packing the data tightly, taking the data for each block-header and block, placing them beside each other. It's one of the possible approaches, not the only.
+
+
+Not too much to do on the Shard Block side.
+
+Have a PR which, among other things, it switches from multiple attestations and a proposers signature to just having one signature that includes a proposer in the attestations. That there as an option as well.
+
+Not seeing any unexpected difficulties on the Phase 1 side. It's looking better and better.
+
+**Justin Drake**: To add on Phase 1, we're likely to have some cryptanalysis done.  Kovatovich analyze the cryptography that used there.
+
+One of the primitives we're using is the Lujon symbol, as a PRF. It would still be good to have it audited because it's an assumption that's not used in production right now.
 
 #### 3.3.3 [Phase 2](https://docs.ethhub.io/ethereum-roadmap/ethereum-2.0/eth-2.0-phases/)
-**Vitalik Buterin**
-* Not much progress from myself.
-* One of the bigger issues and trade-offs to think about is still how free markets would work.
-* Would be good to get more feedback on that.
-* The Plasma people are going to release a post on OVM very soon.
 
-**Will Villanueva**:
-* Continuing work on SSE partials
-* In the last call we talked about kicking off a Phase 1 implementation, so we can bind together the workaround scout and some of the work the EWASM team has done.
-* Will have Phase 1 & Phase 2 testnet, to rally people around having something tangible to test executable environment and other assumptions.
-* In general, the scout codebase is in Rust, we've been Rust-focused
-* We'll be going ahead and building that off the work Lighthouse has done to build the prototype.
-* We are kicking that off next week.
-* Started diving into some research connected to Vitalik's post on State Schemes
-    * Found a pretty novel approach/idea on how to iterate on that
-    * How to build an on-chain multi-shard state scheme that can support generalized contracts
-    * This all follows the delayed-state execution model
-* Posted first-half on Ethereum Research yesterday and we'll be posting the second-half and the applicability to state schemes and Ethereum 2 and multi-shard behavior and what that can open up. Open to feedback on this as there are some cool applications there.
+**Timestamp: [33:06](https://youtu.be/YB8o_5qjNBc?t=1986)**
+
+**Vitalik Buterin**: Not much progress from myself. One of the bigger issues and trade-offs to think about is still how free markets would work. Would be good to get more feedback on that.
+
+The Plasma people are going to release a post on OVM very soon.
+
+**Will Villanueva**: Continuing work on SSE partials.
+
+Will have Phase 1 & Phase 2 testnet, to rally people around having something tangible to test executable environment and other assumptions.
+
+In general, the scout codebase is in Rust.
+
+We'll be going ahead and building that off the work Lighthouse has done to build the prototype. Kicking that off next week.
+
+Started diving into some research connected to Vitalik's post on State Schemes
+  * Found a pretty novel approach/idea on how to iterate on that
+  * How to build an on-chain multi-shard state scheme that can support generalized contracts
+  * This all follows the delayed-state execution model
+
+Posted first-half on Ethereum Research yesterday and we'll be posting the second-half and the applicability to state schemes and Ethereum 2 and multi-shard behavior and what that can open up. Open to feedback on this as there are some cool applications there.
   - [Layer 2 state schemes](https://ethresear.ch/t/layer-2-state-schemes/5691)
-* The free market stuff we didn't continue diving as we've been in transition, we'll be looking into that these coming weeks.
-* Team is growing. John Adler is collaborating with us. Trying to grow for Rust-based researchers. Trying to do more research on Phase 1/Phase 2 in parallel to expand a lot of this.
+
+The free market stuff we didn't continue diving as we've been in transition, we'll be looking into that these coming weeks.
+
+Team is growing. John Adler is collaborating with us. Trying to grow for Rust-based researchers. Trying to do more research on Phase 1/Phase 2 in parallel to expand a lot of this.
 
 #### 3.3.4 [PegaSys](https://github.com/PegaSysEng)
-* We continue to work on hold-ups. Nothing yet.
+
+**Timestamp: [39:28](https://youtu.be/YB8o_5qjNBc?t=2368)**
+
+We continue to work on hold-ups. Nothing yet.
 
 #### 3.3.5 [Runtime Verification](https://github.com/runtimeverification/algorand-verification)
-**Musab Alturk**:
-* We have this formalization in the K framework, directly based on the specification.
-* Migrated to v0.8 and are looking to have something testable.
-* There's an abstract model, lower priority type of development at the moment, but helpful for the future.
+
+**Timestamp: [39:44](https://youtu.be/YB8o_5qjNBc?t=2384)**
+
+**Musab Alturk**: We have this formalization in the K framework, directly based on the specification.
+
+Migrated to v0.8 and are looking to have something testable.
+
+There's an abstract model, lower priority type of development at the moment, but helpful for the future.
 
 ### 3.4 [Network](https://youtu.be/YB8o_5qjNBc?t=2470)
 
 
 #### 3.4.1 [Libp2p](https://github.com/libp2p/js-libp2p)
 
-**Mike Goelzer**
-* Grant front, the grant that we're making to Harmony for the minimal JVM libp2p that was mentioned, will be finalized Monday.
-* About six weeks ago there was a discussion about js-libp2p not being "production-ready". We went to chain safe folks who are working most closely on js-libp2p and asked: "hey what would you do to make this production-ready?" They put together a proposal primarily about switching to typesafe Javascript to Typescript and improvements to the documentation and examples.
-* What I wanted to check with the folks on this call, are there any concerns on js-libp2p that we should be addressing, either us or chain safe.
-    * The reason is I want to make a grant to them to get js-libp2p to a production-ready state and I want to include everything.
-    * js-ibp2p has been in production on IPFS, so it's not completely untested. But I do understand that Ethereum might have different requirements.
-* Any opinions please let me know.
-    * @MikeGoelzer on Telegram
-* Last thing, will say more on next call. We're working with the Ethereum community to answer questions about what is Protocol Labs relationship to libp2p and about the project in general.
-    * Haven't done a great job out of neglect.
-    * When we have written answers to all the question, we will share them with the community.
+**Timestamp: [41:10](https://www.youtube.com/watch?v=YB8o_5qjNBc&feature=youtu.be&t=2470)**
+
+**Mike Goelzer** Grant front, the grant that we're making to Harmony for the minimal JVM libp2p that was mentioned, will be finalized Monday.
+
+We went to chain safe folks who are working most closely on js-libp2p and asked: "hey what would you do to make this production-ready?" They put together a proposal primarily about switching to typesafe Javascript to Typescript and improvements to the documentation and examples.
+
+
+Are there any concerns on js-libp2p that we should be addressing, either us or chain safe. I want to make a grant to them to get js-libp2p to a production-ready state and I want to include everything.
+
+js-ibp2p has been in production on IPFS, so it's not completely untested. But I do understand that Ethereum might have different requirements.
+
+Any opinions please let me know. Telegram: @MikeGoelzer.
+
+We're working with the Ethereum community to answer questions about what is Protocol Labs relationship to libp2p and about the project in general.When we have written answers to all the question, we will share them with the community.
 
 
 **Raúl Kripalani**:
@@ -527,6 +583,8 @@
 
 #### 3.4.2 Gossiping Mechanism and [Episub](https://github.com/libp2p/specs/blob/master/pubsub/gossipsub/episub.md)—Artemis, Prysmatic Labs, Lodestar Handles Exchange
 
+**Timestamp: [1:07:56](https://youtu.be/YB8o_5qjNBc?t=4076)**
+
 **Whiteblock**:
 * Internal last week we had three common teams in the same room: Artemis, Prysmatic Labs, Lodestar.
 * Able to have an exchange of handles between Prysmatic and Artemis using the Simple Hobbits approach.
@@ -658,6 +716,8 @@
 
 ### 3.5 [Spec Discussion](https://youtu.be/YB8o_5qjNBc?t=5095)
 
+**Timestamp: [1:24:57](https://youtu.be/YB8o_5qjNBc?t=5095)**
+
 **Danny Ryan**:
 * I know implementers mentioned the SSE. There were a couple more escape types that were added to SSE, specifically the Bit List and Bit Vector, that moves some of the low-level validation of bytes out the spec and into the typing system.
 * This was done:
@@ -714,15 +774,16 @@
 
 ### 3.6 [Open Discussion/Closing Remarks](https://youtu.be/YB8o_5qjNBc?t=5540)
 
+**Timestamp: [1:32:20](https://youtu.be/YB8o_5qjNBc)**
 
-**Danny Ryan**:
-* Any other things before we close today?
+**Danny Ryan**: Any other things before we close today?
 
-**Joseph Delong**:
-* For the interop, I just wanna say that the invitations went out to team leads. Those invitations are good until the 14th. And for the Antoine's in the call, that's Bastille Day.
-* After that, we're gonna reshuffle and send out more invitations to some of the teams that are wanting to attend. So make sure that you register.
-* There are a bunch of teams that haven't registered. Please do register in the next 3 days.
+**Joseph Delong**: For the interop, I just wanna say that the invitations went out to team leads. Those invitations are good until the 14th. And for the Antoine's in the call, that's Bastille Day.
 
-**Danny Ryan**:
-* It's easy and free to register.
-* We'll meet in 2 weeks, take a look at the calendar first. See ya.
+After that, we're gonna reshuffle and send out more invitations to some of the teams that are wanting to attend. So make sure that you register.
+
+There are a bunch of teams that haven't registered. Please do register in the next 3 days.
+
+**Danny Ryan**: It's easy and free to register.
+
+We'll meet in 2 weeks, take a look at the calendar first. See ya.
