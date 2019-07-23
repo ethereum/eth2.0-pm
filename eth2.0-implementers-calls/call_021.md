@@ -129,7 +129,7 @@ We've started with pySpec and the goal executable specs. I think the next target
 
 The State itself is easily randomized. It contains script traffic contents. It has several validity assumptions.
 
-We are looking to make this extension of the State more intelligent so that you could make more progress in a chain test review of more different pre-states being Fuzzed.
+We are looking to make this extension of the State more intelligent so that you could make more progress in a chain test.
 
 **Jacek Sieka**: What's the difference between that and the YAML file?
 
