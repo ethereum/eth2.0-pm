@@ -119,7 +119,7 @@ We've started with pySpec and the goal executable specs. I think the next target
 
 **Danny Ryan**: We'll go the experiment round with one and learn some things.
 
-**Diederik Loerakker**: We are Fuzzing v0.8.0 and Go excludes post-spec is almost up-to-date now, pySpec already is. It's really up to the hosts, as the first clients, to also be on the same spec version. Ain't gonna start so soon.
+**Diederik Loerakker**: We are Fuzzing v0.8.0 and Go executable spec is almost up-to-date now, pySpec already is.
 
 **Jacek Sieka**: About the Fuzzing, how do you drive it? Like how is the Fuzzing driven, what is the input?
 
