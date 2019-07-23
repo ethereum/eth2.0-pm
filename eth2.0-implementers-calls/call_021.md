@@ -117,7 +117,7 @@ Relatively non-substantive changes (fixes, documentation, and things) in v08x br
 
 We've started with pySpec and the goal executable specs. I think the next target for integration will be Lighthouse. Hopefully, a lot of the infrastructure will be generic for clients. Might come in the next two weeks, hopefully.
 
-**Danny Ryan**: We'll go the experiment round with one and learn some things.
+**Danny Ryan**: We'll start the experiment with one client and learn some things.
 
 **Diederik Loerakker**: We are Fuzzing v0.8.0 and Go executable spec is almost up-to-date now, pySpec already is.
 
