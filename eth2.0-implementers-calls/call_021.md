@@ -127,7 +127,7 @@ We've started with pySpec and the goal executable specs. I think the next target
   1. States
   2. Blocks
 
-The State itself is easily randomized. It contains script traffic contents. It has several validity assumptions.
+The State itself isn't easily randomized. It has several validity assumptions.
 
 We are looking to make this extension of the State more intelligent so that you could make more progress in a chain test.
 
