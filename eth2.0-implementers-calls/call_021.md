@@ -28,7 +28,7 @@
 		- [3.3.5 Runtime Verification](#335-runtime-verification)
 	- [3.4 Network](#34-network)
 		- [3.4.1 Libp2p](#341-libp2p)
-		- [3.4.2 Gossiping Mechanism and Episub](#342-gossiping-mechanism-and-episub)
+		- [3.4.2 Gossiping Mechanism](#342-gossiping-mechanism)
 	- [3.5 Spec Discussion](#35-spec-discussion)
 	- [3.6 Open Discussion/Closing Remarks](#36-open-discussionclosing-remarks)
 
@@ -392,282 +392,210 @@ There's an abstract model, lower priority type of development at the moment, but
 
 **Timestamp: [41:10](https://www.youtube.com/watch?v=YB8o_5qjNBc&feature=youtu.be&t=2470)**
 
-**Mike Goelzer** Grant front, the grant that we're making to Harmony for the minimal JVM libp2p that was mentioned, will be finalized Monday.
+**Mike Goelzer** The grant to Harmony for the minimal JVM libp2p will be finalized Monday.
 
-We went to chain safe folks who are working most closely on js-libp2p and asked: "hey what would you do to make this production-ready?" They put together a proposal primarily about switching to typesafe Javascript to Typescript and improvements to the documentation and examples.
+For making `libp2p` production ready, Chain Safe put together a proposal, primarily about switching to typesafe Javascript (to Typescript) and improvements to the documentation and examples.
 
-
-Are there any concerns on js-libp2p that we should be addressing, either us or chain safe. I want to make a grant to them to get js-libp2p to a production-ready state and I want to include everything.
-
-js-ibp2p has been in production on IPFS, so it's not completely untested. But I do understand that Ethereum might have different requirements.
+Are there any concerns on `js-libp2p` that we should be addressing, either us or Chain Safe? I want to make a grant to them to get `js-libp2p` to a production-ready state and I want to include everything.
 
 Any opinions please let me know. Telegram: @MikeGoelzer.
 
-We're working with the Ethereum community to answer questions about what is Protocol Labs relationship to libp2p and about the project in general.When we have written answers to all the question, we will share them with the community.
+We're working with the Ethereum community to answer questions about what Protocol Labs relationship is to `libp2p` and the project in general. When we have written answers to all the questions, we will make it public to share.
 
+**Raúl Kripalani**: There was a question about insecure transport.
 
-**Raúl Kripalani**:
-* There was a question about insecure transport which is now being used, which Hsio-Wei mentioned we should address at this part of the call.
-* We inspect the insecure transport, there was a bug that didn't allow the receiver end of the connection to know about the peer ID that was establishing a connection to them, therefore some things were failing and Go libp2p which made it difficult to produce our interoperability tests. With Go libp2p using insecure transport. So when you want to remove the encryption channel out of the question and just test whether you multiplexing is working, then this is a good approach to do so.
-* Between today and tomorrow we'll be adjusting Go libp2p to adhere to the new spec that merged a few days ago. Hopefully, that will unblock any interoperability tests that are pending.
+There was a bug that didn't allow the receiver end of the connection to know about the peer ID that was establishing a connection.
 
-**Jonny Rhea**:
-* Hey Mike so you mentioned that libp2p is not-not-production ready?
-* Was it broken out of JS IPFS and made into libp2p, what was the flow of that?
+Between today and tomorrow we'll be adjusting `go-libp2p` to adhere to the new spec that merged a few days ago.
 
-**Mike Goelzer**:
-* js-libp2p was a part of IPFS and separated into a separate system/github org, but that version (node/javascript) we use now. The history all started in IPFS. js-libp2p and Go libp2p were broken out of the IPFS version. The new Rust libp2p implementation as well. They are all based on the same principles.
+**Jonny Rhea**: Was `libp2p` broken out of `js-ipfs` and made into libp2p, and what was the flow of that?
 
-**Dean Eigenmann**:
-* What is the current state spec? I want my client to connect with other clients.
-* Last time I looked at it, Go is also under refactoring.
+**Mike Goelzer**: Initially, `js-libp2p` was a part of IPFS and made a separate system, but now it's what `js-ipfs` uses today.
 
-**Mike Goelzer**:
-* We would like libp2p to be a spec-first project. We have a docs writer opening PRs on the specs repo, to define the correct behavior based on what's happening in the Go implementation.
+All `libp2p` implementations are based on the same principles `go-libp2p` and `js-libp2p` use.
+
+**Dean Eigenmann**: What is the current state spec?
+
+**Mike Goelzer**: We would like `libp2p` to be a spec-first project. We have a docs writer opening PRs on the specs repo, to define the correct behavior based on what's happening in the Go implementation.
     * [libp2p specification](https://github.com/libp2p/specs)
-* In the meantime, we recommend you refer to the Go implementation, which we consider sort of the reference implementation.
-* The only major refactor is the core refactor where we pulled out a bunch of interfaces into their repo. That didn't change anything in the wire protocol, it just makes it easier to read.
+
+In the meantime, we recommend you refer to the Go implementation.
+
+**Raúl Kripalani**: There aren't gonna be further changes to `libp2p`. But, we're taking suggestions.
+
+You should not any longer expect the implementation to change without there being a spec up-front. We are being very strict about this.
+
+Updates made to `libp2p` specs to make it more organized (table of contents, index, etc.).
+
+We merged the specs lifecycle and maturity meta-spec.
+
+This spec serves as a unifying spec, that ties a lot of concepts seen in other specs:
+ - [Connections & upgrading #168](https://github.com/libp2p/specs/pull/168/files)
+
+**Dean Eigenmann**: Is this spec at a state where I can implement off that spec, or do I need to go through the Go code, hitting interfaces without clear documentation?
 
 **Raúl Kripalani**:
-* There aren't gonna be further changes to libp2p, only suggestions for bringing different constructs and approaches to do connection management to handle the peer store.
-* Those are going to be spec first, you should not any longer expect the implementation to change without there being a spec up-front. We are being very strict about this.
-* The place you are where you need to follow a particular implementation should not happen anymore.
-* Right now in one record, instead of fifteen, makes it much easier.
-* Go through the libp2p specs, there is now an index, table of contents, and open PRs.
-* A few weeks ago we lacked a process to define spec maturity, so this is now merged into a meta spectrum. Much more structured.
-* A new announcement which unifies a lot of concepts in terms of how connections are handles, how streams are handled, how the connection upgrade process works.
-    * [Connections & upgrading #168](https://github.com/libp2p/specs/pull/168/files)
+It's hard to give a generic answer because the specs are modular. Each spec will its own maturity.
 
-**Dean Eigenmann**:
-* I kinda still don't understand on the maturity of the current spec. Going through the Go code, whenever I debug I find some kind of interface, where I end up playing "find the implementation" to figure out what libp2p does.
-* So is this spec at a current state where I can implement off that spec, or do I need to keep going through the Go code repeatedly and keep hitting interfaces without clear documentation trying to figure out what those implementations do myself?
+Maybe we get in a call offline to guide you through the process.
 
-**Raúl Kripalani**:
-* I understand your frustrations, why don't we do one thing. I'd like to provide a bit of like mentoring right here to understand what the process is when you start from scratch a new implementation on libp2p. It's hard to give a generic answer because the specs are modular, so each spec will have a different maturity.
-* Maybe we get in a call offline and establish a channel of communication and guide you through the process.
+**Raúl Kripalani**: Unsecured transport, does that means it's an unencrypted clear-text channel?
 
-**Raúl Kripalani**:
-* About the unsecured transport, does that means it's an unencrypted clear-text channel?
+**Raúl Kripalani**: Yes, not for use in production. Intended only for testing.
 
-**Raúl Kripalani**:
-* Yes, not for use in production. Intended only for testing. It didn't work against other implementations in libp2p. It only worked internally. Now that we have a hybrid ecosystem, there are others that are trying to test their inner pieces that come after the security handshake that does not rely on a secure channel, like multiplexing or other protocols. There is some value in having a standardized and secure transport, ONLY FOR TESTING PURPOSES.
+**Jacek Sieka** Assuming that some client doesn't have SECIO implemented yet, then they can start using this more simple one?
 
-**Jacek Sieka**
-* Assuming that some client doesn't have SECIO implemented yet, then they can start using this more simple one.
+**Raúl Kripalani**: Exactly.
 
-**Raúl Kripalani**:
-* Yes, allows MPLEX person to test against an insecure version, while other work on SECIO.
+**Jacek Sieka** Does it authenticate?
 
-**Jacek Sieka**
-* Does it authenticate?
+**Raúl Kripalani**: The initial handshake authenticates. But subsequent messages/bytes are not authenticated.
 
-**Raúl Kripalani**:
-* The initial handshake, the initiating peer should have a peer ID, the receiving end is exchanging its peer ID and its public key, so it can check it is them. But subsequent messages/bytes are not authenticated.
+**Whiteblock**: On `js-libp2p`, I believe Gossip Sub has been implemented by Chain Safe and is not used by IPSF?
 
-**Whiteblock**:
-* Question about libp2p, back to Mike's point about production readiness of the rest of libp2p.
-* I believe Gossip Sub has been implemented by chain safe and is not used by IPSF?
+**Mike Goelzer**: Yes, not integrated in IPFS.
 
-**Mike Goelzer**:
-* Yeah, that is correct.
+**Whiteblock**: That would be something to ensure it is production ready.
 
-**Whiteblock**:
-* That would be something to ensure it is production ready.
+**Mike Goelzer**: Fair point, there are some features that Ethereum 2 cares about that IPFS isn't battle testing. We need to do testings on Gossip Sub.
 
-**Mike Goelzer**:
-* Fair point, there are some features that Ethereum 2 cares about that are part of the system, IPFS isn't battle testing them.
+**Raúl Kripalani**: I think the IPFS team would be happy to intake Gossip Sub and to add an experimental flag to enable it.
 
-**Raúl Kripalani**:
-* For the record, I think the IPFS team would be super happy to intake Gossip Sub and to add an experimental flag to enable it, just like the Go IPFS project has done and even conduct interoperability testing out in the wild, with IPFS and Gossip Sub enabled on both Go and JS.
+**Greg Markou**: As we approach doing light client, that's a main focus. Chrome extension light clients will need to rely exclusively on Gossip Sub. What steps will you take to make that harden?
 
-**Greg Markou**:
-* Yeah, for transparency, the main reason I want to have more than just looking at it.
-* As we approach doing light client, I wanna make sure that people can have a chrome extension light client in their browser that's gonna have to rely exclusively on Gossip Sub, so I want to take steps to make that harden.
+**Raúl Kripalani**: I will start a conversation to integrate your work, Gossip Sub, into IPFS.
 
-**Raúl Kripalani**:
-* I will start a conversation to integrate your work, Gossip Sub, into IPFS as a medium for shipping it to an actual finished product to the world.
-* Secondly, we are working on a testlab infrastructure that would allow us to deploy different clients at scale and test interactions between them and so-on.
-* Then we can look at other projects using js-libp2p, including MetaMast, to implement Gossip Sub and test it.
+Secondly, we are working on a testlab infrastructure that would allow us to deploy different clients at scale and test interactions between them and so-on.
 
-**Benjamin Burns**:
-* Is there a date you plan to have the specs finalized, to the point where you expect people to implement against them rather than the Go code?
+We can look at other projects using `js-libp2p`, including MetaMast, to implement Gossip Sub and test it.
 
-**Mike Goelzer**:
-* Not a date yet, but this question came up. We will update you next time on the decision there.
-* The biggest bottleneck for us is we need to hire a second specs writer
-    * If anyone can refer someone who is looking for a job and does technical writing?
+**Benjamin Burns**: Is there a date you plan to have the specs finalized?
 
-**Whiteblock**:
-* Does it need to be hired? How can we help you as a community to get it done?
+**Mike Goelzer**: Not a date yet, we were talking about creating one. We will update you.
 
-**Mike Goelzer**:
-* We definitely would be receptive to PRs, people who understand the Go codebase well would be the best one to write specs for it.
-    * The person to contact is Yusef Napora, who is responsible for writing the specs right now. Ping him on Github and ask him where's a place to focus on.
-    * [Yusef Napora's Github](https://github.com/libp2p/specs/commits?author=yusefnapora)
+The biggest bottleneck for us is we need to hire a second specs writer. Looking for referrals for a documentation writer.
 
-**Raúl Kripalani**:
-* Create a pipeline in a public calendar and create a status-matrix where people can see what the state is of each element is and get involved. We should create an issue for each of them, so people who want to help can jump in and help.
+**Whiteblock**: Does it need to be hired? How can we help you as a community to get it done?
 
-**Whiteblock**:
-* Do you want to open some Gitcoin grants or bounties to speed up the things?
+**Mike Goelzer**: We would be receptive to PRs. People who understand the Go codebase well would be best.
 
-**Mike Goelzer**:
-* We are open to making grants.
-* We haven't been using Gitcoin, would like to, but haven't had time to.
-* If there are people who are interested in grant-work for improving the specs, they should get in touch with us.
+The person to contact is Yusef Napora, who is responsible for writing the specs right now.
+- [Yusef Napora's Github](https://github.com/libp2p/specs/commits?author=yusefnapora)
 
-**Danny Ryan**:
-* I do want to highlight this PR that was the combining of two other PRs
-* There's some already some good conversation on here, but I do want someone from each team to look at this and participate. Something we want to get merged soon and iterate on. So please take a look at PR #1281
-    * [Libp2p Standardization Update #1281](https://github.com/ethereum/eth2.0-specs/pull/1281)
-* Adrian, anything you want to say on that before we move on?
+**Raúl Kripalani**: We can potentially create a pipeline for specs in a public calendar, allowing others to get involved.
 
-**Adrian Manning**:
-* Not really, ideally if people can look and give opinions, we can modify it.
+**Whiteblock**: Do you want to open some Gitcoin grants or bounties to speed up the things?
 
-**Jacek Sieka**:
-* Do you anticipate that we can use the same discovery for Eth1 and Eth2 at some point?
+**Mike Goelzer**:  We are open to making grants. If there are people who are interested in grant-work for improving the specs, they should get in touch with us.
 
-**Adrian Manning**:
-* We're using DISC v5 at the moment.
-
-**Danny Ryan**:
-* If the question is "if Eth1 is getting migrated to v5", the answer is yes.
-* The intention is to use the same unified discovery in parallel across both protocols.
-* Discussion with some people that are doing an audit on the protocol DISC v5. Expects iterative on the spec after it finishes, then performance.
+**Danny Ryan**: I do want someone from each team to look at this PR to get merged relatively soon.
+- [Libp2p Standardization Update #1281](https://github.com/ethereum/eth2.0-specs/pull/1281)
 
 
-#### 3.4.2 Gossiping Mechanism and [Episub](https://github.com/libp2p/specs/blob/master/pubsub/gossipsub/episub.md)—Artemis, Prysmatic Labs, Lodestar Handles Exchange
+**Adrian Manning**: If people can look and give opinions, we can modify it.
+
+**Jacek Sieka**: Do you anticipate we can use the same discovery for Eth1 and Eth2 at some point?
+
+**Adrian Manning**: We're using DISC v5 at the moment.
+
+**Danny Ryan**: If the question is "If Eth 1 is getting migrated to v5?" the answer is yes.
+
+Discover v5, contacted people for an audit on the protocol.
+
+
+#### 3.4.2 Gossiping Mechanism
 
 **Timestamp: [1:07:56](https://youtu.be/YB8o_5qjNBc?t=4076)**
 
-**Whiteblock**:
-* Internal last week we had three common teams in the same room: Artemis, Prysmatic Labs, Lodestar.
-* Able to have an exchange of handles between Prysmatic and Artemis using the Simple Hobbits approach.
-* We are learning on that, most of the ugly bits have been on the people collaborating and not the technical side. Given the Hobbits is not too complex.
-* Next level, the ability to Gossip bits between the different instances.
-    * We're also trying to gauge from the Moloch DAO tester and all the valuable work that we did into creating this type of testnet, what would it take to create a test-bench where we would be able to really create a Genesis even, make it possible for all the peers to recognize each other even over a static hearing is fine for now. And to start having an exchange of block attestations, making sure that it's working all the time.
-* There are separate efforts in parallel:
-    * One is to work on the gossipping approach. Right now the gossip is extremely simple. We simply tell everyone we have a block and they can ask for it, or we have an attestation and they can ask for it.
-    * The other side, we're working on all sorts of utilities and tools so it's possible for the community to run a testnet with the various clients, so there are several stylization items around the keystore. On making sure we can all generate the same genesis event and it can work with a gift note on the local network, it can generate that from its state of a contract being deployed there.
-* At white block we can snapshot the state and so we create testnet where the state is already snapshotted. We will be using that tech as much as possible to shorten the dev cycles. It takes quite a bit to create the whole set-up every time.
+**Whiteblock**: Internal last week, we had Artemis, Prysmatic Labs, Lodestar for an exchange of handles using the Simple Hobbits approach.
 
-**Danny Ryan**:
-* Some client are currently gossiping hashes and doing RPC calls for retrieval of that data.
-* We assume that the latency of that will be too high and gossiping full objects is going to be the proper path.
+Next step, improving the ability to Gossip bits between  different instances.
 
-**Whiteblock**:
-* Right, we cripple this to a point where it's very very simple for the reason of just having interoperability.
-* At collection time you want to use something like Gossip Sub or even Episub where we can really tune-in the number of peers and have propagation that is impossible to stop, from a network perspective, the propagation of a message. But it's also much easier on the network.
-* All this needs to be benchmarked, so that helps us increment to increase advancements.
+We're also trying create a testnet, which would create a test-bench (genesis event, peer recognition, exchange of block attestations, etc.).
 
-**Jonny Rhea**:
-* At Preston's suggestion, that we simplify the gossiping mechanism.
-* The egress or ingress charges were high on GCP, and that methodology help cut the cost down. Is that right Preston?
+One effort is to work on the gossiping approach. Right now our approach is very simple.
 
-**Preston**:
-* I think what you're referring to is when we're creating the announcement messages?
-* So if we've created a new block, will announce the hash of it, which is of constant size.
-* That gets gossiped to the entire network and if people hear it redundantly, they're not getting this redundant large data, they're only getting a small piece.
-* I tell you this new block and if you want it, you dial back and ask me what the data is.
-* That's been helping us same some data there.
-* In terms of keeping it simple, I think that for the Hobbit's implementation. Don't undertake this and get it super complex because it's just to see basic interops, so I was advocating keeping that simple as well.
-
-**Danny Ryan**:
-* What I'm saying though is that announcement of identifier and subsequent request, though does same bandwidth, I think is gonna induce way to high of latencies on the network.
-    * Because at the beginning, nobody knows about it. So you're strictly wasting time.
-* Potentially there's a hybrid strategy where maybe a portion to the slot you're gossiping identifier, but I don't the extreme of strictly gossiping identifier at the beginning is gonna be the proper way.
-
-**Preston**:
-* I would agree with that for blocks because those have some big urgency, but for attestations, it's not as urgent and you can still get away with broadcasting a subset of it without having to do the full data.
-* It's worth looking into, but I agree there's now a round trip if you're trying to get blocks out pretty quickly.
-
-**Jonny Rhea**:
-* Danny, your suggestion is very similar to Episub or Epidemic Broadcast Trees, just FYI that hybrid approach.
+Another effort is creating utilities and tools for the community to run a testnet.
 
 
-**Danny Ryan**:
-* Jannik, we did do some experimentation on Episub awhile ago. What were your findings there?
+**Danny Ryan**: Some client are currently gossiping hashes and doing RPC calls for retrieval of that data. Our assumption is the latency will be too high and gossiping full objects is going to be the proper path.
 
-**Jannik Luhn**:
-* That it didn't have much, if at all.
-* Episub is different from what Danny just suggested because it's not based on timing.
-* If I understood correctly, he wanted to basically send four blocks in the first half of the slot and then only hashes in the second half? Whereas in Episub you just keep track of what information you receive from which peer and then you decide on what to send to that peer again?
+**Whiteblock**: Right, we crippled this to a point where it's very very simple for the reason of just having interoperability.
 
-**Jonny Rhea**:
-* It's still a hybrid approach because you have the actual gossiping of the full block if it's an eager peer and if it's a lazy peer you just tell it "hey I have this". It splits the difference is my point.
+At collection time you want to use something like Gossip Sub or even Episub.  All this needs to be benchmarked.
 
-**Kevin Main-Hsuan Chia**:
-* I think it's already in the Gossip Sub, that I want and I have this thing.
+**Jonny Rhea**: At Preston's suggestion, we simplified the gossiping mechanism. Is that right Preston?
 
-**Whiteblock**:
-* Really? Because I think Gossip Sub is probabilistic.
+**Preston**: I think what you're referring to is when we're creating the announcement messages.
 
-**Jonny Rhea**:
-* Yeah, that was my understanding too.
+In terms of keeping it simple, I think that's for the Hobbit's implementation. It's to see basic interops.
 
-**Whiteblock**:
-* I don't know that any subs that we implemented, since we have libp2p guys on the call, what's the level of maturity of Episub?
+**Danny Ryan**: Announcement of identifier and subsequent request, though it does same bandwidth, may induce excessive latencies on the network.
 
-**Raúl Kripalani**:
-* Episub was an idea in the pipeline, but not highly prioritized right now.
-* Where Episub is optimal, is when you have very stable dissemination patterns in the network. So very few producers and a lot of consumers in the network.
-* Therefore Episub, by using the tree and broadcast screens, you're able to figure out the best-spanning tree in the network to disseminate messages. That is coming from a very small set of producers.
-* We don't have that pattern, that's why we haven't prioritized that. But if this is the case for Eth 2.0, then definitely worth reactivating this discussion.
+Potentially there's a hybrid strategy, but I don't the extreme of strictly gossiping identifier at the beginning is gonna be the proper way.
 
-**Jonny Rhea**:
-* I'd be interested if someone has looked into what's best for gossiping blocks as opposed to attestations if we've thought about that.
-* That's a good point, Raúl, by the way. As far as the trade-offs.
+**Preston**: It's worth looking into, but I agree there's now a round trip if you're trying to get blocks out pretty quickly.
 
-**Kevin Main-Hsuan Chia**:
-* I just want to add that I think the message identifier scheme is sorting process up now.
-* Episub is more like you grab and prune the agents, their peer connections. It's a different scenario.
-* I think Jannik has done some pull-push simulation before?
+**Jonny Rhea**: Danny, your suggestion is very similar to Episub or Epidemic Broadcast Trees, just FYI that hybrid approach.
 
-**Jannik Luhn**:
-* That was similar to Danny and such tested, but I don't remember why.
+**Danny Ryan**: Jannik, what were your findings on the Episub experimentations?
 
-**Raúl Kripalani**
-* Is there a reason you believe an Epidemic Broadcaster approach could be efficient for pool in this message propagation paradigm that you have in Eth 2.0?
+**Jannik Luhn**: That it didn't have much, if at all.
 
-**Jonny Rhea**:
-* I don't know, just let me know, speculate and throw something out there.
-* Maybe gossip sub is better for gossiping blocks and attestation is better for attestations.
-* Reverse that, Episub is better for blocks and Gossip sub is better for attestations.
+Episub is different from what Danny just suggested because it's not based on timing.
 
-**Danny Ryan**:
-* I guess I'm not certain, I know that the Beacon chain subnet would probably be more stable over time, whereas these other topics may alter quickly.
-* There might be a trade-off between what gossiping we're using for short subnets versus beacon subnet. I'm not certain.
+**Jonny Rhea**: It's still a hybrid approach because you have the actual gossiping of the full block if it's an eager peer and if it's a lazy peer you just tell it, "Hey I have this". It splits the difference.
 
-**Raúl Kripalani**:
-* As a way forward to continue discussing this topic, if somebody could put together maybe a small blurb on what the difference is in message propagation on these particular circuits, then I can involve someone on the libp2p team who is a gossiping specialist. Asking them if we could have a hybrid router that we could attach specific dissemination routing strategies for one topic, and a different routing for a different topic, and so on, and somehow arrive at different pots in the network.
+**Kevin Main-Hsuan Chia**: I think it's already in the Gossip Sub, that I want and I have this thing.
 
-**Danny Ryan**:
-* I have some notes on this that describe the timing of the broadcast as well as the size and can add some notes about the stability of topics and stuff. I will pass it on to you.
+**Whiteblock**: Is it? Because I think Gossip Sub is probabilistic.
 
-**Jacek Sieka**:
-* I want to point out that all these schemes introduce extra opportunities for failures and issues in general.
-* The absolute minimum approach of gossiping full blocks is very very resilient. It's full-proof so-to-speak.
-* Anything on top of that, we should be very careful of motivating that with substantial gains, because the simplicity of normal flooding makes it extremely resilient against all kinds of attacks.
+**Jonny Rhea**: Yeah, that was my understanding too.
 
-**Whiteblock**:
-* One way to address this
-    * Whatever gossiping protocol we end up choosing we have this baseline where it's always possible to going back to flooding and it works.
-* An adaptable approach where we start with flooding. We can maybe optimize it down the road, but we need to test that.
-* Did some testing of Flood Sub with Wedlock, it does not perform in the period with the number of bytes which are required for blocks, by the Eth 2.0 protocol.
-* But I might be wrong, I think there's more research and testing needed there. That's what we know at this point.
+**Whiteblock**: I don't know that Episub was implemented, since we have `libp2p` guys on the call, what's the level of maturity of Episub?
 
-**Jacek Sieka**:
-* Gossip sub was chosen for its substantial improvements in early experiments.
+**Raúl Kripalani**: Episub was an idea in the pipeline, but not highly prioritized right now. Episub is optimal where you have very stable dissemination patterns in the network.  If we have a pattern of a small number of producers for Eth 2.0, then it'll be worth reactivating this discussion.
 
-**Raúl Kripalani**
-* Let me provide some insight there to how you make decisions regarding which gossiping pattern to choose. Generally, it's all a matter of trade-offs.
-    * Flood Sub is very resilient to all kinds of attacks as it's very naive. The key's simplicity here, so you just broadcast messages to every single peer that you connected to that you believe is interested in that message.
-        * However, that introduces a massive amplification factor on IO, which depending on the traffic, the volume, the size of the messages, the latency of links, and several things, could potentially harm more than benefit. So that's one trade-off.
-    * Then as you start cutting down on the amplification factor because you say well if these peers are supposed to be redundantly connected and indirectly redundantly connected. So a particular message may arrive at a peer way too many time due to the amplification factor, then you do wanna start getting more intelligent to how you tell peer "stop sending me this redundant message".
-        * Your trade-off here could be to reduce write amplification and overall traffic in the network.
-* Happy to continue the discussion. Tests are measuring Gossip Sub that needs to be revisited, that tested the wrong things.
-* Open to exploring different approaches. Understanding training down to the requirements to understand if a hybrid between Gossip Sub and Epi Sub, or Flood Sub as a fallback, could even advance the state of the art in the way these algorithms could be implemented.
+**Jonny Rhea**: I'd be interested if someone has looked into what's best for gossiping blocks as opposed to attestations if we've thought about that.
+
+**Kevin Main-Hsuan Chia**: I want to add, I think the message identifier scheme is sorting process up now. Episub is more like you grab and prune the agents. It's a different scenario.
+
+I think Jannik has done some pull-push simulation before?
+
+**Jannik Luhn**: That was similar to Danny and such tested, but it also didn't happen. I don't remember why.
+
+**Raúl Kripalani** Is there a reason you believe an Epidemic Broadcaster approach could be efficient for this message propagation paradigm that you have in Eth 2.0?
+
+**Jonny Rhea**: I don't know. Maybe Episub is better for blocks and Gossip sub is better for attestations.
+
+**Danny Ryan**: There might be a trade-off between what gossiping we're using for short subnets versus beacon subnet. I'm not certain.
+
+**Raúl Kripalani**: If somebody could put together maybe a small blurb on what the difference is in message propagation on these particular circuits, then I can involve someone on the `libp2p` team who is a gossiping specialist. See if we could have a hybrid router to somehow arrive at different paths throughout the network.
+
+**Danny Ryan**: I have some notes on this that describe the timing of the broadcast as well as the size and can add some notes about the stability of topics and stuff. I will pass it on to you.
+
+**Jacek Sieka**: I'll point out, all these schemes introduce extra opportunities for failures and issues in general.
+
+The minimum approach of gossiping full blocks is very very resilient. Full-proof so-to-speak.
+
+Anything additional, we should be very careful of motivating that with substantial gains, because the simplicity of normal flooding makes it extremely resilient against all kinds of attacks.
+
+**Whiteblock**: Whatever gossiping protocol we end up choosing we have this baseline where it's always possible to going back to flooding and it works.
+
+We should have an adaptable approach where we start by flooding, and maybe optimize down the road. But we need to test that.
+
+Did some testing of Flood Sub with Wedlock, it does not perform in the span of time with the number of bytes required for blocks, by the Eth 2.0 protocol. I might be wrong, I think there's more research and testing needed there.
+
+**Jacek Sieka**: My understanding is, Gossip Sub was chosen for its substantial improvements in early experiments.
+
+**Raúl Kripalani** Generally, it's all a matter of trade-offs.
+
+
+Flood Sub is very resilient to all kinds of attacks as it's very naive.  However, it introduces a massive amplification factor on IO, which could potentially harm more than benefit. One trade-off.
+
+Then as you start cutting down on the amplification factor, if a particular message arrives at a peer too many times due to the amplification factor, then you want to start getting more intelligent on how you tell a peer, "Stop sending me this message." Your trade-off here could be to reduce write amplification and overall traffic in the network.
+
+Happy to continue the discussion.  Open to exploring different approaches.
 
 
 ### 3.5 [Spec Discussion](https://youtu.be/YB8o_5qjNBc?t=5095)
