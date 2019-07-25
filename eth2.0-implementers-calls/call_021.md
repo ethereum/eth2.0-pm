@@ -231,12 +231,10 @@ There is an insecure connections stake, which will be brought up in the Networki
 
 **Mikhail Kalinin**: Working on an update to v0.8 spec, we're almost there, but SSE part is still in progress.
 
-We started to work on a slot clock mechanism, which is based on network-adjusted time proposed by Vitalik.
+We started to work on a slot clock mechanism. We have a PR so far with basic implementation of that proposal.
 
-We have a PR so far with basic implementation of that protocol. I'm going to take my time on that. Also we have started a small research to investigate into attestation aggregation strategies.
+We have started a small research to investigate into attestation aggregation strategies. The goal is to evaluate an approach that doesn't involve building additional overlays.
   * [Add draft spec for plaintext key exchange protocol #186](https://github.com/libp2p/specs/pull/186)
-
-The goal is to evaluate an approach that doesn't involve building additional overlays, like handle tree.
 
 Working on minimal libp2p or JVMs.
 
@@ -247,27 +245,18 @@ Worked on multistream implementation recently.
 
 **Timestamp: [20:57](https://youtu.be/YB8o_5qjNBc?t=1257)**
 
-**Adrian Manning**: Updating lighthouse to v0.8
-
-
-Have to re-optimize our tree-hash caching to include for more padding nodes.
+**Adrian Manning**: Updating lighthouse to v0.8. We have to re-optimize our tree-hash caching to include for more padding nodes.
 
 Defining more extensive HTTP APIs which is working to improve dev experience.
 
-
-Matt from ConsenSys building out some SSE partials into our codebase.
-
+Matt from ConsenSys is building out some SSE partials into our codebase.
 
 Slowly been testing an initial version of discovery v5 in small testnets.
 
+Working towards standardizing a minimal/final libp2p for clients using libp2p.
 
-Working towards standardizing a minimal libp2p for clients that are using libp2p
-
-
-In doing so we've had to update our RPC. In particular there's a discussion for the RPC to be using separate protocol IDs per request
-
-
-[PR where we try to standardize the basic libp2p implementation](https://github.com/ethereum/eth2.0-specs/pull/1281).
+The libp2p work lead to updating our RPC. There's been discussion for the RPC to use separate protocol IDs per request:
+- [PR where we try to standardize the basic libp2p implementation](https://github.com/ethereum/eth2.0-specs/pull/1281).
 
 
 
@@ -279,11 +268,9 @@ In doing so we've had to update our RPC. In particular there's a discussion for 
 
 Issues with Genesis trigger.
 
-There's a lack of coverage for some spec test. Passed all SSE spec tests. Suprised that SSE failed in some Block sanity tests
+There's a lack of coverage for cases of spec test. Passed all SSE spec tests. Surprised that SSE failed in some Block sanity tests.
 
-Having coverage for longer based lists can be good in SSE.
-
-Getting ready for optimizing Prism, code improvements, beautician testing, improvements to clients
+Getting ready for optimizing Prism, working on code improvements, beautician testing, and generally more robust improvements to the client.
 
 #### 3.2.8 [Lodestar](https://github.com/ChainSafe/lodestar)
 
@@ -291,25 +278,19 @@ Getting ready for optimizing Prism, code improvements, beautician testing, impro
 
 **Greg Markou**: Trying to upgrade to v0.8.
 
-Began building dev tooling.
-
-Separating out types exclusively so that in Javascript you can import Ethereum 2 types into a React project down in the future. Will help with providers, like a Web3.js provider.
+Began building dev tooling. Will help with providers, like a Web3.js.
 
 SSE almost up-to-date, ironing out bugs with Proto and Prism.
 
 Should be up-to-date on [SimpleSerialize.com](https://simpleserialize.com/) for open online testing.
 
-We're working towards ensuring that BLS works properly in-browser as well. Peculiar issues there will keep you updated.
+We're working towards ensuring that BLS works properly in-browser as well. Some peculiar issues there, will keep you updated.
 
-Getting Herumi so that we can have some diversity in BLS.
+Working to using Herumi so that we can have some diversity in BLS.
 
-In regards to the client, we comfortable to start doing Block production.
+In regards to the client, comfortable to start doing Block production. Once we finish our update to v0.8, we'll start doing our testnet. Then getting it to work in-browser.
 
-One we finish our update to v0.8, we'll start doing our testnet so that we can see how that plays out.
-
-Then getting that to work in-browser natively.
-
-Getting ready to do dev-tooling.
+Going back onto assembly script.
 
 Also, NIM, we're coming after you guys on the ERC20 contract, we'll get ya.
 
@@ -317,11 +298,9 @@ Also, NIM, we're coming after you guys on the ERC20 contract, we'll get ya.
 
 **Timestamp: [27:54](https://youtu.be/YB8o_5qjNBc?t=1624)**
 
-**Wei Tang**: Finished the markolization library last week, hopefully, want to extend that into a caching library, but a few missing pieces.
+**Wei Tang**: Finished the markolization library last week, hopefully, want to extend that into a caching library, but there are still a few missing pieces.
 
-We're trying to update to v0.8 spec, issue we had was in the SSE which was quite a change.
-
-Large refactoring of the codebase.
+We're trying to update to v0.8 spec. The issue we had was in the SSE, a substantial change for us. Large refactoring of the codebase.
 
 ### 3.3 [Research Updates](https://youtu.be/YB8o_5qjNBc?t=1725)
 
@@ -331,46 +310,40 @@ Large refactoring of the codebase.
 
 **Timestamp: [34:50](https://youtu.be/YB8o_5qjNBc?t=2083)**
 
-**Justin Drake**: In parallel to Phase 1 & Phase 2, the research team is doing is more education about Phase 0.
+**Justin Drake**: In parallel to Phase 1 & Phase 2, the research team is doing is more education about Phase 0. Educational documents have been made.
 
-On July 15th 1:00 PM GMT there will be a 2nd Ethereum 2.0 AMA, great opportunity to ask and answer questions related to your implementation work.
+On July 15th 1:00 PM GMT there will be a 2nd Ethereum 2.0 AMA, an opportunity to ask questions related to your implementation work.
 
-Now that the spec is frozen, if you have questions about the design, feel free to reach out. I'm, for example, Justin Drake on Telegram.
+Now that the spec is frozen, feel free to reach out with questions about the design. I'm Justin Drake on Telegram.
 
 
 #### 3.3.2 [Phase 1](https://docs.ethhub.io/ethereum-roadmap/ethereum-2.0/eth-2.0-phases/)
 
 **Timestamp: [29:08](https://youtu.be/YB8o_5qjNBc)**
 
-**Vitalik Buterin**: On research-side there's a list of To-Do's for Proof-of-Custody and Shard Blocks
+**Vitalik Buterin**: On research-side there's a list of To-Do's for Proof-of-Custody and Shard Blocks.
 
-Discovered that our approach to light clients that involved Fiat Shimmering and Active Experts didn't particularly make sense.
+Discovered our approach to light clients, involving Fiat Shimmering and Active Experts, didn't make sense.
 
-Simpler approach: Sign over the committee's route and allow clients to verify the committee's route directly. Simplifies and reduces the cost of the client protocol.
+Found a simpler approach: Sign over the committee's route and allow clients to verify the committee's route directly. There's still some decisions to what committees are for each slot and how those committees change.
 
-But still some decision to make around what the committees are for each slot and how those committees change.
+In general:
+  * Phase 0, including in the blocks a route of the crosslink committees should be fine
+  * Phase 1, including a route of the persistent committees
 
-I'd base some of the trade-offs between the properties of light clients and properties of old clients and different kinds of efficiency and safety properties. In general:
-  * Phase 0 including in the blocks some of the routes of the persist crosslink committees
-  * Phase 1 including a route of the persistent committees
+We get nice, really efficient, light clients. There's still just parameters to decide.
 
-We get a nice, really efficient, light clients. Worst-case: only slightly less efficient, in terms of bytes-per-second, than Bitcoin block headers. Best-case: Much more efficient. There's still just parameters to decide.
-
-
-Figuring out the exact structure of data in crosslinks; the tradeoff between packing the data tightly versus putting the data for each of the Block headers into a consistent position.
-
-Recently I'm leaning towards packing the data tightly, taking the data for each block-header and block, placing them beside each other. It's one of the possible approaches, not the only.
-
+Figuring out the exact structure of data in crosslinks.
 
 Not too much to do on the Shard Block side.
 
-Have a PR which, among other things, it switches from multiple attestations and a proposers signature to just having one signature that includes a proposer in the attestations. That there as an option as well.
+Have a PR which switches from multiple attestations and a proposers signature to just having one signature that includes a proposer in the attestations. That's an option as well.
 
 Not seeing any unexpected difficulties on the Phase 1 side. It's looking better and better.
 
-**Justin Drake**: To add on Phase 1, we're likely to have some cryptanalysis done.  Kovatovich analyze the cryptography that used there.
+**Justin Drake**: To add on Phase 1, we're likely to have some cryptanalysis done.  We might have Kovatovich analyze the cryptography used there.
 
-One of the primitives we're using is the Lujon symbol, as a PRF. It would still be good to have it audited because it's an assumption that's not used in production right now.
+One of the primitives we're using is the Lujon symbol, as a PRF. It would still be good to have it audited because it's an assumption not used in production right now.
 
 #### 3.3.3 [Phase 2](https://docs.ethhub.io/ethereum-roadmap/ethereum-2.0/eth-2.0-phases/)
 
@@ -382,23 +355,19 @@ The Plasma people are going to release a post on OVM very soon.
 
 **Will Villanueva**: Continuing work on SSE partials.
 
-Will have Phase 1 & Phase 2 testnet, to rally people around having something tangible to test executable environment and other assumptions.
+Will have prototype Phase 1 implementation. Will have Phase 1 & Phase 2 testnets. In general, the scout codebase is in Rust. The prototype will extend the work from Lighthouse. Kicking that off next week.
 
-In general, the scout codebase is in Rust.
-
-We'll be going ahead and building that off the work Lighthouse has done to build the prototype. Kicking that off next week.
-
-Started diving into some research connected to Vitalik's post on State Schemes
+Started diving into some research connected to Vitalik's post on State Schemes:
   * Found a pretty novel approach/idea on how to iterate on that
   * How to build an on-chain multi-shard state scheme that can support generalized contracts
   * This all follows the delayed-state execution model
 
-Posted first-half on Ethereum Research yesterday and we'll be posting the second-half and the applicability to state schemes and Ethereum 2 and multi-shard behavior and what that can open up. Open to feedback on this as there are some cool applications there.
+Posted first-half on Ethereum Research yesterday and we'll be posting the second-half and the applicability to state schemes and Ethereum 2 and multi-shard behavior and what that can open up. Open to hearing feedback on this.
   - [Layer 2 state schemes](https://ethresear.ch/t/layer-2-state-schemes/5691)
 
-The free market stuff we didn't continue diving as we've been in transition, we'll be looking into that these coming weeks.
+Free markets, we didn't continue diving as we've been in transition. We'll be looking into that these coming weeks.
 
-Team is growing. John Adler is collaborating with us. Trying to grow for Rust-based researchers. Trying to do more research on Phase 1/Phase 2 in parallel to expand a lot of this.
+Team is growing. John Adler is collaborating with us. Trying to grow for Rust-based researchers as well. Trying to do more research on Phase 1/Phase 2, more Phase 2 focus, in parallel to expand a lot of this.
 
 #### 3.3.4 [PegaSys](https://github.com/PegaSysEng)
 
