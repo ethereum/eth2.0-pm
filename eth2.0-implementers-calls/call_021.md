@@ -392,7 +392,7 @@ There's an abstract model, lower priority type of development at the moment, but
 
 **Timestamp: [41:10](https://www.youtube.com/watch?v=YB8o_5qjNBc&feature=youtu.be&t=2470)**
 
-**Mike Goelzer** The grant to Harmony for the minimal JVM libp2p will be finalized Monday.
+**Mike Goelzer** The grant to Harmony for the minimal `jvm-libp2p` will be finalized Monday.
 
 For making `libp2p` production ready, Chain Safe put together a proposal, primarily about switching to typesafe Javascript (to Typescript) and improvements to the documentation and examples.
 
@@ -408,7 +408,7 @@ There was a bug that didn't allow the receiver end of the connection to know abo
 
 Between today and tomorrow we'll be adjusting `go-libp2p` to adhere to the new spec that merged a few days ago.
 
-**Jonny Rhea**: Was `libp2p` broken out of `js-ipfs` and made into libp2p, and what was the flow of that?
+**Jonny Rhea**: Was `libp2p` broken out of `js-ipfs` and made into `libp2p`, and what was the flow of that?
 
 **Mike Goelzer**: Initially, `js-libp2p` was a part of IPFS and made a separate system, but now it's what `js-ipfs` uses today.
 
@@ -590,7 +590,6 @@ Did some testing of Flood Sub with Wedlock, it does not perform in the span of t
 
 **Raúl Kripalani** Generally, it's all a matter of trade-offs.
 
-
 Flood Sub is very resilient to all kinds of attacks as it's very naive.  However, it introduces a massive amplification factor on IO, which could potentially harm more than benefit. One trade-off.
 
 Then as you start cutting down on the amplification factor, if a particular message arrives at a peer too many times due to the amplification factor, then you want to start getting more intelligent on how you tell a peer, "Stop sending me this message." Your trade-off here could be to reduce write amplification and overall traffic in the network.
@@ -602,59 +601,43 @@ Happy to continue the discussion.  Open to exploring different approaches.
 
 **Timestamp: [1:24:57](https://youtu.be/YB8o_5qjNBc?t=5095)**
 
-**Danny Ryan**:
-* I know implementers mentioned the SSE. There were a couple more escape types that were added to SSE, specifically the Bit List and Bit Vector, that moves some of the low-level validation of bytes out the spec and into the typing system.
-* This was done:
-    1. To make the spec focus more on spec things and not low-level byte manipulation and byte validation.
-    2. Was also done to provide a valuable set of types in SSE that might be used in other places, such as the application area.
-* If there is byte-level stuff you need to be doing, why repeat the logic in multiple places when we can add it to the type system.
-* there are some issues, so I want to open it up for a quick decision so that we can fix it if we need to.
-* Dankrad, I know you did a lot of work on it and facilitating a lot of conversation around it. Do you have anything to add?
+**Danny Ryan**: I know implementers mentioned the SSE. There were a couple more escape types that were added to SSE.
 
-**Dankrad Feist**:
-* We want to understand pain-points here.
-* I think it's valuable to have in the SSE stack, but we don't want to make life super hard for the implementers.
+This was done to:
+1. Make the spec focus more on spec things and not low-level byte manipulation.
+2. Provide a valuable set of types in SSE that might be used in other places, such as applications.
 
-**Danny Ryan**:
-* This is not something I want to leave hanging. If you want to discuss this, feel free to open the issue and we'll discuss there over the next seven days. Otherwise, this is very critical for getting aligned with ConsenSys tests.
+There are some issues there, so I want to open it up for a quick discussion, to fix the spec and move forward if we need to.
 
-**Mamy Ratsimbazafy**:
-* Just as a comment, the more types we have defined in the SSE spec the more efficient our code, at least in NIM, can be. In terms of both code size and performance, because we have much less to check and we can insert the proper deserializing code in our codebase.
+Dankrad, do you have anything to add?
 
-**Danny Ryan**:
-* Gotcha, thanks.
-* We have a few minutes left. Are there any questions left?
+**Dankrad Feist**: We want to understand pain-points. I think it's valuable to have in the SSE stack, but we don't want to make life hard for the implementers.
 
-**Diederik Loerakker**:
-* About SSE, there's this minor thing, where we can have, fixed-size, empty containers, and empty vectors. It's kinda troublesome.
-* I know we don't currently have them in the spec. I just wanted to address it so the SSE spec could be complete.
-* What do clients like best?
-    * Do we want to make empty vector illegal?
-    * Or do we want to make lists containing them illegal?
-* Is there a use case for empty, fixed-size, containers?
+**Danny Ryan**: Is there still an open issue discussing this?
 
-**Vitalik Buterin**:
-* Well, we already made them illegal. So we're revisiting that decision.
+**Dankrad Feist**: I think the issue is closed at the moment. We can still re-open.
 
-**Diederik Loerakker**:
-* We made vectors illegal, but we also have containers. Then there's this inconsistency between lists being zero and vectors not being zero.
-* So I just want to get this right and then we can move on.
+**Danny Ryan**: If there is discussion to be had, let's do this within the next 7 days in an issue. This is very critical for getting aligned with ConsenSys tests.
 
-**Dankrad Feist**
-* So before containers and empty vectors, they're both illegal, and now we added this new thing that lists suddenly have a limited size.
-* Suddenly we have the question, "can that size be zero?"
-    * It doesn't cause the same problems as it does for vectors or containers, because it would still be a variable size type, so all the information would be needed.
-* The question's just, "is it kinda weird that we forbid one thing and not the other?"
+**Mamy Ratsimbazafy**: Just as a comment, the more types we have defined in the SSE spec the more efficient our code, at least in NIM, can be, in terms of both code size and performance.
 
-**Vitalik Buterin**:
-* I'm okay forbidding, or not forbidding, lists with zero max length.
+**Danny Ryan**: Thanks. We have a few minutes left. Any questions left?
 
-**Dankrad Feist**
-* The only question why you want to forbid it is because it might give us an easy way to "comment out some features" in the spec by setting the max length to zero.
+**Diederik Loerakker**: About SSE, where we can have, fixed-size, empty containers, and empty vectors. It's kinda troublesome.
 
-**Diederik Loerakker**:
-* We already discussed this issue. If any implemented would need this kind of type, please join the issue in the specs repository. Otherwise, I think it's not too important.
+Do we want to make empty vector illegal? Or do we want to make lists containing them illegal? Is there a use case for empty, fixed-size, containers?
 
+**Vitalik Buterin**: We already made them illegal. We are revisiting that decision.
+
+**Diederik Loerakker**: We made vectors illegal, but we also have containers. There's also inconsistency between lists being zero and vectors not being zero. I want to get this right and then we can move on.
+
+**Dankrad Feist**: Before containers and empty vectors, they're both illegal. And now we added this new thing that lists can be of size zero. The question is, "Is it kinda weird that we forbid one thing and not the other?"
+
+**Vitalik Buterin**: I'm okay forbidding, or not forbidding, lists with zero max length.
+
+**Dankrad Feist**: The only question why you want to forbid it is because it might give us an easy way to "comment out" some features in the spec by setting some max lengths to zero.
+
+**Diederik Loerakker**: We already discussed this issue. If any implemented would need this kind of type, please join the issue in the specs repository. Otherwise, I think it's not too important.
 
 ### 3.6 [Open Discussion/Closing Remarks](https://youtu.be/YB8o_5qjNBc?t=5540)
 
@@ -662,12 +645,10 @@ Happy to continue the discussion.  Open to exploring different approaches.
 
 **Danny Ryan**: Any other things before we close today?
 
-**Joseph Delong**: For the interop, I just wanna say that the invitations went out to team leads. Those invitations are good until the 14th. And for the Antoine's in the call, that's Bastille Day.
+**Joseph Delong**: For the interop, I want to say the invitations went out to team leads. Those invitations are good until the 14th.
 
-After that, we're gonna reshuffle and send out more invitations to some of the teams that are wanting to attend. So make sure that you register.
-
-There are a bunch of teams that haven't registered. Please do register in the next 3 days.
+After that, we will reshuffle and send out more invitations to some of the teams that are wanting to attend. Please do register in the next 3 days.
 
 **Danny Ryan**: It's easy and free to register.
 
-We'll meet in 2 weeks, take a look at the calendar first. See ya.
+We will likely meet in 2 weeks, you can take a look at the calendar first. Talk to everyone soon.
