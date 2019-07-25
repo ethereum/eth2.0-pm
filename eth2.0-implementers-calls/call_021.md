@@ -94,9 +94,7 @@
 
 **Timestamp: [4:06](https://youtu.be/YB8o_5qjNBc?t=245)**
 
-**Danny Ryan**: Prysmatic Labs, Terence [Tsao], found an issue where the calculation and slashing was, due to the way it was formatted, potentially overflowing in a tester for `uint64`
-
-Relatively non-substantive changes (fixes, documentation, and things) in v08x branch [#1286](https://github.com/ethereum/eth2.0-specs/pull/1286). Includes a fix to this which alters the way the computation happens. Non-substantive, but doesn't overflow. Seems relatively important so will get out v08x in the next few days (includes other minor things people have found).
+**Danny Ryan**: Prysmatic Labs, Terence [Tsao], found an issue where the calculation and slashing was potentially overflowing. Relatively non-substantive changes (fixes, documentation, etc.) in v08x branch [#1286](https://github.com/ethereum/eth2.0-specs/pull/1286) includes a fix to this.  This will branch will get out in the next few days.
 
 #### 3.1.2 [Spec Freeze](https://github.com/ethereum/eth2.0-specs/pull/1242)
 
@@ -104,79 +102,70 @@ Relatively non-substantive changes (fixes, documentation, and things) in v08x br
 
 **Diederik Loerakker**: Spec Freeze is over now, can stop throwing up to the spec and build.
 
-**Danny Ryan**: Even after the Spec Freeze we will be expanding the coverage of the tests as needed.
-
 #### 3.1.3 [Fuzzing](https://github.com/ethereum/eth2.0-specs/tree/dev/test_libs/pyspec/eth2spec/fuzzing)
 
 **Timestamp: [6:51](https://youtu.be/YB8o_5qjNBc?t=411)**
 
 
-**Justin Drake**: Goal: Basic Fuzzing infrastructure for all the clients.
-  * Client implementers don't have to worry too much about being compliant with the State Transition Function.
-  * You can spend most of your time on what makes a client "a client": Networking, Databases, and what-not.
+**Justin Drake**: The goal is to provide basic fuzzing infrastructure for all the clients. The purpose is so Client implementers don't have to worry too much about being compliant with the State Transition Function.
 
-We've started with pySpec and the goal executable specs. I think the next target for integration will be Lighthouse. Hopefully, a lot of the infrastructure will be generic for clients. Might come in the next two weeks, hopefully.
+We've started with pyspec and the goal executable specs. The next target for integration may be Lighthouse. A lot of the infrastructure will be generic for clients. May come in the next two weeks.
 
-**Danny Ryan**: We'll start the experiment with one client and learn some things.
+**Diederik Loerakker**: We are fuzzing v0.8.0, Go executable spec is almost up-to-date now, pyspec already is up-to-date.
 
-**Diederik Loerakker**: We are Fuzzing v0.8.0 and Go executable spec is almost up-to-date now, pySpec already is.
-
-**Jacek Sieka**: About the Fuzzing, how do you drive it? Like how is the Fuzzing driven, what is the input?
+**Jacek Sieka**: What is the input for fuzzing?
 
 **Diederik Loerakker**: The problem with Fuzzing is that we have 2 kinds of inputs:
-  1. States
+  1. State
   2. Blocks
 
-The State itself isn't easily randomized. It has several validity assumptions.
-
-We are looking to make this extension of the State more intelligent so that you could make more progress in a chain test.
+We are mostly focusing on Blocks now. We are looking to make this extension of the State more intelligent, to make something like a chain-test with more differing presets.
 
 **Jacek Sieka**: What's the difference between that and the YAML file?
 
-**Danny Ryan**: YAML files are particularly constructed tests. Given a pre-state and given some input that we want to hit certain conditions, certain bounds:
+**Danny Ryan**: YAML files are particularly constructed tests, something you might write in your own test feed. Given a pre-state and given some input that we want to hit certain conditions, certain bounds:
   * Maybe a normal path
   * Maybe testing right on the boundary
   * Testing past the boundary
 
-These are particularly constructed tests, something you might write in your own test feed. Whereas these (Fuzzing) are taking pre-states and modifying blocks generally at random, within some sort of bounds, and just applying them to test things that we weren't necessarily thinking about.
+Whereas these (Fuzzing) are taking pre-states and modifying blocks at random, within some sort of bounds, to test things that we weren't necessarily thinking about.
 
-**Paul Hauner**: Yeah, I'm not exactly sure how the Ethereum Foundation one works but I know May's explained how our one works
-  1. You start with a valid block or some valid object that kind of reaches as far into code path as it can
-  2. Then the Fuzzer meters all your code
-  3. Then it randomizes the fields of the original object you gave it
-  4. Then detects if it explores new code paths
+**Paul Hauner**: How ours works (not Ethereum Foundations version):
+  1. Start with a valid block or valid object that reaches far into the code path
+  2. The Fuzzer meters all your code
+  3. Randomizes the fields of the starting object
+  4. Detects if it explores new code paths
 
-It smartly tries to expand itself out to cover as much code as it can by deterministically, but somewhat randomly, modifying the object and learning about how that affected the coverage.
+It expands broadly, partially randomly modifies the object, and learns how that affected coverage.
 
-**Mamy**: The Fuzzing, that proto outline, seemed like it didn't check the bit patterns of the code path that were exercised by the framework.
+**Mamy**: That fuzzing outline seemed like it didn't check the bit patterns of the code path that were exercised by the framework.
 
-**Diederik Loerakker**: The randomization of the Block is done by let for sure and that checks the coverage and then tries to randomize as best it could. Just the parts that improve coverage.
+**Diederik Loerakker**: The randomization of the Block is done by let and that checks the coverage and then tries to randomize as best it could, but only the parts that improve coverage.
 
-And again, you don't want to first only run pre-states, it's more complicated than that.
+Again, you don't want to first only run pre-states, it's more complicated than that.
 
-**Justin Drake**: Yeah it'd definitely coverage driven and there's the randomization aspect.
+**Justin Drake**: It's definitely coverage driven and with a randomization aspect.
 
 **Danny Ryan**: Preston has a question:
-- "How does the Fuzz harness look: is it libfuzz or is this new tool compatible?"
+>"How does the Fuzz harness look: is it libfuzz or is this new tool compatible?"
 
-**Preston**: Diederik Loerakker said that it would be using libfuzz to, basically, you give the signal feedback: did you get farther through the test or was this the worst fuzzing scenario?
+**Preston**: Diederik Loerakker said that it would be using libfuzz to give the signal feedback: "Did you get farther through the test or was this the worst fuzzing scenario?"
 
-**Diederik Loerakker:**: Some people here are already libfuzz's libfuzzer.
+**Diederik Loerakker:**: Some people here are already familiar with libfuzzer.
 
-What I was just saying about these 2 different kinds of states we're working on. We have the Beacon States and the Block. We don't want to involve only the block inputs because if you're always Fuzzing the same states, you don't get the same coverage as you could if you're Fuzzing multiple states. So this why we're trying to improve on the normal architecture
+With these two states, Beacon States and the Block, we don't want to involve only the block inputs. If you always Fuzz the same states, you don't get the same coverage as Fuzzing multiple states. We're trying to improve on the normal architecture.
 
+It is similar to libfuzzer, yes.
 
-**Justin Drake**: Did he suggest that the current approach was good enough at exploring many different paths and finding bugs.
+**Justin Drake**: The current approach was good enough at exploring many different paths and finding bugs. The main limit is the speed of pyspec.
 
-Hopefully once we do differential Fuzzing on the Lighthouse, we'll get a bit more confidence.
+Hopefully once we do differential Fuzzing on the Lighthouse and go-spec, we'll get a bit more confidence.
 
-**Diederik Loerakker:** We get a lot of poor performance because of spec and hopefully also with clients. I think with PySpec is that there are these functions that are not pleasant outs they all inefficiently repeat themselves, not precomputing anything
+**Diederik Loerakker:** I think with pyspec there are these functions which all inefficiently repeat themselves, not precomputing anything.
 
+In the next go-spec updates, I optimize, precompute this, precompute that, so we get half, almost client speed, spec.
 
-Now in the next Go spec updates, I optimize, precompute this, precompute that, so we get half, almost client speed spec.
-
-
-**Danny Ryan**: One of the paths might be to differentially Fuzz against the Go spec and the clients and then if we find issues, to then go back to the Py spec and make sure we agree with what the functionality should be.
+**Danny Ryan**: One path might be to differentially Fuzz against the go-spec and the clients, and then if we find issues, to then go back to the Py spec and make sure we agree with what the functionality should be.
 
 We'll keep everyone updated about Fuzzing over the coming weeks.
 
@@ -188,18 +177,13 @@ We'll keep everyone updated about Fuzzing over the coming weeks.
 **Timestamp: [13:50](https://youtu.be/YB8o_5qjNBc?t=830)**
 
 
-**Mamy**: We launched our testnet 1, based on libp2p daemon, this morning
+**Mamy**: We launched our testnet 1, based on libp2p daemon, this morning.
 
-We are towards v0.8, all the small changes were integrated and right now a big focus is SSE
+We are working towards v0.8. All the small changes were integrated and right now a big focus is SSE.
 
-We also started to align our State Transition function with PySpec in terms of naming.
+We also started to align our State Transition function with pyspec in terms of naming.
 
-We had significant parse improvement during the past week, accumulated 20 to 30x speed-up on the State Transition bench. We identified 3 bottlenecks:
-  * In `process_crosslinks(...)` & `get_crosslinke_deltas(...)`. So both combined we had the 10x speed improvement
-  * `get_crosslink_committee(...)` via caching, we improved by 2x the speed
-
-
-If people are interested in seeing what we did, they can reproduce. Since we follow the spec-naming it should be very easy to navigate.
+We had significant parse improvement during the past week, accumulated 20 to 30x speed-up on the State Transition bench. Links, if people are interested in seeing what we did, so they can reproduce:
   * [Speed up process_crosslinks(...) and get_crosslink_deltas(...) by 10x - 15x in state_sim #314](https://github.com/status-im/nim-beacon-chain/pull/314)
   * [~2x state_sim speedup via additional caching in get_crosslink_committee #316](https://github.com/status-im/nim-beacon-chain/pull/316)
 
@@ -207,35 +191,39 @@ Published metrics library for Prometheus compact metrics:
   * [Nim metrics client library supporting the Prometheus monitoring toolkit](https://github.com/status-im/nim-metrics)
 
 
-We have a EWASM research library and we are very happy with. We have started a domain specific language in NIM that compiles to EWASM. It's quite competitive in terms of contract size:
+We have a EWASM research library we are very happy with. We have started a domain specific language in NIM that compiles to EWASM. It's quite competitive in terms of contract size:
   * [Nimplay is Domain Specific Language for writing smart contracts in Ethereum, using the Nim macro system](https://github.com/status-im/nimplay)
 
-On Ethereum 1, we had some connections issues that were resolved to Parity and Jeff.
+On Ethereum 1, we had some connections issues that were resolved to Parity and Geth.
 
 #### 3.2.2 [Artemis](https://github.com/PegaSysEng/artemis)
 
 **Timestamp: [17:05](https://youtu.be/YB8o_5qjNBc?t=1025)**
 
-**Jonny Rhea**: We've updated to there especially with the SSE
+**Jonny Rhea**: We've updated, especially with the SSE.
 
-Also been thinking about a tester slashings, computational requirements for the worst scenario
+Also been thinking about a tester slashings, computational requirements for the worst scenario.
+
+We see the need to investigate the network load, decide what strategy to use when activating.
 
 
 #### 3.2.3 [Trinity](https://github.com/ethereum/trinity)
 
 **Timestamp: [17:51](https://youtu.be/YB8o_5qjNBc?t=1071)**
 
-**Hsiao-Wei Wang**: Py SSE has been synced to v0.8 and the State Transition update is ongoing. I think it almost there thanks to Alex.
+**Hsiao-Wei Wang**: Py SSE has been synced to v0.8 and the State Transition update is ongoing. Its almost there thanks to Alex.
 
 For the networking side, integrating with the Py library, we found some required issues that we need to fix on the upstream library.
 
-We are fixing some interoperability requirements and there is an insecure connections stake.
+We are fixing some interoperability requirements.
+
+There is an insecure connections stake, which will be brought up in the Networking section of the call.
 
 #### 3.2.4 [Yeeth](https://github.com/yeeth)
 
 **Timestamp: [19:11](https://youtu.be/YB8o_5qjNBc?t=1151)**
 
-**Dean Eigenmann**: I started helping out a bit on Artemis but handed that off again. So now I'm back on updating Yeeth to the latest spec version.
+**Dean Eigenmann**: Was working with Artemis, but back to updating Yeeth to the latest spec version.
 
 #### 3.2.5 [Harmony](https://docs.ethhub.io/ethereum-roadmap/ethereum-2.0/eth2.0-teams/harmony/)
 
