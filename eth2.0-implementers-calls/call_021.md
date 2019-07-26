@@ -109,7 +109,7 @@
 
 **Justin Drake**: The goal is to provide basic fuzzing infrastructure for all the clients. The purpose is so Client implementers don't have to worry too much about being compliant with the State Transition Function.
 
-We've started with pyspec and the goal executable specs. The next target for integration may be Lighthouse. A lot of the infrastructure will be generic for clients. May come in the next two weeks.
+We've started with pyspec and the Go executable specs. The next target for integration may be Lighthouse. A lot of the infrastructure will be generic for clients. May come in the next two weeks.
 
 **Diederik Loerakker**: We are fuzzing v0.8.0, Go executable spec is almost up-to-date now, pyspec already is up-to-date.
 
@@ -123,7 +123,7 @@ We are mostly focusing on Blocks now. We are looking to make this extension of t
 
 **Jacek Sieka**: What's the difference between that and the YAML file?
 
-**Danny Ryan**: YAML files are particularly constructed tests, something you might write in your own test feed. Given a pre-state and given some input that we want to hit certain conditions, certain bounds:
+**Danny Ryan**: YAML files are particularly constructed tests, something you might write in your own test infrastructure. Given a pre-state and given some input that we want to hit certain conditions, certain bounds:
   * Maybe a normal path
   * Maybe testing right on the boundary
   * Testing past the boundary
@@ -140,9 +140,8 @@ It expands broadly, partially randomly modifies the object, and learns how that 
 
 **Mamy**: That fuzzing outline seemed like it didn't check the bit patterns of the code path that were exercised by the framework.
 
-**Diederik Loerakker**: The randomization of the Block is done by let and that checks the coverage and then tries to randomize as best it could, but only the parts that improve coverage.
+**Diederik Loerakker**: The randomization of the Block is done and then checks the coverage and then tries to randomize as best it could, following the parts that improve coverage.
 
-Again, you don't want to first only run pre-states, it's more complicated than that.
 
 **Justin Drake**: It's definitely coverage driven and with a randomization aspect.
 
@@ -163,9 +162,9 @@ Hopefully once we do differential Fuzzing on the Lighthouse and go-spec, we'll g
 
 **Diederik Loerakker:** I think with pyspec there are these functions which all inefficiently repeat themselves, not precomputing anything.
 
-In the next go-spec updates, I optimize, precompute this, precompute that, so we get half, almost client speed, spec.
+In the next go-spec updates, I optimize, precompute this, precompute that, so we get almost client speed spec implementation.
 
-**Danny Ryan**: One path might be to differentially Fuzz against the go-spec and the clients, and then if we find issues, to then go back to the Py spec and make sure we agree with what the functionality should be.
+**Danny Ryan**: One path might be to differentially Fuzz against the go-spec and the clients, and then if we find issues, to then go back to the Pyspec and make sure we agree with what the functionality should be.
 
 We'll keep everyone updated about Fuzzing over the coming weeks.
 
@@ -177,13 +176,13 @@ We'll keep everyone updated about Fuzzing over the coming weeks.
 **Timestamp: [13:50](https://youtu.be/YB8o_5qjNBc?t=830)**
 
 
-**Mamy**: We launched our testnet 1, based on libp2p daemon, this morning.
+**Mamy**: We launched our testnet, based on libp2p daemon, this morning.
 
-We are working towards v0.8. All the small changes were integrated and right now a big focus is SSE.
+We are working towards v0.8. All the small changes were integrated and right now a big focus is SSZ.
 
 We also started to align our State Transition function with pyspec in terms of naming.
 
-We had significant parse improvement during the past week, accumulated 20 to 30x speed-up on the State Transition bench. Links, if people are interested in seeing what we did, so they can reproduce:
+We had significant speed improvement during the past week, accumulated 20 to 30x speed-up on the State Transition benchmarks. Links, if people are interested in seeing what we did, so they can reproduce:
   * [Speed up process_crosslinks(...) and get_crosslink_deltas(...) by 10x - 15x in state_sim #314](https://github.com/status-im/nim-beacon-chain/pull/314)
   * [~2x state_sim speedup via additional caching in get_crosslink_committee #316](https://github.com/status-im/nim-beacon-chain/pull/316)
 
@@ -200,24 +199,24 @@ On Ethereum 1, we had some connections issues that were resolved to Parity and G
 
 **Timestamp: [17:05](https://youtu.be/YB8o_5qjNBc?t=1025)**
 
-**Jonny Rhea**: We've updated, especially with the SSE.
+**Jonny Rhea**: We've updated, especially with the SSZ.
 
-Also been thinking about a tester slashings, computational requirements for the worst scenario.
+Also been thinking about attester slashings, computational requirements for the worst scenario.
 
-We see the need to investigate the network load, decide what strategy to use when activating.
+We see the need to investigate the network load, decide what strategy to use when aggregating.
 
 
 #### 3.2.3 [Trinity](https://github.com/ethereum/trinity)
 
 **Timestamp: [17:51](https://youtu.be/YB8o_5qjNBc?t=1071)**
 
-**Hsiao-Wei Wang**: Py SSE has been synced to v0.8 and the State Transition update is ongoing. Its almost there thanks to Alex.
+**Hsiao-Wei Wang**: PySSZ has been synced to v0.8 and the State Transition update is ongoing. Its almost there thanks to Alex.
 
 For the networking side, integrating with the Py library, we found some required issues that we need to fix on the upstream library.
 
 We are fixing some interoperability requirements.
 
-There is an insecure connections stake, which will be brought up in the Networking section of the call.
+There is an insecure connections protocol in libp2p, which will be brought up in the Networking section of the call.
 
 #### 3.2.4 [Yeeth](https://github.com/yeeth)
 
@@ -229,14 +228,14 @@ There is an insecure connections stake, which will be brought up in the Networki
 
 **Timestamp: [19:37](https://youtu.be/YB8o_5qjNBc?t=1176)**
 
-**Mikhail Kalinin**: Working on an update to v0.8 spec, we're almost there, but SSE part is still in progress.
+**Mikhail Kalinin**: Working on an update to v0.8 spec, we're almost there, but SSZ part is still in progress.
 
 We started to work on a slot clock mechanism. We have a PR so far with basic implementation of that proposal.
 
 We have started a small research to investigate into attestation aggregation strategies. The goal is to evaluate an approach that doesn't involve building additional overlays.
   * [Add draft spec for plaintext key exchange protocol #186](https://github.com/libp2p/specs/pull/186)
 
-Working on minimal libp2p or JVMs.
+Working on minimal libp2p in JVM.
 
 Worked on multistream implementation recently.
 
@@ -249,11 +248,11 @@ Worked on multistream implementation recently.
 
 Defining more extensive HTTP APIs which is working to improve dev experience.
 
-Matt from ConsenSys is building out some SSE partials into our codebase.
+Matt from ConsenSys is building out some SSZ partials into our codebase.
 
 Slowly been testing an initial version of discovery v5 in small testnets.
 
-Working towards standardizing a minimal/final libp2p for clients using libp2p.
+Working towards standardizing a minimal/final libp2p spec for clients using libp2p.
 
 The libp2p work lead to updating our RPC. There's been discussion for the RPC to use separate protocol IDs per request:
 - [PR where we try to standardize the basic libp2p implementation](https://github.com/ethereum/eth2.0-specs/pull/1281).
@@ -268,9 +267,9 @@ The libp2p work lead to updating our RPC. There's been discussion for the RPC to
 
 Issues with Genesis trigger.
 
-There's a lack of coverage for cases of spec test. Passed all SSE spec tests. Surprised that SSE failed in some Block sanity tests.
+There's a lack of coverage for cases of spec test. Passed all SSZ spec tests. Surprised that SSZ failed in some Block sanity tests.
 
-Getting ready for optimizing Prism, working on code improvements, beautician testing, and generally more robust improvements to the client.
+Getting ready for optimizing Prysm, working on code improvements, beacon chain testing, and generally more robust improvements to the client.
 
 #### 3.2.8 [Lodestar](https://github.com/ChainSafe/lodestar)
 
@@ -280,9 +279,9 @@ Getting ready for optimizing Prism, working on code improvements, beautician tes
 
 Began building dev tooling. Will help with providers, like a Web3.js.
 
-SSE almost up-to-date, ironing out bugs with Proto and Prism.
+SSZ almost up-to-date, ironing out bugs with Proto and Prysm.
 
-Should be up-to-date on [SimpleSerialize.com](https://simpleserialize.com/) for open online testing.
+Should be up-to-date on [SimpleSerialize.com](https://simpleserialize.com/) for easy online testing.
 
 We're working towards ensuring that BLS works properly in-browser as well. Some peculiar issues there, will keep you updated.
 
@@ -298,9 +297,9 @@ Also, NIM, we're coming after you guys on the ERC20 contract, we'll get ya.
 
 **Timestamp: [27:54](https://youtu.be/YB8o_5qjNBc?t=1624)**
 
-**Wei Tang**: Finished the markolization library last week, hopefully, want to extend that into a caching library, but there are still a few missing pieces.
+**Wei Tang**: Finished the merkleization library last week, hopefully, want to extend that into a caching library, but there are still a few missing pieces.
 
-We're trying to update to v0.8 spec. The issue we had was in the SSE, a substantial change for us. Large refactoring of the codebase.
+We're trying to update to v0.8 spec. The issue we had was in the SSZ, a substantial change for us. Large refactoring of the codebase.
 
 ### 3.3 [Research Updates](https://youtu.be/YB8o_5qjNBc?t=1725)
 
@@ -323,13 +322,13 @@ Now that the spec is frozen, feel free to reach out with questions about the des
 
 **Vitalik Buterin**: On research-side there's a list of To-Do's for Proof-of-Custody and Shard Blocks.
 
-Discovered our approach to light clients, involving Fiat Shimmering and Active Experts, didn't make sense.
+Discovered our approach to light clients, involving Fiat Shimmering and Active indices roots, didn't make sense.
 
-Found a simpler approach: Sign over the committee's route and allow clients to verify the committee's route directly. There's still some decisions to what committees are for each slot and how those committees change.
+Found a simpler approach: Sign over the committee's root and allow clients to verify the committee's root directly. There's still some decisions to what committees are for each slot and how those committees change.
 
 In general:
-  * Phase 0, including in the blocks a route of the crosslink committees should be fine
-  * Phase 1, including a route of the persistent committees
+  * Phase 0, including in the blocks a root of the crosslink committees should be fine
+  * Phase 1, including a root of the persistent committees
 
 We get nice, really efficient, light clients. There's still just parameters to decide.
 
@@ -343,17 +342,17 @@ Not seeing any unexpected difficulties on the Phase 1 side. It's looking better 
 
 **Justin Drake**: To add on Phase 1, we're likely to have some cryptanalysis done.  We might have Kovatovich analyze the cryptography used there.
 
-One of the primitives we're using is the Lujon symbol, as a PRF. It would still be good to have it audited because it's an assumption not used in production right now.
+One of the primitives we're using is the Legendre symbol, as a PRF. It would still be good to have it audited because it's an assumption not used in production right now.
 
 #### 3.3.3 [Phase 2](https://docs.ethhub.io/ethereum-roadmap/ethereum-2.0/eth-2.0-phases/)
 
 **Timestamp: [33:06](https://youtu.be/YB8o_5qjNBc?t=1986)**
 
-**Vitalik Buterin**: Not much progress from myself. One of the bigger issues and trade-offs to think about is still how free markets would work. Would be good to get more feedback on that.
+**Vitalik Buterin**: Not much progress from myself. One of the bigger issues and trade-offs to think about is still how relay markets would work. Would be good to get more feedback on that.
 
 The Plasma people are going to release a post on OVM very soon.
 
-**Will Villanueva**: Continuing work on SSE partials.
+**Will Villanueva**: Continuing work on SSZ partials.
 
 Will have prototype Phase 1 implementation. Will have Phase 1 & Phase 2 testnets. In general, the scout codebase is in Rust. The prototype will extend the work from Lighthouse. Kicking that off next week.
 
@@ -373,7 +372,7 @@ Team is growing. John Adler is collaborating with us. Trying to grow for Rust-ba
 
 **Timestamp: [39:28](https://youtu.be/YB8o_5qjNBc?t=2368)**
 
-We continue to work on hold-ups. Nothing yet.
+We continue to work on roll-ups. Nothing to share yet.
 
 #### 3.3.5 [Runtime Verification](https://github.com/runtimeverification/algorand-verification)
 
@@ -421,7 +420,7 @@ All `libp2p` implementations are based on the same principles `go-libp2p` and `j
 
 In the meantime, we recommend you refer to the Go implementation.
 
-**Raúl Kripalani**: There aren't gonna be further changes to `libp2p`. But, we're taking suggestions.
+**Raúl Kripalani**: There aren't gonna be further changes to `libp2p` that aren't spec first.
 
 You should not any longer expect the implementation to change without there being a spec up-front. We are being very strict about this.
 
@@ -435,11 +434,11 @@ This spec serves as a unifying spec, that ties a lot of concepts seen in other s
 **Dean Eigenmann**: Is this spec at a state where I can implement off that spec, or do I need to go through the Go code, hitting interfaces without clear documentation?
 
 **Raúl Kripalani**:
-It's hard to give a generic answer because the specs are modular. Each spec will its own maturity.
+It's hard to give a generic answer because the specs are modular. Each spec is at its own maturity.
 
 Maybe we get in a call offline to guide you through the process.
 
-**Raúl Kripalani**: Unsecured transport, does that means it's an unencrypted clear-text channel?
+**Jacek Sieka**: Unsecured transport, does that means it's an unencrypted clear-text channel?
 
 **Raúl Kripalani**: Yes, not for use in production. Intended only for testing.
 
@@ -467,7 +466,7 @@ Maybe we get in a call offline to guide you through the process.
 
 Secondly, we are working on a testlab infrastructure that would allow us to deploy different clients at scale and test interactions between them and so-on.
 
-We can look at other projects using `js-libp2p`, including MetaMast, to implement Gossip Sub and test it.
+We can look at other projects using `js-libp2p`, including MetaMask, to implement Gossip Sub and test it.
 
 **Benjamin Burns**: Is there a date you plan to have the specs finalized?
 
@@ -507,7 +506,7 @@ Discover v5, contacted people for an audit on the protocol.
 
 **Timestamp: [1:07:56](https://youtu.be/YB8o_5qjNBc?t=4076)**
 
-**Whiteblock**: Internal last week, we had Artemis, Prysmatic Labs, Lodestar for an exchange of handles using the Simple Hobbits approach.
+**Whiteblock**: in person last week, we had Artemis, Prysmatic Labs, Lodestar for an exchange of handles using the Simple Hobbits approach.
 
 Next step, improving the ability to Gossip bits between  different instances.
 
@@ -562,9 +561,9 @@ Episub is different from what Danny just suggested because it's not based on tim
 
 I think Jannik has done some pull-push simulation before?
 
-**Jannik Luhn**: That was similar to Danny and such tested, but it also didn't happen. I don't remember why.
+**Jannik Luhn**: That was similar to Danny and such tested, but it also improve performance. I don't remember why.
 
-**Raúl Kripalani** Is there a reason you believe an Epidemic Broadcaster approach could be efficient for this message propagation paradigm that you have in Eth 2.0?
+**Raúl Kripalani** Is there a reason you believe an Epidemic Broadcast approach could be efficient for this message propagation paradigm that you have in Eth 2.0?
 
 **Jonny Rhea**: I don't know. Maybe Episub is better for blocks and Gossip sub is better for attestations.
 
@@ -576,7 +575,7 @@ I think Jannik has done some pull-push simulation before?
 
 **Jacek Sieka**: I'll point out, all these schemes introduce extra opportunities for failures and issues in general.
 
-The minimum approach of gossiping full blocks is very very resilient. Full-proof so-to-speak.
+The minimum approach of gossiping full blocks is very very resilient. Fool-proof so-to-speak.
 
 Anything additional, we should be very careful of motivating that with substantial gains, because the simplicity of normal flooding makes it extremely resilient against all kinds of attacks.
 
@@ -601,29 +600,29 @@ Happy to continue the discussion.  Open to exploring different approaches.
 
 **Timestamp: [1:24:57](https://youtu.be/YB8o_5qjNBc?t=5095)**
 
-**Danny Ryan**: I know implementers mentioned the SSE. There were a couple more escape types that were added to SSE.
+**Danny Ryan**: I know implementers mentioned the SSZ. There were a couple more sophisticated types that were added to SSZ.
 
 This was done to:
 1. Make the spec focus more on spec things and not low-level byte manipulation.
-2. Provide a valuable set of types in SSE that might be used in other places, such as applications.
+2. Provide a valuable set of types in SSZ that might be used in other places, such as applications.
 
 There are some issues there, so I want to open it up for a quick discussion, to fix the spec and move forward if we need to.
 
 Dankrad, do you have anything to add?
 
-**Dankrad Feist**: We want to understand pain-points. I think it's valuable to have in the SSE stack, but we don't want to make life hard for the implementers.
+**Dankrad Feist**: We want to understand pain-points. I think it's valuable to have bitlists and vectors in the SSZ stack, but we don't want to make life hard for the implementers.
 
 **Danny Ryan**: Is there still an open issue discussing this?
 
 **Dankrad Feist**: I think the issue is closed at the moment. We can still re-open.
 
-**Danny Ryan**: If there is discussion to be had, let's do this within the next 7 days in an issue. This is very critical for getting aligned with ConsenSys tests.
+**Danny Ryan**: If there is discussion to be had, let's do this within the next 7 days in an issue. This is very critical for getting aligned with Consensus tests.
 
-**Mamy Ratsimbazafy**: Just as a comment, the more types we have defined in the SSE spec the more efficient our code, at least in NIM, can be, in terms of both code size and performance.
+**Mamy Ratsimbazafy**: Just as a comment, the more types we have defined in the SSZ spec the more efficient our code, at least in NIM, can be, in terms of both code size and performance.
 
 **Danny Ryan**: Thanks. We have a few minutes left. Any questions left?
 
-**Diederik Loerakker**: About SSE, where we can have, fixed-size, empty containers, and empty vectors. It's kinda troublesome.
+**Diederik Loerakker**: About SSZ, where we can have, fixed-size, empty containers, and empty vectors. It's kinda troublesome.
 
 Do we want to make empty vector illegal? Or do we want to make lists containing them illegal? Is there a use case for empty, fixed-size, containers?
 
