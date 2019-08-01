@@ -2,7 +2,7 @@
 	
 ### Meeting Date/Time: Thursday June 27, 2019 at 14:00 GMT
 ### Meeting Duration: 1.5 hours
-### [GitHub Agenda Page](https://https://github.com/ethereum/eth2.0-pm/issues/51)
+### [GitHub Agenda Page](https://github.com/ethereum/eth2.0-pm/issues/51)
 ### [Audio/Video of the meeting](https://www.youtube.com/watch?v=Y8rhSbtY-Pg)
 
 Moderator: Danny Ryan
