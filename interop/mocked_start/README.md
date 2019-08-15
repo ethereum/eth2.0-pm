@@ -2,7 +2,7 @@
 
 ## Pubkey/privkey generation
 
-There is a compute/storage tradeoff to be made here between calculating the required validators and reading them from a YAML file (which doubles as the test vectors) and it is left up to implementors to choose which they prefer.
+There is a compute/storage tradeoff to be made here between calculating the required validators and reading them from a YAML file ([./keygen_10000_validators.yaml](./keygen_10000_validators.yaml)) and it is left up to implementors to choose which they prefer.
 
 The following script is used to generated pubkey/privkeys for the first `N` validators. The `i`-th deposit/validator index uses the `validator_index_to_pubkey[i]` pubkey and associated privkey.
 
@@ -24,4 +24,4 @@ for index in range(N):
 
 ### Test vectors
 
-[./keygen_test_vector.yaml](./keygen_test_vector.yaml) is a YAML file containing a list of the first 10,000 validators and their key pairs. The list index corresponds to the validator number. For the generation of more or fewer indices, see the script used to generate it at [./keygen.py](./keygen.py)
+[./keygen_test_vector.yaml](./keygen_test_vector.yaml) is a YAML file containing a list of the first 10 validators and their key pairs. The list index corresponds to the validator number. For the generation of more or fewer indices, see the script used to generate it at [./keygen.py](./keygen.py)
