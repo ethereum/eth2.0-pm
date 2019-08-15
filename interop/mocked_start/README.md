@@ -2,6 +2,8 @@
 
 ## Pubkey/privkey generation
 
+There is a compute/storage tradeoff to be made here between calculating the required validators and reading them from a YAML file (which doubles as the test vectors) and it is left up to implementors to choose which they prefer.
+
 The following script is used to generated pubkey/privkeys for the first `N` validators. The `i`-th deposit/validator index uses the `validator_index_to_pubkey[i]` pubkey and associated privkey.
 
 ```python
