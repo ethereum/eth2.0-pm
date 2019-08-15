@@ -19,11 +19,12 @@ def generate_validator_keypairs(N: int) -> List[Dict]:
         ) % CURVE_ORDER
         pubkey = privtopub(privkey)
         keypairs.append({'privkey': privkey, 'pubkey': pubkey})
+        print(index)
     return keypairs
 
 
 if __name__ == '__main__':
-    keypairs = generate_validator_keypairs(100)
+    keypairs = generate_validator_keypairs(10000)
     keypairs_yaml = dump(keypairs, Dumper=Dumper)
-    with open('keygen_test.yaml', 'w') as f:
+    with open('keygen_test_vector.yaml', 'w') as f:
         f.write(keypairs_yaml)
