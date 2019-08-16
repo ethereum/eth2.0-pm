@@ -1,5 +1,9 @@
 ## ETH2.0 Project Management
 
+### Interop Standards
+
+This repo hosts a collection of [standards](./interop) to aid in client interoperability testing.
+
 ### Previous ETH2.0 Implementers Calls
 
  №  | Date                             | Notes          | Recording            |
