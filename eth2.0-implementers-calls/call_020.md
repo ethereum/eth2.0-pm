@@ -321,7 +321,7 @@ The throughput of what the execution environments have to do.
 * We are looking at how to use rollups for Ethereum 2.0 on a way to execute transactions on any shard from any rollup.
 * We are going to look at a simple case first which is transfer between rollups and we have one proposal ready and we are going to discuss that with Barry Whitehat next week to see where we can merge efforts.
 
-#Protocol Labs
+## Protocol Labs
 [Timestamp 46:12](https://youtu.be/Y8rhSbtY-Pg?t=2772)
 
 **Danny**: We have a couple guys here from Protocol Labs.
@@ -333,7 +333,7 @@ The throughput of what the execution environments have to do.
 * Last call we had a question “What security is being provided by TLS vs what the application layer will need to provide?”
 * Assuming that is a correct question:
 
-**Raúl Kripalani**: Transport Level Security is necessary to, first of all, not be subject to miner middle tax. 
+**Raúl Kripalani**: Transport Level Security is necessary to, first of all, not be subject to [Man in the middle attacks](https://en.wikipedia.org/wiki/Man-in-the-middle_attack). 
 * That could potentially alter the payload that is being transported.
 * To be able to authenticate the peer that you are interfacing with.
 * If you have for example a public key for that peer then when you authenticating them when you are establishing the connection you are handshaking and are able to certify that you are really speaking with them.
