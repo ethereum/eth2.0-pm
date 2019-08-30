@@ -30,7 +30,7 @@ def generate_validator_keypairs(N: int) -> List[Dict]:
         ) % CURVE_ORDER
         keypairs.append({
             'privkey': int_to_hex(privkey),
-            'pubkey': '0x' + privtopub(privkey).hex(),
+            'pubkey': encode_hex(privtopub(privkey)),
         })
     return keypairs
 
