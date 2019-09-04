@@ -108,9 +108,12 @@ Non-exaustive list of ideas:
 1-on-1 client tests likely won't require all resources from all teams at all times. There are many projects on the periphera worth digging into. The following is a non-exaustive list of ideas:
 
 * Improve client documentation. Our first users (validators!) are expected to start using these soon
+* Converge on misc non-consensus things like logging, for better tooling after interop
 * Get [seccio-dissector](https://github.com/michaelvoronov/secio-dissector) running
 * Get [the gossipsub fork of meshsim](https://github.com/valer-cara/meshsim/) listening to eth2 gossip
-* Build a block explorer
+* Build a block explorer (ask Proto)
+    * monitor forks
+    * verify block transitions
 * Build tools to induce interesting behavior on testnets
     * Enable partially live nodes
     * Enable late node wrt attestation broadcasting
