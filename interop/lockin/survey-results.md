@@ -12,7 +12,7 @@
 |   |  |  |  |  |  |  |  |  |
 |  **2. Networking Essentials** |  |  |  |  |  |  |  |  |
 |   |  |  |  |  |  |  |  |  |
-|  2.1 Does your client currently implement libp2p? If not, what subset is working? | No, but we are going to integrate JVM libp2p. Currently using TCP wire protocol. | Yes | Yes | Yes, Mothra is handling our libp2p side. | Yes | Yes | Yes, libp2p Go deamon | Yes |
+|  2.1 Does your client currently implement libp2p? If not, what subset is working? | Anton has finished libp2p API and started to integrate it into the client. It will take a time but we hope that it will be done this week. | Yes | Yes | Yes, Mothra is handling our libp2p side. | Yes | Yes | Yes, libp2p Go deamon | Yes |
 |  2.2 Do you make use of a libp2p daemon approach? | No | No | No | No, we have native bindings to rust libp2p. No gRPC required | No | No | Yes | No |
 |  2.3 How does your client become aware of its peers? Static node list, DHT/discv5, etc. | Static node list | Kademlia now, wrapping up discv5 | Discv5 - Although we can support libp2p kademlia if needed. | We use discv5 and static nodes (via mothra) | Static node list | Static node list | Static node list | mDNS discovery and Kademlia |
 |  2.4 By which process does your client establish a handshake with its peers? | unencrypted TCP | libp2p spec | discv5 session handshake, libp2p secio* | Network spec | Networking spec | req/resp hello messages | static nodes, networking spec | status message starts sync |
@@ -22,9 +22,9 @@
 |   |  |  |  |  |  |  |  |  |
 |  **3. Syncing** |  |  |  |  |  |  |  |  |
 |   |  |  |  |  |  |  |  |  |
-|  3.1 Do you use the /eth2/beacon_chain/req/beacon_blocks/1/ proposed in the Network Spec for syncing? | Not yet, using custom protocol. | Yes | Yes | Not yet | Yes | Not yet | WIP | No |
+|  3.1 Do you use the /eth2/beacon_chain/req/beacon_blocks/1/ proposed in the Network Spec for syncing? | We're able to sync by requesting historic data via RPC requests identical to the spec but over a custom transport protocol. Moving to spec'd RPC is a part of (2.1) libp2p integration. | Yes | Yes | Not yet | Yes | Not yet | WIP | No |
 |  3.2 Do you support a full sync from genesis after the network is running for a longer period of time? | Yes | Yes | Yes | Not yet | Not yet | No | Yes | Yes |
-|  3.3 Can you bootstrap syncing with a copy of sync data? | No, but will before event | No | No | No | No | No | Yes | No |
+|  3.3 Can you bootstrap syncing with a copy of sync data? | There is a work in progress on that. Should be done it two days. | No | No | No | No | No | Yes | No |
 |  3.4 Do you make use of batch-requests for blocks? If so, what does your batched block request look like? | Yes, 128 chunks. | Yes | Yes, it's based on the BeaconBlocks req. We batch lookup with fixed count parameters. | Not yet | Not yet | No | Not yet, we plan to use batch requests for both | No |
 |  3.5 Do you have any particular sync strategy? (Full sequential, skip-ahead, or some hybrid approach?) | Randomly requesting peers* | Full sequential sync from genesis with multiple peers | Primarily full sequential if needed, with optimizations | No | No | No | full sequential sync* | simple full sequential |
 |  3.6 Do you implement any pruning mechanism? (not necessary for initial interop) | No | For attestations | Not in master, but we are prototyping in a PR (its a part of the hot/cold DB we're working on). | No | No | No | Not yet | No |
@@ -45,7 +45,7 @@
 |   |  |  |  |  |  |  |  |  |
 |  **5. Attestation Aggregation** |  |  |  |  |  |  |  |  |
 |   |  |  |  |  |  |  |  |  |
-|  5.1 Do you follow the current basic interop aggregate strategy? (parse anything, but publish just minimal what you have to aggregate later). | No | Yes | Yes | Yes* | Yes | No | Yes* | No |
+|  5.1 Do you follow the current basic interop aggregate strategy? (parse anything, but publish just minimal what you have to aggregate later). | The pool is 70% ready. I am going to release it this week either. Gossiping attestations is a part of libp2p integration as well. We're aggregating locally for block production. | Yes | Yes | Yes* | Yes | No | Yes* | No |
 |  5.2 Do you support alternative (more advanced) aggregation strategies? | No | No | We can support strategies but none are built/employed. | No | No | No | No | No |
 |   |  |  |  |  |  |  |  |  |
 |  **6. Fork Choice** |  |  |  |  |  |  |  |  |
@@ -71,7 +71,7 @@
 |   |  |  |  |  |  |  |  |  |
 |  **8. Block Propagation (Strategy)** |  |  |  |  |  |  |  |  |
 |   |  |  |  |  |  |  |  |  |
-|  8.1 Do you follow the network spec: verify the proposer signature before relaying a block? | No | Yes | No, Currently no gossipsub validation - it's on the TODO list | No | Yes | WIP | No | No, import block first |
+|  8.1 Do you follow the network spec: verify the proposer signature before relaying a block? | Yes, we're not. | Yes | No, Currently no gossipsub validation - it's on the TODO list | No | Yes | WIP | No | No, import block first |
 |  8.2 And if so, do you transition state completely, or just enough to know the proposer index? | N/A | Just enough to know proposer and verify signature | Full state transition | Just enough to know proposer and verify signature | Just enough to know proposer and verify signature | Transition state completely | Our block propagation is immediate and fully naive | Transition state completely |
 |  8.3 Do you use any different approaches, like: |  |  |  |  |  |  |  | N/A |
 |  8.3.1 Do you at any time randomly (or always) relay blocks without verification of the signature? | always rely on unverified blocks | No | Relay all blocks currently - planned to change | We receive the block and propogate before checking it. | No | Yes | Yes | N/A |
@@ -116,7 +116,7 @@
 |  **15. Chain Start (reference doc)** |  |  |  |  |  |  |  |  |
 |   |  |  |  |  |  |  |  |  |
 |  15.1 Do you support loading: |  |  |  |  |  |  |  | only support loading genesis spec |
-|  A kickstart (plain (balance, pubkey, witdraw_credentials) tuple) | No | No | Yes* | No | Yes | Yes | No | No |
+|  A kickstart (plain (balance, pubkey, witdraw_credentials) tuple) | We are able to kickstart from (genesis_time, validator_count). Also, we'll be able to start from prepared genesis in yaml/ssz format, this is gonna be done as a part of (3.3) work. Hopefully, we will have a discovery v5 client working this week. We don't have a detailed guide on how to use our client for interop. But I don't think it's necessary since one of us will be on site. | No | Yes* | No | Yes | Yes | No | No |
 |  A list of deposits, with incremental proofs (genesis spec) | No | No | WIP | Yes | No | No | No, (?) | No |
 |  A list of deposits, with proofs all to the same deposit root. | Yes | No | WIP | No | No | No | No, (?) | No |
 |  A series of deposit contract logs from an Eth 1.0 oracle, from a mock/test service | Yes | Yes | WIP | Yes | No | Yes | No | No |
