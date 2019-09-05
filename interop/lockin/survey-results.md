@@ -3,8 +3,8 @@
 |  **0. Link to raw answers** | [Link](https://hackmd.io/DGT-VV7xTBeJzCJPtu24_g) | [Link](https://gist.github.com/rauljordan/286ba48755a826af58df3183fc67140f) | [Link](https://gist.github.com/protolambda/183210168cc9e34398e2337083270729) | [Link](https://hackmd.io/SDWkvHAeTZCFtZ1Np-C0aQ?view) | [Link](https://notes.ethereum.org/BRRs2i7CSvKb7zkW5C5WHg?view) | [Link](https://hackmd.io/-JcbLcoERg-f9c154ODoCw?both) | [Link](https://hackmd.io/CHgplHlVTxOSvgnPurfXFQ?both) | [Link](https://gist.github.com/sorpaas/7f5843a16fb9cff8b0e99d34be6ef394) |
 |  **1. General** |  |  |  |  |  |  |  |  |
 |   |  |  |  |  |  |  |  |  |
-|  1.1 What is the latest version of the specification which your client currently supports? | v0.8.2 | v0.8.1 | v0.8.2 | v0.8.1 | v0.8.2 | v0.8.1 | v0.8.2 | v0.8.1 |
-|  1.2 Is v0.8.2+ targeted as interop version? If not, which version do you suggest? | Yes | No | Yes | Yes | Yes | Yes | Yes | Yes |
+|  1.1 What is the latest version of the specification which your client currently supports? | v0.8.2 | v0.8.2 | v0.8.2 | v0.8.1 | v0.8.2 | v0.8.1 | v0.8.2 | v0.8.1 |
+|  1.2 Is v0.8.2+ targeted as interop version? If not, which version do you suggest? | Yes | Yes | Yes | Yes | Yes | Yes | Yes | Yes |
 |  1.3 Are any features or components particularly difficult to update, and on what versions are these currently? | test suite update | test suite update | merklization. | SSZ 8.1 update | No | No | No | No |
 |  1.4 In terms of interop, do you have any suggestions? | time/place to work on code | - | network conformance | multi-client integration test network</br>SEE DOC for full answer | Start small | A best-effort for Lodestar, see if latest speed improvements make interop possible | Start with libp2p and work our way up the stack all the way to application layer / consensus | N/A |
 |  1.5 What has been your primary bottleneck in development? | network stack and attestation pool | runtime bugs, libp2p breaking or poor design | Spec updates -- re-doing work or coding defensively in expectation of a spec update. | SSZ and (more recently) test format changes | Optimizing python, and taking on libp2p in python | resource allocation | Dependencies whose code needs writing | Networking |
@@ -14,7 +14,7 @@
 |   |  |  |  |  |  |  |  |  |
 |  2.1 Does your client currently implement libp2p? If not, what subset is working? | Anton has finished libp2p API and started to integrate it into the client. It will take a time but we hope that it will be done this week. | Yes | Yes | Yes, Mothra is handling our libp2p side. | Yes | Yes | Yes, libp2p Go deamon | Yes |
 |  2.2 Do you make use of a libp2p daemon approach? | No | No | No | No, we have native bindings to rust libp2p. No gRPC required | No | No | Yes | No |
-|  2.3 How does your client become aware of its peers? Static node list, DHT/discv5, etc. | Static node list | Kademlia now, wrapping up discv5 | Discv5 - Although we can support libp2p kademlia if needed. | We use discv5 and static nodes (via mothra) | Static node list | Static node list | Static node list | mDNS discovery and Kademlia |
+|  2.3 How does your client become aware of its peers? Static node list, DHT/discv5, etc. | Static node list | Static peering via `--peer` flag. discv5 in master, but waiting on some updates from felix | Discv5 - Although we can support libp2p kademlia if needed. | We use discv5 and static nodes (via mothra) | Static node list | Static node list | Static node list | mDNS discovery and Kademlia |
 |  2.4 By which process does your client establish a handshake with its peers? | unencrypted TCP | libp2p spec | discv5 session handshake, libp2p secio* | Network spec | Networking spec | req/resp hello messages | static nodes, networking spec | status message starts sync |
 |  2.5 Which wire-level encryption methods does your client implement or support? Secio? TLS? Other? If your client supports multiple encryption methods, please indicate which ones. | none now. secio and noise in future. | SecIO supported, could add TLS | Secio (although we could upgrade to noise relatively easily). | Secio currently | Secio | Secio | Everything supported by the Go daemon | tcp-ws-secio-mplex-yamux |
 |  2.6 Does your client conform to the specified wire protocol? If not, please provide a link to the appropriate code snippet or repo which defines these message types. | Yes, except for libp2p | Yes | Yes | Yes, GOSSIP as defined in the network spec. Working on RPC | Yes | WIP, old wire protocol with 1 stream/peer works | Yes | simple status sync |
@@ -108,15 +108,15 @@
 |   |  |  |  |  |  |  |  |  |
 |  **14. BLS** |  |  |  |  |  |  |  |  |
 |   |  |  |  |  |  |  |  |  |
-|  14.1 Do tests pass for version v0.8.2+ (little endian domain bytes) | Yes | No | Not sure. Will be easy to fix if not. | Yes | Yes | TBD | Yes | Passed for v0.8.1, haven't upgraded yet |
+|  14.1 Do tests pass for version v0.8.2+ (little endian domain bytes) | Yes | Yes | Not sure. Will be easy to fix if not. | Yes | Yes | TBD | Yes | Passed for v0.8.1, haven't upgraded yet |
 |  14.2 What BLS library do you use? (provide link) | [Milagro](https://github.com/apache/incubator-milagro-java) | [BLS12-381](https://github.com/phoreproject/bls) | Apache Milagro | [Milagro](https://repo1.maven.org/maven2/) | [Milagro](https://github.com/sigp/milagro_bls) | [Milagro](https://github.com/ChainSafe/incubator-milagro-crypto-js) | [BLS12-381](https://github.com/status-im/nim-blscurve) | [Milagro](https://github.com/sigp/milagro_bls) |
 |  14.3 Do you implement a BLS wrapper? (provide link) | Milagro | [Custom](https://github.com/prysmaticlabs/prysm/tree/master/shared/bls) |[Milagro](https://github.com/sigp/milagro_bls) | [Mikuli](https://github.com/PegaSysEng/artemis/tree/master/util/src/main/java/tech/pegasys/artemis/util/mikuli) | [Milagro](https://github.com/ChihChengLiang/milagro_bls_binding) | [Custom](https://github.com/ChainSafe/lodestar/tree/master/packages/bls) | [Milagro](https://github.com/apache/incubator-milagro-crypto-c) | N/A |
-|  14.4 Do you have a benchmark of verify-aggregate bench speed of 128 participants, same message being signed. Called from client. | Yes | Yes | Yes | No | Yes | Yes | No | No |
+|  14.4 Do you have a benchmark of verify-aggregate bench speed of 128 participants, same message being signed. Called from client. | Yes | Yes, ~25ms | Yes | No | Yes | Yes | No | No |
 |   |  |  |  |  |  |  |  |  |
 |  **15. Chain Start (reference doc)** |  |  |  |  |  |  |  |  |
 |   |  |  |  |  |  |  |  |  |
 |  15.1 Do you support loading: |  |  |  |  |  |  |  | only support loading genesis spec |
-|  A kickstart (plain (balance, pubkey, witdraw_credentials) tuple) | Yes | No | Yes* | No | Yes | Yes | No | No |
+|  A kickstart (plain (balance, pubkey, witdraw_credentials) tuple) | Yes | Soon | Yes* | No | Yes | Yes | No | No |
 |  A list of deposits, with incremental proofs (genesis spec) | No | No | WIP | Yes | No | No | No, (?) | No |
 |  A list of deposits, with proofs all to the same deposit root. | Yes | No | WIP | No | No | No | No, (?) | No |
 |  A series of deposit contract logs from an Eth 1.0 oracle, from a mock/test service | Yes | Yes | WIP | Yes | No | Yes | No | No |
