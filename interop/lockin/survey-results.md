@@ -3,7 +3,7 @@
 |  **0. Link to raw answers** | [Link](https://hackmd.io/DGT-VV7xTBeJzCJPtu24_g) | [Link](https://gist.github.com/rauljordan/286ba48755a826af58df3183fc67140f) | [Link](https://gist.github.com/protolambda/183210168cc9e34398e2337083270729) | [Link](https://hackmd.io/SDWkvHAeTZCFtZ1Np-C0aQ?view) | [Link](https://notes.ethereum.org/BRRs2i7CSvKb7zkW5C5WHg?view) | [Link](https://hackmd.io/-JcbLcoERg-f9c154ODoCw?both) | [Link](https://hackmd.io/CHgplHlVTxOSvgnPurfXFQ?both) | [Link](https://gist.github.com/sorpaas/7f5843a16fb9cff8b0e99d34be6ef394) |
 |  **1. General** |  |  |  |  |  |  |  |  |
 |   |  |  |  |  |  |  |  |  |
-|  1.1 What is the latest version of the specification which your client currently supports? | v0.8.2 | v0.8.2 | v0.8.2 | v0.8.1 | v0.8.2 | v0.8.1 | v0.8.2 | v0.8.1 |
+|  1.1 What is the latest version of the specification which your client currently supports? | v0.8.2 | v0.8.2 | v0.8.2 | v0.8.2| v0.8.2 | v0.8.1 | v0.8.2 | v0.8.1 |
 |  1.2 Is v0.8.2+ targeted as interop version? If not, which version do you suggest? | Yes | Yes | Yes | Yes | Yes | Yes | Yes | Yes |
 |  1.3 Are any features or components particularly difficult to update, and on what versions are these currently? | test suite update | test suite update | merklization. | SSZ 8.1 update | No | No | No | No |
 |  1.4 In terms of interop, do you have any suggestions? | time/place to work on code | - | network conformance | multi-client integration test network</br>SEE DOC for full answer | Start small | A best-effort for Lodestar, see if latest speed improvements make interop possible | Start with libp2p and work our way up the stack all the way to application layer / consensus | N/A |
@@ -61,9 +61,9 @@
 |  **7. Spec-Tests / Transition Consensus** |  |  |  |  |  |  |  |  |
 |   |  |  |  |  |  |  |  |  |
 |  7.1 Do you pass the following spec tests? If not, in which configuration and what tests?: |  |  |  |  |  |  |  |  |
-|  Block operations | Yes | Yes | Yes | Not yet | Yes | Yes | WIP | Yes |
-|  Epoch processing | Yes | Yes | Yes | Not yet | Yes | Yes | WIP | Yes |
-|  Sanity tests | Yes | Yes | Yes | Not yet | Yes | Yes | WIP | Yes |
+|  Block operations | Yes | Yes | Yes | Close | Yes | Yes | WIP | Yes |
+|  Epoch processing | Yes | Yes | Yes | Close | Yes | Yes | WIP | Yes |
+|  Sanity tests | Yes | Yes | Yes | Close | Yes | Yes | WIP | Yes |
 |  BLS integration | Yes | Yes | Yes | Yes | Yes | Yes | Yes | Yes |
 |  SSZ_static | Yes | Yes | Yes | Yes | Not yet | Yes | Yes | Yes |
 |  Shuffling | Yes | Yes | Yes | Yes | Yes | Yes | Yes | Yes |
@@ -116,7 +116,7 @@
 |  **15. Chain Start (reference doc)** |  |  |  |  |  |  |  |  |
 |   |  |  |  |  |  |  |  |  |
 |  15.1 Do you support loading: |  |  |  |  |  |  |  | only support loading genesis spec |
-|  A kickstart (plain (balance, pubkey, witdraw_credentials) tuple) | Yes | Soon | Yes* | No | Yes | Yes | No | No |
+|  A kickstart (plain (balance, pubkey, witdraw_credentials) tuple) | Yes | Soon | Yes* | Yes | Yes | Yes | No | No |
 |  A list of deposits, with incremental proofs (genesis spec) | No | No | WIP | Yes | No | No | No, (?) | No |
 |  A list of deposits, with proofs all to the same deposit root. | Yes | No | WIP | No | No | No | No, (?) | No |
 |  A series of deposit contract logs from an Eth 1.0 oracle, from a mock/test service | Yes | Yes | WIP | Yes | No | Yes | No | No |
