@@ -71,7 +71,7 @@
 |   |  |  |  |  |  |  |  |  |
 |  **8. Block Propagation (Strategy)** |  |  |  |  |  |  |  |  |
 |   |  |  |  |  |  |  |  |  |
-|  8.1 Do you follow the network spec: verify the proposer signature before relaying a block? | Yes, we're not. | Yes | No, Currently no gossipsub validation - it's on the TODO list | No | Yes | WIP | No | No, import block first |
+|  8.1 Do you follow the network spec: verify the proposer signature before relaying a block? | Not yet. | Yes | No, Currently no gossipsub validation - it's on the TODO list | No | Yes | WIP | No | No, import block first |
 |  8.2 And if so, do you transition state completely, or just enough to know the proposer index? | N/A | Just enough to know proposer and verify signature | Full state transition | Just enough to know proposer and verify signature | Just enough to know proposer and verify signature | Transition state completely | Our block propagation is immediate and fully naive | Transition state completely |
 |  8.3 Do you use any different approaches, like: |  |  |  |  |  |  |  | N/A |
 |  8.3.1 Do you at any time randomly (or always) relay blocks without verification of the signature? | always rely on unverified blocks | No | Relay all blocks currently - planned to change | We receive the block and propogate before checking it. | No | Yes | Yes | N/A |
@@ -116,13 +116,13 @@
 |  **15. Chain Start (reference doc)** |  |  |  |  |  |  |  |  |
 |   |  |  |  |  |  |  |  |  |
 |  15.1 Do you support loading: |  |  |  |  |  |  |  | only support loading genesis spec |
-|  A kickstart (plain (balance, pubkey, witdraw_credentials) tuple) | We are able to kickstart from (genesis_time, validator_count). Also, we'll be able to start from prepared genesis in yaml/ssz format, this is gonna be done as a part of (3.3) work. Hopefully, we will have a discovery v5 client working this week. We don't have a detailed guide on how to use our client for interop. But I don't think it's necessary since one of us will be on site. | No | Yes* | No | Yes | Yes | No | No |
+|  A kickstart (plain (balance, pubkey, witdraw_credentials) tuple) | Yes | No | Yes* | No | Yes | Yes | No | No |
 |  A list of deposits, with incremental proofs (genesis spec) | No | No | WIP | Yes | No | No | No, (?) | No |
 |  A list of deposits, with proofs all to the same deposit root. | Yes | No | WIP | No | No | No | No, (?) | No |
 |  A series of deposit contract logs from an Eth 1.0 oracle, from a mock/test service | Yes | Yes | WIP | Yes | No | Yes | No | No |
 |  A series of deposit contract logs from a real Eth 1.0 node? | Yes | Yes | WIP | No | No | Yes | No | No |
 |  A genesis constructed from a (slow and long) stream of deposit log events? | No | Yes | Not yet | Yes | No | No | No | No |
-|  A plain prepared genesis BeaconState object from SSZ? | No | No | Yes | Yes | Yes, yaml | Yes | Yes | No |
+|  A plain prepared genesis BeaconState object from SSZ? | Soon | No | Yes | Yes | Yes, yaml | Yes | Yes | No |
 |  15.2 For testing genesis, do you generate keys in advance? And/or in a predictable reproducible manner for debugging? | Advance | Advance | Reproducible | Reproducible | Both | Reproducible | Reproducible | Advance |
 |   |  |  |  |  |  |  |  |  |
 |  **16. Configuration & Performance** |  |  |  |  |  |  |  |  |
@@ -145,3 +145,4 @@
 |  18.3 Are there any bottlenecks into which we may not currently have visibility? | No | Libp2p design causing problems | No | No | Phase 1 to phase 2, BLS standard | Naive implementation, slow code, brittle cli | No | No |
 |  18.4 What can we do to provide you with adequate support? In other words, how can we make your life easier? | No test format changes | No test format changes | - | - | - | list optimizations, create “slow network” configuration | - | - |
 |  18.5 In terms of tooling, what are we currently lacking? | Network/chain monitors | - | Interop network tests, large scale testing, differential fuzzing | Decode encrypted payloads with wireshark or tcpdump | Network monitor/stats, hive for eth2. A stable eth1 light client | No | Network monitoring tools (libp2p, Eth2) | No |
+|  18.6 Notes shared in followup questions | Hopefully, we will have a discovery v5 client working this week. We don't have a detailed guide on how to use our client for interop. But I don't think it's necessary since one of us will be on site. |  | No |  |  |  |  |  |
