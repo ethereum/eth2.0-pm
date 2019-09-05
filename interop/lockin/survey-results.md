@@ -14,11 +14,11 @@
 |   |  |  |  |  |  |  |  |  |
 |  2.1 Does your client currently implement libp2p? If not, what subset is working? | Anton has finished libp2p API and started to integrate it into the client. It will take a time but we hope that it will be done this week. | Yes | Yes | Yes, Mothra is handling our libp2p side. | Yes | Yes | Yes, libp2p Go deamon | Yes |
 |  2.2 Do you make use of a libp2p daemon approach? | No | No | No | No, we have native bindings to rust libp2p. No gRPC required | No | No | Yes | No |
-|  2.3 How does your client become aware of its peers? Static node list, DHT/discv5, etc. | Static node list | Static peering via `--peer` flag. discv5 in master, but waiting on some updates from felix | Static peering and Discv5 - Although we can support libp2p kademlia if needed. | We use discv5 and static nodes (via mothra) | Static node list | Static node list | Static node list | mDNS discovery and Kademlia |
+|  2.3 How does your client become aware of its peers? Static node list, DHT/discv5, etc. | Static node list | Static peering via `--peer` flag. discv5 in master, but waiting on some updates from felix | Static peering and Discv5 - Although we can support libp2p kademlia if needed. | We use discv5 and static nodes (via mothra) | Static node list and discv5 is ready for some initial inerop tests (talk to jannik) | Static node list | Static node list | mDNS discovery and Kademlia |
 |  2.4 By which process does your client establish a handshake with its peers? | unencrypted TCP | libp2p spec | discv5 session handshake, libp2p secio* | Network spec | Networking spec | req/resp hello messages | static nodes, networking spec | status message starts sync |
 |  2.5 Which wire-level encryption methods does your client implement or support? Secio? TLS? Other? If your client supports multiple encryption methods, please indicate which ones. | none now. secio and noise in future. | SecIO supported, could add TLS | Secio (although we could upgrade to noise relatively easily). | Secio currently | Secio | Secio | Everything supported by the Go daemon | tcp-ws-secio-mplex-yamux |
 |  2.6 Does your client conform to the specified wire protocol? If not, please provide a link to the appropriate code snippet or repo which defines these message types. | Yes, except for libp2p | Yes | Yes | Yes, GOSSIP as defined in the network spec. Working on RPC | Yes | WIP, old wire protocol with 1 stream/peer works | Yes | simple status sync |
-|  2.7 Can you run a stable testnet with multiple nodes of your single client? | Yes | Yes* | Yes | Yes* |  |  | Yes | Yes |
+|  2.7 Can you run a stable testnet with multiple nodes of your single client? | Yes | Yes* | Yes | Yes* | Not yet |  | Yes | Yes |
 |   |  |  |  |  |  |  |  |  |
 |  **3. Syncing** |  |  |  |  |  |  |  |  |
 |   |  |  |  |  |  |  |  |  |
@@ -104,7 +104,7 @@
 |  **13. SSZ** |  |  |  |  |  |  |  |  |
 |   |  |  |  |  |  |  |  |  |
 |  13.1 Do you have SSZ v0.8 (hash-tree-roots with stable depth, bitlists/vectors) implemented currently? | Yes | Yes | Yes | Yes | Yes | Yes | Yes | Yes |
-|  13.2 Do you experience any particular delays with hash-tree-root? (If not already for the minimal configuration, does it apply to mainnet state sizes for your ssz implementation?) | No | No | No | No | Yes | No | No | No |
+|  13.2 Do you experience any particular delays with hash-tree-root? (If not already for the minimal configuration, does it apply to mainnet state sizes for your ssz implementation?) | No | No | No | No | Fine at low validator count (< 100) | No | No | No |
 |   |  |  |  |  |  |  |  |  |
 |  **14. BLS** |  |  |  |  |  |  |  |  |
 |   |  |  |  |  |  |  |  |  |
@@ -122,7 +122,7 @@
 |  A series of deposit contract logs from an Eth 1.0 oracle, from a mock/test service | Yes | Yes | WIP | Yes | No | Yes | No | No |
 |  A series of deposit contract logs from a real Eth 1.0 node? | Yes | Yes | WIP | No | No | Yes | No | No |
 |  A genesis constructed from a (slow and long) stream of deposit log events? | No | Yes | Not yet | Yes | No | No | No | No |
-|  A plain prepared genesis BeaconState object from SSZ? | Soon | No | Yes | Yes | Yes, yaml | Yes | Yes | No |
+|  A plain prepared genesis BeaconState object from SSZ? | Soon | No | Yes | Yes | Yes, yaml. SSZ soon | Yes | Yes | No |
 |  15.2 For testing genesis, do you generate keys in advance? And/or in a predictable reproducible manner for debugging? | Advance | Advance | Reproducible | Reproducible | Both | Reproducible | Reproducible | Advance |
 |   |  |  |  |  |  |  |  |  |
 |  **16. Configuration & Performance** |  |  |  |  |  |  |  |  |
