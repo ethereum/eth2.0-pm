@@ -22,7 +22,7 @@
 |   |  |  |  |  |  |  |  |  |
 |  **3. Syncing** |  |  |  |  |  |  |  |  |
 |   |  |  |  |  |  |  |  |  |
-|  3.1 Do you use the /eth2/beacon_chain/req/beacon_blocks/1/ proposed in the Network Spec for syncing? | We're able to sync by requesting historic data via RPC requests identical to the spec but over a custom transport protocol. Moving to spec'd RPC is a part of (2.1) libp2p integration. | Yes | Yes | Not yet | Yes | WIP | WIP | No |
+|  3.1 Do you use the /eth2/beacon_chain/req/beacon_blocks/1/ proposed in the Network Spec for syncing? | We're able to sync by requesting historic data via RPC requests identical to the spec but over a custom transport protocol. Moving to spec'd RPC is a part of (2.1) libp2p integration. | Yes | Yes | Not yet | Yes | WIP | Yes, Old and new requests supported. Currently using old for sync | No |
 |  3.2 Do you support a full sync from genesis after the network is running for a longer period of time? | Yes | Yes | Yes | Not yet | Not yet | No | Yes | Yes |
 |  3.3 Can you bootstrap syncing with a copy of sync data? | There is a work in progress on that. Should be done it two days. | No | No | No | No | No | Yes | No |
 |  3.4 Do you make use of batch-requests for blocks? If so, what does your batched block request look like? | Yes, 128 chunks. | Yes | Yes, it's based on the BeaconBlocks req. We batch lookup with fixed count parameters. | Not yet | Not yet | No | Not yet, we plan to use batch requests for both | No |
@@ -67,7 +67,7 @@
 |  BLS integration | Yes | Yes | Yes | Yes | Yes | Yes | Yes | Yes |
 |  SSZ_static | Yes | Yes | Yes | Yes | Not yet | Yes | Yes | Yes |
 |  Shuffling | Yes | Yes | Yes | Yes | Yes | Yes | Yes | Yes |
-|  7.2 What spec version are you currently targetting for tests? | v0.8.2 | v0.8.1 | v0.8.2 | v0.8.2 | v0.8.3 | v0.8.1 | v0.8.3 | v0.8.1 |
+|  7.2 What spec version are you currently targetting for tests? | v0.8.2 | v0.8.2 | v0.8.2 | v0.8.2 | v0.8.3 | v0.8.1 | v0.8.3 | v0.8.1 |
 |   |  |  |  |  |  |  |  |  |
 |  **8. Block Propagation (Strategy)** |  |  |  |  |  |  |  |  |
 |   |  |  |  |  |  |  |  |  |
@@ -91,7 +91,7 @@
 |   |  |  |  |  |  |  |  |  |
 |  **11. Monitoring** |  |  |  |  |  |  |  |  |
 |   |  |  |  |  |  |  |  |  |
-|  11.1 Do you implement the proposed Metrics | No | Yes | Yes | Yes | No | Yes | No | No |
+|  11.1 Do you implement the proposed Metrics | No | Yes | Yes | Yes | No | Yes | Maybe, WIP but not priority | No |
 |  11.2 Do you provide a API endpoint for:<br/>- Sync status<br/>- Current chain head (from node perspective)<br/>- A series of blocks | No | Yes | Yes | No | No | Yes | No* | No |
 |  11.3 What do you use for logging? (e.g. custom JSON, library XYZ) | log4j2 library | Logrus, JSON | JSON | Log4J, JSON/CSV | Python native | custom text, winston logger | JSON | No |
 |  11.4 Provide links to any misc. API implemented by the beacon node. | N/A | [Link](https://github.com/prysmaticlabs/ethereumapis) | N/A | N/A | N/A | N/A | N/A | N/A |
@@ -116,7 +116,7 @@
 |  **15. Chain Start (reference doc)** |  |  |  |  |  |  |  |  |
 |   |  |  |  |  |  |  |  |  |
 |  15.1 Do you support loading: |  |  |  |  |  |  |  | only support loading genesis spec |
-|  A kickstart (plain (balance, pubkey, witdraw_credentials) tuple) | Yes | Soon | Yes* | Yes | Yes | Yes | No | No |
+|  A kickstart ((genesis_time, validator_count) tuple) | Yes | Soon | Yes* | Yes | Yes | Yes | yes | No |
 |  A list of deposits, with incremental proofs (genesis spec) | No | No | WIP | Yes | No | No | No, (?) | No |
 |  A list of deposits, with proofs all to the same deposit root. | Yes | No | WIP | No | No | No | No, (?) | No |
 |  A series of deposit contract logs from an Eth 1.0 oracle, from a mock/test service | Yes | Yes | WIP | Yes | No | Yes | No | No |
