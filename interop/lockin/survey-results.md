@@ -14,7 +14,7 @@
 |   |  |  |  |  |  |  |  |  |
 |  2.1 Does your client currently implement libp2p? If not, what subset is working? | Anton has finished libp2p API and started to integrate it into the client. It will take a time but we hope that it will be done this week. | Yes | Yes | Yes, Mothra is handling our libp2p side. | Yes | Yes | Yes, libp2p Go deamon | Yes |
 |  2.2 Do you make use of a libp2p daemon approach? | No | No | No | No, we have native bindings to rust libp2p. No gRPC required | No | No | Yes | No |
-|  2.3 How does your client become aware of its peers? Static node list, DHT/discv5, etc. | Static node list | Static peering via `--peer` flag. discv5 in master, but waiting on some updates from felix | Discv5 - Although we can support libp2p kademlia if needed. | We use discv5 and static nodes (via mothra) | Static node list | Static node list | Static node list | mDNS discovery and Kademlia |
+|  2.3 How does your client become aware of its peers? Static node list, DHT/discv5, etc. | Static node list | Static peering via `--peer` flag. discv5 in master, but waiting on some updates from felix | Static peering and Discv5 - Although we can support libp2p kademlia if needed. | We use discv5 and static nodes (via mothra) | Static node list | Static node list | Static node list | mDNS discovery and Kademlia |
 |  2.4 By which process does your client establish a handshake with its peers? | unencrypted TCP | libp2p spec | discv5 session handshake, libp2p secio* | Network spec | Networking spec | req/resp hello messages | static nodes, networking spec | status message starts sync |
 |  2.5 Which wire-level encryption methods does your client implement or support? Secio? TLS? Other? If your client supports multiple encryption methods, please indicate which ones. | none now. secio and noise in future. | SecIO supported, could add TLS | Secio (although we could upgrade to noise relatively easily). | Secio currently | Secio | Secio | Everything supported by the Go daemon | tcp-ws-secio-mplex-yamux |
 |  2.6 Does your client conform to the specified wire protocol? If not, please provide a link to the appropriate code snippet or repo which defines these message types. | Yes, except for libp2p | Yes | Yes | Yes, GOSSIP as defined in the network spec. Working on RPC | Yes | WIP, old wire protocol with 1 stream/peer works | Yes | simple status sync |
@@ -91,7 +91,7 @@
 |   |  |  |  |  |  |  |  |  |
 |  **11. Monitoring** |  |  |  |  |  |  |  |  |
 |   |  |  |  |  |  |  |  |  |
-|  11.1 Do you implement the proposed Metrics | No | Yes | Yes* | Yes | No | Yes | No | No |
+|  11.1 Do you implement the proposed Metrics | No | Yes | Yes | Yes | No | Yes | No | No |
 |  11.2 Do you provide a API endpoint for:<br/>- Sync status<br/>- Current chain head (from node perspective)<br/>- A series of blocks | No | Yes | Yes | No | No | Yes | No* | No |
 |  11.3 What do you use for logging? (e.g. custom JSON, library XYZ) | log4j2 library | Logrus, JSON | JSON | Log4J, JSON/CSV | Python native | custom text, winston logger | JSON | No |
 |  11.4 Provide links to any misc. API implemented by the beacon node. | N/A | [Link](https://github.com/prysmaticlabs/ethereumapis) | N/A | N/A | N/A | N/A | N/A | N/A |
@@ -108,7 +108,7 @@
 |   |  |  |  |  |  |  |  |  |
 |  **14. BLS** |  |  |  |  |  |  |  |  |
 |   |  |  |  |  |  |  |  |  |
-|  14.1 Do tests pass for version v0.8.2+ (little endian domain bytes) | Yes | Yes | Not sure. Will be easy to fix if not. | Yes | Yes | TBD | Yes | Passed for v0.8.1, haven't upgraded yet |
+|  14.1 Do tests pass for version v0.8.2+ (little endian domain bytes) | Yes | Yes | Yes | Yes | Yes | TBD | Yes | Passed for v0.8.1, haven't upgraded yet |
 |  14.2 What BLS library do you use? (provide link) | [Milagro](https://github.com/apache/incubator-milagro-java) | [BLS12-381](https://github.com/phoreproject/bls) | Apache Milagro | [Milagro](https://repo1.maven.org/maven2/) | [Milagro](https://github.com/sigp/milagro_bls) | [Milagro](https://github.com/ChainSafe/incubator-milagro-crypto-js) | [BLS12-381](https://github.com/status-im/nim-blscurve) | [Milagro](https://github.com/sigp/milagro_bls) |
 |  14.3 Do you implement a BLS wrapper? (provide link) | Milagro | [Custom](https://github.com/prysmaticlabs/prysm/tree/master/shared/bls) |[Milagro](https://github.com/sigp/milagro_bls) | [Mikuli](https://github.com/PegaSysEng/artemis/tree/master/util/src/main/java/tech/pegasys/artemis/util/mikuli) | [Milagro](https://github.com/ChihChengLiang/milagro_bls_binding) | [Custom](https://github.com/ChainSafe/lodestar/tree/master/packages/bls) | [Milagro](https://github.com/apache/incubator-milagro-crypto-c) | N/A |
 |  14.4 Do you have a benchmark of verify-aggregate bench speed of 128 participants, same message being signed. Called from client. | Yes | Yes, ~25ms | Yes | No | Yes | Yes | No | No |
@@ -145,4 +145,4 @@
 |  18.3 Are there any bottlenecks into which we may not currently have visibility? | No | Libp2p design causing problems | No | No | Phase 1 to phase 2, BLS standard | Naive implementation, slow code, brittle cli | No | No |
 |  18.4 What can we do to provide you with adequate support? In other words, how can we make your life easier? | No test format changes | No test format changes | - | - | - | list optimizations, create “slow network” configuration | - | - |
 |  18.5 In terms of tooling, what are we currently lacking? | Network/chain monitors | - | Interop network tests, large scale testing, differential fuzzing | Decode encrypted payloads with wireshark or tcpdump | Network monitor/stats, hive for eth2. A stable eth1 light client | No | Network monitoring tools (libp2p, Eth2) | No |
-|  18.6 Notes shared in followup questions | Hopefully, we will have a discovery v5 client working this week. We don't have a detailed guide on how to use our client for interop. But I don't think it's necessary since one of us will be on site. |  | No |  |  |  |  |  |
+|  18.6 Notes shared in followup questions | Hopefully, we will have a discovery v5 client working this week. We don't have a detailed guide on how to use our client for interop. But I don't think it's necessary since one of us will be on site. |  | We have made Lighthouse interop documentation [here](https://sigp.github.io/lighthouse-interop-docs/interop.html). Hopefully this is helpful, keen for feedback. |  |  |  |  |  |
