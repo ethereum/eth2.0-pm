@@ -15,6 +15,8 @@ A network start consists of the following:
 
 Quick-start is a simple method to create and run a common genesis `BeaconState` with from two parameters -- `genesis_time` and `validator_count`. These parameters can be specified either in a YAML file or as command-line params. This method is appealing in many testing scenarios because it is both simple and succinct. The main drawback of this method is that all validators are initialized with `MAX_EFFECTIVE_BALANCE` to start.
 
+Sample genesis ssz states using this method can be found in [`test_quickstart_states/`](./test_quickstart_states/).
+
 #### Generate deposits
 
 A list of `validator_count` `deposits` is derived using the first `validator_count` pubkey/privkey pairs from a shared pubkey/privkey rainbow table of valid pubkey/privkeys generated in the [method below](#pubkeyprivkey-generation). `withdrawal_credentials` for each are set to `BLS_WITHDRAWAL_PREFIX + hash(deposit.data.pubkey)[1:]`. `amount` for each is set to `MAX_EFFECTIVE_BALANCE`. 
