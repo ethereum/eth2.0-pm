@@ -1,6 +1,6 @@
 # Test quickstart states
 
-The following quickstart states were generated via `zcli` to be used as
+The following quickstart states were generated via [`zcli`](http://github.com/protolambda/zcli) to be used as
 references to test local quickstart implementations against.
 
 ## 16 Validors
