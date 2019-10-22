@@ -1,5 +1,12 @@
 # ETH 2.0 client team meetups collection
 
+## Ontario, September 2019
+- [EF blog | Eth2 Interop in Review](https://blog.ethereum.org/2019/09/19/eth2-interop-in-review/)
+- [What's New in Eth2 | The Interop Edition](https://notes.ethereum.org/@ChihChengLiang/Sk8Zs--CQ/https%3A%2F%2Fbenjaminion.xyz%2Fnewineth2%2F20190920.html?type=book)
+- [Lodestar | Post-Interop Update](https://medium.com/chainsafe-systems/lodestar-post-interop-update-be2caebb39e6)
+- [Prysmatic Labs | Interop Recap](https://medium.com/prysmatic-labs/ethereum-2-0-development-update-35-prysmatic-labs-d1f7515000cd)
+- [Lighthouse | Client interoperability meetup and progress leading up to Devcon-V](https://lighthouse.sigmaprime.io/update-16.html)
+
 ## New York, May 2019
 - [Agenda](https://hackmd.io/s/Hyz8Mw-9V)
 
