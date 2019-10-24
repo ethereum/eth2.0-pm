@@ -6,6 +6,7 @@
 - [Lodestar | Post-Interop Update](https://medium.com/chainsafe-systems/lodestar-post-interop-update-be2caebb39e6)
 - [Prysmatic Labs | Interop Recap](https://medium.com/prysmatic-labs/ethereum-2-0-development-update-35-prysmatic-labs-d1f7515000cd)
 - [Lighthouse | Client interoperability meetup and progress leading up to Devcon-V](https://lighthouse.sigmaprime.io/update-16.html)
+- [ConsenSys Media | How 30+ ETH 2.0 Devs Locked Themselves in to Achieve Interoperability](https://media.consensys.net/how-30-eth-2-0-devs-locked-themselves-in-to-achieve-interoperability-175e4a807d92)
 
 ## New York, May 2019
 - [Agenda](https://hackmd.io/s/Hyz8Mw-9V)
