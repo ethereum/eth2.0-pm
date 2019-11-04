@@ -4,4 +4,3 @@ This is a collection of standards to aid in client interoperability testing incl
 
 * [Mocked start](./mocked_start)
 * [Mocked `Eth1Data`](./mocked_eth1data)
-* [Minimal hobbits network testing](./hobbits)
