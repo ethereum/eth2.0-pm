@@ -26,11 +26,11 @@ trinity/1000_validators_testnet/genesis.ssz
 /ip4/10.20.30.50/tcp/9100/p2p/16Uiu2HAmV5SpcmrEymmaj1mymSHkbMpMVUXFRiXRxpHkfWdQ7bi3
 ```
 
-To connect to the testnet, the user should either pass the entire file as a command-line parameter named `bootstrap_file` or she should specify the individual entries with a repeatable command-line parameter named `bootstrap_node`.
+To connect to the testnet, the user should either pass the entire file as a command-line parameter named `--bootstrap-file` or she should specify the individual entries with a repeatable command-line parameter named `--bootstrap-node`.
 
-`deposit_contract.txt` is a single-line text file with the address of the testnet's deposit contract on the Görli network. To connect to the testnet, the user should specify the address as a command-line parameter named `deposit_contract`.
+`deposit_contract.txt` is a single-line text file with the address of the testnet's deposit contract on the Görli network. To connect to the testnet, the user should specify the address as a command-line parameter named `--deposit-contract`.
 
-The `genesis.ssz` represents the genesis state snapshot. The user should specify the path to this file with a command-line parameter named `state_snapshot`.
+The `genesis.ssz` represents the genesis state snapshot. The user should specify the path to this file with a command-line parameter named `--state-snapshot`.
 
 The `config.yaml` file is optional and it specifies the [Eth2 constants parameters](https://github.com/ethereum/eth2.0-specs/tree/dev/configs) used by the testnet. When no config file is present, it should be assumed that the testnet is using the `minimal` config. Users are expected to check each client's documentation for instructions regarding the usage of config preset files. Config presets are usually specified either at build-time or at run-time depending on the client.
 
