@@ -19,6 +19,8 @@ trinity/1000_validators_testnet/config.yaml
 trinity/1000_validators_testnet/genesis.ssz
 ```
 
+The `config.yaml` file is optional and it specifies the [Eth2 constants parameters](https://github.com/ethereum/eth2.0-specs/tree/dev/configs) used by the testnet. When no config file is present, it should be assumed that the testnet is using the `minimal` config. Users are expected to check each client's documentation for instructions regarding the usage of config preset files. Config presets are usually specified either at build-time or at run-time depending on the client.
+
 `bootstrap_nodes.txt` is a line-delimited text file with [multiaddr](https://github.com/multiformats/multiaddr) records for the bootstrap nodes of the testnet. For example:
 
 ```
@@ -28,11 +30,9 @@ trinity/1000_validators_testnet/genesis.ssz
 
 To connect to the testnet, the user should either pass the entire file as a command-line parameter named `--bootstrap-file` or she should specify the individual entries with a repeatable command-line parameter named `--bootstrap-node`.
 
-`deposit_contract.txt` is a single-line text file with the address of the testnet's deposit contract on the Görli network. To connect to the testnet, the user should specify the address as a command-line parameter named `--deposit-contract`.
+`deposit_contract.txt` is a single-line text file with the address of the testnet's deposit contract on the Görli network. To connect to the testnet, the user should specify the address as a command-line parameter named `--deposit-contract`. If the used constants preset specifies a non-empty value for the `DEPOSIT_CONTRACT_ADDRESS` constant, it should be used as the default value for this parameter. The supplied address consists of 20 bytes encoded in hex form and prefixed with "0x".
 
 The `genesis.ssz` represents the genesis state snapshot. The user should specify the path to this file with a command-line parameter named `--state-snapshot`.
-
-The `config.yaml` file is optional and it specifies the [Eth2 constants parameters](https://github.com/ethereum/eth2.0-specs/tree/dev/configs) used by the testnet. When no config file is present, it should be assumed that the testnet is using the `minimal` config. Users are expected to check each client's documentation for instructions regarding the usage of config preset files. Config presets are usually specified either at build-time or at run-time depending on the client.
 
 Any additional information and instructions for interacting with the specific testnet can be provided in a README file in the same folder.
 
@@ -65,5 +65,4 @@ To facilitate the reuse of GöETH, the client teams may choose to modify the dep
 After significant progress is reached in client-operated testnets, the EF will deploy an official multi-client testnet. Metadata files will be published in the following folder:
 
 https://github.com/eth2-clients/eth2-testnets/serenity-phase0
-
 
