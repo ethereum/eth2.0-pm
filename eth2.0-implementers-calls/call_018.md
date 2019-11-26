@@ -142,7 +142,7 @@
 * Adrian Manning (Lighthouse/Sigma Prime)
 * Alex Stokes (Lighthouse/Sigma Prime)
 * Antoine Toulme (ConsenSys)
-* Ben Edginton (PegaSys)
+* Ben Edgington (PegaSys)
 * Brett Robertson (Cat Herders)
 * Carl Beekhuizen (EF/Research)
 * Cayman

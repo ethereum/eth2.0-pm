@@ -243,7 +243,7 @@
 * Afri Schoeden (Parity)
 * Alex Stokes (Lighthouse/Sigma Prime)
 * Vitalik Buterin (EF/Research)
-* Ben Edginton (PegaSys)
+* Ben Edgington (PegaSys)
 * Blazj Kolad (Pegasys)
 * Carl Beekhuizen (Decentralized staking pools)
 * Chih-Cheng Liang (EF/Research)

@@ -321,7 +321,7 @@ Thank you everyone.
 * Adrian Manning
 * Alex Beregszaszi (axic)
 * Antoine Toulme
-* Ben Edginton (PegaSys)
+* Ben Edgington (PegaSys)
 * Cayman
 * Carl Beekhuizen
 * Cem Ozer

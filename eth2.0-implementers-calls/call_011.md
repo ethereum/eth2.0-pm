@@ -13,7 +13,7 @@
 5. General spec discussion [_(1:01:34)_](https://youtu.be/wS3sOB_hfgk?t=3694)
 6. Open Discussion/Closing Remarks [_(1:14:08)_](https://youtu.be/wS3sOB_hfgk?t=4448)
 
-# Brief Highlights from the Call: Compliments of Ben Edginton's [What's New in ETH2](https://notes.ethereum.org/c/Sk8Zs--CQ/https%3A%2F%2Fbenjaminion.xyz%2Fnewineth2%2F20190201.html)
+# Brief Highlights from the Call: Compliments of Ben Edgington's [What's New in ETH2](https://notes.ethereum.org/c/Sk8Zs--CQ/https%3A%2F%2Fbenjaminion.xyz%2Fnewineth2%2F20190201.html)
 * [Phase 0 spec](https://github.com/ethereum/eth2.0-specs/releases/tag/v0.1) has been released 
 * Grigore of [Runtime Verification](https://runtimeverification.com/) is looking at implementing Ethereum 2.0's semantics in the K framework to make it amenable to formal verification. [Zak Cole of [Whiteblock](https://www.whiteblock.io/) is also looking at [formal methods](https://twitter.com/0xzak/status/1090304646613131264).]
 * Phase 1 update from Vitalik:

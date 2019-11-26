@@ -505,7 +505,7 @@ None
 * Alex Beregszaszi 
 * Alex Stokes (Lighthouse/Sigma Prime)
 * Antoine Toulme (ConsenSys)
-* Ben Edginton (PegaSys)
+* Ben Edgington (PegaSys)
 * Benjamin Bur
 * Brent Allsop
 * Brett Robertson

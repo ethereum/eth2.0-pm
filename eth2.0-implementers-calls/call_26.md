@@ -92,7 +92,7 @@ What might affect some people trying to do InterOp is that we are going to chang
 
 So we have made some BLS signature provements Ben has been working on that. The  noise jvm implementation is complete now. We're working on our Handel’s implementation of Handel for our client. Mostly doing code clean up and handing off to our project team were working to merge with Harmony. That's just kind of like going through HR stuff for that and we're implementing some benchmarks if we make changes to like block rusting or epoch rusting we can tell right away if there's been any kind of change in the speed of that.
 
-**Ben Edginton:** The BLS stuff I've been working on specifically is implementing the new hash to curve standard is more or less complete so I am more or less happy issues with performance. If any teams want to take a look at it in Java, then it's on Artemis GitHub as a draft or requesting a moment. So feel free to take a look an entry back.
+**Ben Edgington:** The BLS stuff I've been working on specifically is implementing the new hash to curve standard is more or less complete so I am more or less happy issues with performance. If any teams want to take a look at it in Java, then it's on Artemis GitHub as a draft or requesting a moment. So feel free to take a look an entry back.
 
 ### Harmony
 
@@ -407,7 +407,7 @@ None.
 
 - Alex Stokes
 - Antoine Toulme 
-- Ben Edington
+- Ben Edgington
 - Brent Allsop
 - Carl
 - Cayman

@@ -6,7 +6,7 @@
 ### [Audio/Video of the meeting](https://www.youtube.com/watch?v=sz87_i5Uy1I)
 
 #### Moderator: Danny Ryan
-#### Scribes: Ben Edington, Mamy Ratsimbazafy & Brett Robertson
+#### Scribes: Ben Edgington, Mamy Ratsimbazafy & Brett Robertson
 
 ----------
 
@@ -220,7 +220,7 @@ Received some interesting contributions at EthBerlin for Eth2.0 (see chat for li
 
 * Alex Stokes (Lighthouse/Sigma Prime)
 * Antoine Toulme
-* Ben Edginton (PegaSys)
+* Ben Edgington (PegaSys)
 * Benjamin Bur
 * Brent Allsop
 * Brett Robertson
