@@ -82,7 +82,7 @@
 * Danny  _14:15–14:48_
     * On the spec, maintenance of it has primarily moved to the github, there’s been a lot of rapid development
       * A lot has been focus on making things clearer, making minor adjustments, renaming, reorganizing etc. 
-      * Ben Edington: [What's New in Eth2.0](https://docs.google.com/document/d/1yDoXocazwE0LRDTQbm2yGz_3MkIL0f32xQVRt1nTKig/edit)
+      * Ben Edgington: [What's New in Eth2.0](https://docs.google.com/document/d/1yDoXocazwE0LRDTQbm2yGz_3MkIL0f32xQVRt1nTKig/edit)
  * Vitalik  _14:50–16:10_
     * On the spec side, something that may be worth dedicating more time to specifically is the possibility of replacing the hash algorithm with some kind of merkle hashing
      * Made an issue on this: [issue#54](https://github.com/ethereum/eth2.0-specs/issues/54)

@@ -368,7 +368,7 @@ Slashing is hard that is something that we literally cannot launch without. Whet
 * Alex B. 
 * Antoine Toulme (ConsenSys)
 * Anton N.
-* Ben Edginton (PegaSys)
+* Ben Edgington (PegaSys)
 * Carl Beekhuizen (EF/Research)
 * Cayman
 * Daniel

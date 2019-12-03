@@ -154,7 +154,7 @@ Yeah. Long ago, the number of validators to start the chain was specified as abo
 and then prevents new deposits from being processed. This attack was in the context of there only being an amount of depositers to trigger the chain start. Given that there is a genesis time, that mitigates a lot of the attack potential. Also, if a gatekeeper attack happened, it would be incredibly obvious, and it would be possible to use centralized coordination to remove an attacked from the chain. So I proposed in [PR 1467](https://github.com/ethereum/eth2.0-specs/pull/1467) how to reduce the chances that some whale could execute this kind of attack. Justin has some counter arguments in the PR.
 
 # 7. [Open Discussion/Closing Remarks](https://www.youtube.com/watch?v=4_EGNG-Yek4)
-It turns out Ben Edgington is also a girly whale.
+It turns out Ben Edgington is also a Goerli whale.
 
 ## Next Meeting will be Thursday, November 21 at 1400 UTC
 

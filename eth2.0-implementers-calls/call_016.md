@@ -134,7 +134,7 @@
 * Ameen Soleimani (Spankchain)
 * Antoine Toulme (ConsenSys)
 * Anton Nashatyrev (Harmony)
-* Ben Edginton (PegaSys)
+* Ben Edgington (PegaSys)
 * Carl Beekhuizen (EF/Research)
 * Chih-Cheng Liang (EF/Research)
 * Dankrad Feist (HiDoc Technologies)

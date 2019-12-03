@@ -34,7 +34,7 @@
   * Finished with attestations, and now working on bls and finality
     * Regarding BLS, they decided to start with Milagro, evaluate it, and then decide if it is efficient for them or not. And then decide to maybe experiment and some trials to get a custom implementation of bls 
    
-* Pegasys (Ben Edington)  [_7:37-9:40_](https://youtu.be/VNwANifX7qE?t=457)
+* Pegasys (Ben Edgington)  [_7:37-9:40_](https://youtu.be/VNwANifX7qE?t=457)
   * Nothing to report on the client development front
     * So far have implemented the state transition  
   
@@ -60,7 +60,7 @@
 * Geth (Péter Szilágyi)   [_15:35-15:49](https://youtu.be/VNwANifX7qE?t=936)
     * Nothing really to report in terms of updates for this call
 # 2. Research Updates  
-* Pegasys (Ben Edington/Nicolas Lionchon)  [_7:55–9:40_](https://youtu.be/VNwANifX7qE?t=475)
+* Pegasys (Ben Edgington/Nicolas Lionchon)  [_7:55–9:40_](https://youtu.be/VNwANifX7qE?t=475)
     * [White Block](https://www.whiteblock.io/) platform decided to open source, so another good simulation tool out there.
     * Continue to work on the simulator. Plan to present it in the call in 2 weeks
       * Fredrik Harryson chimed in, wondering if the simulator would be of importance to what we have in ETH1.0. Nicolas responded, saying it could be used for 1.0 as well. Research link was then sent to Fredrik for any further thought into the matter.
