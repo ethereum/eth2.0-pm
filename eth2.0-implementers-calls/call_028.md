@@ -1,22 +1,21 @@
 # Ethereum 2.0 Implementers Call 28 Notes
 
- ### Meeting Date/Time: Thursday 2019/11/21 at 14:00 GMT
+### Meeting Date/Time: Thursday 2019/11/21 at 14:00 GMT
+### Meeting Duration: ~ 1 hr 20 mins
+### [GitHub Agenda Page](https://github.com/ethereum/eth2.0-pm/issues/101)
+### [Audio/Video of the meeting](https://www.youtube.com/watch?v=DzLrxuN55VA)
+### Moderator: Danny Ryan
+### Notes: Pooja Ranjan
 
- ### Meeting Duration: ~ 1 hr 20 mins
- ### [GitHub Agenda Page](https://github.com/ethereum/eth2.0-pm/issues/101)
- ### [Audio/Video of the meeting](https://www.youtube.com/watch?v=DzLrxuN55VA)
+----------
 
- #### Moderator: Danny Ryan
- #### Notes: Pooja Ranjan
- ----------
-
- **Danny**: Welcome everyone! 
+ **Danny**: Welcome everyone!
 
  ## 1. Testing and Release Updates
- 
+
  **Danny**: Testing generally stable, Mehdi will add more.
- As for release, I do have a pending release on GitHub with some minor clarifications in changes, specifically clarify some things. It might change one test vector, will let you know. Other than that everything is good. 
- 
+ As for release, I do have a pending release on GitHub with some minor clarifications in changes, specifically clarify some things. It might change one test vector, will let you know. Other than that everything is good.
+
 **Mehdi** : Hi everyone!
 * Some of you may have seen danny's update. Sigma Prime has been awarded grant from the Ethereum Foundation to do work on Beacon fuzzer and differential fuzzer.
 * Will be ramping up our efforts on Beacon fuzz from next week, allocating more time and resources.
@@ -30,7 +29,7 @@
 * Reached out to Nimbus as well. Trying to see how we could prosthetic C-library that we can simply link to our differential fuzzers.
 * We started integrating Trinity, which should be very straight forward.
 * We started working on Prysm thinking that having zrnt up and running will be trivial, but turned out quite the opposite. It is not as simple as expected.
- 
+
 **Next steps:**
  * finalize all the epoch state transition, should be done next week
  * will also bump all the current fuzzers to the latest version of the spec
@@ -41,13 +40,13 @@
 I know there is a desire and even a need for **fork choice tests**, that's been on a back runner for us for a while and we need to prioritize it. I'll try to get some notes for review up on that within the next week.
 The good thing is some of these corner cases and things we've integrated into the spec recently are those, and not expected to be seen especially on those test nests and even primarily not even seen on mainnet.
 
- 
+
  ## 2. Client Updates
- 
- ### Prysm 
- 
+
+ ### Prysm
+
 **Terence**:
- 
+
 *  Relaunched testnet with v0.9 last week. There has been lot of public interest.
 *  55 peers right now , only 10 are of ours
 *  with that comes a lot of questions, support and great feedback on the community
@@ -55,7 +54,7 @@ The good thing is some of these corner cases and things we've integrated into th
 *  lot of bug fixes on RPC back-end
 * On the side, working on aggregator, because previously every validator aggregate and then broadcast the attestation. So,we are switching to these aggregators.
 *  making SSD performance improvement
-*  ramping the Eth1 data implementation logic 
+*  ramping the Eth1 data implementation logic
 *  resume finishing fully end to end test from depositing a deposit contract, submitting the deposit transaction and finalizing epoch.
 
 **Danny**: Thank you Terence!
@@ -67,7 +66,7 @@ The current testnet does not use aggregation, is that what you said?
 
 **Terence**: Not yet, it should be the same as minimum config. with an exception.
 
-**Danny**: Okay. When you get chance, just drop in there. Just us getting in the habit of documenting these nets. so that we can begin to small experimentation, will be good. 
+**Danny**: Okay. When you get chance, just drop in there. Just us getting in the habit of documenting these nets. so that we can begin to small experimentation, will be good.
 
 **Terence**: Sure.
 
@@ -78,8 +77,8 @@ The current testnet does not use aggregation, is that what you said?
 * v 0.9.1 merged, pretty good.
 * working on a hot/cold database
 * implemented validator on-boarding flow
-* we have a test not running running in the cloud with  orchestration and monitoring. We're just not quite ready to push it to the public yet because we want to change the documentation and aim to get hot/col database in there before we make it public. Just so we're not filling up people's machine. 
-* working on refactoring the validator clients. We're putting in some new slashing protection stuff 
+* we have a test not running running in the cloud with  orchestration and monitoring. We're just not quite ready to push it to the public yet because we want to change the documentation and aim to get hot/col database in there before we make it public. Just so we're not filling up people's machine.
+* working on refactoring the validator clients. We're putting in some new slashing protection stuff
 * doing aggregation in the validator clients. It should make it your beacon node to handle large numbers.
 * Working with Herumi on fast BLS implementation, but will still maintain our owns. Herumi is fast and extremly impressive.
 * On the networking side, we've stated working on noise handshaking on P2P. We've added sybil resistance to the DHT
@@ -89,7 +88,7 @@ The current testnet does not use aggregation, is that what you said?
 
 **Adrain**: On the disc v 5, there was a few suggestions, essentially we limit IP addresses in /24 subnets.  In a particular bucket, I think we only allow two /24 subnet on the entire /24 subnet. In entire DHT limit the number of IPs on a /24 subnet.
 
-**FJL**: Oh okay, thank you. 
+**FJL**: Oh okay, thank you.
 
 **Danny**: Thank you Paul.
 
@@ -98,7 +97,7 @@ The current testnet does not use aggregation, is that what you said?
 **Marin**
 
 * we implemented Carls apes in JavaScript and we are currently testing it across the environments and we'll release it soon.
-* made huge progress in disc v 5 in  JavaScript and 
+* made huge progress in disc v 5 in  JavaScript and
 * our 0.9 spec is pretty much done. We're just waiting on the next release of JS Lib P2P
 
 ### Nimbus
@@ -108,15 +107,15 @@ The current testnet does not use aggregation, is that what you said?
 * weekly testnet setup in place. We reboot the testnet set up every Tuesday morning and it's stable for a week
 * We've a separate developer branch and we merge everything on Monday. You can use that as a stable branch in comparison to Nimbus.
 * spec- now compatible with 0.9.1 and waiting for 0.9.2 and verified that we've the same Genesis as 0.9.1 and so that would be deployed on the testnet next Tuesday
-* complex sync issue being debug, 
+* complex sync issue being debug,
 * working on data logs. Going through all the logs are quite stressing for set up and even for us
-* crypto and BLS - I did some benchmark on the new BLS on the Raspberry pi, it was 21 ms for pairing. 
+* crypto and BLS - I did some benchmark on the new BLS on the Raspberry pi, it was 21 ms for pairing.
 
-**Next to do** 
+**Next to do**
 * working with Sigma Prime on Beacon fuzz
 * on networking front on disc v 5
 
-Side note on Eth1 - At Nimbus Eth 1, we finished Istanbul hardfork implementation. 
+Side note on Eth1 - At Nimbus Eth 1, we finished Istanbul hardfork implementation.
 
 **Danny**: Are those testnet that you're rebooting is something that public can join?
 
@@ -145,9 +144,9 @@ One mor thing, while we pass the minimal test, we still have some issue with ver
 
 **Alex**
 
-* working on spec update and performance 
+* working on spec update and performance
 * ver 0.9.0 and 0.9.1 updates are mostly altogether
-* some refactoring we have to do on the fork choice that's blocking being fully up-to-date there. We're passing all of the fixture the spec test that 
+* some refactoring we have to do on the fork choice that's blocking being fully up-to-date there. We're passing all of the fixture the spec test that
 * updates to pilot Pylibp2p stability
 * we merged in our Eth 1 monitor
 * some great performance work on PySSZ, which had been bottleneck for us
@@ -159,7 +158,7 @@ One mor thing, while we pass the minimal test, we still have some issue with ver
 
 **Joseph**
 
-* split in 2 teams - 
+* split in 2 teams -
     (a) **Advanced Research** which combining with Harmony and would be working on the Shard clients
     (b) **Artemis production readiness** team are making changes and implementing sync right now. Shahan will give update on that.
 
@@ -168,22 +167,22 @@ One mor thing, while we pass the minimal test, we still have some issue with ver
 * finalizing the naive aggregation stuff the will take a look at 0.9.1 right after
 * done all the request response methods done to at least basic functionality
 * we are finalizing a review  
-* starting a round of interop testing with other clients 
-* starting to investigate block sync approach, specially Prysmatic 
+* starting a round of interop testing with other clients
+* starting to investigate block sync approach, specially Prysmatic
 * also working on disc v 5 focused on the interop side of that
 
 **Danny**: Great, thanks!
 Meredith, I saw your question in the chat on it is a function of the size of the validator  that I don't know if that is explicitly written down anywhere, but we can.
 This is **Weak subjectivity period** and it's dynamic. Foe many use cases of the weak subjectivity period, we would instead just rely upon some sort of upper bound rather than using even if it drops lower for the safety and health of network. It's just much simpler to err on the side of conservative on it but I will drop some more notes on that after this call.
 
-**Meridth**: Awesome, thanks. 
+**Meridth**: Awesome, thanks.
 
 ### Harmony
 
 **Mikhail**
 
 * There is a little progress being done on the gossip sub simulation. This simulator now being able to handle 100,000 of nodes and disseminate a message within there in the same amount of time.
-* Further steps are to add the mesh topology and add metrics like bandwidth and so forth to this piece of software 
+* Further steps are to add the mesh topology and add metrics like bandwidth and so forth to this piece of software
 * next we did a partial update of all the spec of 0.9.0 and this is within our work on the fork choice tests. we are about to finish this fork choice test for our code base
 *  We probably can use our code to generate some basic test vectors.
 *  also there is a work near to be finished with disc v 5. It's now been testing with the Geth .
@@ -192,23 +191,23 @@ This is **Weak subjectivity period** and it's dynamic. Foe many use cases of the
 * next couple of week will be productive
 
 **Danny**: Great, thanks!
- 
+
  ## 3. Research Updates
- 
- 
-**Vitalik**: 
- 
+
+
+**Vitalik**:
+
 *  **On protocol side** phase 1, we've done some edits phase 1 spec. Proto has been doing some work on kind of plugging into all of the testing machinery.
 * Not too many changes, fairly small tweaks
-* One thing that we talked about is blocks containing multiple chunks vs the ability to have created multiple blocks 
+* One thing that we talked about is blocks containing multiple chunks vs the ability to have created multiple blocks
 * The idea is to just collapse the two dimensional array into one. That is simpler in some ways but it's also more complex and less  efficient  in other ways.
 * I feel like there might be an opportunity to conceptually simplify things quite a bit otherwise the main thing that could be added on is one fraud proofs  and the other group of incorrect groups of custody bits which aren't too difficult because it's only a single round game. But there's still wants of economic insight and incentive nuances there to think about.
 * I've been getting the feeling from the conversations with other people in these two groups that make people believe more and more that data availability of proofs actually or something important and are not just a kind of optional extras to throw on and to throw on at some point.People are actually afraid of the possibility that committees will break them. May be the skin break can cause the entire chain to finalize something invalid.
-* Phase 1 has been designed from the start with phase 2 and or with the data availability proofs in mind. The main reason why blocks have multiple chunks instead of one root is so that it'd makes it easier to and if combined all of those pieces together into a single big root. But then after that there's the question of what specific date availability scheme do we use? The two realistic alternatives either 
-* something fraud proof based or 
+* Phase 1 has been designed from the start with phase 2 and or with the data availability proofs in mind. The main reason why blocks have multiple chunks instead of one root is so that it'd makes it easier to and if combined all of those pieces together into a single big root. But then after that there's the question of what specific date availability scheme do we use? The two realistic alternatives either
+* something fraud proof based or
 * something STARK based
 
-There was a version of something fraud proof based that I coded up like almost a year ago and it would need to be updated. 
+There was a version of something fraud proof based that I coded up like almost a year ago and it would need to be updated.
 
 The STARK based one is protocol wise conceptually simpler except there's this one kind of  very self-contained much more complex piece which is actually proving and verifying the STARK. But the main challenge there is we need to just make sure we have a decent Stark friendly hash function.
 
@@ -217,8 +216,8 @@ The STARK based one is protocol wise conceptually simpler except there's this on
 
 **Next steps**:
 
-* prototype this STARK based stuff and see how viable it is in bps sense. 
-* Otherwise there is this option of just figuring out how to swats things. 
+* prototype this STARK based stuff and see how viable it is in bps sense.
+* Otherwise there is this option of just figuring out how to swats things.
 
 Those are the protocol level things from my side. My own time, I've been spending on some application layer questions.
 
@@ -229,9 +228,9 @@ Those STARK friendly hash functions have not yet been vetted by the community of
 
 **Chat question**: Any news from the IETF forum on BLS standardization?
 
-**Carl**: 
+**Carl**:
 
-**Hash-to-curve** idea was [presented](https://youtu.be/dMFgaeRdsfU?t=1009) at IETF meeting, yesterday. It was mostly update or for those people explaining the changes that have gone in the last meetings, then some questions around where to go from here. All looks very good, no one raised any issue which was precondition on making this a blockchain standard. 
+**Hash-to-curve** idea was [presented](https://youtu.be/dMFgaeRdsfU?t=1009) at IETF meeting, yesterday. It was mostly update or for those people explaining the changes that have gone in the last meetings, then some questions around where to go from here. All looks very good, no one raised any issue which was precondition on making this a blockchain standard.
 
 In terms of the hash to curve, the next thing happening is the proof of concept which is to be the master for most implementation that's being used to generate the test vectors which were removed, making sure all the canonical implementation of hash to curve are good. It should happen in the next two week or so. It will be moved to last call from the status on the an IETF standpoint. It would be submitted for input on the cryptography.  
 
@@ -239,7 +238,7 @@ In terms of the hash to curve, the next thing happening is the proof of concept 
 
 **Carl**: That is much longer, in my view, it is six months or something.
 
-With the reservation that nothing being said we haven't had proper discussions about this since the IETF meeting. We don't have a formal written agreement surface is a standard. I'm reasonably happy to declare those to be the BLS standards going forward and don't really expect anything to change there. 
+With the reservation that nothing being said we haven't had proper discussions about this since the IETF meeting. We don't have a formal written agreement surface is a standard. I'm reasonably happy to declare those to be the BLS standards going forward and don't really expect anything to change there.
 
 I think for most cases it's fair to say that BLS thing is not really holding us back. Only after next internal meeting which is happening in two weeks from now. For now basically think of it as a standard.
 
@@ -256,7 +255,7 @@ I think for most cases it's fair to say that BLS thing is not really holding us 
 
 **Justin Drake**: I've few updates -
 
-**Relevant for phase 0**. 
+**Relevant for phase 0**.
 
 * The EF is looking for someone to manage the validators  that we're going to run. We are looking for someone with Dev Ops skill, operational skills, security skills to help set up the high uptime, high security set up, potentially multi-client, multi-cloud. Essentially, been using the threshold BLS signature and provide all this infrastructure as open source.  Potentially being complimentary to institutional, great infrastructure that Coinbase might provide. If you know anyone who might fit the bill, please send me a message.
 
@@ -266,7 +265,7 @@ I think for most cases it's fair to say that BLS thing is not really holding us 
 
 **Relevant for phase 1**
 
-Spending time on zero knowledge proof.  one of the cool things that Dan Boneh came up with a  really neat, a secretly election mechanism and he wrote a paper and his paper got accepted, so it will be published very soon. It turns out that the circuit is very simple. You could do it either with ZK proof or fault proof. It is very similar to data availability situation. Of course if we can do it with zk proof, it's cleaner and it turns out in this specific instance, its potentially very doable. 
+Spending time on zero knowledge proof.  one of the cool things that Dan Boneh came up with a  really neat, a secretly election mechanism and he wrote a paper and his paper got accepted, so it will be published very soon. It turns out that the circuit is very simple. You could do it either with ZK proof or fault proof. It is very similar to data availability situation. Of course if we can do it with zk proof, it's cleaner and it turns out in this specific instance, its potentially very doable.
 
 
 **Relevant to Phase 2**
@@ -308,7 +307,7 @@ One of the hash function available is The Pederson hash which is provably secure
 
 **Mamy**: If we can find the contract, the original one in assembly script, we can just replicate it in name, see that we generate something executable that is almost the same. This way it would be like Vyper in terms of interface that we can use for Phase 2 for testing.
 
-**Will**: Awesome! Lets do that. I'll share with you as we get this working and then we should try to write one as well. 
+**Will**: Awesome! Lets do that. I'll share with you as we get this working and then we should try to write one as well.
 
 **Mamy**: Cool!
 
@@ -318,21 +317,21 @@ One of the hash function available is The Pederson hash which is provably secure
 
 There's Eth1.x, there is **research call**, they are primarily organizing on Eth research forum. It is to push forward some of the research on the existing chain with a focus on getting one improving theorem today and also staging Ethereum for future upgrade of moving Ethereum to Eth 2, more towards stateless model and other things. So check that out. Like I said, they are organizing a lot on Eth research forum.
 
-In addition to that we are going to start at least monthly **networking call** where a member or two from each team I hope that as been focused primarily on networking, we're going to get together to enumerate the problem more explicitly and work on driving that effort a little bit to sleep. I'm going to lead that call to start but certainly I'm open to not leading that call depending upon who steps up and is available. 
+In addition to that we are going to start at least monthly **networking call** where a member or two from each team I hope that as been focused primarily on networking, we're going to get together to enumerate the problem more explicitly and work on driving that effort a little bit to sleep. I'm going to lead that call to start but certainly I'm open to not leading that call depending upon who steps up and is available.
 
-I will drop an agenda item on Eth 2 PM repo, an issue that we'll set up this call. It might be next week, if not it will certainly be the following. 
+I will drop an agenda item on Eth 2 PM repo, an issue that we'll set up this call. It might be next week, if not it will certainly be the following.
 
-Any questions or thought on that particular item? Don't want to introduce an incredible amount of coordination overhead for adding all these calls. They are experiments and if they are valuable, will continue doing. 
+Any questions or thought on that particular item? Don't want to introduce an incredible amount of coordination overhead for adding all these calls. They are experiments and if they are valuable, will continue doing.
 
 
 **Danny**: One more call **[Light Client task force](https://github.com/ChainSafe/lodestar/issues/555)**. Another call coming up, first week December, Wednesday.
 
 As Eth 2 progresses, these two covers an increasingly large domain. Hopefully these domain specific calls, we can rally the effort.
 
- 
+
  ## 4. Networking
- 
- **FJL**: No much updates. 
+
+ **FJL**: No much updates.
 * One thing that might be of interest to the historic team that we just Just converted Geth code base to use Go-modules. I am looking to include Disc v 5 code on Geth master branch asap. I think that's going to be a big help to anyone using Go.
 * Not directly related to Eth2 but might be interesting to Eth 2 in future. Since the Istanbul HF is coming up in the Eth 1 chain. Everyone is upgrading their nodes which means that all of a sudden have a lot more  capable Eth 1 nodes around.  And we want to leverage that by running a DHT crawler that collects all of these. We've this infrastructure to base your break so you can actually set up. Then we will have something to announce there right after the fork process. I think this is going to be a pretty good test run of DNS infrastructure. I think it's probably going to be really nice for Eth 2  as well once it launches.
 
@@ -343,50 +342,50 @@ As Eth 2 progresses, these two covers an increasingly large domain. Hopefully th
 * it seems like working without my involvement but would be nice to have more involvement
 * at the same time, there are research challenges left for this protocol and I will be happy to have get more help on that.
 * happy to have calls about it
- 
+
  **Danny**: Thank you, Felix. Networking experts, provide feedback and input and like I said, we've a networking call coming up and we more explicitly rally around some of these problems. other networking updates?
- 
+
  On Harmony simulations, when you all are expecting to publish some results on that?
- 
- **Mikhail**: I think the basic results should be published by the end of next week. We're just going to publish these basic simulator stuff, get feedback. Proto is willing to the creation simulation. 
- 
+
+ **Mikhail**: I think the basic results should be published by the end of next week. We're just going to publish these basic simulator stuff, get feedback. Proto is willing to the creation simulation.
+
 **Danny**: Cool!
-  
-  
+
+
  ## 5. Spec discussion
- 
+
  **Danny**: Proto dropped [issues with and options for signing root](https://github.com/ethereum/eth2.0-specs/issues/1487), discussing pain points in disparity between hash tree root and signing root.
- 
+
 **Proto**:
 *  signing root is kind of pain, outlined this in detail in the [issue](https://github.com/ethereum/eth2.0-specs/issues/1487). Collect more feedback on the proposal to remove signing roots. Alternatively there are other workaround but they aren't pretty and don't cover all issues.
 *  With more feedback, I'll put together a PR describing the changes and by the next call, I'll like to make a decision as a group of implementers.
 
 **Raul**: Signing root can be a little bit confusing to someone not familiar. I agree that it's worth revisiting. There's a lot that can be done to explore alternatives. I like Proto's alternative of having a sign block container and regular block container.
 
-**Mamy**: Actually there is something that we wanted to do in Nimbus.  one suspect stabilizes because  we have issues on the test suit. We need some kind of workaround on that. I guess having a sign type and something separate will be much easier. 
+**Mamy**: Actually there is something that we wanted to do in Nimbus.  one suspect stabilizes because  we have issues on the test suit. We need some kind of workaround on that. I guess having a sign type and something separate will be much easier.
 
 **Mikhail , Shahan**: +1 for signed block container
 
-**Proto**: There is something to n/w as well. There are considerations for how you deal with typing structure. Take a look and we will discuss more in next call. 
+**Proto**: There is something to n/w as well. There are considerations for how you deal with typing structure. Take a look and we will discuss more in next call.
 
 **Danny**: other spec related item?
 
- 
+
  ## 6. Testnet Discussion
- 
+
  **Danny**: Status is similar to two weeks ago. Prime focus in most clients is getting a public version of the testnet out or joining other public testnets.
- 
-Some really good movement on that. Prysmatic relaunched testnet, couple of other clients really near to that. Nimbus doing their weekly builds. 
- 
+
+Some really good movement on that. Prysmatic relaunched testnet, couple of other clients really near to that. Nimbus doing their weekly builds.
+
 It seems like there's still work to do before orchestrate a large scale multi-client public network. Are there any other thoughts, comments, discussion, questions about this?
- 
- 
- 
+
+
+
  ## 7. Open Discussion/Closing Remarks
 
 **Mikhail**: I have a question about weak subjectivity period. It's period size comes from Casper FFG paper. I am wondering if we are tightly coupled with the size calculation that we've so far and does it prevent long range attacks only or if there are some other implications here?
 
-**Vitalik** - **[weak subjectivity period](https://ethresear.ch/t/weak-subjectivity-under-the-exit-queue-model/5187)**, yes there are calculation. I made an Eth Research post about that. How long the week subjectivity period is based on the rate at which people can withdraw. The withdrawal period is maximum is 8 months in the worst case. In the normal case, the one who is withdrawing, get out after about two days. In the case, where there is small amount of Ether, the maximum also drops and of compromise and encourage more people to join in. 
+**Vitalik** - **[weak subjectivity period](https://ethresear.ch/t/weak-subjectivity-under-the-exit-queue-model/5187)**, yes there are calculation. I made an Eth Research post about that. How long the week subjectivity period is based on the rate at which people can withdraw. The withdrawal period is maximum is 8 months in the worst case. In the normal case, the one who is withdrawing, get out after about two days. In the case, where there is small amount of Ether, the maximum also drops and of compromise and encourage more people to join in.
 
 In terms of why that exists and based, one part of it is because it determines how often people needs to come online to get the security guarantee.
 
@@ -422,7 +421,7 @@ Okay I know y'all are all pretty heads down working on these things.  I think we
 * Chih-Cheng Liang
 * Daniel Ellison (Consensys)
 * Danny Ryan (EF/Research)
-* FJL 
+* FJL
 * Hsiao-Wei Wang
 * Jacek Sieka
 * JosephC
@@ -438,7 +437,7 @@ Okay I know y'all are all pretty heads down working on these things.  I think we
 * Nicholas (Hsiu-Ping) Lin
 * Nicolas Liochon
 * Nishant Das
-* Paul Hauner 
+* Paul Hauner
 * Protolambda
 * Pooja Ranjan
 * Raul Jordan

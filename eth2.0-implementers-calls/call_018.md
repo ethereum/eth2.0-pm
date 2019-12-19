@@ -5,17 +5,19 @@
 ### [GitHub Agenda Page](https://github.com/ethereum/eth2.0-pm/issues/43)
 ### [Audio/Video of the meeting](https://www.youtube.com/watch?v=dw2GmEuLr5k&)
 
+----
+
 # 1. [Testing Updates](https://youtu.be/dw2GmEuLr5k?t=417)
-* Protolambda 
+* Protolambda
   * Slow week with NY blockchain week, helpful to get together with implementers
   * Epoch transistions, sanity tests, want clients to create test runners and get feedback
   * Tests are currently on separate branch, soon to be released
 * Mikhail
   * keccak256 still used in BLS test vectors
-* Danny - this was likely a mistake, 
+* Danny - this was likely a mistake,
 * Protolambda
   * Loading configuration files: compile-time vs runtime
-* Mamy 
+* Mamy
   * Nimbus discussed this at length - for now using compile-time constants, not through YAML
   * Reconsidering in future for users, don't want them have to recompile everytime
 * Paul
@@ -23,14 +25,14 @@
 * Danny
   * Configurable constants validity condition accompanies this, currently enumerating those in a branch
   * Constants will likely live in a test repo for now
-  
+
 * Antoine
   * Testing jenkins instance for building docker files for Lighthouse, Prysm, Artemis for nodes on a simulated testnet
   * Working without discovery, just for connection. Next step is peer and sync
   * Format build by Whiteblock - network delays, easy to recreate real world simulations
 * Danny
   * Another initial fuzzing test targeting Go and Py specs, overtime will integrate more clients
-  
+
 # 2. [Client Updates](https://youtu.be/dw2GmEuLr5k?t=1117)
 * Parity - Wei Tang
   * Up to date with 0.6 spec
@@ -45,17 +47,17 @@
   * Implementation of watching validators register; Timing mechanism is now swappable for testing different ones
 * Nimbus - Mamy
   * Slow weeks - several people on holiday
-  * Networking, forward and backward sync 
+  * Networking, forward and backward sync
   * Still working on libp2p
   * Some confusion between keccak256 and SHA256
   * Shuffling and BLS mainnet tests passing
-  * Update on ETH 1: new member working networking and reusable parts for ETH 2.0 
+  * Update on ETH 1: new member working networking and reusable parts for ETH 2.0
   * Documentation generator for repo - should be cross language compatible
   * Also working on multi-threading and debugging Nim library
 * Prysmatic - Terence
   * Finished up to 0.6 spec, working on how to use and optimize in testnet
   * Updating SSZ and trie hashing
-  * Investigating BLS alternatives 
+  * Investigating BLS alternatives
   * Possible colaboration with Whiteblock for p2p
 * Lodestar - Cayman
   * SSZ and BLS (switched to Milagro) tests passing for 0.6, soon state transtition tests and shuffling
@@ -77,12 +79,12 @@
   * [V2 of Phase 2 proposal](https://notes.ethereum.org/w1Pn2iMmSTqCmVUTGV4T5A?viewPhase#)
   * Instead of maintaining large array of state for every shard, 32 byte hash takes that place
   * Full state can be abstracted across different execution environments
-  * Despite more abstraction it's simpler based on how it lets you abstract things - ex: no need for 1 standard rent scheme - allows for 
+  * Despite more abstraction it's simpler based on how it lets you abstract things - ex: no need for 1 standard rent scheme - allows for
   alot more experimentation and design flexibility
   * Happens to provide a nice slot for ETH 1.0
   * Knowns and Unknowns:
     * Known - fundamentally possible to fulfill vision - complexity doesn't seem to increase with 2 layers over 1
-    * Unknown - efficiency benefits from 1 type of committee over 2 types 
+    * Unknown - efficiency benefits from 1 type of committee over 2 types
     * Unknown - challenges in fragmentation over different environments - harder or easier to upgrade? - Censorship attacks
     * Unknown - 2 layer structure economic design for fee markets
   * Discussion of [SSZ partial for light clients](https://youtu.be/dw2GmEuLr5k?t=2883)
@@ -99,9 +101,9 @@
 * Zak
   * We're going to want a more solidified spec for libp2p for future implementers and we also need numbers for message sizes (avg, max)
   for adequate pre-production testing
-  
+
 # 5. [interop lockin](https://youtu.be/dw2GmEuLr5k?t=3955)
-**Joseph:** Ongoing discussion over interop concerning: Why not libp2p first? Why minimum wire protocol for interop? 
+**Joseph:** Ongoing discussion over interop concerning: Why not libp2p first? Why minimum wire protocol for interop?
 
 **Jonny:** HackMD document attempting to outline with interop might look like with clients talking to eachother over libp2p. Mostly to simplify things
   and attempt to establish a baseline for node communication
@@ -109,19 +111,19 @@
 **Adrian:** if strip out higher level protcols of libp2p we're mostly working with TCP transport and multistream. Why can't we use basic
   libp2p with this functionality?
 
-**Zak:** that should work, we just need everyone to interpret messages the same way for consistent execution. 
+**Zak:** that should work, we just need everyone to interpret messages the same way for consistent execution.
 
 **Mikerah:** [minimal libp2p implementation doc](https://github.com/ethresearch/p2p/issues/4) available for reference
 
 **Adrian:** libp2p should already be interoperable (Rust, Go, Javascript) off the shelf
 
-**Felix:** spec for frame format that multistream uses? 
+**Felix:** spec for frame format that multistream uses?
 
 **Adrian:** yes
 
 **Felix:** is there a way to remove the multistream for testing purposes?
 
-**Paul:** could they not just bind into the daemon? 
+**Paul:** could they not just bind into the daemon?
 
 **Mike:** yeah, we built the daemon version of libp2p specifically for languages without libp2p implementation would be able to interop
 
@@ -135,7 +137,7 @@
 **Felix:** we should have an evolving spec for the lower protocol and not just point people to libp2p
 
 **Mike:** we've actually been trying to specify what a libp2p 1.0 looks like implmented so perhaps we can contribute
-  
+
 
 # Attendees
 * Danny Ryan (EF/Research)
@@ -179,19 +181,3 @@
 * Vitalik Buterin (EF/Research)
 * Zak Cole (Whiteblock)
 * Meeting notes: Michael LaCroix
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-

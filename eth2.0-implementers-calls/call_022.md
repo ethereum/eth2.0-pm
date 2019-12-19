@@ -1,12 +1,11 @@
 # Ethereum 2.0 Implementers Call 22 Notes
-	
+
 ### Meeting Date/Time: Thursday July 25, 2019 at [14:00 GMT](http://www.timebie.com/std/gmt.php?q=14)
 ### Meeting Duration: 45 min
 ### [GitHub Agenda Page](https://github.com/ethereum/eth2.0-pm/issues/64)
 ### [Audio/Video of the meeting](https://www.youtube.com/watch?v=ReSiB2940AE)
-
-#### Moderator: Danny Ryan
-#### Scribe: Brent Allsop
+### Moderator: Danny Ryan
+### Scribe: Brent Allsop
 
 ## Agenda
 
@@ -108,7 +107,7 @@ They've come up with a plan for for implementing a harnessed single shard phase 
 
 ## 6 [Open Discussion]((https://www.youtube.com/watch?v=ReSiB2940AE&t=2173))
 
-**Danny Ryan** discussed [a proposal for Lodestar funding](https://molochdao.com/proposals/81) that would give Lodestar three months of runway. Solicited Moloch support. 
+**Danny Ryan** discussed [a proposal for Lodestar funding](https://molochdao.com/proposals/81) that would give Lodestar three months of runway. Solicited Moloch support.
 
 # Attendees
 
