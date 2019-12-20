@@ -9,38 +9,14 @@
 
 -----------------------------
 
-# Contents
+# Agenda
 
-- [Contents](#contents)   
-- [1 Testing Updates](#1-testing-updates)   
-   - [1.1 Overflow in Slashing](#11-overflow-in-slashing)   
-   - [1.2 Spec Freeze](#12-spec-freeze)   
-   - [1.3 Fuzzing](#13-fuzzing)   
-- [2 Client Updates](#2-client-updates)   
-   - [2.1 Nimbus](#21-nimbus)   
-   - [2.2 Artemis](#22-artemis)   
-   - [2.3 Trinity](#23-trinity)   
-   - [2.4 Yeeth](#24-yeeth)   
-   - [2.5 Harmony](#25-harmony)   
-   - [2.6 Lighthouse](#26-lighthouse)   
-   - [2.7 Prysmatic](#27-prysmatic)   
-   - [2.8 Lodestar](#28-lodestar)   
-   - [2.9 Parity](#29-parity)   
-- [3 Research Updates](#3-research-updates)   
-   - [3.1 Phase 0](#31-phase-0)   
-   - [3.2 Phase 1](#32-phase-1)   
-   - [3.3 Phase 2](#33-phase-2)   
-   - [3.4 PegaSys](#34-pegasys)   
-   - [3.5 Runtime Verification](#35-runtime-verification)   
-- [4 Network](#4-network)   
-   - [4.1 Libp2p](#41-libp2p)   
-   - [4.2 Gossiping Mechanism](#42-gossiping-mechanism)   
-- [5 Spec Discussion](#5-spec-discussion)   
-- [6 Open Discussion/Closing Remarks](#6-open-discussionclosing-remarks)   
-- [Annex A](#annex-a)   
-   - [A.1 Links](#a1-links)   
-   - [A.2 Attendees](#a2-attendees)   
-
+- [1. Testing Updates](#1-testing-updates)   
+- [2. Client Updates](#2-client-updates)   
+- [3. Research Updates](#3-research-updates)   
+- [4. Network](#4-network)   
+- [5. Spec Discussion](#5-spec-discussion)   
+- [6. Open Discussion/Closing Remarks](#6-open-discussionclosing-remarks)   
 
 # 1. Testing Updates
 
@@ -48,13 +24,13 @@
 
 **Video:** [`[4:06]`](https://youtu.be/YB8o_5qjNBc?t=245)
 
-**Danny Ryan**: Prysmatic Labs, Terence [Tsao], found an issue where the calculation and slashing was potentially overflowing. Relatively non-substantive changes (fixes, documentation, etc.) in v08x branch [#1286](https://github.com/ethereum/eth2.0-specs/pull/1286) includes a fix to this.  This will branch will get out in the next few days.
+Issue found where calculation and slashing potentially overflowed. v08x branch [#1286](https://github.com/ethereum/eth2.0-specs/pull/1286) includes a fix.
 
 ## 1.2 Spec Freeze
 
 **Video:** [`[5:12]`](https://youtu.be/YB8o_5qjNBc?t=309)
 
-**Diederik Loerakker**: Spec Freeze is over now, can stop throwing up to the spec and build.
+Spec Freeze is over.
 
 ## 1.3 Fuzzing
 
@@ -129,14 +105,9 @@ We'll keep everyone updated about Fuzzing over the coming weeks.
 
 **Video:**  [`[13:50]`](https://youtu.be/YB8o_5qjNBc?t=830)
 
+Testnet launched. Working towards v0.8. Focus is SZZ. State Transition function following pyspec naming convention.
 
-**Mamy**: We launched our testnet, based on libp2p daemon, this morning.
-
-We are working towards v0.8. All the small changes were integrated and right now a big focus is SSZ.
-
-We also started to align our State Transition function with pyspec in terms of naming.
-
-We had significant speed improvement during the past week, accumulated 20 to 30x speed-up on the State Transition benchmarks. Links, if people are interested in seeing what we did, so they can reproduce:
+Accumulated 20 to 30x speed-up on the State Transition benchmarks. Links so others can reproduce:
   * [Speed up process_crosslinks(...) and get_crosslink_deltas(...) by 10x - 15x in state_sim #314](https://github.com/status-im/nim-beacon-chain/pull/314)
   * [~2x state_sim speedup via additional caching in get_crosslink_committee #316](https://github.com/status-im/nim-beacon-chain/pull/316)
 
@@ -144,49 +115,41 @@ Published metrics library for Prometheus compact metrics:
   * [Nim metrics client library supporting the Prometheus monitoring toolkit](https://github.com/status-im/nim-metrics)
 
 
-We have a EWASM research library we are very happy with. We have started a domain specific language in NIM that compiles to EWASM. It's quite competitive in terms of contract size:
+EWASM research library developed. Contains domain specific language in NIM that compiles to EWASM. It's competitive in terms of contract size:
   * [Nimplay is Domain Specific Language for writing smart contracts in Ethereum, using the Nim macro system](https://github.com/status-im/nimplay)
 
-On Ethereum 1, we had some connections issues that were resolved to Parity and Geth.
+On Ethereum 1.x, connections issues were resolved to Parity and Geth.
 
 ## 2.2 Artemis
 
 **Video:** [`[17:05]`](https://youtu.be/YB8o_5qjNBc?t=1025)
 
-**Jonny Rhea**: We've updated, especially with the SSZ.
-
-Also been thinking about attester slashings, computational requirements for the worst scenario.
-
-We see the need to investigate the network load, decide what strategy to use when aggregating.
+Client updated, especially with SSZ. Contemplating attester slashings, computational requirements for the worst scenario. Need to investigate network load to decide a strategy for aggregating.
 
 
 ## 2.3 Trinity
 
 **Video:**  [`[17:51]`](https://youtu.be/YB8o_5qjNBc?t=1071)
 
-**Hsiao-Wei Wang**: PySSZ has been synced to v0.8 and the State Transition update is ongoing. Its almost there thanks to Alex.
+PySSZ synced to v0.8 and State Transition update is ongoing. 
 
-For the networking side, integrating with the Py library, we found some required issues that we need to fix on the upstream library.
-
-We are fixing some interoperability requirements.
-
-There is an insecure connections protocol in libp2p, which will be brought up in the Networking section of the call.
+For networking, we found issues which need fixed on the upstream library for integrating with the Py library. We are fixing some interoperability requirements. There is an insecure connections protocol in libp2p, which will be brought up in the Networking section of the call.
 
 ## 2.4 Yeeth
 
 **Video:** [`[19:11]`](https://youtu.be/YB8o_5qjNBc?t=1151)
 
-**Dean Eigenmann**: Was working with Artemis, but back to updating Yeeth to the latest spec version.
+Worked with Artemis. Returning to update Yeeth to the latest specification.
 
 ## 2.5 Harmony
 
 **Video:**  [`[19:37]`](https://youtu.be/YB8o_5qjNBc?t=1176)
 
-**Mikhail Kalinin**: Working on an update to v0.8 spec, we're almost there, but SSZ part is still in progress.
+Working on v0.8 spec update, SSZ part is still in progress.
 
-We started to work on a slot clock mechanism. We have a PR so far with basic implementation of that proposal.
+Started to work on a slot clock mechanism. PR created with a basic implementation.
 
-We have started a small research to investigate into attestation aggregation strategies. The goal is to evaluate an approach that doesn't involve building additional overlays.
+Small research started to investigate attestation aggregation strategies. The goal is to evaluate an approach that doesn't involve building additional overlays.
   * [Add draft spec for plaintext key exchange protocol #186](https://github.com/libp2p/specs/pull/186)
 
 Working on minimal libp2p in JVM.
@@ -198,52 +161,38 @@ Worked on multistream implementation recently.
 
 **Video:**  [`[20:57]`](https://youtu.be/YB8o_5qjNBc?t=1257)
 
-**Adrian Manning**: Updating lighthouse to v0.8. We have to re-optimize our tree-hash caching to include for more padding nodes.
+Updating to v0.8. Tree-hash caching will be re-optimized to include for more padding nodes. More extensive HTTP APIs are being defined to improve dev experience. Matt from ConsenSys is building out some SSZ partials into our codebase.
 
-Defining more extensive HTTP APIs which is working to improve dev experience.
+Slowly testing an initial version of discovery v5 in small testnets.
 
-Matt from ConsenSys is building out some SSZ partials into our codebase.
-
-Slowly been testing an initial version of discovery v5 in small testnets.
-
-Working towards standardizing a minimal/final libp2p spec for clients using libp2p.
-
-The libp2p work lead to updating our RPC. There's been discussion for the RPC to use separate protocol IDs per request:
+Working towards standardizing a minimal/final libp2p spec for clients using libp2p. Libp2p work lead to updating our RPC. Discussion occured for the RPC to use separate protocol IDs per request:
 - [PR where we try to standardize the basic libp2p implementation](https://github.com/ethereum/eth2.0-specs/pull/1281).
-
-
 
 ## 2.7 Prysmatic
 
 **Video:**  [`[22:22]`](https://youtu.be/YB8o_5qjNBc?t=1342)
 
-**Raul Jordan**: Caught up to v0.8, passing all spec tests.
+Updated to v0.8, passing spec tests. Issues with Genesis trigger. Spec test is lacking of coverage. Passed SSZ tests. SSZ failed in some Block sanity tests.
 
-Issues with Genesis trigger.
-
-There's a lack of coverage for cases of spec test. Passed all SSZ spec tests. Surprised that SSZ failed in some Block sanity tests.
-
-Getting ready for optimizing Prysm, working on code improvements, beacon chain testing, and generally more robust improvements to the client.
+Readying for Prysm optimization. Working on code improvements, beacon chain testing, and general robust improvements to the client.
 
 ## 2.8 Lodestar
 
 **Video:**  [`[24:03]`](https://youtu.be/YB8o_5qjNBc?t=1443)
 
-**Greg Markou**: Trying to upgrade to v0.8.
+Upgrading to v0.8. SSZ almost up-to-date, ironing out bugs with Proto and Prysm.
 
-Began building dev tooling. Will help with providers, like a Web3.js.
-
-SSZ almost up-to-date, ironing out bugs with Proto and Prysm.
+Began building dev tooling, which will help with providers, like Web3.js.
 
 Should be up-to-date on [SimpleSerialize.com](https://simpleserialize.com/) for easy online testing.
 
-We're working towards ensuring that BLS works properly in-browser as well. Some peculiar issues there, will keep you updated.
+Working towards ensuring that BLS works properly in-browser as well. Some issues there, will provide updates.
 
-Working to using Herumi so that we can have some diversity in BLS.
+Working to using Herumi for diversity in BLS.
 
-In regards to the client, comfortable to start doing Block production. Once we finish our update to v0.8, we'll start doing our testnet. Then getting it to work in-browser.
+In regards to the client, comfortable to start doing Block production. Once updated to v0.8, testnet will be started, then getting it to work in-browser.
 
-Going back onto assembly script.
+Returning to assembly script.
 
 Also, NIM, we're coming after you guys on the ERC20 contract, we'll get ya.
 
@@ -251,9 +200,9 @@ Also, NIM, we're coming after you guys on the ERC20 contract, we'll get ya.
 
 **Video:** [`[27:54]`](https://youtu.be/YB8o_5qjNBc?t=1624)
 
-**Wei Tang**: Finished the merkleization library last week, hopefully, want to extend that into a caching library, but there are still a few missing pieces.
+Finished the merkleization library last week hopefully. Want to extend the merkleization library into a caching library.
 
-We're trying to update to v0.8 spec. The issue we had was in the SSZ, a substantial change for us. Large refactoring of the codebase.
+Updating to v0.8 spec. Large refactoring of codebase required by the SZZ.
 
 # 3. Research Updates
 
@@ -263,11 +212,9 @@ We're trying to update to v0.8 spec. The issue we had was in the SSZ, a substant
 
 **Video:** [`[34:50]`](https://youtu.be/YB8o_5qjNBc?t=2083)
 
-**Justin Drake**: In parallel to Phase 1 & Phase 2, the research team is doing is more education about Phase 0. Educational documents have been made.
+Concurrent to Phase 1 & Phase 2, research team created education documents about Phase 0.
 
-On July 15th 1:00 PM GMT there will be a 2nd Ethereum 2.0 AMA, an opportunity to ask questions related to your implementation work.
-
-Now that the spec is frozen, feel free to reach out with questions about the design. I'm Justin Drake on Telegram.
+On July 15th 1:00 PM GMT there will be a 2nd Ethereum 2.0 AMA, an opportunity to ask questions related to your implementation work. Now that the spec is frozen, feel free to reach out to Justin Drake on Telegrams questions about the design.
 
 
 ## 3.2 Phase 1
@@ -326,17 +273,13 @@ Team is growing. John Adler is collaborating with us. Trying to grow for Rust-ba
 
 **Video:**  [`[39:28]`](https://youtu.be/YB8o_5qjNBc?t=2368)
 
-We continue to work on roll-ups. Nothing to share yet.
+Nothing to share yet.
 
 ## 3.5 Runtime Verification
 
 **Video:** [`[39:44]`](https://youtu.be/YB8o_5qjNBc?t=2384)
 
-**Musab Alturk**: We have this formalization in the K framework, directly based on the specification.
-
-Migrated to v0.8 and are looking to have something testable.
-
-There's an abstract model, lower priority type of development at the moment, but helpful for the future.
+Created formalization in the K framework, directly based on the specification. Migrated to v0.8 and are looking to have something testable. There's an abstract model, lower priority type of development at the moment, but helpful for the future.
 
 # 4. Network
 
@@ -596,15 +539,9 @@ Do we want to make empty vector illegal? Or do we want to make lists containing 
 
 **Video:**  [`[1:32:20]`](https://youtu.be/YB8o_5qjNBc?t=5540)
 
-**Danny Ryan**: Any other things before we close today?
+Invitations for the interop went out to team leads. Those invitations are good until the 14th. After the 14th, more invitations will be sent to teams wanting to attend. Please register in the next 3 days.
 
-**Joseph Delong**: For the interop, I want to say the invitations went out to team leads. Those invitations are good until the 14th.
-
-After that, we will reshuffle and send out more invitations to some of the teams that are wanting to attend. Please do register in the next 3 days.
-
-**Danny Ryan**: It's easy and free to register.
-
-We will likely meet in 2 weeks, you can take a look at the calendar first. Talk to everyone soon.
+Next meeting is in two weeks.
 
 # Annex A
 
