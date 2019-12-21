@@ -29,7 +29,7 @@ Action Item | Description
 --|--
 **30.1** | Use Muskoka to log failed SSZ blobs.
 **30.2** | Create full specifications for the Eth1-Eth2 bridge.
-**30.3** | Create a script that reads and delivers the Genesis to the client.
+**30.3** | Create a script that reads and delivers the genesis state to the client.
 
 
 -----------------------------
@@ -205,7 +205,7 @@ A proposal made to use timestamps instead of block depth to reduce overhead of c
 
 ## Actions
 
-- *30.3*—Create a script that reads and delivers the Genesis to the client.
+- *30.3*—Create a script that reads and delivers the genesis state to the client.
 
 
 # 7. Open Discussion/Closing Remarks
