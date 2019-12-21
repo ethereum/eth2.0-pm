@@ -18,6 +18,8 @@
 - [5. Spec Discussion](#5-spec-discussion)   
 - [6. Open Discussion/Closing Remarks](#6-open-discussionclosing-remarks)   
 
+----
+
 # 1. Testing Updates
 
 ## 1.1 Overflow in Slashing
@@ -543,9 +545,11 @@ Invitations for the interop went out to team leads. Those invitations are good u
 
 Next meeting is in two weeks.
 
-# Annex A
+----
 
-## A.1 Links
+# Annex
+
+## Links
 
 - [Overflow in Slashing](https://github.com/ethereum/eth2.0-specs/pull/1286)
 - [Spec Freeze](https://github.com/ethereum/eth2.0-specs/pull/1242)
@@ -557,7 +561,7 @@ Next meeting is in two weeks.
 - [libp2p specification](https://github.com/libp2p/specs)
 - [Runtime Verification](https://github.com/runtimeverification/algorand-verification)
 
-## A.2 Attendees
+## Attendees
 
 - [Adrian Manning](https://github.com/AgeManning)
 - [Alex Stokes](https://github.com/ralexstokes)
