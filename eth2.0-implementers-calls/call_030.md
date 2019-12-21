@@ -181,7 +181,7 @@ For zero-knowledge proofs, need an optimal prover and optimal verifier. Currentl
 
 # 4. Highlights from Client Survey
 
-**Video:**
+**Video:** [`[56:16]`](https://youtu.be/LYLiqpj-wiE?t=3376)
 
 The survey is to aid in planning and identifying help for resources or bottlenecks.
 
@@ -189,7 +189,7 @@ Initial look, noise libp2p implementations needed. Will need to review further.
 
 # 5. Networking
 
-**Video:**
+**Video:** [`[57:16]`](https://youtu.be/LYLiqpj-wiE?t=3436)
 
 Most of this section has been done in a separate networking call. Another networking call schedule for the second week of January.
 
@@ -197,7 +197,7 @@ Most of this section has been done in a separate networking call. Another networ
 
 # 6. Spec discussion
 
-**Video:**
+**Video:** [`[57:54]`](https://youtu.be/LYLiqpj-wiE?t=3474)
 
 A proposal made to use timestamps instead of block depth to reduce overhead of caching, and issues handling re-orgs locally. Removes Beacon state read done when loading.
 - [**eth2.0-specs#1537** Concerns about Eth1 Voting in Context of Caching](https://github.com/ethereum/eth2.0-specs/issues/1537)
@@ -209,6 +209,8 @@ A proposal made to use timestamps instead of block depth to reduce overhead of c
 
 
 # 7. Open Discussion/Closing Remarks
+
+**Video:** [`[1:09:30]`](https://youtu.be/LYLiqpj-wiE?t=4170)
 
 Happy Holidays. Next call week after new years.
 
