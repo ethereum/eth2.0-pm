@@ -27,10 +27,12 @@
 
 Action Item | Description
 --|--
-**30.1** | Use Muskoka to log failed SSZ blobs.
-**30.2** | Create full specifications for the Eth1-Eth2 bridge.
-**30.3** | Create a script that reads and delivers the genesis state to the client.
-
+**30.1** | Complete fork-choice test.
+**30.2** | Use Muskoka to log failed SSZ blobs.
+**30.3** | Decide solution for ETH transfer between execution environments and shards, while being read by block producers
+**30.4** | Create full specifications for the Eth1-Eth2 bridge.
+**30.5** | Decide on new caching specification proposal.
+**30.6** | Create a script that reads and delivers the genesis state to the client.
 
 -----------------------------
 
@@ -64,7 +66,8 @@ RPC fuzzer for Lighthouse has been implemented, which has been running about a w
 [Muskoka](https://github.com/protolambda/muskoka-client) can log failed SSZ blobs.
 
 ## Actions
-- *30.1*—Use [Muskoka](https://github.com/protolambda/muskoka-client) to log failed SSZ blobs.
+- **30.1**—Complete fork-choice test.
+- **30.2**—Use [Muskoka](https://github.com/protolambda/muskoka-client) to log failed SSZ blobs.
 
 # 2. Client Updates
 
@@ -175,8 +178,8 @@ EthBarcelona will be organized for May 15 as a one-day event. Will present updat
 For zero-knowledge proofs, need an optimal prover and optimal verifier. Currently in possession of an optimal prover, but the verifier is no longer optimal.
 
 ## Actions
-
-- *30.2*—Create full specifications for the Eth1-Eth2 bridge.
+- **30.3**—Decide solution for ETH transfer between execution environments and shards, while being read by block producers
+- **30.4**—Create full specifications for the Eth1-Eth2 bridge.
 
 
 # 4. Highlights from Client Survey
@@ -202,10 +205,10 @@ Most of this section has been done in a separate networking call. Another networ
 A proposal made to use timestamps instead of block depth to reduce overhead of caching, and issues handling re-orgs locally. Removes Beacon state read done when loading.
 - [**eth2.0-specs#1537** Concerns about Eth1 Voting in Context of Caching](https://github.com/ethereum/eth2.0-specs/issues/1537)
 
-
 ## Actions
 
-- *30.3*—Create a script that reads and delivers the genesis state to the client.
+- **30.5**—Decide on new caching specification proposal.
+- **30.6**—Create a script that reads and delivers the genesis state to the client.
 
 
 # 7. Open Discussion/Closing Remarks
