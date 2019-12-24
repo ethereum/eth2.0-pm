@@ -7,17 +7,6 @@
 ### Moderator: Danny Ryan
 ### Notes: Edson Ayllon
 
------------------------------
-
-# Agenda
-
-- [1. Testing and Release Updates](#1-testing-and-release-updates)   
-- [2. Client Updates](#2-client-updates)   
-- [3. Research Updates](#3-research-updates)   
-- [4. Highlights from Client Survey](#4-highlights-from-client-survey)   
-- [5. Networking](#5-networking)   
-- [6. Spec discussion](#6-spec-discussion)   
-- [7. Open Discussion/Closing Remarks](#7-open-discussionclosing-remarks)   
 
 -----------------------------
 
@@ -33,6 +22,18 @@ Action Item | Description
 **30.4** | Create full specifications for the Eth1-Eth2 bridge.
 **30.5** | Decide on new caching specification proposal.
 **30.6** | Create a script that reads and delivers the genesis state to the client.
+
+-----------------------------
+
+# Agenda
+
+- [1. Testing and Release Updates](#1-testing-and-release-updates)   
+- [2. Client Updates](#2-client-updates)   
+- [3. Research Updates](#3-research-updates)   
+- [4. Highlights from Client Survey](#4-highlights-from-client-survey)   
+- [5. Networking](#5-networking)   
+- [6. Spec discussion](#6-spec-discussion)   
+- [7. Open Discussion/Closing Remarks](#7-open-discussionclosing-remarks)   
 
 -----------------------------
 
