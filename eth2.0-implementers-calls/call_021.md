@@ -1,110 +1,42 @@
 # Ethereum 2.0 Implementers Call 21 Notes
 
-## Contents
+### Meeting Date/Time: Thursday July 11, 2019 at [14:00 GMT](http://www.timebie.com/std/gmt.php?q=14)
+### Meeting Duration:  1.5 hours
+### [GitHub Agenda](https://github.com/ethereum/eth2.0-pm/issues/55)
+### [Audio/Video of the meeting](https://www.youtube.com/watch?v=YB8o_5qjNBc)
+### Moderator: Danny Ryan
+### Notes: Edson Ayllon
 
-- [Contents](#contents)
-- [1 Meeting Details](#1-meeting-details)
-- [2 Attendees](#2-attendees)
-- [3 Agenda](#3-agenda)
-	- [3.1 Testing Updates](#31-testing-updates)
-		- [3.1.1 Overflow in Slashing](#311-overflow-in-slashing)
-		- [3.1.2 Spec Freeze](#312-spec-freeze)
-		- [3.1.3 Fuzzing](#313-fuzzing)
-	- [3.2 Client Updates](#32-client-updates)
-		- [3.2.1 Nimbus](#321-nimbus)
-		- [3.2.2 Artemis](#322-artemis)
-		- [3.2.3 Trinity](#323-trinity)
-		- [3.2.4 Yeeth](#324-yeeth)
-		- [3.2.5 Harmony](#325-harmony)
-		- [3.2.6 Lighthouse](#326-lighthouse)
-		- [3.2.7 Prysmatic](#327-prysmatic)
-		- [3.2.8 Lodestar](#328-lodestar)
-		- [3.2.9 Parity](#329-parity)
-	- [3.3 Research Updates](#33-research-updates)
-		- [3.3.1 Phase 0](#331-phase-0)
-		- [3.3.2 Phase 1](#332-phase-1)
-		- [3.3.3 Phase 2](#333-phase-2)
-		- [3.3.4 PegaSys](#334-pegasys)
-		- [3.3.5 Runtime Verification](#335-runtime-verification)
-	- [3.4 Network](#34-network)
-		- [3.4.1 Libp2p](#341-libp2p)
-		- [3.4.2 Gossiping Mechanism](#342-gossiping-mechanism)
-	- [3.5 Spec Discussion](#35-spec-discussion)
-	- [3.6 Open Discussion/Closing Remarks](#36-open-discussionclosing-remarks)
+-----------------------------
 
+# Agenda
 
+- [1. Testing Updates](#1-testing-updates)   
+- [2. Client Updates](#2-client-updates)   
+- [3. Research Updates](#3-research-updates)   
+- [4. Network](#4-network)   
+- [5. Spec Discussion](#5-spec-discussion)   
+- [6. Open Discussion/Closing Remarks](#6-open-discussionclosing-remarks)   
 
-## 1 Meeting Details
+----
 
-- **Meeting Date-Time:** Thursday 2019/7/11 at [14:00 GMT](http://www.timebie.com/std/gmt.php?q=14)
-- **Meeting Duration:** 1.5 hours
-- **[Youtube Livestream](https://www.youtube.com/watch?v=YB8o_5qjNBc)**
+# 1. Testing Updates
 
-## 2 Attendees
+## 1.1 Overflow in Slashing
 
-- [Adrian Manning](https://github.com/AgeManning)
-- [Alex Stokes](https://github.com/ralexstokes)
-- [Ben Edgington](https://github.com/benjaminion)
-- [Benjamin Burns](https://github.com/benjamincburns)
-- [Carl Beekhuizen](https://github.com/CarlBeek)
-- [Cem Ozer](https://github.com/cemozerr)
-- [Daniel Ellison](https://github.com/zigguratt)
-- [Dankrad Feist](https://github.com/dankrad)
-- [Danny Ryan](https://github.com/djrtwo)
-- [Dean Eigenmann](https://github.com/decanus)
-- [Diederik Loerakker](https://github.com/protolambda)
-- [Dmitriy Ryajov](https://github.com/dryajov)
-- [Greg Markou](https://github.com/GregTheGreek)
-- [Hsiao-Wei Wang](https://github.com/hwwhww)
-- [Jacek Sieka](https://github.com/arnetheduck)
-- [Jannik Luhn](https://github.com/jannikluhn)
-- [John Adler](https://media.consensys.net/@adlerjohn)
-- [Jonny Rhea](https://github.com/jrhea)
-- JosephC
-- [Joseph Delong](https://github.com/dangerousfood)
-- [Justin Drake](https://github.com/JustinDrake)
-- [Kevin Main-Hsuan Chia](https://github.com/mhchia)
-- [Leo Bautista Gomez](https://github.com/leobago)
-- [Luke Anderson](https://github.com/spble)
-- [Mamy Ratsimbazafy](https://github.com/mratsim)
-- [Matt Garnett](https://github.com/c-o-l-o-r)
-- [Mike Goelzer](https://github.com/mgoelzer)
-- [Mikhail Kalinin](https://github.com/mkalinin)
-- [Musab Alturki](https://github.com/malturki)
-- [Nicholas Lin](https://www.linkedin.com/in/nicholas-lin-50267ba3/)
-- [Nicolas Liochon](https://github.com/nkeywal)
-- [Paul Hauner](https://github.com/paulhauner)
-- [Preston](https://github.com/prestonvanloon)
-- [Raul Jordan](https://github.com/rauljordan)
-- [Raúl Kripalani](https://github.com/raulk)
-- [Steven Schroeder](https://github.com/schroedingerscode)
-- [Trenton Van Epps](https://medium.com/@trenton.v)
-- [Vitalik Buterin](https://vitalik.ca/)
-- [Wei Tang](https://github.com/sorpaas)
-- [Whiteblock](https://github.com/Whiteblock)
-- [Will Villanueva](https://medium.com/@william.j.villanueva)
-- [Zak Cole](https://github.com/zscole)
+**Video:** [`[4:06]`](https://youtu.be/YB8o_5qjNBc?t=245)
 
-## 3 Agenda
+Issue found where calculation and slashing potentially overflowed. v08x branch [#1286](https://github.com/ethereum/eth2.0-specs/pull/1286) includes a fix.
 
-### 3.1 [Testing Updates](https://youtu.be/YB8o_5qjNBc?t=245)
+## 1.2 Spec Freeze
 
+**Video:** [`[5:12]`](https://youtu.be/YB8o_5qjNBc?t=309)
 
-#### 3.1.1 [Overflow in Slashing](https://github.com/ethereum/eth2.0-specs/pull/1286)
+Spec Freeze is over.
 
-**Timestamp: [4:06](https://youtu.be/YB8o_5qjNBc?t=245)**
+## 1.3 Fuzzing
 
-**Danny Ryan**: Prysmatic Labs, Terence [Tsao], found an issue where the calculation and slashing was potentially overflowing. Relatively non-substantive changes (fixes, documentation, etc.) in v08x branch [#1286](https://github.com/ethereum/eth2.0-specs/pull/1286) includes a fix to this.  This will branch will get out in the next few days.
-
-#### 3.1.2 [Spec Freeze](https://github.com/ethereum/eth2.0-specs/pull/1242)
-
-**Timestamp: [5:12](https://youtu.be/YB8o_5qjNBc?t=309)**
-
-**Diederik Loerakker**: Spec Freeze is over now, can stop throwing up to the spec and build.
-
-#### 3.1.3 [Fuzzing](https://github.com/ethereum/eth2.0-specs/tree/dev/test_libs/pyspec/eth2spec/fuzzing)
-
-**Timestamp: [6:51](https://youtu.be/YB8o_5qjNBc?t=411)**
+**Video:**  [`[6:51]`](https://youtu.be/YB8o_5qjNBc?t=411)
 
 
 **Justin Drake**: The goal is to provide basic fuzzing infrastructure for all the clients. The purpose is so Client implementers don't have to worry too much about being compliant with the State Transition Function.
@@ -169,20 +101,15 @@ In the next go-spec updates, I optimize, precompute this, precompute that, so we
 We'll keep everyone updated about Fuzzing over the coming weeks.
 
 
-### 3.2 [Client Updates](https://youtu.be/YB8o_5qjNBc?t=830)
+# 2. Client Updates
 
-#### 3.2.1 [Nimbus](https://github.com/status-im/nimbus)
+## 2.1 Nimbus
 
-**Timestamp: [13:50](https://youtu.be/YB8o_5qjNBc?t=830)**
+**Video:**  [`[13:50]`](https://youtu.be/YB8o_5qjNBc?t=830)
 
+Testnet launched. Working towards v0.8. Focus is SZZ. State Transition function following pyspec naming convention.
 
-**Mamy**: We launched our testnet, based on libp2p daemon, this morning.
-
-We are working towards v0.8. All the small changes were integrated and right now a big focus is SSZ.
-
-We also started to align our State Transition function with pyspec in terms of naming.
-
-We had significant speed improvement during the past week, accumulated 20 to 30x speed-up on the State Transition benchmarks. Links, if people are interested in seeing what we did, so they can reproduce:
+Accumulated 20 to 30x speed-up on the State Transition benchmarks. Links so others can reproduce:
   * [Speed up process_crosslinks(...) and get_crosslink_deltas(...) by 10x - 15x in state_sim #314](https://github.com/status-im/nim-beacon-chain/pull/314)
   * [~2x state_sim speedup via additional caching in get_crosslink_committee #316](https://github.com/status-im/nim-beacon-chain/pull/316)
 
@@ -190,49 +117,41 @@ Published metrics library for Prometheus compact metrics:
   * [Nim metrics client library supporting the Prometheus monitoring toolkit](https://github.com/status-im/nim-metrics)
 
 
-We have a EWASM research library we are very happy with. We have started a domain specific language in NIM that compiles to EWASM. It's quite competitive in terms of contract size:
+EWASM research library developed. Contains domain specific language in NIM that compiles to EWASM. It's competitive in terms of contract size:
   * [Nimplay is Domain Specific Language for writing smart contracts in Ethereum, using the Nim macro system](https://github.com/status-im/nimplay)
 
-On Ethereum 1, we had some connections issues that were resolved to Parity and Geth.
+On Ethereum 1.x, connections issues were resolved to Parity and Geth.
 
-#### 3.2.2 [Artemis](https://github.com/PegaSysEng/artemis)
+## 2.2 Artemis
 
-**Timestamp: [17:05](https://youtu.be/YB8o_5qjNBc?t=1025)**
+**Video:** [`[17:05]`](https://youtu.be/YB8o_5qjNBc?t=1025)
 
-**Jonny Rhea**: We've updated, especially with the SSZ.
-
-Also been thinking about attester slashings, computational requirements for the worst scenario.
-
-We see the need to investigate the network load, decide what strategy to use when aggregating.
+Client updated, especially with SSZ. Contemplating attester slashings, computational requirements for the worst scenario. Need to investigate network load to decide a strategy for aggregating.
 
 
-#### 3.2.3 [Trinity](https://github.com/ethereum/trinity)
+## 2.3 Trinity
 
-**Timestamp: [17:51](https://youtu.be/YB8o_5qjNBc?t=1071)**
+**Video:**  [`[17:51]`](https://youtu.be/YB8o_5qjNBc?t=1071)
 
-**Hsiao-Wei Wang**: PySSZ has been synced to v0.8 and the State Transition update is ongoing. Its almost there thanks to Alex.
+PySSZ synced to v0.8 and State Transition update is ongoing. 
 
-For the networking side, integrating with the Py library, we found some required issues that we need to fix on the upstream library.
+For networking, we found issues which need fixed on the upstream library for integrating with the Py library. We are fixing some interoperability requirements. There is an insecure connections protocol in libp2p, which will be brought up in the Networking section of the call.
 
-We are fixing some interoperability requirements.
+## 2.4 Yeeth
 
-There is an insecure connections protocol in libp2p, which will be brought up in the Networking section of the call.
+**Video:** [`[19:11]`](https://youtu.be/YB8o_5qjNBc?t=1151)
 
-#### 3.2.4 [Yeeth](https://github.com/yeeth)
+Worked with Artemis. Returning to update Yeeth to the latest specification.
 
-**Timestamp: [19:11](https://youtu.be/YB8o_5qjNBc?t=1151)**
+## 2.5 Harmony
 
-**Dean Eigenmann**: Was working with Artemis, but back to updating Yeeth to the latest spec version.
+**Video:**  [`[19:37]`](https://youtu.be/YB8o_5qjNBc?t=1176)
 
-#### 3.2.5 [Harmony](https://docs.ethhub.io/ethereum-roadmap/ethereum-2.0/eth2.0-teams/harmony/)
+Working on v0.8 spec update, SSZ part is still in progress.
 
-**Timestamp: [19:37](https://youtu.be/YB8o_5qjNBc?t=1176)**
+Started to work on a slot clock mechanism. PR created with a basic implementation.
 
-**Mikhail Kalinin**: Working on an update to v0.8 spec, we're almost there, but SSZ part is still in progress.
-
-We started to work on a slot clock mechanism. We have a PR so far with basic implementation of that proposal.
-
-We have started a small research to investigate into attestation aggregation strategies. The goal is to evaluate an approach that doesn't involve building additional overlays.
+Small research started to investigate attestation aggregation strategies. The goal is to evaluate an approach that doesn't involve building additional overlays.
   * [Add draft spec for plaintext key exchange protocol #186](https://github.com/libp2p/specs/pull/186)
 
 Working on minimal libp2p in JVM.
@@ -240,85 +159,69 @@ Working on minimal libp2p in JVM.
 Worked on multistream implementation recently.
 
 
-#### 3.2.6 [Lighthouse](https://github.com/sigp/lighthouse)
+## 2.6 Lighthouse
 
-**Timestamp: [20:57](https://youtu.be/YB8o_5qjNBc?t=1257)**
+**Video:**  [`[20:57]`](https://youtu.be/YB8o_5qjNBc?t=1257)
 
-**Adrian Manning**: Updating lighthouse to v0.8. We have to re-optimize our tree-hash caching to include for more padding nodes.
+Updating to v0.8. Tree-hash caching will be re-optimized to include for more padding nodes. More extensive HTTP APIs are being defined to improve dev experience. Matt from ConsenSys is building out some SSZ partials into our codebase.
 
-Defining more extensive HTTP APIs which is working to improve dev experience.
+Slowly testing an initial version of discovery v5 in small testnets.
 
-Matt from ConsenSys is building out some SSZ partials into our codebase.
-
-Slowly been testing an initial version of discovery v5 in small testnets.
-
-Working towards standardizing a minimal/final libp2p spec for clients using libp2p.
-
-The libp2p work lead to updating our RPC. There's been discussion for the RPC to use separate protocol IDs per request:
+Working towards standardizing a minimal/final libp2p spec for clients using libp2p. Libp2p work lead to updating our RPC. Discussion occured for the RPC to use separate protocol IDs per request:
 - [PR where we try to standardize the basic libp2p implementation](https://github.com/ethereum/eth2.0-specs/pull/1281).
 
+## 2.7 Prysmatic
 
+**Video:**  [`[22:22]`](https://youtu.be/YB8o_5qjNBc?t=1342)
 
-#### 3.2.7 [Prysmatic](https://github.com/prysmaticlabs)
+Updated to v0.8, passing spec tests. Issues with Genesis trigger. Spec test is lacking of coverage. Passed SSZ tests. SSZ failed in some Block sanity tests.
 
-**Timestamp: [22:22](https://youtu.be/YB8o_5qjNBc?t=1342)**
+Readying for Prysm optimization. Working on code improvements, beacon chain testing, and general robust improvements to the client.
 
-**Raul Jordan**: Caught up to v0.8, passing all spec tests.
+## 2.8 Lodestar
 
-Issues with Genesis trigger.
+**Video:**  [`[24:03]`](https://youtu.be/YB8o_5qjNBc?t=1443)
 
-There's a lack of coverage for cases of spec test. Passed all SSZ spec tests. Surprised that SSZ failed in some Block sanity tests.
+Upgrading to v0.8. SSZ almost up-to-date, ironing out bugs with Proto and Prysm.
 
-Getting ready for optimizing Prysm, working on code improvements, beacon chain testing, and generally more robust improvements to the client.
-
-#### 3.2.8 [Lodestar](https://github.com/ChainSafe/lodestar)
-
-**Timestamp: [24:03](https://youtu.be/YB8o_5qjNBc?t=1443)**
-
-**Greg Markou**: Trying to upgrade to v0.8.
-
-Began building dev tooling. Will help with providers, like a Web3.js.
-
-SSZ almost up-to-date, ironing out bugs with Proto and Prysm.
+Began building dev tooling, which will help with providers, like Web3.js.
 
 Should be up-to-date on [SimpleSerialize.com](https://simpleserialize.com/) for easy online testing.
 
-We're working towards ensuring that BLS works properly in-browser as well. Some peculiar issues there, will keep you updated.
+Working towards ensuring that BLS works properly in-browser as well. Some issues there, will provide updates.
 
-Working to using Herumi so that we can have some diversity in BLS.
+Working to using Herumi for diversity in BLS.
 
-In regards to the client, comfortable to start doing Block production. Once we finish our update to v0.8, we'll start doing our testnet. Then getting it to work in-browser.
+In regards to the client, comfortable to start doing Block production. Once updated to v0.8, testnet will be started, then getting it to work in-browser.
 
-Going back onto assembly script.
+Returning to assembly script.
 
 Also, NIM, we're coming after you guys on the ERC20 contract, we'll get ya.
 
-#### 3.2.9 [Parity](https://github.com/paritytech/parity-ethereum)
+## 2.9 Parity
 
-**Timestamp: [27:54](https://youtu.be/YB8o_5qjNBc?t=1624)**
+**Video:** [`[27:54]`](https://youtu.be/YB8o_5qjNBc?t=1624)
 
-**Wei Tang**: Finished the merkleization library last week, hopefully, want to extend that into a caching library, but there are still a few missing pieces.
+Finished the merkleization library last week hopefully. Want to extend the merkleization library into a caching library.
 
-We're trying to update to v0.8 spec. The issue we had was in the SSZ, a substantial change for us. Large refactoring of the codebase.
+Updating to v0.8 spec. Large refactoring of codebase required by the SZZ.
 
-### 3.3 [Research Updates](https://youtu.be/YB8o_5qjNBc?t=1725)
+# 3. Research Updates
 
-**Timestamp: [29:08](https://youtu.be/YB8o_5qjNBc)**
+**Video:** [`[29:08]`](https://youtu.be/YB8o_5qjNBc?t=1725)
 
-#### 3.3.1 [Phase 0](https://docs.ethhub.io/ethereum-roadmap/ethereum-2.0/eth-2.0-phases/)
+## 3.1 Phase 0
 
-**Timestamp: [34:50](https://youtu.be/YB8o_5qjNBc?t=2083)**
+**Video:** [`[34:50]`](https://youtu.be/YB8o_5qjNBc?t=2083)
 
-**Justin Drake**: In parallel to Phase 1 & Phase 2, the research team is doing is more education about Phase 0. Educational documents have been made.
+Concurrent to Phase 1 & Phase 2, research team created education documents about Phase 0.
 
-On July 15th 1:00 PM GMT there will be a 2nd Ethereum 2.0 AMA, an opportunity to ask questions related to your implementation work.
-
-Now that the spec is frozen, feel free to reach out with questions about the design. I'm Justin Drake on Telegram.
+On July 15th 1:00 PM GMT there will be a 2nd Ethereum 2.0 AMA, an opportunity to ask questions related to your implementation work. Now that the spec is frozen, feel free to reach out to Justin Drake on Telegrams questions about the design.
 
 
-#### 3.3.2 [Phase 1](https://docs.ethhub.io/ethereum-roadmap/ethereum-2.0/eth-2.0-phases/)
+## 3.2 Phase 1
 
-**Timestamp: [29:08](https://youtu.be/YB8o_5qjNBc)**
+**Video:** [`[29:08]`](https://youtu.be/YB8o_5qjNBc?t=1749)
 
 **Vitalik Buterin**: On research-side there's a list of To-Do's for Proof-of-Custody and Shard Blocks.
 
@@ -344,9 +247,9 @@ Not seeing any unexpected difficulties on the Phase 1 side. It's looking better 
 
 One of the primitives we're using is the Legendre symbol, as a PRF. It would still be good to have it audited because it's an assumption not used in production right now.
 
-#### 3.3.3 [Phase 2](https://docs.ethhub.io/ethereum-roadmap/ethereum-2.0/eth-2.0-phases/)
+## 3.3 Phase 2
 
-**Timestamp: [33:06](https://youtu.be/YB8o_5qjNBc?t=1986)**
+**Video:**  [`[33:06]`](https://youtu.be/YB8o_5qjNBc?t=1986)
 
 **Vitalik Buterin**: Not much progress from myself. One of the bigger issues and trade-offs to think about is still how relay markets would work. Would be good to get more feedback on that.
 
@@ -368,28 +271,24 @@ Free markets, we didn't continue diving as we've been in transition. We'll be lo
 
 Team is growing. John Adler is collaborating with us. Trying to grow for Rust-based researchers as well. Trying to do more research on Phase 1/Phase 2, more Phase 2 focus, in parallel to expand a lot of this.
 
-#### 3.3.4 [PegaSys](https://github.com/PegaSysEng)
+## 3.4 PegaSys
 
-**Timestamp: [39:28](https://youtu.be/YB8o_5qjNBc?t=2368)**
+**Video:**  [`[39:28]`](https://youtu.be/YB8o_5qjNBc?t=2368)
 
-We continue to work on roll-ups. Nothing to share yet.
+Nothing to share yet.
 
-#### 3.3.5 [Runtime Verification](https://github.com/runtimeverification/algorand-verification)
+## 3.5 Runtime Verification
 
-**Timestamp: [39:44](https://youtu.be/YB8o_5qjNBc?t=2384)**
+**Video:** [`[39:44]`](https://youtu.be/YB8o_5qjNBc?t=2384)
 
-**Musab Alturk**: We have this formalization in the K framework, directly based on the specification.
+Created formalization in the K framework, directly based on the specification. Migrated to v0.8 and are looking to have something testable. There's an abstract model, lower priority type of development at the moment, but helpful for the future.
 
-Migrated to v0.8 and are looking to have something testable.
-
-There's an abstract model, lower priority type of development at the moment, but helpful for the future.
-
-### 3.4 [Network](https://youtu.be/YB8o_5qjNBc?t=2470)
+# 4. Network
 
 
-#### 3.4.1 [Libp2p](https://github.com/libp2p/js-libp2p)
+## 4.1 Libp2p
 
-**Timestamp: [41:10](https://www.youtube.com/watch?v=YB8o_5qjNBc&feature=youtu.be&t=2470)**
+**Video:** [`[41:10]`](https://www.youtube.com/watch?v=YB8o_5qjNBc&feature=youtu.be&t=2470)
 
 **Mike Goelzer** The grant to Harmony for the minimal `jvm-libp2p` will be finalized Monday.
 
@@ -416,7 +315,7 @@ All `libp2p` implementations are based on the same principles `go-libp2p` and `j
 **Dean Eigenmann**: What is the current state spec?
 
 **Mike Goelzer**: We would like `libp2p` to be a spec-first project. We have a docs writer opening PRs on the specs repo, to define the correct behavior based on what's happening in the Go implementation.
-    * [libp2p specification](https://github.com/libp2p/specs)
+- [libp2p specification](https://github.com/libp2p/specs)
 
 In the meantime, we recommend you refer to the Go implementation.
 
@@ -502,9 +401,9 @@ The person to contact is Yusef Napora, who is responsible for writing the specs 
 Discover v5, contacted people for an audit on the protocol.
 
 
-#### 3.4.2 Gossiping Mechanism
+## 4.2 Gossiping Mechanism
 
-**Timestamp: [1:07:56](https://youtu.be/YB8o_5qjNBc?t=4076)**
+**Video:**  [`[1:07:56]`](https://youtu.be/YB8o_5qjNBc?t=4076)
 
 **Whiteblock**: in person last week, we had Artemis, Prysmatic Labs, Lodestar for an exchange of handles using the Simple Hobbits approach.
 
@@ -596,9 +495,9 @@ Then as you start cutting down on the amplification factor, if a particular mess
 Happy to continue the discussion.  Open to exploring different approaches.
 
 
-### 3.5 [Spec Discussion](https://youtu.be/YB8o_5qjNBc?t=5095)
+# 5. Spec Discussion
 
-**Timestamp: [1:24:57](https://youtu.be/YB8o_5qjNBc?t=5095)**
+**Video:**  [`[1:24:57]`](https://youtu.be/YB8o_5qjNBc?t=5095)
 
 **Danny Ryan**: I know implementers mentioned the SSZ. There were a couple more sophisticated types that were added to SSZ.
 
@@ -638,16 +537,71 @@ Do we want to make empty vector illegal? Or do we want to make lists containing 
 
 **Diederik Loerakker**: We already discussed this issue. If any implemented would need this kind of type, please join the issue in the specs repository. Otherwise, I think it's not too important.
 
-### 3.6 [Open Discussion/Closing Remarks](https://youtu.be/YB8o_5qjNBc?t=5540)
+# 6. Open Discussion/Closing Remarks
 
-**Timestamp: [1:32:20](https://youtu.be/YB8o_5qjNBc)**
+**Video:**  [`[1:32:20]`](https://youtu.be/YB8o_5qjNBc?t=5540)
 
-**Danny Ryan**: Any other things before we close today?
+Invitations for the interop went out to team leads. Those invitations are good until the 14th. After the 14th, more invitations will be sent to teams wanting to attend. Please register in the next 3 days.
 
-**Joseph Delong**: For the interop, I want to say the invitations went out to team leads. Those invitations are good until the 14th.
+Next meeting is in two weeks.
 
-After that, we will reshuffle and send out more invitations to some of the teams that are wanting to attend. Please do register in the next 3 days.
+----
 
-**Danny Ryan**: It's easy and free to register.
+# Annex
 
-We will likely meet in 2 weeks, you can take a look at the calendar first. Talk to everyone soon.
+## Links
+
+- [Overflow in Slashing](https://github.com/ethereum/eth2.0-specs/pull/1286)
+- [Spec Freeze](https://github.com/ethereum/eth2.0-specs/pull/1242)
+- [Fuzzing](https://github.com/ethereum/eth2.0-specs/tree/dev/test_libs/pyspec/eth2spec/fuzzing)
+- [Libp2p](https://github.com/libp2p/js-libp2p)
+- [libp2p specification](https://github.com/libp2p/specs)
+- [Connections & upgrading #168](https://github.com/libp2p/specs/pull/168/files)
+- [Yusef Napora's Github](https://github.com/libp2p/specs/commits?author=yusefnapora)
+- [libp2p specification](https://github.com/libp2p/specs)
+- [Runtime Verification](https://github.com/runtimeverification/algorand-verification)
+
+## Attendees
+
+- [Adrian Manning](https://github.com/AgeManning)
+- [Alex Stokes](https://github.com/ralexstokes)
+- [Ben Edgington](https://github.com/benjaminion)
+- [Benjamin Burns](https://github.com/benjamincburns)
+- [Carl Beekhuizen](https://github.com/CarlBeek)
+- [Cem Ozer](https://github.com/cemozerr)
+- [Daniel Ellison](https://github.com/zigguratt)
+- [Dankrad Feist](https://github.com/dankrad)
+- [Danny Ryan](https://github.com/djrtwo)
+- [Dean Eigenmann](https://github.com/decanus)
+- [Diederik Loerakker](https://github.com/protolambda)
+- [Dmitriy Ryajov](https://github.com/dryajov)
+- [Greg Markou](https://github.com/GregTheGreek)
+- [Hsiao-Wei Wang](https://github.com/hwwhww)
+- [Jacek Sieka](https://github.com/arnetheduck)
+- [Jannik Luhn](https://github.com/jannikluhn)
+- [John Adler](https://media.consensys.net/@adlerjohn)
+- [Jonny Rhea](https://github.com/jrhea)
+- JosephC
+- [Joseph Delong](https://github.com/dangerousfood)
+- [Justin Drake](https://github.com/JustinDrake)
+- [Kevin Main-Hsuan Chia](https://github.com/mhchia)
+- [Leo Bautista Gomez](https://github.com/leobago)
+- [Luke Anderson](https://github.com/spble)
+- [Mamy Ratsimbazafy](https://github.com/mratsim)
+- [Matt Garnett](https://github.com/c-o-l-o-r)
+- [Mike Goelzer](https://github.com/mgoelzer)
+- [Mikhail Kalinin](https://github.com/mkalinin)
+- [Musab Alturki](https://github.com/malturki)
+- [Nicholas Lin](https://www.linkedin.com/in/nicholas-lin-50267ba3/)
+- [Nicolas Liochon](https://github.com/nkeywal)
+- [Paul Hauner](https://github.com/paulhauner)
+- [Preston](https://github.com/prestonvanloon)
+- [Raul Jordan](https://github.com/rauljordan)
+- [Raúl Kripalani](https://github.com/raulk)
+- [Steven Schroeder](https://github.com/schroedingerscode)
+- [Trenton Van Epps](https://medium.com/@trenton.v)
+- [Vitalik Buterin](https://vitalik.ca/)
+- [Wei Tang](https://github.com/sorpaas)
+- [Whiteblock](https://github.com/Whiteblock)
+- [Will Villanueva](https://medium.com/@william.j.villanueva)
+- [Zak Cole](https://github.com/zscole)

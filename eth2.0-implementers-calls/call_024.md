@@ -1,12 +1,11 @@
 # Ethereum 2.0 Implementers Call 24 Notes
-	
+
 ### Meeting Date/Time: Thursday August 29, 2019 at 14:00 GMT
 ### Meeting Duration: 1.5 hours
 ### [GitHub Agenda Page](https://github.com/ethereum/eth2.0-pm/issues/73)
 ### [Audio/Video of the meeting](https://www.youtube.com/watch?v=sz87_i5Uy1I)
-
-#### Moderator: Danny Ryan
-#### Scribes: Ben Edgington, Mamy Ratsimbazafy & Brett Robertson
+### Moderator: Danny Ryan
+### Scribes: Ben Edgington, Mamy Ratsimbazafy & Brett Robertson
 
 ----------
 
@@ -35,8 +34,8 @@ v0.8.3 released last week. No substantive changes from v0.8.2, but there are som
 [Timestamp 7:39](https://youtu.be/sz87_i5Uy1I?t=459)
 
 **Mamy**:
-Berlin news: https://our.status.im/nimbus-berlin-update/ 
-Documentation: https://nimbus-libs.status.im/#get-started 
+Berlin news: https://our.status.im/nimbus-berlin-update/
+Documentation: https://nimbus-libs.status.im/#get-started
 Revamped build system, can directly use nim-beacon-chain instead of going through Nimbus
 Validator deposits from Eth1 almost done
 Solved most justification and finalisation issues
@@ -46,7 +45,7 @@ Working on cryptography benchmarks
 Can have 2000 validators on a single laptop
 Networking: interop with Rust libp2, did gossipsub with Lighthouse. Using Go daemon.
 
-### Artemis 
+### Artemis
 [Timestamp 11:03](https://youtu.be/sz87_i5Uy1I?t=661)
 
 **Shahan**:
@@ -61,7 +60,7 @@ Currently benchmarking BLS and aggregation
 ### Prysmatic
 [Timestamp 13:29](https://youtu.be/sz87_i5Uy1I?t=809)
 
-**Terence**: 
+**Terence**:
  New DB and new fork choice. Working nicely.
 Implementing initial sync
 Regular sync, gossipsub, discv5 looking good
@@ -71,7 +70,7 @@ Working on lightclient, and slashing detection algorithm
 ### Lighthouse
 [Timestamp 14:54](https://youtu.be/sz87_i5Uy1I?t=894)
 
-**Paul**: 
+**Paul**:
 - Upgraded to latest network spec
 - Debugged Go/Rust libp2p compatability with Nimbus
 - Implemented Vitalik’s fast BLS verification scheme
@@ -89,7 +88,7 @@ Working on lightclient, and slashing detection algorithm
 
 ** Danny**: Don’t worry too much about discovery, we will mostly use static links for Interop initially
 
-### Trinity 
+### Trinity
 [Timestamp 18:42](https://youtu.be/sz87_i5Uy1I?t=1122)
 
 **Hsiao-wei Wang**:
@@ -100,7 +99,7 @@ Working on lightclient, and slashing detection algorithm
 
 
 
-### Lodestar 
+### Lodestar
 [Timestamp 20:18](https://youtu.be/sz87_i5Uy1I?t=1218)
 
 **Cayman**:
@@ -123,7 +122,7 @@ Not present
 ## 3. Research Updates
 [Timestamp 22:16](https://youtu.be/sz87_i5Uy1I?t=1335)
 
-**Vitalik**: 
+**Vitalik**:
 [Timestamp 22:25](https://youtu.be/sz87_i5Uy1I?t=1345)
 
 - Karl’s [blog post](https://medium.com/plasma-group/ethereum-smart-contracts-in-l2-optimistic-rollup-2c1cef2ec537) yesterday on roll-up semi-layer 2 protocols; V publishing [a follow-up](https://vitalik.ca/general/2019/08/28/hybrid_layer_2.html) today. Relevant to Eth2 execution environments.
@@ -132,7 +131,7 @@ Not present
 - [Issue #1340](https://github.com/ethereum/eth2.0-specs/issues/1340): simplifying epoch transitions. A possible change to the protocol to handle the case of many skip slits between block and its parents, which is currently expensive. Makes empty epochs O(1) to validate.
 
 
-**Justin**: 
+**Justin**:
 [Timestamp 23:11](https://youtu.be/sz87_i5Uy1I?t=1391)
 
 - Doing a detailed review of Ph1
@@ -142,7 +141,7 @@ Not present
 - Also looking at Ph1 spec
 - Thinking about “Herd immunity” on libp2p
 
-**Jacek (Status)**: 
+**Jacek (Status)**:
 [Timestamp 27:15](https://youtu.be/sz87_i5Uy1I?t=1635)
 - Concern about not validating messages: can be an amplification DoS vector. Can nodes validate only a subset of messages?
 
@@ -151,7 +150,7 @@ Not present
 
 - Can now prove poly-log communication complexity of Handel aggregation protocol
 - Handel is designed for large committees, but will also work for small committees and brings advantages in privacy
-- Privacy: would be good to break the mapping between IP address of a validator and its Public - Key (which is currently easy to discover). Published a technique yesterday on [ethresear.ch](https://ethresear.ch/t/anonymity-a-zkp-to-remove-the-mapping-ip-address-wallets-public-key-of-a-validator/6049) that uses a ZKP to obscure the mapping. 
+- Privacy: would be good to break the mapping between IP address of a validator and its Public - Key (which is currently easy to discover). Published a technique yesterday on [ethresear.ch](https://ethresear.ch/t/anonymity-a-zkp-to-remove-the-mapping-ip-address-wallets-public-key-of-a-validator/6049) that uses a ZKP to obscure the mapping.
 
 **Protolambda**:
 [Timestamp 32:46](https://youtu.be/sz87_i5Uy1I?t=1966)
@@ -174,14 +173,14 @@ Received some interesting contributions at EthBerlin for Eth2.0 (see chat for li
 - Wireshark dissectors (that can decrypt). Should be useful for Interop.
 - Noise handshakes. Implementation in Go as reference implementation.
 
-**Protolambda**: 
+**Protolambda**:
 - Test harnesses and benchmarking on the gossipsub Go reference implementation
 - Meshsim tool for analysing gossipsub networks
 
 ### API Repo
 [Timestamp 41:13](https://youtu.be/sz87_i5Uy1I?t=2473)
 
-**Paul**: 
+**Paul**:
 
 - New [Eth2 API repo](https://github.com/ethereum/eth2.0-apis): will contain APIs that are generally agreed upon by a number of clients. These are not consensus critical, but some conformity is desirable for users. Will evolve over time.
 - Input from [Lighthouse](https://github.com/ethereum/eth2.0-APIs/pull/3)

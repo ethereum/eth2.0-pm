@@ -1,6 +1,4 @@
-# Ethereum 2.0 Implementers Call #27
-
-
+# Ethereum 2.0 Implementers Call 27 Notes
 
 ### Meeting Date/Time: Thursday, November 7 at 1400 UTC
 ### Meeting Duration: 38 minutes
@@ -9,6 +7,7 @@
 ### Moderator: Daniel Ellison
 ### Notes: Jim Bennett
 
+---
 
 # 1. [Testnet and Release Updates](https://youtu.be/4_EGNG-Yek4?t=264)
 

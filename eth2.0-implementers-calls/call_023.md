@@ -4,9 +4,10 @@
 ### Meeting Duration: 1.5 hours
 ### [GitHub Agenda Page](https://github.com/ethereum/eth2.0-pm/issues/68)
 ### [Audio/Video of the meeting](https://www.youtube.com/watch?v=Av74vZRXeKo)
+### Moderator: Danny Ryan
+### Scribe: Brent Allsop
 
-#### Moderator: Danny Ryan
-#### Scribe: Brent Allsop
+----
 
 ## Agenda
 - [1. Testing and Release Updates](#1-testing-updates)
@@ -107,7 +108,7 @@ Event will be the 6th to the 13th. Don't need to bring food. It's catered for ab
 
 ## 6. [Open Discussion](https://www.youtube.com/watch?v=Av74vZRXeKo&t=80m10s)
 
-None. Next meeting will be in two weeks time. 
+None. Next meeting will be in two weeks time.
 
 ## Attendees
 
