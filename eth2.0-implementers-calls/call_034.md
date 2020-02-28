@@ -148,12 +148,12 @@ I really can't speak to bottlenecks like we've been discussing at the moment. I'
 **Mamy**: We've lot of updates in past few week. 
 On spec side, we're
 * targeting 10.2
-* created a (?) detection and a report on skip tests because we realized that when we factoring repos, sometimes we forgot to re-enable tests and sometimes it show up on fuzzing that should be catch up much earlier.
-* We've BLS signature implementation ready 
-* so far we have been waiting for the new test Victor fixes but we go ahead the next week, because this is blocking implementation of (?) spec which is implemented except everything that touches BLS signatures. 
-* We are WIP on aggregation and attestation fork choice 
+* created a (?) detection and a report on skipped tests because we realized that when factoring repos, sometimes we forgot to re-enable tests and sometimes it show up on fuzzing that should be catched up much earlier.
+* We've BLS signatures implementation ready 
+* so far we have been waiting for the new test Vector fixes but we go ahead the next week, because this is blocking implementation of (?) spec which is implemented except everything that touches BLS signatures. 
+* We are WIP on attestation aggregation and fork choice 
 * More than a year ago and we had the Bounty program to maintain Eth 1. We restarted this bounty program. 
-* The first two bounties would be on improving test runners, so that can be used with Nimbus on HTTPS server, so that it can be used for correcting metrics and Eth2 API. 
+* The first two bounties would be on improving test runners, so that can be used with Nimbus on HTTPS server, so that it can be used for correcting metrics and for Eth2 API. 
 
 **Networking** 
 
@@ -164,7 +164,7 @@ On spec side, we're
 
 **Lib p2p2**
 
-* Excellent progress on noise and  we are now looking for an interop testing candidate with our own active lib P2P backend.
+* Excellent progress on noise and  we are now looking for an interop testing candidate with our own active Lib P2P backend.
 
 **Speed** 
 
@@ -175,7 +175,7 @@ On spec side, we're
 **Dev Ops**
 
 * Fixed all testnet deployment
-* because we sometimes add nodes that we're not reset every week and that caused issue. 
+* Because we sometimes add nodes that we're not reset every week and that caused issue. 
 * Also we have specialized infrastructure to test finalization issues. I talked about discovering that manifest of additional issues but also when we have speed issues, like we have too many nodes on the same machine, the way we detect that is by finalization and we want to know if finalization issue come from- spec or speed or networking.  
 
 **Eth1**
@@ -242,7 +242,7 @@ On spec side, we're
  
  ## Prysm 
  
-**Terence**:We've a bunch of updates. We're 
+**Terence**: We've a bunch of updates. We're 
 
 * working on slasher servers 
 * a beacon node was able to detect surround vote and we're able to include the slashing object in the block.
@@ -313,7 +313,7 @@ On spec side, we're
 
 * Added two new developers. Welcome to Diva and Adam. You guys will be hearing from them very shortly in the near future. 
 * We raised a 4k validator testnet for Eth Denver which turn out to be quite useful for some developers and research is to prototype with. It's been running for about 93,000 slots and we kind of haven't touched , it's just running smoothly. WE just had it as it is as a test for the Eth Denver hackathon. Our team met up with Proto and implemented the local Merkle Tree based storage system for validated field in the Beacon state. It's shown pretty significant reductions in tree hashing time but it increased during reward and penalties. We are still deciding whether to adopt the approach or not throughout the client. We did a project wide sweep of temporary heap allocation because we're finding a whole heap of using a ridiculous amount of memory, more than what we needed. 
-* we actually reduced our memory footprint by out half again . So, since the start of the month right down to about quarter them up of what we were originally using. 
+* We actually reduced our memory footprint by out half again . So, since the start of the month right down to about quarter them up of what we were originally using. 
 * We're still using a 2-4 GB of RAM for a Beacon node on a 100K validator test net but we still think we can probably get a little bit better than that. The RAM usage depends on how many validate is it using the nodes local API. The reduction of heap allocations and memory issues also gave us a 30% improvement in block processing in time which is pretty good so that also help us syncing space. 
 * we're in the process of refactoring on BLS libraries, so that at compile time, you can choose to whether to use the Milagro or Harumi implementations.
 * We still have to find out which is a benchmark , which is faster?
@@ -332,13 +332,13 @@ On spec side, we're
 
 **Adrain**: Yeah
 
-**Danny**: So the number of like local validators that are signing into the test should beacon node?
+**Danny**: So the number of like local validators that are signing into the test should Beacon node?
 
 **Adrain**:  Yes, we are still tracking down why that's the case? Why we're still getting memory fragmentation across there, that seems to be the case. 
 
 **Danny**: But you also have nodes that has 1000s or 10,000s validators, that's sure?
 
-**Adrain**:  oh yeah yeah. I'm in reality that's probably not going to happen but we have that in.
+**Adrain**: Oh yeah yeah. I'm in reality that's probably not going to happen but we have that in.
 
 **Danny**: Can you give us any details on your strategy to find validators of particular attestaion subnets given? 
 
@@ -379,7 +379,7 @@ On spec side, we're
  * I'd says it's probably a bottleneck at this point so we have noise implementation that were interoping with Go.  At the moment I don't know exactly the status is. so I don't want to offer us a testing partners, but I'm not seeing progress and 
  * we have a PR open for snappy compression and 
  * we are going to begin working again on disc V5. We're about halfway through and we had stopped work for a while and now we are going to get back to that. 
- * some other things we emerged in this new SSC implementation that we have been working on for a while and just merging it in. No changes, kind of speedup our position by roughly 10-100x and 
+ * some other things, we emerged in this new SSZ implementation that we have been working on for a while and just merging it in. No changes, kind of speedup our position by roughly 10-100x and 
  * then just lightly memoizing a few functions speed it up another 10 - 100 and we'll probably  stop there for now because I don't not have liked the best data to benchmark against,  but I think once we start resyncing a bunch of blocks we'll have something we can test against and take a little further. 
  * We're also going to be working on fixing up our state management similarly to how to describes a few people earlier we're going to the store to checkpoint, historical States and then have a more rich history of the recent States kept in memory and sharing a lot of data between them.
  
@@ -399,7 +399,7 @@ On spec side, we're
  
 **Joseph Delong**: Sure. Okay, so yeah we are at Eth Denver and we worked with a feature and we made an EE. It was kind of rudimentary execution environment to see what some of the components are and we're using that to inform some research. Some of our team also helping quilt with Ease and we made some updates to that just last week.
 
-**Ease**, if you're unfamiliar is and a truffle like interface to help you build Ease. It is still in a pretty rudimentary place, but it's going to be a Fantastic tool going forward.  
+**Ease**, if you're unfamiliar is a Truffle like interface to help you build EEs. It is still in a pretty rudimentary place, but it's going to be a fantastic tool going forward.  
 
 We have two pending write-ups right now
 1. from Mikhail around **safety on Eth1 <-> Eth2 bridge and Eth1 <-> Eth2 bridge finality gadget**. If it's not out already, it should be out today. 
