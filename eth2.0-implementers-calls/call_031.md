@@ -195,7 +195,7 @@ He also asked all Eth2 teams attending Eth Denver to let him know so that he can
 
 ## Next Meeting Date/Time
 
-Thursday January 23, 2019.
+Thursday January 23, 2020.
 
 ## Attendees
 

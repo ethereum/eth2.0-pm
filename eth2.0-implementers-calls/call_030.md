@@ -224,7 +224,7 @@ Happy Holidays. Next call week after new years.
 
 ## Next Meeting Date/Time
 
-Thursday January 9, 2019.
+Thursday January 9, 2020.
 
 ## Attendees
 
