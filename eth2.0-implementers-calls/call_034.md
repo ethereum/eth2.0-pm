@@ -482,7 +482,7 @@ Last update from my side. As Joseph already said that Matt and Johnny had a new 
 * Lakshman Sankar
 * Mamy
 * Marin Petrunic
-* Meredith baxter
+* Meredith Baxter
 * Mikhail Kalinin
 * Milan Patel
 * Musab
