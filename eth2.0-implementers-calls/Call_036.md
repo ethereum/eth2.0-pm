@@ -1,5 +1,5 @@
 #  Eth2.0 Call #36
-##  Meeting Date/Time: Wednesday 26 March at 14:00 UTC
+##  Meeting Date/Time: Thursday 26 March at 14:00 UTC
 ### Meeting Duration: 1 hour
 ### [GitHub Agenda Page](https://github.com/ethereum/eth2.0-pm/issues/135)
 ### [Audio/Video of the meeting](https://www.youtube.com/watch?v=Vn1oHH55yPk)
