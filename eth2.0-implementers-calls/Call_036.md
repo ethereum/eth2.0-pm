@@ -3,7 +3,7 @@
 ### Meeting Duration: 1 hour
 ### [GitHub Agenda Page](https://github.com/ethereum/eth2.0-pm/issues/135)
 ### [Audio/Video of the meeting](https://www.youtube.com/watch?v=Vn1oHH55yPk)
-### Moderator: Hudson Jameson
+### Moderator: Danny Ryan
 ### Notes: Brent Allsop, Jim Bennett
 
 ----
@@ -12,6 +12,7 @@
 * Get the PRs mentioned in yesterday’s [Networking meeting](https://hackmd.io/@benjaminion/rkEn7C_88) into a release today.
 * Danny is going to consider doing a “Virtual Interop” in the near future where at least a few people from each team get together, rather than working in silos.  He will come up with possible dates.
 
+## Links
 
 
 
@@ -226,7 +227,7 @@ We've touched on probably the most pressing items.  I’m sure that there are a 
 
 Beyond that, on the phase one stuff, Xiaowei has been doing a deep review. There's also been a number of additional test vectors added. So once that deep review is done, hopefully we’ll have phase one test vectors on the get one or two people prototyping.   Some of this work is going to be pivotal for doing some of the Eth 1 Eth 2 integration prototyping work in the coming months. So I'd say once the Xiaowei fixes air integrated, if you have some spare time to some reading and just kind of interested in getting caught up, that would be a good time to check it out. Certainly. I think that's most of the specks on our end. Do other people have any spec related items that they would like to discuss?  From general open discussions  I've been super pleased with the integration of unification of direction, road maps on research and expertise. Super cool to see. Anything else people want to talk about today?
 
-[Vitalic](https://www.youtube.com/watch?v=Vn1oHH55yPk&t=2326)
+[Vitalik](https://www.youtube.com/watch?v=Vn1oHH55yPk&t=2326)
 Nothing for me.
 
 **danny**
