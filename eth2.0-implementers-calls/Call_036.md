@@ -12,7 +12,8 @@
 * Get the PRs mentioned in yesterday’s [Networking meeting](https://hackmd.io/@benjaminion/rkEn7C_88) into a release today.
 * Danny is going to consider doing a “Virtual Interop” in the near future where at least a few people from each team get together, rather than working in silos.  He will come up with possible dates.
 
-## Links
+## Summary
+Clients reviewed their testing and research updates in preparation for Eth 2.0, with a focus on cretion of multiclient testnets and the possibility of spec freezes. 
 
 
 
@@ -138,7 +139,7 @@ Thanks, Musab. That's really exciting work. Seems like we're getting close.
 Other research updates?
 
 [**Joseph DeLong**](https://youtu.be/Vn1oHH55yPk?t=1289)             
-For TXRX, we just had a kind of realignment on some research. I think the general direction now is to move away from EEs as a design for Ethereum 2. It's not set in stone yet, but I think Johnny Ray's gonna move into doing some sort of network monitor, and this would be helpful for Phase 0, being able to monitor the activity of the network and better understanding what's going on there.  And Mikhail just published some research about and Eth1/Eth2 bridge finality gadget. And I think his conclusions are coming closer to the conclusion that I think that the Foundation is already at that a bridge or a finality gadget makes it kind of like an infeasibility. And so I think we're gonna shift intoworking on the Ethe1/Eth2 mereg, more likely.
+For TXRX, we just had a kind of realignment on some research. I think the general direction now is to move away from EEs as a design for Ethereum 2. It's not set in stone yet, but I think Johnny Ray's gonna move into doing some sort of network monitor, and this would be helpful for Phase 0, being able to monitor the activity of the network and better understanding what's going on there.  And Mikhail just published some research about and Eth1/Eth2 bridge finality gadget. And I think his conclusions are coming closer to the conclusion that I think that the Foundation is already at that a bridge or a finality gadget makes it kind of like an infeasibility. And so I think we're gonna shift into working on the Ethe1/Eth2 merge, more likely.
 
 **danny**                 
 Cool. Thanks, Joe. Any other research updates?
@@ -170,7 +171,7 @@ As for organization beyond this call, that's likely warranted. I think we're pro
 Yeah, I believe we might want to have some joint strategy to freeze a certain version, but I don't know what you have done previously. Happy to learn more about that.  
 
 **danny**  
-Yeah, long ago, prior to DevCon before we shook up the spec to make some deeper breaking changes based on some conversations there, we did have a speck freeze. I'd like to, with this spec update, freeze the state transition logic. Unfortunately, also fortunately, we at least in the past two weeks, we've seen a lot of conversation around networking, primarily because some people are working through it for the first time and also hitting some of the pain points for the first time.
+Yeah, long ago, prior to DevCon before we shook up the spec to make some deeper breaking changes based on some conversations there, we did have a spec freeze. I'd like to, with this spec update, freeze the state transition logic. Unfortunately, also fortunately, we at least in the past two weeks, we've seen a lot of conversation around networking, primarily because some people are working through it for the first time and also hitting some of the pain points for the first time.
 
 So we've seen more iteration on that component of the spec, and some of these iterations have been breaking. So it would be hard to, unless we were versioning protocols within the same protocol, it would be hard to freeze that today. I think, likely in the next two weeks, we're still going to see some some bumps on that. So state transition freeze and targeting soon a networking freeze, I don't have a good intuition on how many more changes we might see there, because a lot of it's just been led by the kind of networking experts on each team finding some of the issues. But I know we're getting to a better place there.
 
