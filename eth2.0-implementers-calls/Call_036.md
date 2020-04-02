@@ -12,6 +12,9 @@
 * Get the PRs mentioned in yesterday’s [Networking meeting](https://hackmd.io/@benjaminion/rkEn7C_88) into a release today.
 * Danny is going to consider doing a “Virtual Interop” in the near future where at least a few people from each team get together, rather than working in silos.  He will come up with possible dates.
 
+## Links
+* Ben Edington's Quick contemporaneous [notes of the networking meeting](https://hackmd.io/@benjaminion/BkdbG45II#Eth2-Implementers%E2%80%99-Call-36---2020-03-26).
+
 ## Summary
 Clients reviewed their testing and research updates in preparation for Eth 2.0, with a focus on cretion of multiclient testnets and the possibility of spec freezes. 
 
