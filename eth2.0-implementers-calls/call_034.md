@@ -466,7 +466,7 @@ Last update from my side. As Joseph already said that Matt and Johnny had a new 
 * Alex Stokes (Lighthouse/Sigma Prime)
 * Adrian Manning
 * Ansgar Dietrichs
-* Ben Edginton (PegaSys)
+* Ben Edgington (PegaSys)
 * Cayman
 * Carl Beekhuizen
 * Cem Ozer

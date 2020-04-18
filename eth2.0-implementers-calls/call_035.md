@@ -200,7 +200,7 @@ Eth1 client teams looking to prototype Eth1 immigration against Eth2-Phase 1 pro
 - Aditya
 - Alex Stokes
 - Ansgar Dietrichs
-- Ben Edginton
+- Ben Edgington
 - Carl Beekhuizen
 - Cayman
 - Cem Ozer
