@@ -229,7 +229,7 @@ Thursday January 9, 2020.
 ## Attendees
 
 - Alex Stokes
-- Ben Edington
+- Ben Edgington
 - Carl Beekhuizen
 - Cayman
 - Chih-Cheng Liang

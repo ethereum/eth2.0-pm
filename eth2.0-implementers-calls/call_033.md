@@ -255,7 +255,7 @@ Thursday February 20, 2020; 14:00 UTC
 
 - Adrian Manning
 - Alex Stokes
-- Ben Edington
+- Ben Edgington
 - Cem Ozer
 - Cayman
 - Carl Beekhuizen
