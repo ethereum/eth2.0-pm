@@ -336,7 +336,7 @@ Thanks everyone, bye!
 * Age
 * Alex Stokes (Lighthouse/Sigma Prime)
 * Ansgar Dietrichs
-* Ben Edginton (PegaSys)
+* Ben Edgington (PegaSys)
 * Cayman
 * Carl Beekhuizen
 * Cem Ozer
