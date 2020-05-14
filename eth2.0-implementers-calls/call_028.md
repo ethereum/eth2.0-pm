@@ -414,7 +414,7 @@ Okay I know y'all are all pretty heads down working on these things.  I think we
 
 * Alex Stokes (Lighthouse/Sigma Prime)
 * Adrian Manning
-* Ben Edginton (PegaSys)
+* Ben Edgington (PegaSys)
 * Cayman
 * Carl Beekhuizen
 * Cem Ozer

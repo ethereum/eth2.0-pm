@@ -200,7 +200,7 @@ Thursday January 23, 2020.
 ## Attendees
 
 - Adrian Manning
-- Ben Edington
+- Ben Edgington
 - Brett Robertson
 - Cayman
 - Chih-Cheng Liang
