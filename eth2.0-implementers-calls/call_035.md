@@ -1,4 +1,4 @@
-# Ethereum 2.0 Implementers Call 30 Notes
+# Ethereum 2.0 Implementers Call 35 Notes
 
 ### Meeting Date/Time: Thursday 2020/3/12 at 14:00 UTC
 ### Meeting Duration:  0.5 hrs
