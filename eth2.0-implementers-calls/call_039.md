@@ -70,7 +70,7 @@ Full information in the blog post.
 
 Also pushing Docker images for the community to find bugs.
 
-Starting playing with Lodestar. We found a few types of errors possibly. We will discuss this further outside the call.
+Starting playing with Lodestar. We found a few type errors possibly. We will discuss this further outside the call.
 
 There was a discussion a week ago on a beacon state that shouldn't be trusted.
 
