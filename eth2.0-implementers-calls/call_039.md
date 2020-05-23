@@ -39,9 +39,9 @@
 Video | [0:00](https://www.youtube.com/watch?v=7uZtEy0nNbw)
 -|-
 
-Focus has been on `v0.12`. The last task is including the upgraded BLS. Will be released in the next couple days.
+The focus has been on `v0.12`. The last task is including the upgraded BLS. Will be released in the next couple of days.
 
-There are a number of networking updates and modifications that came out of the network call.
+There are several networking updates and modifications that came out of the network call.
 
 Some increased testing will be released. There were some corner cases around modifying states in state transitions.
 
@@ -49,13 +49,13 @@ Beacon fuzz pushed a blog post.
 
 - https://blog.sigmaprime.io/beacon-fuzz-04.html
 
-A lot of progress made on structural fuzzing. Implemented arbitrary tripe on Eth2 types. Can now provide well formed instances of custom types, greatly improving fuzzing coverage. An overflow has already been identified from this.
+A lot of progress made on structural fuzzing. Implemented arbitrary tripe on Eth2 types. It can now provide well-formed instances of custom types, greatly improving fuzzing coverage. An overflow has already been identified from this.
 
-Last few weeks found a few issues collaborating with Teku. An infinite loop. And a segfault in Nimubs due to stack overflow.
+The last few weeks found a few issues collaborating with Teku. An infinite loop. And a segfault in Nimubs due to stack overflow.
 
 Updated trophies list of beacon fuzz. Up to 18 now.
 
-Good progress on Go integrations. This was in response to trouble integrating Serenity and Prysm. Will have a call with Prysm in a few hours.
+Good progress on Go integrations. This was in response to trouble integrating Serenity and Prysm. We will have a call with Prysm in a few hours.
 
 A new architecture is being proposed in Beacon Fuzz. Moving away from C++ and applying bindings from Rust.
 
@@ -64,30 +64,30 @@ Breaking down Beacon Fuzzing to 3 separate tools:
 - Eth2Diff - Sample replay
 - FFI Bindings - Core differential fuzzing
 
-Full information in blog post.
+Full information in the blog post.
 
 - https://blog.sigmaprime.io/beacon-fuzz-04.html
 
 Also pushing Docker images for the community to find bugs.
 
-Starting playing with Lodestar. Found a few type errors possibly. Will discuss this further outside the call.
+Starting playing with Lodestar. We found a few types of errors possibly. We will discuss this further outside the call.
 
 There was a discussion a week ago on a beacon state that shouldn't be trusted.
 
 This is the reason things will be split, to avoid this confusion.
 
-Will need to sync off beacon state at some point. Found a couple of overflows on Lighthouse. The spec has been clarified a few weeks ago. If overflow happens in the state transition, it's invalid.
+We will need to sync off the beacon state at some point. Found a couple of overflows on Lighthouse. The spec has been clarified a few weeks ago. If overflow happens in the state transition, it's invalid.
 
 The structural fuzzing helps mutate beacons states better. Allows valid SSZ containers, and beacon stats per spec.
 
-One of the issues that came up was hitting the utlities state transition, bypassing the check performed at the network layer.
+One of the issues that came up was hitting the utility's state transition, bypassing the check performed at the network layer.
 
-There are 2 ways to sync a network safetly after running for more than 3 weeks.
+There are 2 ways to sync a network safely after running for more than 3 weeks.
 
-1. Have a checkpoint sync from genesis
+1. Have checkpoint sync from genesis
 2. Start from a trusted state
 
-The second option has better UX, but has the threat of the trusted source being unreliable.
+The second option has better UX but has the threat of the trusted source is unreliable.
 
 # 2. Client Updates
 
@@ -104,22 +104,22 @@ Video | [9:29](https://youtu.be/7uZtEy0nNbw?t=569)
 
 ## 2.2 Lodestar
 
-- Starting to be able to sync, stable on Schlesi, haven't reach head, still not stable
+- Starting to be able to sync, stable on Schlesi, haven't reached the head, still not stable
 - Discv5 still isn't running
 
 ## 2.3 Nimbus
 
-- Multiple sync fixes in past few weeks, including Snappy.
+- Multiple sync fixes in the past few weeks, including Snappy.
 - Single make Schlesi target. Sync is working slowly by stable
 - Working on performance, namely on Windows
 - Fixing memory leaks. Some from libp2p, some form block caching.
-- Focusing on bugfixing. New tools to debug discovery.
+- Focusing on bug-fixing. New tools to debug discovery.
 
 Once we have fast state transitions, the next target is memory usage.
 
 ## 2.4 Trinity
 
-- Continuing port to async framework
+- Continuing port to an async framework
 - Updates to API
 - Added more full-time contributors
 
@@ -133,8 +133,8 @@ Once we have fast state transitions, the next target is memory usage.
 - Working on Topaz maintenance
 - Fixing network bugs
 - Aligned to spec v0.11.2
-- 100 blocks/s syncing. Still can do more optimizations
-- Work on slashing detection. Backend slashing service is working.
+- 100 blocks/s sync. Still can do more optimizations
+- Work on slashing detection. The backend slashing service is working.
 - Running client production tests (stress tests, inactivity finality tests)
 - No issue running 16,000 validators
 - 1 second slot times on stress tests. Seeing 85% participations instead of 99% due to timeout from RPC
@@ -145,7 +145,7 @@ Once we have fast state transitions, the next target is memory usage.
 - Kicking off external security review.
 - Improved slashing detection.
 - 16k validator testnets for 2 weeks
-- Improvments in memory usage (300 MB RAM on 16k testnet)
+- Improvements in memory usage (300 MB RAM on 16k testnet)
 - Working to fix state transition bugs
 - Finished implementing full gossip sub implementation logic. Looking forward to how it runs on Schlesi
 - Moved discv5 to standalone repo
@@ -159,9 +159,9 @@ Once we have fast state transitions, the next target is memory usage.
 Video | [19:35](https://youtu.be/7uZtEy0nNbw?t=1175)
 -|-
 
-Mutiple attempts for multiclient testnets that failed due to network fragmentation, and beacon nodes disconnecting and rejecting other peers, or rate limiting. Different genesis times were calculated.
+Multiple attempts for multiclient testnets that failed due to network fragmentation, and beacon nodes disconnecting and rejecting other peers, or rate-limiting. Different genesis times were calculated.
 
-A multiclient testnet was launched. Now Schlesi has almost perfect finality for more than a week. Everyone's surpised with how stable the network is running.
+A multiclient testnet was launched. Now Schlesi has almost perfect finality for more than a week. Everyone's surprised by how stable the network is running.
 
 Teku joined, syncing and validating.
 
@@ -191,9 +191,9 @@ Video | [26:48](https://youtu.be/7uZtEy0nNbw?t=1608)
 - https://ethresear.ch/t/eth1x64-variant-1-apostille/7365
 - https://github.com/ewasm/eth1x64/blob/c09ed1bf84a72308cececa8a78fd1df30b95d1da/variant1.md
 
-This article is on designing a cross-shard protocal between Eth1 shards with trying to be non-invasive to the EVM and dApp best practices.
+This article is on designing a cross-shard protocol between Eth1 shards with trying to be non-invasive to the EVM and dApp best practices.
 
-The first variant uses reciepts generated on the decending shard, and submitted on the recieving shard.
+The first variant uses receipts generated on the descending shard and submitted on the receiving shard.
 
 The simple examples are wrapped tokens. This will allow having DAI on each shard.
 
@@ -202,7 +202,7 @@ Then other varients are being looked into. One is yanking.
 
 Rich transactions can create another iteration of yanking. Will look into yanking next, or something based on Eth transfer objects.
 
-The main reason was to have a smaller scale to experiment, and engage current dApp developers, preparing them for sharding.
+The main reason was to have a smaller scale to experiment and engage current dApp developers, preparing them for sharding.
 
 Eventually, more useful designs mean larger changes in the EVM. If we do radical EVM changes, we lose the benefits of existing tooling. Because of this, it may be better to switch completely to WASM.
 
@@ -214,9 +214,9 @@ Fizzy v0.1 released. Passes official tests, but doesn't implement floating point
 
 As part of benchmarking, looking at the different precompiles. Elliptic curve precompiles shows promising results. But requires big integer host functions.
 
-Looking into BLS 12. Reaching speeds close to native speeds, in interpreters. Looking at BLS implementation in Rust, but didn't introduce the expected speeds. Rust was 5ms, and Wasm was 500ms. Then reached out to Wasm-Snark. They implemented support for BLS12. With optimizations on Big Intiger, moved to close to 14 ms. With more optimizations, may approach 8ms, half the speed of native.
+Looking into BLS 12. Reaching speeds close to native speeds, in interpreters. Looking at BLS implementation in Rust, but didn't introduce the expected speeds. Rust was 5ms, and Wasm was 500ms. Then we reached out to Wasm-Snark. They implemented support for BLS12. With optimizations on Big Integer, moved to close to 14 ms. With more optimizations, may approach 8ms, half the speed of native.
 
-We looking to replicate these findings on EVM. Added 3 optcodes to the EVM. Implemented 1 building block of the pairing operation, making a synthetic benchmark. With the synthetic implementation, got close to the Wasm numbers.
+We looking to replicate these findings on EVM. Added 3 opcodes to the EVM. Implemented 1 building block of the pairing operation, making a synthetic benchmark. With the synthetic implementation, got close to the Wasm numbers.
 
 May be able to get rid of the BLS12 precompiles.
 
@@ -235,7 +235,7 @@ Vitalik has a followup on dankrad's post.
 
 The complexity of proof of custody can be reduced by 1/2 to 3/4.
 
-Unsuccessful attempt to self-verified proof of custody using K committments.
+An unsuccessful attempt to self-verified proof of custody using K commitments.
 
 ## 4.3 TXRX
 
@@ -245,9 +245,9 @@ Eth1-Eth2 merge research post just released.
 
 Working on draft Eth1-Eth2 communication protocol. Working on PSE for phase 1 as well.
 
-Network monitor. Lighthouse is sending unsolicited UDP packets. Opend PR for that.
+Network monitor. Lighthouse is sending unsolicited UDP packets. Opened PR for that.
 
-Fork Choice tests. Generating tests using Alex's transpiler. Found a bug in Teku. Made improvents to high spec transpiler. Can translate Phase 1 spec. Three PRs opened based on thos results.
+Fork Choice tests. Generating tests using Alex's transpiler. Found a bug in Teku. Made improvements to high spec transpiler. Can translate Phase 1 spec. Three PRs opened based on those results.
 
 Implemented gossip v1.1 on JVM libp2p.
 
@@ -264,15 +264,15 @@ Call 8 days before this call. Debugging and other updates.
 
 - https://hackmd.io/@benjaminion/rJkuZ4e5I
 
-Still working on new spec updates on discv5 spec. Will imporve the performance slightly and resolve one error message. Sometimes you can get packets that have seemingly wrong incoding, but just a spec bug. Will publish new version.
+Still working on new spec updates on discv5 spec. It will improve the performance slightly and resolve one error message. Sometimes you can get packets that have seemingly wrong encoding, but just a spec bug. We will publish a new version.
 
-Something for feedback will be in the next couple days.
+Something for feedback will be in the next couple of days.
 
 Looking for the path of least resistance to upgrading. Considering a soft update. It's complicated with live networks.
 
-Due to the v0.12 spec update, may be best to combine these updates, as the testnets need to be restarted regardless.
+Due to the v0.12 spec update, maybe best to combine these updates, as the testnets need to be restarted regardless.
 
-Will take approximately 1 more week, at least, to get the new spec done. Then will assist with the implementation.
+It will take approximately 1 more week, at least, to get the new spec done. Then will assist with the implementation.
 
 
 # 6. Spec discussion
@@ -280,11 +280,11 @@ Will take approximately 1 more week, at least, to get the new spec done. Then wi
 Video | [47:37](https://youtu.be/7uZtEy0nNbw?t=2857)
 -|-
 
-Phase 1 PRs with bugs seen. Testing on Phase 1 has been minimal. Have been prioritizing v0.12.
+Phase 1 PRs with bugs seen. Testing on Phase 1 has been minimal. We have been prioritizing v0.12.
 
-Fork-choice test reads the pyspec and transpiles.
+The fork-choice test reads the pyspec and transpiles.
 
-Will see if tests are added with the next release.
+We will see if tests are added with the next release.
 
 Check on BLS phase 1 PR so tests can be generated.
 
