@@ -13,21 +13,23 @@
 
 - [1. Testing and Release Updates](#1-testing-and-release-updates)   
 - [2. Testnets](#2-testnets)   
-    - [2.1 keygen hygiene](21-keygen-hygiene)
+    - [2.1 Validator key hygiene](#21-validator-key-hygiene)
+    - [2.2 Wallet vs. keystore discussion](#22-wallet-vs-keystore-discussion)
 - [3. Client Updates](#3-client-updates)   
-   - [3.1 Lodestar](#31-lodestar)   
+   - [3.1 Teku](#31-teku)  
    - [3.2 Nimbus](#32-nimbus)   
-   - [3.3 Teku](#33-teku)   
-   - [3.4 Prysm](#34-prysm)   
-   - [3.5 Lighthousee](#35-lighthousee)   
-   - [3.6 Trinity](#36-trinity)   
-   - [3.7 Nethermind](#37-nethermind)  
-- [4. API WG update](#4-API-WG-update)
+   - [3.3 Lodestar](#33-lodestar)   
+   - [3.4 Lighthouse](#34-lighthouse)   
+   - [3.5 Prysm](#35-prysm)   
+   - [3.6 Nethermind](#36-nethermind)   
+   - [3.7 Trinity](#37-trinity)  
+- [4. API WG update](#4-api-wg-update)
 - [5. Research Updates](#5-research-updates)   
-   - [5.1 TXRX](#51-txrx)   
-- [6. Networking](#5-networking)   
-- [7. Spec Discussion](#6-spec-discussion)   
-- [8. Open Discussion/Closing Remarks](#7-open-discussionclosing-remarks)   
+   - [5.1 Verkle trees](#51-verkle-trees)   
+- [6. Networking](#6-networking)   
+- [7. Spec Discussion](#7-spec-discussion)   
+- [8. Open Discussion/Closing Remarks](#8-open-discussionclosing-remarks)   
+   
 
 -----------------------------
 
@@ -346,7 +348,7 @@ As for the remaining discussion points that Ben pointed out, I am not quite sure
 Video | [47:45](https://youtu.be/WmU3k2v4UA8?t=)
 -|-
 
-### Verkle trees
+### 5.1 Verkle trees
 
 **Vitalik**: Yes, myself and Dankrad with the help of some academics and just some other people have been looking at Verkle Tree, which is basically an alternative to Merkle Tree for state storage.  are the propI wrote an Eth Research page to specify what the problem is a couple of weeks ago. And  the problem is basically that you want something that has all the properties of a Merkle tree. It's a commitment to a whole bunch of objects that you can make proofs for any objects. if a small piece of the data gets changed that you don't have to recompute over everything to make proofs to the new commitments or the new state root, and so forth, except adding the requirement for witnesses to be compact. So the Merkle tree’s witnesses are going to be (right now it is somewhat crazy ) but it will be about 700 bytes per object, which is a bit too much for comfort. 
 
