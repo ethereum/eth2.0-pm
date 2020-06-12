@@ -48,4 +48,5 @@ This repo hosts a collection of [standards](./interop) to aid in client interope
  37 | Thu, Apr 09, 2020 14:00 UTC  | [agenda](https://github.com/ethereum/eth2.0-pm/issues/141) \| [notes](eth2.0-implementers-calls/call_037.md) \| [reddit]() |
 38 | Thu, Apr 23, 2020 14:00 UTC  | [agenda](https://github.com/ethereum/eth2.0-pm/issues/145) \| [notes](eth2.0-implementers-calls/call_038.md) \| [reddit]() |
 39 | Thu, May 14, 2020 14:00 UTC  | [agenda](https://github.com/ethereum/eth2.0-pm/issues/149) \| [notes](eth2.0-implementers-calls/call_039.md) \| [reddit](https://www.reddit.com/r/ethereum/comments/gjgu83/live_ethereum_20_call_39_2020514_1400_gmt/) |
-39 | Thu, May 28, 2020 14:00 UTC  | [agenda](https://github.com/ethereum/eth2.0-pm/issues/154) \| [notes](eth2.0-implementers-calls/call_040.md) \| [reddit](https://www.reddit.com/r/ethereum/comments/gs7th7/eth20_call_40_2020527/) |
+40 | Thu, May 28, 2020 14:00 UTC  | [agenda](https://github.com/ethereum/eth2.0-pm/issues/154) \| [notes](eth2.0-implementers-calls/call_040.md) \| [reddit](https://www.reddit.com/r/ethereum/comments/gs7th7/eth20_call_40_2020527/) |
+41 | Thu, Jun 11, 2020 14:00 UTC  | [agenda](https://github.com/ethereum/eth2.0-pm/issues/158) \| [notes](eth2.0-implementers-calls/call_041.md) \| [reddit](https://www.reddit.com/r/ethereum/comments/h0z8bm/live_ethereum_20_call_41_2020611_1400_gmt/) |
