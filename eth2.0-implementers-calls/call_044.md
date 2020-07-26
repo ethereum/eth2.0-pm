@@ -19,7 +19,7 @@
    - [3.2 Prysm](#32-prysm)   
    - [3.3 Teku](#33-teku)   
    - [3.4 Trinity](#34-trinity)   
-   - [3.5 Nethermind](#35-Nethermind)   
+   - [3.5 Nethermind](#35-nethermind)   
    - [3.6 Lighthouse](#36-lighthouse)   
    - [3.7 Nimbus](#37-nimbus)  
 - [4. Research Updates](#4-research-updates)   
@@ -49,7 +49,7 @@ Proto and Lakshman do you want to give any update on your end?
 
 
 Video | [6:28](https://youtu.be/MMNgoDYKvhQ?t=388)
--|-f
+-|-
 
 **Danny**:  Moving on to **testnets**. As you've hopefully seen there are  3 very small attacknets up and they're all single client there are 4 nodes each, they are 128 validators on each network.There's a repo that we posted that kind of shows the rules, bounties and things. I know Jhonny has been getting his hands dirty and hopefully others on this call or people listening to call might be interested. The plan is to ramp these up over the coming weeks to make them larger and put some bounties out there. White hat hackers please, come brake these. 
 
