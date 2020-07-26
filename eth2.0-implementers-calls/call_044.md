@@ -49,7 +49,7 @@ Proto and Lakshman do you want to give any update on your end?
 
 
 Video | [6:28](https://youtu.be/MMNgoDYKvhQ?t=388)
--|-
+-|-f
 
 **Danny**:  Moving on to **testnets**. As you've hopefully seen there are  3 very small attacknets up and they're all single client there are 4 nodes each, they are 128 validators on each network.There's a repo that we posted that kind of shows the rules, bounties and things. I know Jhonny has been getting his hands dirty and hopefully others on this call or people listening to call might be interested. The plan is to ramp these up over the coming weeks to make them larger and put some bounties out there. White hat hackers please, come brake these. 
 
@@ -65,7 +65,7 @@ Video | [8:15](https://youtu.be/MMNgoDYKvhQ?t=495)
 
 **Danny**: Okay moving, Coindesk announced this yesterday. Afri do you want to talk about the testnet?
 
-Afri: I have got a plan to talk about Altona and the Medella.
+Afri: I have got a plan to talk about Altona and the Medalla.
 
 ## Altona
 
@@ -74,9 +74,9 @@ Afri: I have got a plan to talk about Altona and the Medella.
 * Some slashing events were being investigated but I didn’t follow too closely.
 * Released Client benchmark last week, profiled all Genesis clients - LH, Prysm, Teku and Nimbus and compared there high-level performance metrics and published a small report
 * The stability on Altona lead us to conclude that we want to do a very similar testnet but a public launch
-* This was prepared last week and someone suggested calling it Medella
+* This was prepared last week and someone suggested calling it Medalla
 
-## Medella
+## Medalla
 
 * Targets v0.12.2 spec that is close to release
 * Does not contain any breaking changes as far as we know, so we’re good to go to have client release for this very soon
@@ -85,7 +85,7 @@ Did you publish a blog on how people get onboarded, Danny?
 
 **Danny**: Yes, I just put out a [blog](https://ethresear.ch/t/ethereum-2-0-client-metrics-07-2020/7699) this morning. That is linked to some of the relevant stuff  and also linked to at least the 4 clients that we know will have genesis validators and encourage people to try them out. We also have an imminent release of the associated **Validator Launchpad**. It’s like an educational deposit UI that's expected to go live by Monday which if people are not familiar with this process and haven't tried out testnets befor that should be like a good portal to get started.
 
-**Afri**: Min genesis time for Medella is Aug 4, 1:00 PM  UTC in case we’ve enough deposit (needs 16000 deposits) otherwise it will happen after 48 hours of the last deposit.
+**Afri**: Min genesis time for Medalla is Aug 4, 1:00 PM  UTC in case we’ve enough deposit (needs 16000 deposits) otherwise it will happen after 48 hours of the last deposit.
 
 **Danny**: We will know that  Sunday at 1 p.m. UTC if Tuesday at 1 pm UTC will be met. 
 
