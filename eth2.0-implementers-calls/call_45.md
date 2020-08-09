@@ -410,5 +410,30 @@ Video | [1:08:36](https://youtu.be/DVePZUQOyFk?t=4116)
 
 (Danny) - Great, well happy debugging and congratudations on madash launch. Take care everyone.
 
+# Attendees
+- Herman Junge
+- Danny Ryan
+- Paul Hauner
+- Terence
+- Mamy
+- Sacha Saint-Leger
+- Ben Edgington
+- JosephC
+- Carl Beekhuizen
+- Aditya Asgaonkar
+- Justin Drake
+- Grant Wuerker
+- Cayman
+- Hsiao-Wei Wang
+- Alex Stokes
+- Jonathan Rhea
+- Dankrad
+- Zahary Karadjov
+- Nishant
+- Raul Jordan
+- Vitalik Buterin
+- Jacek Sieka
+- Protolambda
+
 # Next Meeting Date/Time
 Thursday, August 20th, 2020
