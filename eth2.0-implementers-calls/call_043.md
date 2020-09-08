@@ -2,8 +2,8 @@
 
 ### Meeting Date/Time: Thursday 2020/6/9 at 14:00 UTC
 ### Meeting Duration:  1 hr
-### [GitHub Agenda](https://www.youtube.com/watch?v=4IooxDX_GfU)
-### [Audio/Video of the meeting](https://github.com/ethereum/eth2.0-pm/issues/165)
+### [GitHub Agenda](https://github.com/ethereum/eth2.0-pm/issues/165)
+### [Audio/Video of the meeting](https://www.youtube.com/watch?v=4IooxDX_GfU)
 ### Moderator: Danny Ryan
 ### Notes: Edson Ayllon
 
