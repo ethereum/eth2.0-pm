@@ -17,10 +17,10 @@
 
 # 1. Testing and Release Updates (2:20)
 * v0.123 release, which includes much of the minor and iterative work that has been done on the p2p spec. That will be released a couple of hours after this call.
-  * Danny alluded that, one of the main things he wants people to take a look at is the modifications of message ID and goosip sub. Danny to discuss more on that in the release notes, however.
+  * Danny alluded that, one of the main things he wants people to take a look at is the modifications of message ID and gossip sub. Danny to discuss more on that in the release notes, however.
 * Proto has been working on something in the direction of Hive, but for eth2. That allows for easily spinning up testnets (a bit like automated multi-net stuff, but controlled by local containers & can specify unit test and things)
   * close to be usable. Should hear more by next week
-* Terence asked if there were any plans on merging the forkchoice spec test into the official repo? Below notes are a discussion on the pros/cons on testing the forkchocie through network test vs. the unit test.
+* Terence asked if there were any plans on merging the forkchoice spec test into the official repo? Below notes are a discussion on the pros/cons on testing the forkchoice through network test vs. unit test.
   * Danny - Current plan is to leave those as is. And to use the testing framework that Proto's been working on to run forkchoice test through the network interface. Rather than inserting blocks through a non-standard method.
     * easier to specify
     * easier to test
