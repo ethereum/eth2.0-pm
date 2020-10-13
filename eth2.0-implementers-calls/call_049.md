@@ -45,7 +45,7 @@ Action Item | Description
 | **Video** | [1:40](https://youtu.be/IRWQUQfq7yQ?t=100) |
 | --- | --- |
 
-**Danny Ryan**: I am personally working on a v1.0 candidate, branch WIP PR including BLC4 (_notetaker's note_: may have heard incorrectly) update some of the networking things. I believe **protolambda** has been continuing on the networking test stack, but interrupted by other higher priority items. As for the fork choice tests, still sitting in the repo.
+**Danny Ryan**: I am personally working on a v1.0 candidate, branch WIP PR including BLSv4 update some of the networking things. I believe **protolambda** has been continuing on the networking test stack, but interrupted by other higher priority items. As for the fork choice tests, still sitting in the repo.
 
 **protolambda**: A little bit ago was working on YAML files define different clients and setup and have integration testing, but will stop due to other higher priorities. This will take more time and will go through disclosures.
 
@@ -113,7 +113,7 @@ Last audit phase, now we have the fix review scheduled in 2 weeks. Significantly
 
 We tried to participate in a small way on Spadina (4 nodes) and our progress is that the node isn't stable, so we weren't able. Created genesis properly, but couldn't stay up to the head. We added weak subjectivity chain start where you can pass in a finalized state and start from there. Finished standard API, doing a lot of refactoring, adding custom errors and cleaning things up, and moving forward still in progress are gossipsub 1.1 integration, not done, almost there, slashing protection interchange, and dist v5.1 upgrade.
 
-**Danny**: Do you have an intuition about the bottlenecks in suycing Spadina?
+**Danny**: Do you have an intuition about the bottlenecks in syncing Spadina?
 
 Yes, our syncing strategy hasn't been too great. We haven't really known what was happening to the blocks as we were feeding them in. Now that we're getting proper errors, it should be easier to know, okay we don't actually have a parent, can try to do a parent sync backwards, before we didn't have enough information to make a smart syncing algorithm, but now there are errors, rough peer scoring, should be easier to revisit the whole algorithm.
 
