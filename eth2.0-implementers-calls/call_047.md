@@ -182,34 +182,33 @@ No discussion. Keep up the great work.
 
 ## Attendees
 
-- Mamy
-- Danny Ryan
-- Terence (Prysmatic)
-- Paul Hauner
+- Aditya Asgaonkar
+- Afr Schoe
 - Alex Stokes
+- Ansgar Dietrichs
 - Ben Edgington
 - Carl Beekhuizen
-- Protolambda
+- Cayman Nava
 - Cem Ozer
 - Dankrad
-- Hsiao-Wei Wang
+- Danny Ryan
 - Grant Wuerker
 - Guillaume
-- Cayman Nava
-- Aditya Asgaonkar
-- Justin Drake
-- Vitalik Buterin
-- Raul Jordan (Prysmatic)
-- Leo BSC
-- Afr Schoe
-- Joseph Delonng
-- Lightclient
-- Ansgar Dietrichs
 - Herman Junge
-- Sam Wilson
-- Lakshman Sankar
+- Hsiao-Wei Wang
 - Jonathan Rhea
-
+- Joseph Delonng
+- Justin Drake
+- Lakshman Sankar
+- Leo BSC
+- Lightclient
+- Mamy
+- Paul Hauner
+- Protolambda
+- Raul Jordan (Prysmatic)
+- Sam Wilson
+- Terence (Prysmatic)
+- Vitalik Buterin
 
 ## Next Meeting Date/Time
 

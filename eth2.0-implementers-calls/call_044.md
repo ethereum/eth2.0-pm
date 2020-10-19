@@ -403,13 +403,13 @@ Okay anything else today before we close? we will spend the next two weeks from 
 
 ## Zoom Chat 
 
-* **Terence**: https://ethresear.ch/t/ethereum-2-0-client-metrics-07-2020/7699 
-* Or we can record slashings here: https://github.com/goerli/medalla Either repo works 
-* Leo BSC: https://docs.google.com/spreadsheets/d/1SoXvmPfm1BRVcdDm7CuwaWDjxp5a3NzGMBLViQjBNqA/edit?usp=sharing 
+* **Terence**: https://ethresear.ch/t/ethereum-2-0-client-metrics-07-2020/7699
+* Or we can record slashings here: https://github.com/goerli/medalla Either repo works
+* Leo BSC: https://docs.google.com/spreadsheets/d/1SoXvmPfm1BRVcdDm7CuwaWDjxp5a3NzGMBLViQjBNqA/edit?usp=sharing
 * https://altona.beaconcha.in/validator/a2b60b956869fd5dfe9874546b3cc4bc2ca42bcc3b9c48c8473b7881c4e94b4a57917b07bf0b22117c90daf2f59c2dde#overview
 * Proto: https://github.com/libp2p/go-libp2p-pubsub/pull/359
-* Joseph: https://github.com/txrx-research/teku/branches 
-* Terence: latest phase1 work on Prysm https://github.com/terencechain/prysm-phase1 
+* Joseph: https://github.com/txrx-research/teku/branches
+* Terence: latest phase1 work on Prysm https://github.com/terencechain/prysm-phase1
 
 ## Attendees
 
