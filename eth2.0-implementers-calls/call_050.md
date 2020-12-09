@@ -249,7 +249,7 @@ Keep up the great work. Meeting in 2 weeks.
 - Leo BSC
 - Mehdi Zerouali
 - Meredith Baxter
-- Mihail Kalinin
+- Mikhail Kalinin
 - Nishant
 - Pooja Ranjan
 - Preston (Prylabs)
