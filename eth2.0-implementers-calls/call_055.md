@@ -12,7 +12,21 @@
 
 # Contents <!-- omit in toc --> 
 
-
+- [1. Client Updates](#1-client-updates)
+  - [1.1 Teku](#11-teku)
+  - [1.2 Nimbus](#12-nimbus)
+  - [1.3 Lighthouse](#13-lighthouse)
+  - [1.4 Lodestar](#14-lodestar)
+  - [1.5 Prysm](#15-prysm)
+- [2. Upgrade 1](#2-upgrade-1)
+- [3. Q1 R&D](#3-q1-rd)
+- [4. Research Updates](#4-research-updates)
+- [5. Networking](#5-networking)
+- [6. Spec discussion](#6-spec-discussion)
+- [7. Open Discussion/Closing Remarks](#7-open-discussionclosing-remarks)
+- [Annex](#annex)
+  - [Attendees](#attendees)
+  - [Next Meeting Date/Time](#next-meeting-datetime)
 
 -----------------------------
 
