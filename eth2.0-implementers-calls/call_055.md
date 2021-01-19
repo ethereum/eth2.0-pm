@@ -1,4 +1,4 @@
-# Ethereum 2.0 Implementers Call 50 Notes <!-- omit in toc --> 
+# Ethereum 2.0 Implementers Call 55 Notes <!-- omit in toc --> 
 
 ### Meeting Date/Time: Thursday 2021/1/14 at 14:00 UTC <!-- omit in toc --> 
 ### Meeting Duration:  1 hr <!-- omit in toc --> 
