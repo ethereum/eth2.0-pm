@@ -77,3 +77,62 @@ Okay, so
 I just want to make sure that client teams are ready in terms of infrastructure and have time before Genesis to get things done.
 Yeah, so I flagged earlier on the Tegu side. So we were advised that the signal to fine like that. Everything was fine. I would be the merging of the pr so it hasn't been merged yet. So we haven't done anything and lessen the week just isn't time either to bake the Genesis State into a release or to get the infrastructure up and running. Reliably. I mean, it's a lot of infrastructure to run this this number of nodes. So we I think
 We would propose we would request putting back Genesis by a week just to allow us to get a release out with the Genesis data in and just to make sure the infrastructure is in place without having to rush and work the weekend and all of that.
+Just perfectly fine for me, it's just so I can push this back one week, regenerates agenesis, and then we start to kiss and everyone should have enough time next week to prepare our clients and set up leaders.
+Yeah, it's totally fine for me. This isn't this is something we need to do and we've identified that we need to do. But it's not critical that it happens next week.
+So I'm all right.
+And will the PR be merged or will it stand as is for the next week? But we have all agreed that it's happening. I don't just process your thoughts so I can merge.
+I mean, I have write access, but I was hoping that someone else could just say, OK, this looks good or something or someone else. Just so we know this is fine to go.
+I mean, I can imagine no one has to make the make the update to the Genesis time and maybe paying on discord. And I will certainly do a review with a explicit approval and maybe others will, but we can emerge from there. I think we're all in agreement that Genesis is and to.
+Really? Yes, thank you. Much appreciated. Absolutely.
+And make sure to have the correct answers that's in your client's changing. The Genesis time also affects the stateful.
+Ok, is there anything? Well, how do I pronounce this prouder, Prader? Prettier.
+Yes, scotch. Which one iterator?
+Ok, great. So is there anything else people want to discuss around Paratha before we move on? Excellent. Let's do some research updates, maybe we'll start with Mikhail. I think you have some stuff to talk about.
+As things stand, there is like the open bar with the stuff to this big repository, it contains like the executable beacon chain proposal. So drop it. Now, this is like a good time to start looking at it and so forth. It should be fairly easy to reason about because the amount of change, that's not that huge. So.
+It requires some like.
+Upcoming work, like we can expect executable running tests and grading new tests and so forth, but yeah, it's ready to be ready for everyone to start looking at it. So that's pretty much it on the.
+Good. Thank you. Dig in their other research updates.
+Nothing on the EU side for me this time around.
+Got it.
+Ok, great.
+Moving on, it was the state of kind of receptivity, weeks of utility, state distribution and things like that was brought up by came in at the start of this call came in. Do you want to pose a question or is anybody else want to kind of get the state of what people are considering?
+Yeah, I'm kind of curious just how you generate generating the state and then distributing the state. If anyone has any thoughts.
+Did you what's the status of kind of the format to distribute states and.
+Some state providers and stuff in the network right now.
+The last time we talked about this, the status was that we are just assuming that we shared the state in alternate channels, maybe tied in to somewhere else.
+We haven't talked about how to share the state over the EU P2P network. We can try to think about how we can compress the state or break it down into smaller pieces and reduce the load on our B2B network. The main problem seems to be that state sizes are running into a couple of envy's at least, and that would kind of lead down the B2B network a lot. So this would be a larger research problem to think about.
+Yeah, I understand.
+Is anyone planning on cutting these into their releases and others kind of a back and forth on that many months ago?
+We had talked about it at one point, but we never got around to the.
+Look, I think that we there's definitely a desire to kind of have this machinery in place around Altair, so it's probably worth us running through some of the various scenarios and making sure the machinery is in place.
+Do the command line options generally exist on clients today to be able to start from a state rather than from Gen..
+For Turkey, it's a yes country, we have some members, but it's not listed, right.
+Yeah, Michael's working on this. I think that's the branch that has that feature, but certainly not stable.
+Preston is working on this as well. OK, good.
+So I think and this has been recommended in another context with the kind of targeting this to be in a version one for Altair, although it doesn't affect kind of the core aspects.
+Precisely, I think is a good a good target.
+So we talk about it off line a bit and we'll bring it up in the next call as well, kind of check checking on status, I was anything else to talk about today?
+I know there's kind of a lot of nebulous items related to that that aren't so clearly defined. If people want to chat about them more now, by all means, otherwise we can chat about offline.
+Have like one thing that I would like to share as well, it's related to the marriage request, but yeah, so I'll drop it. This is like the proposal by Democrats to which is about deferring the execution by a slot. So the idea behind this is to give life more time for testers and for Axford. To execute transactions of the previous block, it has its own trade offs, but would be great to chat about it, discuss it. Those who are interested.
+People at.
+Right. So isn't it delays the commitment to the state route until the next slot so that you can continue competition throughout the entire slot, right?
+Yeah, right. So like the proposer of of of the block is like the, uh, is like the sequencer for the current application payload and the executor of the previous one. So that's the idea.
+Ok, take a look.
+Okay, moving on to general discussion, just general discussion, anything else you want to talk about today?
+Anything about Mirch plans to talk about or do we still want to have more time to formulate the options?
+Options with respect to speeding it up.
+So I think the next thing that we plan on doing is during a public call, maybe next week, definitely by the following week, to kind of invite at least an hour from each team to begin allocating resources to it.
+That's the main speed up other than getting specs written, which is now in the works.
+I mean.
+And I think you and I have talked about this, a number of Mikol, I've talked about this and that there are the way the specs are going to be written are going to be very the most minimal merge on the first pass. And that's the first target people can begin working on.
+And that can even be what we bring to bring to mean that that might forgo a handful of features, including, say, validator withdrawals. You could go to me not without that and do it for three or four months after. So definitely in terms of speed up, that's also the strategy is to really scope the. Titus version of it.
+And like the what also was discussed for a bit is like the consensus upgrade is what they need to separate it from the version, the application train with the beacon chain, which means that the application units will retain and and this like merging the change is going to be like the separate.
+Upgrade that through.
+The governance and other processes, procedures, right, and some of that might seem a bit abstract, Nicholai both working on kind of technical roadmap documents that we plan on sharing soon that show kind of the dependencies and the middle version of the marriage and things like that.
+So we can make it more concrete to.
+Anything else today?
+Ok, very cool, cool, I appreciate it.
+We are on the final little bits of getting a temporary release out to you. Thank you for sprinting ahead, taking a look at those features and getting ready. I imagine there's going to be kind of a round of feedback there that we're going to want to do. And so plantation workers, they're going to want to do before we set a date, but definitely still targeting that.
+Proxima June date at this point. So great.
+Thank you. Take care. We'll talk to you all very soon on the Internet and we'll have another call in two weeks, I guess.
+But I don't think so. I.
