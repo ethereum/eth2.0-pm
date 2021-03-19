@@ -96,7 +96,7 @@ Video | [26:23](https://youtu.be/s017DQlsCCw?t=1583)
 
 Decision 1 | Video | [30:10](https://youtu.be/s017DQlsCCw?t=1810)
 
-  Push back Genesis one week and then start passing out validator keys (Genesis is in two weeks)
+    Push back Genesis one week and then start passing out validator keys (Genesis is in two weeks)
 
 **Afr Schoe** - Just perfectly fine for me, it's just so I can push this back one week, regenerate genesis, and then we start to distribute the keys and everyone should have enough time next week to prepare our clients and set up validators.
 
@@ -104,7 +104,7 @@ Decision 1 | Video | [30:10](https://youtu.be/s017DQlsCCw?t=1810)
 
 Action 1 | Video | [31:06](https://youtu.be/s017DQlsCCw?t=1866)
 
-  Danny to review Afr Schoe's PR and get it merged
+    Danny to review Afr Schoe's PR and get it merged
 
 **Afr Schoe** - I mean, I have write access, but I was hoping that someone else could just say, OK, this looks good or something or someone else merge it. Just so we know this is fine to go. I mean, I can merge this if no one has time... 
 
