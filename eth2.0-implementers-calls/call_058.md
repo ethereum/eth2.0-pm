@@ -31,15 +31,13 @@
 
 Action Item | Description
 | --- | --- |
-
-- **1:** Danny to review Afr Schoe's PR and get it merged
+**1** | Danny to review Afr Schoe's PR and get it merged 
 
 ## Decision Items
 
 Decision Item | Description
 | --- | --- |
-
-- **1:** Push back Genesis one week and then start passing out validator keys (Genesis is in two weeks)
+ **1** | Push back Genesis one week and then start passing out validator keys (Genesis is in two weeks)
 
 -----------------------------
 
