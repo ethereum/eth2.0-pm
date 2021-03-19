@@ -6,7 +6,7 @@
 ### [Audio/Video of the meeting](https://youtu.be/s017DQlsCCw) <!-- omit in toc --> 
 ### Moderator: Danny Ryan <!-- omit in toc --> 
 ### Notes: Alita Moore <!-- omit in toc --> 
-### [Previous Call (57)](https://github.com/ethereum/eth2.0-pm/issues/203)
+### [Previous Call (58)](https://github.com/ethereum/eth2.0-pm/issues/206)
 
 -----------------------------
 
