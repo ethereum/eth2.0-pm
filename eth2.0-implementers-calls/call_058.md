@@ -23,6 +23,9 @@
 - [4. Research Updates](#4-research-updates)
 - [5. Spec Discussion](#5-spec-discussion)
 - [6. General Discussion](#6-general-discussion)
+- [Annex](#annex)
+  - [Attendees](#attendees)
+  - [Next Meeting Date/Time](#next-meeting-datetime)
 
 ## Action Items
 
@@ -171,6 +174,41 @@ Video | [38:52](https://youtu.be/s017DQlsCCw?t=2314)
 **Mikhail** - And like the what also was discussed for a bit is like the consensus upgrade is what they to separate it from the version, the application chain with the beacon chain, which means that the application chain similar to beacon and and this like merge in the chain is going to be like the separate.
 Upgrade that through. The governance and other procedures
 
-**Danny** - right, and some of that might seem a bit abstract, Mikhail and I are both working on kind of technical roadmap documents that we plan on sharing soon that show kind of the dependencies and the middle version of the merge and things like that. So we can make it more concrete soon. Anything else today?Ok, very cool, cool, I appreciate it. We are on the final little bits of getting a temporary release out to you. Thank you for sprinting ahead, taking a look at those features and getting ready. I imagine there's going to be kind of a round of feedback there that we're going to want to do. And implementaitons they're going to want to do before we set a date, but definitely still targeting that.
+**Danny** - right, and some of that might seem a bit abstract, Mikhail and I are both working on kind of technical roadmap documents that we plan on sharing soon that show kind of the dependencies and the middle version of the merge and things like that. So we can make it more concrete soon. Anything else today?Ok, very cool, cool, I appreciate it. We are on the final little bits of getting a temporary release out to you. Thank you for sprinting ahead, taking a look at those features and getting ready. I imagine there's going to be kind of a round of feedback there that we're going to want to do. And implementaitons they're going to want to do before we set a date, but definitely still targeting that approximate June date.
 
-##
+------
+
+# Annex 
+
+
+## Attendees 
+
+- Mamy
+- Danny
+- Trent Van Epps
+- Terence
+- Mehdi | Sigma Prime
+- Carl Beekhuizen
+- Mikhail Kalinin
+- Dankrad Feist
+- Alex Stokes
+- Raul Jordan
+- Aditya Asgaonkar
+- Leo @ BSC
+- Meredith Baxter
+- Ben Edgington
+- Hsiao-Wei Wang
+- Lakshman Sankar
+- Cayman Nava
+- Protolambda
+- Ansgar Dietrichs
+- Afr Schoe
+- Justin Drake
+- Preson Van Loon
+- Vitalik Buterin
+
+
+
+## Next Meeting Date/Time
+
+Thursday, March 25th, 2021, UTC 14:00.
