@@ -35,7 +35,7 @@
 * Started to work for Altair patches. We have a guide for a Nimbus Rocketpool out. Completing our API so we are aligned with the Eth2 API spec.
 
 ### Prysm (Terence) ([6:24](https://youtu.be/Q0EbnFViJFk?t=384))
-* We realeased v1.3.4 on Monday. It added embedded genesis state, so users don't need to sync. Also added Pretair support.
+* We released v1.3.4 on Monday. It added embedded genesis state, so users don't need to sync. Also added Prater support.
 * In parallel working on a slasher design which is more efficient.
 * Working on Eth2 API.
 * On the hardfork... we are adding datastructures and config. We are trying to figure out the best path forward due to different of beacon state without too much addition of code.
