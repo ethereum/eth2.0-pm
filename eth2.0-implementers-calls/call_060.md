@@ -34,7 +34,7 @@
 * Phasing out `-dinsecure` flag. Reworking to use secure API by default.
 * Started to work for Altair patches. We have a guide for a Nimbus Rocketpool out. Completing our API so we are aligned with the Eth2 API spec.
 
-### Prism (Terence) ([6:24](https://youtu.be/Q0EbnFViJFk?t=384))
+### Prysm (Terence) ([6:24](https://youtu.be/Q0EbnFViJFk?t=384))
 * We realeased v1.3.4 on Monday. It added embedded genesis state, so users don't need to sync. Also added Pretair support.
 * In parallel working on a slasher design which is more efficient.
 * Working on Eth2 API.
