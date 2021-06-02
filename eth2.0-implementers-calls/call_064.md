@@ -21,7 +21,6 @@
 
 
 
-## **DECISIONS MADE**
 Change merge call time to directly before the Eth2.0 call.
 This change takes effect next meeting.
 
