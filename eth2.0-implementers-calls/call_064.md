@@ -18,7 +18,6 @@
   - [4. Spec Discussion](#4-Spec-Discussion)
   - [5. Open Discussion/Closing Remarks](#5-Open-DiscussionClosing-Remarks)
    
-## **ACTIONS REQUIRED** 
 
 
 
