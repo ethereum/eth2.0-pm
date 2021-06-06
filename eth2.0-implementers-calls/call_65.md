@@ -2,7 +2,7 @@
 ### Meeting Date/Time: Thursday 2021/06/03 at 14:00 GMT
 ### Meeting Duration: 90 mins
 ### [GitHub Agenda](https://github.com/ethereum/eth2.0-pm/issues/220)
-### [Audio/Video of the meeting]()
+### [Audio/Video of the meeting](https://www.youtube.com/watch?v=cgH8OsCg9tY)
 ### Moderator: Danny Ryan
 ### Notes: Joel Cahill
 
