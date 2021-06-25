@@ -332,4 +332,4 @@ Is it possible to build a dos resistant case?
 * Rest unknown due to recording 
 ---------------------------------------
 ## Next Meeting
-June __th, 2021
+TBD
