@@ -9,8 +9,8 @@ This repo hosts a collection of [standards](./interop) to aid in client interope
  №  | Date                             | Notes          | Recording            |
 --- | -------------------------------- | -------------- | -------------------- |
 68|Thu, Jul 15, 2021 1400UTC|[agenda](https://github.com/ethereum/eth2.0-pm/issues/226) \| notes \| [reddit](https://www.reddit.com/r/ethereum/comments/oksqn4/live_ethereum_20_call_68_20210715_1400_gmt/) | [video](https://www.youtube.com/watch?v=-Bzq4s8Lr5E)
-67|||||
-66|||||
+67 | Thu, July 1st, 2021 14:00 UTC  | [agenda](https://github.com/ethereum/eth2.0-pm/issues/224) \| [notes](eth2.0-implementers-calls/call_67.md) \| no reddit | [video](https://youtu.be/FNXk4ScqHn0) |
+66 | Thu, Jun 17rd, 2020 14:00 UTC  | [agenda](https://github.com/ethereum/eth2.0-pm/issues/222) \| [notes](eth2.0-implementers-calls/call_66.md) \| no reddit | [video](https://www.youtube.com/watch?v=ZSMrxG1LAck&ab_channel=EthereumFoundation) |
 65| Thu, Jun 3, 2021 14:00 UTC  | [agenda](https://github.com/ethereum/eth2.0-pm/issues/220) \| [notes](eth2.0-implementers-calls/call_65.md) \| no reddit | [video](https://www.youtube.com/watch?v=cgH8OsCg9tY) 
 64|||||
 63|||||
@@ -77,4 +77,3 @@ This repo hosts a collection of [standards](./interop) to aid in client interope
 2| Thu, Aug 30, 2018 14:00 UTC      | [agenda](https://github.com/ethresearch/eth2.0-pm/issues/3)  \| [notes](eth2.0-implementers-calls/call_002.md) \| [reddit](https://www.reddit.com/r/ethereum/comments/9bjk2u/video_eth20_implementers_call_2/)           | [video](https://www.youtube.com/watch?v=66SFMJC0RQo) 
 1| Thu, Aug 16, 2018 14:00 UTC      | [agenda](https://github.com/ethresearch/eth2.0-pm/issues/2)  \| [notes](eth2.0-implementers-calls/call_001.md) \| [reddit](https://www.reddit.com/r/ethereum/comments/97siac/live_eth20_implementers_call_1/)            | [video](https://www.youtube.com/watch?v=8F9NPGIv9vI) 
 0| Thu, Aug 02, 2018 14:00 UTC       | [agenda](https://github.com/ethereum/beacon_chain/issues/44) \| [notes](eth2.0-implementers-calls/call_000.md) \| [reddit](https://www.reddit.com/r/ethereum/comments/949eo6/ethereum_sharding_implementers_call_0/)     | [video](https://www.youtube.com/watch?v=Ynqrka5DQOI) 
-
