@@ -280,7 +280,7 @@ a boot node is a stable node that some users presumably trust the same. The peer
 - Lion dappLion
 - Patricio Worthalter
 - Carl Beekhuizen
--  Lightclient
+- Lightclient
 - Nishant
 - Dankrad Feist
 - Justin Drake
