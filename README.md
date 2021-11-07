@@ -1,3 +1,11 @@
+## ETH2.0 Project Management
+
+### Interop Standards
+
+This repo hosts a collection of [standards](./interop) to aid in client interoperability testing.
+
+### Previous ETH2.0 Implementers Calls
+
  №  | Date                             | Notes          | Recording            |
 --- | -------------------------------- | -------------- | -------------------- |
 68|Thu, Jul 15, 2021 1400UTC|[agenda](https://github.com/ethereum/eth2.0-pm/issues/226) \| notes \| [reddit](https://www.reddit.com/r/ethereum/comments/oksqn4/live_ethereum_20_call_68_20210715_1400_gmt/) | [video](https://www.youtube.com/watch?v=-Bzq4s8Lr5E)
@@ -21,30 +29,7 @@
 50| Thu, Oct 15, 2020 14:00 UTC  | [agenda](https://github.com/ethereum/eth2.0-pm/issues/187) \| [notes](eth2.0-implementers-calls/call_050.md) \| [reddit](https://www.reddit.com/r/ethereum/comments/jbi8rd/live_ethereum_20_call_50_20201015_1400_gmt/) | [video](https://www.youtube.com/watch?v=L4Dvlgxku1g) 
 49|||||
 48|||||
-47|||||
-46|||||
-45|||||
-44|||||
-43|||||
-42|||||
-41| Thu, Jun 11, 2020 14:00 UTC  | [agenda](https://github.com/ethereum/eth2.0-pm/issues/158) \| [notes](eth2.0-implementers-calls/call_041.md) \| [reddit](https://www.reddit.com/r/ethereum/comments/h0z8bm/live_ethereum_20_call_41_2020611_1400_gmt/) | [video](https://youtu.be/WmU3k2v4UA8) 
-40| Thu, May 28, 2020 14:00 UTC  | [agenda](https://github.com/ethereum/eth2.0-pm/issues/154) \| [notes](eth2.0-implementers-calls/call_040.md) \| [reddit](https://www.reddit.com/r/ethereum/comments/gs7th7/eth20_call_40_2020527/) |
-39| Thu, May 14, 2020 14:00 UTC  | [agenda](https://github.com/ethereum/eth2.0-pm/issues/149) \| [notes](eth2.0-implementers-calls/call_039.md) \| [reddit](https://www.reddit.com/r/ethereum/comments/gjgu83/live_ethereum_20_call_39_2020514_1400_gmt/) |
-38| Thu, Apr 23, 2020 14:00 UTC  | [agenda](https://github.com/ethereum/eth2.0-pm/issues/145) \| [notes](eth2.0-implementers-calls/call_038.md) \| [reddit]() |
-37| Thu, Apr 09, 2020 14:00 UTC  | [agenda](https://github.com/ethereum/eth2.0-pm/issues/141) \| [notes](eth2.0-implementers-calls/call_037.md) \| [reddit]() |
-36| Thu, Mar 26, 2020 14:00 UTC  | [agenda](https://github.com/ethereum/eth2.0-pm/issues/135) \| [notes](eth2.0-implementers-calls/call_036.md) \| [reddit](https://www.reddit.com/r/ethereum/comments/fpbvv1/live_ethereum_20_call_36_2020326_1400_gmt/) | [video](https://www.youtube.com/watch?v=Vn1oHH55yPk) 
-35| Thu, Mar 3, 2020 14:00 UTC  | [agenda](https://github.com/ethereum/eth2.0-pm/issues/132) \| [notes](eth2.0-implementers-calls/call_035.md) \| [reddit](https://www.reddit.com/r/ethereum/comments/fhl3d5/ethereum_20_call_34_2020312/) | [video](https://www.youtube.com/watch?v=orVYfqP_YuQ) 
-34| Thu, Feb 27, 2020 14:00 UTC   | [agenda](https://github.com/ethereum/eth2.0-pm/issues/129) \| [notes](eth2.0-implementers-calls/call_034.md) \| [reddit](https://www.reddit.com/r/ethereum/comments/fa957t/live_ethereum_20_call_34_2020227_1400_gmt/) | [video](https://www.youtube.com/watch?v=tLiMgFoG_vs) 
-33| Thu Feb 06, 2020 14:00 UTC    | [agenda](https://github.com/ethereum/eth2.0-pm/issues/126) \| [notes](eth2.0-implementers-calls/call_033.md) \| [reddit](https://www.reddit.com/r/ethereum/comments/ezpqyy/live_ethereum_20_call_33_202026_1400_gmt/) | [video](https://www.youtube.com/watch?v=c8BhhPfdy0A) 
-32| Thu, Jan 23, 2020 14:00 UTC      | [agenda](https://github.com/ethereum/eth2.0-pm/issues/123) \| [notes](eth2.0-implementers-calls/call_032.md) \| [reddit](https://www.reddit.com/r/ethereum/comments/esq90y/live_ethereum_20_call_32_2020123_1400_gmt/) | [video](https://www.youtube.com/watch?v=kt59-FEeWTI) 
-31| Thu, Jan 09, 2020 14:00 UTC      | [agenda](https://github.com/ethereum/eth2.0-pm/issues/118) \| [notes](eth2.0-implementers-calls/call_031.md) \| [reddit](https://www.reddit.com/r/ethereum/comments/em7erh/live_ethereum_20_call_31_202019_1400_gmt/) | [video](https://www.youtube.com/watch?v=u2w4EO9YepI) 
-30| Thu, Dec 19, 2019 14:00 UTC      | [agenda](https://github.com/ethereum/eth2.0-pm/issues/112) \| [notes](eth2.0-implementers-calls/call_030.md) \| [reddit](https://www.reddit.com/r/ethereum/comments/ecrgfh/live_eth20_call_30_20191219_1400_gmt/) | [video](https://www.youtube.com/watch?v=LYLiqpj-wiE) 
-29| Thu, Dec 5, 2019 14:00 UTC     | [agenda](https://github.com/ethereum/eth2.0-pm/issues/108) \| [notes](eth2.0-implementers-calls/call_029.md) \| no reddit | [video](https://www.youtube.com/watch?v=MxeEWmEdb5E) 
-28| Thu, Nov 21, 2019 14:00 UTC      | [agenda](https://github.com/ethereum/eth2.0-pm/issues/101) \| [notes](eth2.0-implementers-calls/call_028.md) \| no reddit | [video](https://www.youtube.com/watch?v=DzLrxuN55VA) 
-27| Thu, Nov 7, 2019 14:00 UTC      | [agenda](https://github.com/ethereum/eth2.0-pm/issues/95) \| [notes](eth2.0-implementers-calls/call_027.md) \| [reddit](https://www.reddit.com/r/ethereum/comments/dsxbhc/live_eth20_call_27_2019117_1400_gmt/) | [video](https://www.youtube.com/watch?v=4_EGNG-Yek4) 
-26| Thu, Oct 24, 2019 14:00 UTC      | [agenda](https://github.com/ethereum/eth2.0-pm/issues/89) \| [notes](eth2.0-implementers-calls/call_026.md) \| [reddit](https://www.reddit.com/r/ethereum/comments/dmgoqf/live_eth20_implementers_call_26_20191024_1400_gmt/) | [video](https://www.youtube.com/watch?v=DXGeC7cg71Y) 
-25| Thu, Sep 9, 2019 14:00 UTC      | [agenda](https://github.com/ethereum/eth2.0-pm/issues/85) \| [notes](eth2.0-implementers-calls/call_025.md) \| [reddit](https://www.reddit.com/r/ethereum/comments/d6beer/eth20_implementers_call_25_2019919_1400_gmt/) | [video](https://www.youtube.com/watch?v=pEdqjXO6euY) 
-24| Thu, Aug 29, 2019 14:00 UTC      | [agenda](https://github.com/ethereum/eth2.0-pm/issues/73) \| [notes](eth2.0-implementers-calls/call_024.md) \| [reddit](https://www.reddit.com/r/ethereum/comments/cwxlye/live_eth20_implementers_call_24_2019829_1400_gmt/) | [video](https://www.youtube.com/watch?v=sz87_i5Uy1I) 
+	@@ -56,24 +48,24 @@
 23| Thu, Aug 15, 2019 14:00 UTC      | [agenda](https://github.com/ethereum/eth2.0-pm/issues/68) \| [notes](eth2.0-implementers-calls/call_023.md) \| [reddit](https://www.reddit.com/r/ethereum/comments/cqng6t/live_eth20_implementers_call_23_2019815_1400_gmt/) | [video](https://www.youtube.com/watch?v=Av74vZRXeKo) 
 22| Thu, Jul 25, 2019 14:00 UTC      | [agenda](https://github.com/ethereum/eth2.0-pm/issues/64) \| [notes](eth2.0-implementers-calls/call_022.md) \| no reddit | [video](https://www.youtube.com/watch?v=ReSiB2940AE) 
 21| Thu, Jul 11, 2019 14:00 UTC      | [agenda](https://github.com/ethereum/eth2.0-pm/issues/55) \| [notes](eth2.0-implementers-calls/call_021.md) \| [reddit](https://www.reddit.com/r/ethereum/comments/cbsyu4/live_eth20_implementers_call_21_2019711_1400_gmt/) | [video](https://www.youtube.com/watch?v=YB8o_5qjNBc) 
