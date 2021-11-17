@@ -1,4 +1,6 @@
-## ETH2.0 Project Management
+## [DEPRECATED] ETH2.0 Project Management
+
+***WARNING: This repo is now deprecated in favor of unification with the https://github.com/ethereum/pm/ repo. Please see this other repo for calls, notes, and other project management items***
 
 ### Interop Standards
 
